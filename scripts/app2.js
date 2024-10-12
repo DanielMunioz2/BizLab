@@ -3859,6 +3859,9 @@ if (document.querySelector(".administracionHTML") != null) {
             document.querySelector("#btnNewReserva").addEventListener("click", (e)=>{
               
               fondoNegroNewRese.classList.replace("fondoNegroNewRese-O", "fondoNegroNewRese-V");
+              fondoNegroNewRese.addEventListener("click", (e)=>{
+                fondoNegroNewRese.classList.replace("fondoNegroNewRese-V", "fondoNegroNewRese-O");
+              });
 
             });
           
