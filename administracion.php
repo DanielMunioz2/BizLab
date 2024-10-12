@@ -1,23 +1,49 @@
 <?php
-    
+
     session_start();
 
     require("conexion.php");
 
     // Buscando USER INCIADO
+    
+    $userId = $_SESSION["iniciado"];
 
-        $userId = $_SESSION["iniciado"];
-        $resultUserIni = $conn->query(
-            "SELECT * FROM `bizlabDB`.`usuarios` 
-            WHERE `usuarios`.`id_usuario` = $userId;"
-        );
-        $numRowsUserI = $resultUserIni->num_rows;
+    $resultUserIni = $conn->query(
+        "SELECT * FROM `bizlabDB`.`usuarios` 
+        WHERE `usuarios`.`id_usuario` = $userId;"
+    );
 
-        $resultUserIni = $resultUserIni->fetch_assoc();
+    $numRowsUserI = $resultUserIni->num_rows;
+    $resultUserIni = $resultUserIni->fetch_assoc();
 
     //------------------------------------------------------
 
+    $usuarios = [];
+    if (isset($_GET['query'])) {
+        $query = $conn->real_escape_string($_GET['query']);
+
+        $result = $conn->query(
+            "SELECT u.*, m.membre_nombre 
+            FROM `bizlabDB`.`usuarios` u
+            LEFT JOIN `bizlabDB`.`membresias` m ON u.user_membresia = m.id_membresia
+            WHERE u.`user_nombre` LIKE '%$query%' 
+            OR u.`user_apellido` LIKE '%$query%'"
+        );
+
+        if (!$result) {
+            die("Error en la consulta: " . $conn->error);
+        }
+
+        while ($row = $result->fetch_assoc()) {
+            $usuarios[] = $row;
+        }
+
+        header('Content-Type: application/json');
+        echo json_encode($usuarios);
+        exit; 
+    }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en" class="administracionHTML">
@@ -28,6 +54,7 @@
         <title>BizClub Administración</title>
         <link rel="shortcut icon" type="x-icon" href="images/favicon_bizclub.svg">
         <link rel="stylesheet" href="estilos/administracion.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
         <input type="hidden" value="<?php echo($datosString); ?>" id="arrayNombresInput" name="arrayNombresInput">
         <input type="hidden" value="<?php echo $_SESSION["stdProd"];?>" class="stdProd">
@@ -46,6 +73,35 @@
 
         <!-- Datos Nueva Reserva -->
         
+        <input type="hidden" style="font-size: 1.8rem; padding-left: 1rem" id="inO_idPdtSelecNR" name="inO_idPdtSelecNR" value="">
+        <input type="hidden" style="font-size: 1.8rem; padding-left: 1rem" id="inO_tipoReseNR" name="inO_tipoReseNR" value="">
+        <input type="hidden" style="font-size: 1.8rem; padding-left: 1rem" id="inO_idUserNR" name="inO_idUserNR" value="">
+        <input type="hidden" style="font-size: 1.8rem; padding-left: 1rem" id="inO_idUnidNR" name="inO_idUnidNR" value="">
+        <input type="hidden" style="font-size: 1.8rem; padding-left: 1rem" id="inO_idOtrosUsersNR" name="inO_idOtrosUsersNR" value="">
+        <input type="hidden" style="font-size: 1.8rem; padding-left: 1rem" id="inO_fechaInicioNR" name="inO_fechaInicioNR" value="">
+        <input type="hidden" style="font-size: 1.8rem; padding-left: 1rem" id="inO_fechaFinalNR" name="inO_fechaFinalNR" value="">
+        <input type="hidden" style="font-size: 1.8rem; padding-left: 1rem" id="inO_horaInicioNR" name="inO_horaInicioNR" value="">
+        <input type="hidden" style="font-size: 1.8rem; padding-left: 1rem" id="inO_horaFinalNR" name="inO_horaFinalNR" value="">
+        <input type="hidden" style="font-size: 1.8rem; padding-left: 1rem" id="inO_cadenaFechasNR" name="inO_cadenaFechasNR" value="">
+        <input type="hidden" style="font-size: 1.8rem; padding-left: 1rem" id="inO_numPersonasNRA" name="inO_numPersonasNRA" value="">
+
+        <input type="hidden" style="font-size: 1.8rem; padding-left: 1rem" id="inO_maxPersoNum" name="inO_maxPersoNum" value="">
+
+        <!-- Por Hora -->
+        <input type="hidden" style="font-size: 1.8rem; padding-left: 1rem" id="inO_cantHorasNR" name="inO_cantHorasNR" value="">
+
+        <!-- Por Día -->
+        <input type="hidden" style="font-size: 1.8rem; padding-left: 1rem" id="inO_cantDiasNR" name="inO_cantDiasNR" value="">
+
+        <!-- Por Semana -->
+        <input type="hidden" style="font-size: 1.8rem; padding-left: 1rem" id="inO_iniSemanaFecha" name="inO_iniSemanaFecha" value="">
+        <input type="hidden" style="font-size: 1.8rem; padding-left: 1rem" id="inO_finSemanaFecha" name="inO_finSemanaFecha" value="">
+        <input type="hidden" style="font-size: 1.8rem; padding-left: 1rem" id="inO_cantSemanas" name="inO_cantSemanas" value="">
+
+        <!-- Por Mes -->
+        <input type="hidden" style="font-size: 1.8rem; padding-left: 1rem" id="inO_iniMesFecha" name="inO_iniMesFecha" value="">
+        <input type="hidden" style="font-size: 1.8rem; padding-left: 1rem" id="inO_finMesFecha" name="inO_finMesFecha" value="">
+        <input type="hidden" style="font-size: 1.8rem; padding-left: 1rem" id="inO_cantMeses" name="inO_cantMeses" value="">
 
         <!------------------------------------------------------------------------------------------------>
         
@@ -55,24 +111,23 @@
     </head>
     <body class="body">
         <div id="fondoNegroNewRese" class="fondoNegroNewRese fondoNegroNewRese-O">
+            <div class="baseBotones baseBotones-O">
+                <span class="stdRegistroRese stdRegistroRese-O"></span>
+                <button 
+                    id = "btn_cancelar"
+                    class="btn_cancelar btn_cancelar-D"
+                >
+                Cancelar
+                </button>
+                <button 
+                    id = "btn_reservar"
+                    class="btn_reservar btn_reservar-B" 
+                    disabled
+                >
+                Reservar Ahora
+                </button>
+            </div>
             <div class="baseReseGeneral">
-                <input type="text" style="font-size: 1.8rem; padding-left: 1rem" id="inO_idPdtSelecNR" name="inO_idPdtSelecNR" value="">
-                <input type="text" style="font-size: 1.8rem; padding-left: 1rem" id="inO_tipoReseNR" name="inO_tipoReseNR" value="">
-                <input type="text" style="font-size: 1.8rem; padding-left: 1rem" id="inO_idUserNR" name="inO_idUserNR" value="">
-                <input type="text" style="font-size: 1.8rem; padding-left: 1rem" id="inO_idUnidNR" name="inO_idUnidNR" value="">
-                <input type="text" style="font-size: 1.8rem; padding-left: 1rem" id="inO_idOtrosUsersNR" name="inO_idOtrosUsersNR" value="">
-                <input type="text" style="font-size: 1.8rem; padding-left: 1rem" id="inO_fechaInicioNR" name="inO_fechaInicioNR" value="">
-                <input type="text" style="font-size: 1.8rem; padding-left: 1rem" id="inO_fechaFinalNR" name="inO_fechaFinalNR" value="">
-                <input type="text" style="font-size: 1.8rem; padding-left: 1rem" id="inO_horaInicioNR" name="inO_horaInicioNR" value="">
-                <input type="text" style="font-size: 1.8rem; padding-left: 1rem" id="inO_horaFinalNR" name="inO_horaFinalNR" value="">
-                <input type="text" style="font-size: 1.8rem; padding-left: 1rem" id="inO_cadenaFechasNR" name="inO_cadenaFechasNR" value="">
-
-                <!-- Por Hora -->
-                <input type="text" id="inO_cantHorasNR" name="inO_cantHorasNR" value="">
-
-                <!-- Por Día -->
-                <input type="text" id="inO_cantDiasNR" name="inO_cantDiasNR" value="">
-
                 <div class="dataReseBaseGene">
                     <span class="spanGeneral">Datos de la Reserva</span>
                     <div class="divReseProduBaseGene">
@@ -80,7 +135,7 @@
                         <div class="divInputPdt">
                             <div id="div_pdtSeleContainer" class="pdtSeleContainer pdtSeleContainer-O">
                             </div>
-                            <input 
+                            <input
                                 type="text" 
                                 id="in_pdtNomAdminNR"
                                 class="in_pdtNomAdminNR-V"
@@ -92,7 +147,6 @@
                     </div>
                     <div class="divGeneBaseInput">
                         <div class="divFacturaGeneDiv">
-
                         </div>
                         <div class="divInputsDivGene">
                             <div id="div_tipoReseYTiempoGene" class="div_tipoReseYTiempoGene div_tipoReseYTiempoGene-O">
@@ -100,15 +154,77 @@
                                 <div class="base1">
                                     <div class="div_tipoReseBase">
                                         <span>Tipo de Reserva</span>
-                                        <button tipo="hora" id="btnReseXH" class="btnTipoRese" disabled>Por Hora</button>
-                                        <button tipo="dia" id="btnReseXD" class="btnTipoRese" disabled>Por Día</button>
-                                        <button tipo="semana" id="btnReseXS" class="btnTipoRese" disabled>Por Semana</button>
-                                        <button tipo="mes" id="btnReseXM" class="btnTipoRese">Por Mes</button>
+                                        <button tipo="hora" id="btnReseXH" class="btnTipoRese" onclick="limpiarUnidadaTipoRese()" disabled>Por Hora</button>
+                                        <button tipo="dia" id="btnReseXD" class="btnTipoRese" onclick="limpiarUnidadaTipoRese()" disabled>Por Día</button>
+                                        <button tipo="semana" id="btnReseXS" class="btnTipoRese" onclick="limpiarUnidadaTipoRese()" disabled>Por Semana</button>
+                                        <button tipo="mes" id="btnReseXM" class="btnTipoRese" onclick="limpiarUnidadaTipoRese()">Por Mes</button>
                                     </div>
                                     <div id="div_tiempoReseBase" class="div_tiempoReseBase div_tiempoReseBase-O">
                                     </div>
                                 </div>
                                 <div class="separador"></div>
+                                <div class="miembroDivGene">
+                                    <div class="miembroDiv">
+                                        <span class="miembroSpan">Miembro (Requerido)</span>
+                                        <div class="miembroDiv2">
+                                            <div id="div_miemElegidoNRA" class="div_miemElegidoNRA div_miemElegidoNRA-O">
+                                            </div>
+                                            <input 
+                                                class="in_miembroNombreNRA in_miembroNombreNRA-D" 
+                                                id="in_miembroNombreNRA"
+                                                placeholder="Escriba el nombre del solicitante"
+                                            >
+                                            <div id="div_listaMiembroNRA" class="div_listaMiembroNRA div_listaMiembroNRA-O">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="miembrosDiv">
+                                        <div class="miembrosSpan">Otros Miembros (Opcional)</div>
+                                        <div class="miembrosDiv2">
+                                            <div id="div_miembrosElegiNRA" class="div_miembrosElegiNRA div_miembrosElegiNRA-O">
+                                            </div>
+                                            <input 
+                                                class="in_otrosMiembrosNRA in_otrosMiembrosNRA-D" 
+                                                id="in_otrosMiembrosNRA"
+                                                placeholder="Escriba el nombre de los invitados"
+                                            >
+                                            <div class="div_lisOMiembrosNRA div_lisOMiembrosNRA-O" id="div_lisOMiembrosNRA">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="separador"></div>
+                                <div class="divNumPerso">
+                                    <span class="numPersoSpan">Número de Personas (Requerido)</span>
+                                    <div class="divNumPerso2">
+                                        <input 
+                                            min="1" 
+                                            type="number" 
+                                            id="in_numPersonasNRA"
+                                            class="in_numPersonasNRA in_numPersonasNRA-D" 
+                                            value="1"
+                                        >
+                                        <span class="maxPersoSpan">Máximo <b class="numPersoBold"></b> Personas</span>
+                                    </div>
+                                </div>
+                                <div class="tituloReservaDiv">
+                                    <span>Título de la Reserva (Requerido)</span>
+                                    <input
+                                        maxlength="56"
+                                        id="in_tituloReseNRA"
+                                        class="in_tituloReseNRA in_tituloReseNRA-D"
+                                        placeholder="Ejemplo: Reunión Logística 1"
+                                    >
+                                    <span class="actiSpan">Actividad de la Reserva (Requerido)</span>
+                                    <textarea 
+                                        id="in_actividadReseNRA" 
+                                        class="in_actividadReseNRA in_actividadReseNRA-D"
+                                        name="in_actividadReseNRA" 
+                                        rows="5" 
+                                        cols="33"
+                                        placeholder="Labores a realizar en la reserva"
+                                    ></textarea>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -238,5 +354,7 @@
             </div>
         </footer>
         <script src="scripts\app2.js"></script>
+        <script src="scripts\app6.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     </body>
 </html>

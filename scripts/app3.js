@@ -762,6 +762,7 @@ if(document.querySelector(".membreCliDetailHTML") != null){
 
                         //------------------------------------------------------------------------------------------------------
 
+                        //------------------------------------------------------------------------------------------------------
                         // Evento de scroll en X
                         document.querySelector(".divBene").addEventListener("wheel", (event)=>{
 

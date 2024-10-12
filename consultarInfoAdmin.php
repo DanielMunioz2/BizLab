@@ -4,6 +4,8 @@
 
     require("conexion.php");
 
+    date_default_timezone_set('America/Bogota');
+
     //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
     //------------------------------------------------------------------------------------------------------------------------------------
@@ -242,6 +244,441 @@
             }
 
             echo json_encode("User Actualizado", JSON_UNESCAPED_UNICODE);
+
+        }
+
+    //--------------------------------------------------------------------------------------------------------------------------------
+
+    // Miembro Nueva Rese Admin
+
+        if(isset($_POST["idMiembroNRA"])){
+
+            $idMiembro = 
+                isset($_POST["idMiembroNRA"]) 
+                ? $conn->real_escape_string($_POST["idMiembroNRA"])
+                : null;
+
+            if(
+                $idMiembro != null &&
+                $idMiembro != ""
+            )
+            {
+
+                $resultMiembroNRA = $conn->query(
+                    "SELECT * FROM `bizlabDB`.`usuarios`
+                    WHERE `usuarios`.`id_usuario` LIKE '%".$idMiembro."%';"
+                );
+
+                $rowsMiembro = $resultMiembroNRA->num_rows;
+
+                $arrayMiembroNRA = [$rowsMiembro-1];
+
+                if($rowsMiembro > 0){
+
+                    while($row = $resultMiembroNRA->fetch_assoc()){
+
+                        array_push($arrayMiembroNRA, $row);
+                        
+                    }
+
+                }
+
+                echo json_encode($arrayMiembroNRA, JSON_UNESCAPED_UNICODE);
+
+            }
+
+        }
+
+        if(isset($_POST["nombreMiembroNRA"])){
+
+            $nombreMiembro = 
+                isset($_POST["nombreMiembroNRA"]) 
+                ? $conn->real_escape_string($_POST["nombreMiembroNRA"])
+                : null;
+
+            if(
+                $nombreMiembro != null &&
+                $nombreMiembro != ""
+            )
+            {
+
+                $resultMiembrosListaNRA = $conn->query(
+                    "SELECT * FROM `bizlabDB`.`usuarios`
+                    WHERE `usuarios`.`user_nombre` LIKE '%".$nombreMiembro."%'
+                    OR `usuarios`.`user_apellido` LIKE '%".$nombreMiembro."%';"
+                );
+
+                $rowsMiembro = $resultMiembrosListaNRA->num_rows;
+
+                $arrayMiembroNRA = [$rowsMiembro-1];
+
+                if($rowsMiembro > 0){
+
+                    while($row = $resultMiembrosListaNRA->fetch_assoc()){
+
+                        array_push($arrayMiembroNRA, $row);
+                        
+                    }
+
+                }
+
+                echo json_encode($arrayMiembroNRA, JSON_UNESCAPED_UNICODE);
+
+            }
+
+        }
+
+        if(isset($_POST["queryRese"])){
+
+            $query = $_POST["queryRese"];
+            
+            if($_POST["queryRese"] != null){
+
+                $resultReseFiltro = $conn->query($query);
+
+                $rowsRese = $resultReseFiltro->num_rows;
+
+                $arrayReservas = [$rowsRese-1];
+
+                if($rowsRese > 0){
+
+                    while($row = $resultReseFiltro->fetch_assoc()){
+
+                        array_push($arrayReservas, $row);
+                        
+                    }
+
+                }
+
+                echo json_encode($arrayReservas, JSON_UNESCAPED_UNICODE);
+
+            }
+
+        }
+
+        if(isset($_POST["unidadesNRA"])){
+
+            $unidadesSele = $_POST["unidadesNRA"];
+
+            $queryUnid = 
+                "SELECT * FROM `bizlabDB`.`unidades` 
+                WHERE `unidades`.`id_unidad` IN (".$unidadesSele.");";
+            
+            $resultUnidades = $conn->query($queryUnid);
+
+            $rowsUnidNRA = $resultUnidades->num_rows;
+
+            $arrayUnidades = [$rowsUnidNRA];
+
+            if($rowsUnidNRA > 0){
+
+                while($row = $resultUnidades->fetch_assoc()){
+
+                    array_push($arrayUnidades, $row);
+                    
+                }
+
+            }
+
+            echo json_encode($arrayUnidades, JSON_UNESCAPED_UNICODE);
+
+        }
+
+        if(isset($_POST["reservasXDiaFiltrar"])){
+
+            $diasCant = $_POST["cantidadDias"];
+            $fechaInicio = $_POST["fechaInicio"];
+
+            $fechaFinal =  date("Y-m-d",strtotime($fechaInicio."+ ".$diasCant." days")); 
+
+            $queryReservas = 
+                "SELECT * FROM `bizlabDB`.`reservas`
+                WHERE `reservas`.`fechaReserva` = '".$fechaInicio."'
+                OR `reservas`.`reserDiaFinal` = '".$fechaInicio."'
+                OR `reservas`.`reserDiaFechas` LIKE '%".$fechaInicio."%'
+                OR `reservas`.`reserSemanaFechas` LIKE '%".$fechaInicio."%'
+                OR `reservas`.`fechaReserva` = '".$fechaFinal."'
+                OR `reservas`.`reserDiaFinal` = '".$fechaFinal."'
+                OR `reservas`.`reserDiaFechas` LIKE '%".$fechaFinal."%'
+                OR `reservas`.`reserSemanaFechas` LIKE '%".$fechaFinal."%';";
+
+            $resultReservas = $conn->query($queryReservas);
+
+            $rowsReseFiltro = $resultReservas->num_rows;
+
+            $arrayReservas = [$rowsReseFiltro];
+
+            if($rowsReseFiltro > 0){
+
+                while($row = $resultReservas->fetch_assoc()){
+
+                    array_push($arrayReservas, $row);
+                    
+                }
+
+            }
+
+            echo json_encode([$arrayReservas, $fechaInicio."_".$fechaFinal], JSON_UNESCAPED_UNICODE);
+
+        }
+
+        if(isset($_POST["reservasXSemanaFiltrar"])){
+
+            $fechaInicio = $_POST["fechaInicio"];
+            $fechaFinal =  $_POST["fechaFinal"]; 
+
+            $queryReservas = 
+                "SELECT * FROM `bizlabDB`.`reservas`
+                WHERE `reservas`.`fechaReserva` = '".$fechaInicio."'
+                OR `reservas`.`reserDiaFinal` = '".$fechaInicio."'
+                OR `reservas`.`reserDiaFechas` LIKE '%".$fechaInicio."%'
+                OR `reservas`.`reserSemanaFechas` LIKE '%".$fechaInicio."%'
+                OR `reservas`.`fechaReserva` = '".$fechaFinal."'
+                OR `reservas`.`reserDiaFinal` = '".$fechaFinal."'
+                OR `reservas`.`reserDiaFechas` LIKE '%".$fechaFinal."%'
+                OR `reservas`.`reserSemanaFechas` LIKE '%".$fechaFinal."%';";
+
+            $resultReservas = $conn->query($queryReservas);
+
+            $rowsReseFiltro = $resultReservas->num_rows;
+
+            $arrayReservas = [$rowsReseFiltro];
+
+            if($rowsReseFiltro > 0){
+
+                while($row = $resultReservas->fetch_assoc()){
+
+                    array_push($arrayReservas, $row);
+                    
+                }
+
+            }
+
+            echo json_encode($arrayReservas, JSON_UNESCAPED_UNICODE);
+
+        }
+
+        if(isset($_POST["reservasXMesFiltrar"])){
+
+            $fechaIniMes = $_POST["fechaInicio"];
+            $cantMeses = $_POST["cantidadMeses"];
+
+            $diasMeses = 30 * $cantMeses;
+
+            $fechaFinMes =  date("Y-m-d",strtotime($fechaIniMes."+ ".$diasMeses." days")); 
+
+            $mesAñoIni = substr($fechaIniMes, 0, 7);
+            $mesAñoFin = substr($fechaFinMes, 0, 7);
+
+            $cadena = $mesAñoIni;
+            $cadena2 = $mesAñoIni;
+            
+            for($i = 0; $i < $cantMeses; $i++){
+
+                $cadena2 = explode("-", $cadena2);
+
+                $año = $cadena2[0];
+                $mes = intval($cadena2[1])+1;
+                
+                if($mes == 13){
+                    $mes = "1";
+                    $año = strval(intval($año)+1);
+                }
+
+                if(intval($mes) < 10){
+                    $mes = "0".$mes;
+                }
+
+                $union = $año."-".$mes;
+
+                if($union == $mesAñoFin){
+                    break;
+                }
+
+                $cadena .= "_".$union;
+                $cadena2 = $union;
+
+            }
+
+            $cadena .= "_".$mesAñoFin;
+            $queryMesWhere = "";
+
+            $arrayCadena = explode("_", $cadena); 
+
+            for($e = 0; $e < count($arrayCadena); $e++){
+                
+                if($e == 0){
+                    $queryMesWhere .= 
+                    " `reservas`.`fechaReserva` LIKE '%".$arrayCadena[$e]."%'
+                    OR `reservas`.`reserDiaFinal` LIKE '%".$arrayCadena[$e]."%'";
+                }else{
+                    $queryMesWhere .= 
+                    " OR `reservas`.`fechaReserva` LIKE '%".$arrayCadena[$e]."%'
+                    OR `reservas`.`reserDiaFinal` LIKE '%".$arrayCadena[$e]."%'";
+                }
+
+            }
+
+            $queryMes = 
+                "SELECT * FROM `bizlabDB`.`reservas`
+                WHERE $queryMesWhere;";
+
+            $resultFechaMes = $conn->query($queryMes);
+
+            $rowsMesNRA = $resultFechaMes->num_rows;
+
+            $arrayMesNRAReses = [$rowsMesNRA];
+
+            if($rowsMesNRA > 0){
+
+                while($row = $resultFechaMes->fetch_assoc()){
+
+                    array_push($arrayMesNRAReses, $row);
+                    
+                }
+
+            }
+
+            echo json_encode([$arrayMesNRAReses, $fechaIniMes."_".$fechaFinMes, $cadena], JSON_UNESCAPED_UNICODE);
+
+        }
+
+        if(isset($_POST["fechasSemana"])){
+
+            $fechaActual = $_POST["diaSemanaFecha"];
+            $fechaActualNum = $_POST["diaSemanaNum"];
+            $cantSemanas = $_POST["numeroSemana"];
+            $longiSemana = $_POST["longitudSemana"];
+            $cantiSemanaNum = $_POST["cantiSemanas"];
+
+            $diasHastaLunes = 8-$fechaActualNum;
+            $cantSemanas = 7*$cantSemanas;
+            $longiSemana2 = $longiSemana == "sabado" ? 5 : 4;
+            $diasExtras = 0;
+            $cantiSemanaNum2 = 0;
+
+            $inicioSemana = date("Y-m-d",strtotime($fechaActual."+ ".$diasHastaLunes." days")); 
+            $inicioSemana = date("Y-m-d",strtotime($inicioSemana."+ ".$cantSemanas." days"));  
+
+            if($cantiSemanaNum > 1){
+
+                $diasExtras = $longiSemana == "sabado" ? 2 : 3;
+                $cantiSemanaNum2 = $cantiSemanaNum-1;
+
+                for($i = 1; $i <= $cantiSemanaNum; $i++){
+                    
+                    if($i > 1){
+                        $finalSemana = date("Y-m-d",strtotime($finalSemana."+ ".$longiSemana2." days"));
+                    }else{
+                        $finalSemana = date("Y-m-d",strtotime($inicioSemana."+ ".$longiSemana2." days"));
+                    }
+
+                    if($cantiSemanaNum2 != 0){
+                        $finalSemana = date("Y-m-d",strtotime($finalSemana."+ ".$diasExtras." days"));
+                        $cantiSemanaNum2--;
+                    }
+                    
+
+                }
+
+            }else{
+                $finalSemana = date("Y-m-d",strtotime($inicioSemana."+ ".$longiSemana2." days"));
+            }
+
+            echo json_encode([$inicioSemana, $finalSemana], JSON_UNESCAPED_UNICODE);
+
+        }
+
+        if(isset($_POST["regisReservaNRA"])){
+
+            $tipoRese = $_POST["tipoRese"];
+            $fechaInicio = $_POST["fechaInicio"];
+            $fechaFin = $_POST["fechaFin"];
+            $horaInicio = $_POST["horaInicio"];
+            $horaFinal = $_POST["horaFinal"];
+            $cantHoras = $_POST["cantHoras"];
+            $cantDias = $_POST["cantDias"];
+            $cantSemas = $_POST["cantSemas"];
+            $cantMeses = $_POST["cantMeses"];
+            $precioRese = $_POST["precioRese"];
+            $ivaRese = $_POST["ivaRese"];
+            $descuRese = $_POST["descuRese"];
+            $idMiembro = $_POST["idMiembro"];
+            $idUnidad = $_POST["idUnidad"];
+            $idProducto = $_POST["idProducto"];
+            $otrosMiembrosIds = $_POST["otrosMiembrosIds"];
+            $numPersonas = $_POST["numPersonas"];
+            $tituloNRA = $_POST["tituloNRA"];
+            $actividadNRA = $_POST["actividadNRA"];
+            $reseCodigo = $_POST["reseCodigo"];
+            $reseSerie = $_POST["reseSerie"];
+            $factuCod = $_POST["factuCod"];
+            $precioCanti = $_POST["precioCanti"];
+            $precioNormalPdt = $_POST["precioNormalPdt"];
+
+            $fecha = date("Y-m-d");
+            $hora = date("h:i A");
+
+            $fechaV = date("Y-m-d",strtotime($fecha."+ 7 days")); 
+
+            $resultNombre = $conn->query(
+                "SELECT * FROM `bizlabDB`.`usuarios` 
+                WHERE `usuarios`.`id_usuario` = ".intval($idMiembro).";");
+
+            $resultNombre2 = $resultNombre->fetch_assoc();
+            $nombre = $resultNombre2["user_nombre"]." ".$resultNombre2["user_apellido"];
+            $membresia = $resultNombre2["user_membresia"];
+
+            $resultadoInserReseNRA = $conn->query(
+                "INSERT INTO `bizlabDB`.`reservas`
+                (`codigoReserva`, `serieReserva`, `estadoReserva`, 
+                `fechaCompraReser`, `horaCompraReser`, `reserTipo`, `fechaReserva`, 
+                `horaEntradaR`, `horaSalidaR`, `reserHorasDuracion`, 
+                `reserDiasDuracion`, `reserDiaFinal`, `precioReserva`, `comisionReserva`, 
+                `numPersonas`, `otrosMiembros`, `reservaTitulo`, 
+                `reservaActividad`, `nombreUser`, `id_unidad`, `id_usuario`, `id_producto`)
+                VALUES
+                ('$reseCodigo', '$reseSerie', 'Pendiente', 
+                '$fecha', '$hora', '$tipoRese', '$fechaInicio',
+                '$horaInicio', '$horaFinal', ".intval($cantHoras).", 
+                ".intval($cantDias).", '$fechaFin', ".intval($precioRese).", 0,
+                ".intval($numPersonas).", '$otrosMiembrosIds', '$tituloNRA',
+                '$actividadNRA', '".$nombre."', ".intval($idUnidad).", ".intval($idMiembro).", ".intval($idProducto).");"
+            );
+
+            $ultimaReseInsertada =  $conn->insert_id;
+
+            $resultInsertFactuNRA = $conn->query(
+                "INSERT INTO `bizlabDB`.`facturas`
+                (`facturaCodigo`, `facturaSerie`, `fechaFactura`, `horaFactura`, 
+                `fechaFacturaV`, `estadoFactura`, `precioFactura`, `factuSubTotal`, 
+                `ivaFactura`, `descuFactura`, `montoFactuTotal`, 
+                `id_producto`, `id_usuario`, `id_membresia`, `id_unidad`, `id_reserva`)
+                VALUES
+                ('$factuCod', '$reseSerie', '$fecha', '$hora',
+                '$fechaV', 'Pendiente', ".intval($precioNormalPdt).", ".intval($precioCanti).",
+                ".intval($ivaRese).", ".intval($descuRese).", ".intval($precioRese).",
+                ".intval($idProducto).", ".intval($idMiembro).", ".intval($membresia).", ".intval($idUnidad).", ".intval($ultimaReseInsertada).");"
+            );
+
+            $ultimaFactuInsertada =  $conn->insert_id;
+
+            $resultInsertHistoNRA = $conn->query(
+                "INSERT INTO `bizlabDB`.`historial`
+                (tarea_fOrigen, tarea_hOrigen, tarea_fechaEje, tarea_fechaFEje, 
+                tarea_horaEje, tarea_horaFEje, tarea_tipo, tarea_estado, 
+                tarea_usuario, tarea_producto, tarea_mensaje, tarea_membresiaUser, 
+                tarea_membresia, tarea_factura, tarea_reserva, tarea_unidad)
+                VALUES
+                ('$fecha', '$hora', '$fechaInicio', '$fechaFin', 
+                '$horaInicio', '$horaFinal', 'Reserva', 'Pendiente', 
+                ".intval($idMiembro).", ".intval($idProducto).", 0, 0, 
+                ".intval($membresia).", ".intval($ultimaFactuInsertada).", ".intval($ultimaReseInsertada).", ".intval($idUnidad).");"
+            );
+
+            $ultimoHistorialInsertada =  $conn->insert_id;
+
+            echo json_encode([$ultimaReseInsertada, $ultimaFactuInsertada, $ultimoHistorialInsertada], JSON_UNESCAPED_UNICODE);
 
         }
 
@@ -543,7 +980,7 @@
         }
 
         if(isset($_POST["BEspeMiembro"])){
-
+            
             $nombre = $_POST["BEspeMiembro"];
 
             $queryMiembro = "SELECT * FROM `bizlabDB`.`usuarios` WHERE `usuarios`.`user_nombre` LIKE '%".$nombre."%'";

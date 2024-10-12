@@ -2010,6 +2010,81 @@
   background-color: #04121f99;
   top: 0;
   left: 0;
+  & .baseBotones-O{
+    height: 0;
+    overflow: hidden;
+    width: 0;
+    opacity: 0;
+  }
+  & .baseBotones-V{
+    width: 80%;
+    opacity: 1;
+    position: fixed;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 2rem;
+    top: 90%;
+    transform: translateY(-50%);
+    border-radius: 0 0 1rem 1rem;
+    height: 10%;
+    background-color: #B5C8D9;
+    & .stdRegistroRese-O{
+      opacity: 0;
+    }
+    & .stdRegistroRese-V{
+      opacity: 1;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #124676;
+      margin-right: 2rem;
+    }
+    & .btn_reservar-B{
+      width: max-content;
+      height: max-content;
+      padding: 1rem 2rem;
+      font-size: 1.8rem;
+      border-radius: 2rem;
+      background-color: #394f6722;
+      border: 1px solid #51657b66;
+      color: #4a617aaa;
+      cursor: default;
+    }
+    & .btn_reservar-D{
+      width: max-content;
+      cursor: pointer;
+      padding: 1rem 2rem;
+      font-size: 1.8rem;
+      height: max-content;
+      border-radius: 2rem;
+      background-color: #0e4c8e22;
+      border: 1px solid #0e4c8e66;
+      color: #0e4c8ecc;
+      transition: .3s;
+      &:hover{
+        background-color: #356ce3;
+        color: #ffffff;
+      }
+    }
+    & .btn_cancelar-D{
+      width: max-content;
+      font-size: 1.8rem;
+      cursor: pointer;
+      padding: 1rem 2rem;
+      height: max-content;
+      border-radius: 2rem;
+      margin-right: 1rem;
+      background-color: #8e0e0e22;
+      border: 1px solid #8e0e0e66;
+      color: #8e0e0ecc;
+      transition: .3s;
+      &:hover{
+        background-color: #e33535;
+        color: #ffffff;
+      }
+    }
+  }
   & .baseReseGeneral{
     width: 80%;
     height: 90%;
@@ -2036,6 +2111,7 @@
       height: max-content;
       display: flex;
       flex-direction: column;
+      padding-bottom: 6%;
       & .spanGeneral{
         width: 100%;
         font-size: 2rem;
@@ -2358,6 +2434,7 @@
                           font-size: 1.6rem;
                           display: flex;
                           border-radius: 2rem;
+                          cursor: default;
                           align-items: center;
                           color: #ffffff;
                           padding: 0 1rem;
@@ -2367,6 +2444,7 @@
                           height: 100%;
                           font-size: 1.6rem;
                           display: flex;
+                          cursor: default;
                           border-radius: 2rem;
                           align-items: center;
                           color: #133b6199;
@@ -2482,13 +2560,14 @@
           }
           & .listaPdt-V{
             width: 70%;
+            height: max-content;
             max-height: 34rem;
-            min-height: max-content;
             border-radius: 1rem;
             position: absolute;
             left: 0;
             top: 100%;
             opacity: 1;
+            z-index: 900;
             display: grid;
             grid-auto-flow: row;
             grid-auto-rows: max-content;
@@ -2558,12 +2637,12 @@
         display: flex;
         & .divFacturaGeneDiv{
           width: 40%;
-          height: 70rem;
+          height: 100%;
           background-color: #3878b4;
         }
         & .divInputsDivGene{
           width: 60%;
-          height: 70rem;
+          height: max-content;
           display: flex;
           flex-direction: column;
           & .div_tipoReseYTiempoGene-O{
@@ -2591,7 +2670,7 @@
               background-color: #FAF9F9;
               & .div_tipoReseBase{
                 width: 26%;
-                height: 100%;
+                min-height: 100%;
                 display: flex;
                 flex-direction: column;
                 background-color: #1069bb44;
@@ -2789,6 +2868,7 @@
                   font-size: 1.6rem;
                   color: #002d5699;
                   font-weight: 600;
+                  padding-left: 1rem;
                   margin-top: .8rem;
                   margin-bottom: 1rem;
                   margin-left: 1rem;
@@ -2849,7 +2929,19 @@
                 & .div_semanaBase{
                   width: 100%;
                   display: flex;
+                  height: max-content;
+                  flex-direction: column;
+                  align-items: flex-start;
                   border: none;
+                  & .semanaTitulo{
+                    width: 100%;
+                    padding: 0;
+                    margin: 0;
+                    margin-bottom: 1rem;
+                    text-align: left;
+                    color: #002d56aa;
+                    font-size: 1.6rem;
+                  }
                   & .div_fechasSemana{
                     width: max-content;
                     display: flex;
@@ -2859,7 +2951,7 @@
                     padding: 0;
                     margin: 0;
                     border: none;
-                    & .btn_atrasSemana{
+                    & .btn_atrasSemana-D{
                       width: 4rem;
                       height: max-content;
                       font-size: 1.8rem;
@@ -2875,6 +2967,18 @@
                         background-color: #134f8866;
                         color: #175997;
                       }
+                    }
+                    & .btn_atrasSemana-B{
+                      width: 4rem;
+                      height: max-content;
+                      font-size: 1.8rem;
+                      font-weight: 600;
+                      padding: .4rem .8rem;
+                      color: #3a434d66;
+                      margin: 0;
+                      border-radius: 1rem;
+                      background-color: #5b748b44;
+                      cursor: not-allowed;
                     }
                     & .btn_adelanteSemana{
                       width: 4rem;
@@ -2892,6 +2996,17 @@
                         color: #175997;
                       }
                     }
+                    & .btn_adelanteSemana-B{
+                      width: 4rem;
+                      height: max-content;
+                      font-size: 1.8rem;
+                      font-weight: 600;
+                      padding: .4rem .8rem;
+                      color: #3a434d;
+                      border-radius: 1rem;
+                      background-color: #5b748b66;
+                      cursor: not-allowed;
+                    }
                     & .div_fechas{
                       border: none;
                       width: max-content;
@@ -2907,6 +3022,7 @@
                       border-right: 1px solid #002d5666;
                       & span{
                         font-size: 1.8rem;
+                        width: 100%;
                         font-weight: 600;
                         color: #002d5699;
                       }
@@ -2927,6 +3043,122 @@
                         padding: 0;
                         margin: 0;
                       }
+                    }
+                  }
+                  & .div_btnLongiSemana{
+                    width: 100%;
+                    border: none;
+                    margin: 0;
+                    padding: 0;
+                    border-left: 1px solid #002d5644;
+                    margin-top: 1.4rem;
+                    display: flex;
+                    & .divLuVi{
+                      width: max-content;
+                      height: max-content;
+                      border: none;
+                      padding: 0;
+                      margin: 0;
+                      display: flex;
+                      align-items: center;
+                      padding: 1rem 0;
+                      margin-left: 1rem;
+                      & .in_lunesAViernes-A{
+                        width: max-content;
+                        border-radius: .6rem;
+                        font-size: 1.8rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        background-color: #3479b9;
+                        padding: .4rem;
+                        color: #acd1f3aa;
+                      }
+                      & .in_lunesAViernes-N{
+                        width: max-content;
+                        border-radius: .6rem;
+                        font-size: 1.8rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: .4rem;
+                        color: #002d56aa;
+                      }
+                      & span{
+                        font-size: 1.6rem;
+                        color: #002d5699;
+                      }
+                    }
+                    & .divLuSa{
+                      width: max-content;
+                      height: max-content;
+                      border: none;
+                      padding: 0;
+                      margin: 0;
+                      padding: 1rem 0;
+                      margin-left: 1rem;
+                      display: flex;
+                      align-items: center;
+                      & .in_lunesASabado-A{
+                        width: max-content;
+                        border-radius: .6rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: .4rem;
+                        background-color: #3479b9;
+                        font-size: 1.8rem;
+                        color: #acd1f3aa;
+                      }
+                      & .in_lunesASabado-N{
+                        width: max-content;
+                        border-radius: .6rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: .4rem;
+                        font-size: 1.8rem;
+                        color: #002d56aa;
+                      }
+                      & span{
+                        font-size: 1.6rem;
+                        color: #002d5699;
+                      }
+                    }
+                  }
+                  & .div_btnCantiSemana{
+                    width: 100%;
+                    border: none;
+                    margin: 0;
+                    padding: 0;
+                    border-left: 1px solid #002d5644;
+                    margin-top: 1.4rem;
+                    align-items: center;
+                    display: flex;
+                    & .in_numeroSemanasCant-D{
+                      width: 10rem;
+                      border: 1px solid #002d5644;
+                      height: 100%;
+                      border-radius: 1rem;
+                      margin-left: 1rem;
+                      color: #002d56aa;
+                      font-size: 1.8rem;
+                      padding-left: 1.4rem;
+                      padding-right: 1rem;
+                      &::-webkit-inner-spin-button {
+                        -webkit-appearance: none;
+                        width: 0rem;
+                      }
+                      &::-webkit-outer-spin-button {
+                        -webkit-appearance: none;
+                        width: 0rem;
+                      }
+                    }
+                    & .cantSema{
+                      width: 20%;
+                      font-size: 1.8rem;
+                      padding-left: 2rem;
+                      color: #002d56cc;
                     }
                   }
                 }
@@ -3068,14 +3300,879 @@
                 & .span_errorReseH-V{
                   font-size: 1.6rem;
                   padding-left: 1rem;
-                  width: 36rem;
+                  width: 40rem;
                   margin-top: .8rem;
+                  cursor: default;
                   text-wrap: wrap;
-                  color: #ce2727;
                   opacity: 1;
                 }
                 & .span_errorReseH-O{
                   opacity: 0;
+                  cursor: default;
+                }
+                & .div_reseSemanaResumen-O{
+                  width: 0;
+                  height: 0;
+                  display: flex;
+                  overflow: hidden;
+                }
+                & .div_reseSemanaResumen-V{
+                  width: 100%;
+                  height: max-content;
+                  display: flex;
+                  margin: 0;
+                  padding: 0;
+                  margin-top: 1rem;
+                  margin-bottom: 1rem;
+                  border: none;
+                  border-top: 1px dashed #002d5644;
+                  border-bottom: 1px dashed #002d5644;
+                  padding: 1rem 0;
+                  & p{
+                    margin-left: 1rem;
+                    border-radius: 1rem;
+                    height: 100%;
+                    width: 80%;
+                    font-size: 1.8rem;
+                    border: 1px solid #002d5644;
+                    color: #002d56aa;
+                    padding: 1rem;
+                  }
+                }
+                & .div_unidadBaseGene-O{
+                  width: 0;
+                  height: 0;
+                  display: flex;
+                  overflow: hidden;
+                }
+                & .div_unidadBaseGene-V{
+                  width: 100%;
+                  height: max-content;
+                  border: none;
+                  padding: 0;
+                  margin: 0;
+                  display: flex;
+                  align-items: flex-start;
+                  flex-direction: column;
+                  padding: 1rem 0;
+                  margin-top: 1.6rem;
+                  border-top: 1px solid #002d5644;
+                  margin-bottom: 1.6rem;
+                  border-bottom: 1px solid #002d5644;
+                  & .tituloUnid{
+                    font-size: 1.8rem;
+                    padding-left: 1rem;
+                    color: #002d5699;
+                    width: 100%;
+                    margin-bottom: 1rem;
+                    & b{
+                      font-size: 1.8rem;
+                      color: #002d5699;
+                    }
+                  }
+                  & .div_unidSeleBase-O{
+                    width: 0;
+                    height: 0;
+                    display: flex;
+                    overflow: hidden;
+                  }
+                  & .div_unidSeleBase-V{
+                    border: none;
+                    border: 1px solid #002d5622;
+                    padding: 0;
+                    margin: 0;
+                    width: 80%;
+                    height: 10rem;
+                    border-radius: 1rem;
+                    background-color: #ffffff;
+                    padding: .8rem;
+                    margin-left: 1rem;
+                    & .divUnidadElegida{
+                      border: none !important;
+                      padding: 0;
+                      margin: 0;
+                      width: 100%;
+                      height: 100%;
+                      border-radius: 1rem;
+                      background-color: #e7e8ee;
+                      display: flex;
+                      overflow: hidden;
+                      position: relative;
+                      & .div_svgXUnid{
+                        width: max-content;
+                        height: 100%;
+                        display: flex;
+                        position: absolute;
+                        border: none;
+                        background-color: #e7e8ee;
+                        padding: 0 2rem 0 1rem;
+                        right: 0;
+                        top: 0;
+                        cursor: pointer;
+                        align-items: center;
+                        justify-content: center;
+                        & svg{
+                          width: 2rem;
+                          height: max-content;
+                          fill: #002d56aa;
+                        }
+                      }
+                      & .divImg{
+                        border: none !important;
+                        padding: 0;
+                        margin: 0;
+                        width: 10rem;
+                        background-color: #90b5d7;
+                        height: 100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: .8rem;
+                        & img{
+                          border-radius: 1rem;
+                        }
+                      }
+                      & .divDatos{
+                        border: none !important;
+                        padding: 0;
+                        margin: 0;
+                        width: 80%;
+                        height: 100%;
+                        overflow: hidden;
+                        display: flex;
+                        align-items: center;
+                        & span{
+                          width: max-content;
+                          text-wrap: nowrap;
+                          font-size: 1.8rem;
+                          color: #53588c;
+                          padding-left: 1rem;
+                        }
+                      }
+                    }
+                  }
+                  & .div_inYListaUnidad{
+                    width: 100%;
+                    height: max-content;
+                    display: flex;
+                    border: none !important;
+                    padding: 0;
+                    align-items: flex-start;
+                    margin: 0;
+                    flex-direction: column;
+                    position: relative;
+                    & .in_unidadTocaElige-O{
+                      width: 0;
+                      height: 0;
+                      overflow: hidden;
+                    }
+                    & .in_unidadTocaElige-V{
+                      border: none !important;
+                      padding: 0;
+                      margin: 0;
+                      width: 80%;
+                      height: 5rem;
+                      color: #00000000;
+                      border: 1px solid #002d5644;
+                      border-radius: 1rem;
+                      padding-left: 1rem;
+                      padding-right: 1rem;
+                      margin-left: 1rem;
+                      background-color: #ffffff;
+                      font-size: 1.8rem;
+                      cursor: pointer;
+                      &::placeholder{
+                        color: #002d5688;
+                      }
+                    }
+                    & .div_listaUnidDisponibles-O{
+                      width: 0;
+                      height: 0;
+                      display: flex;
+                      overflow: hidden;
+                      transition: none;
+                    }
+                    & .div_listaUnidDisponibles-V{
+                      border: none !important;
+                      padding: 0;
+                      margin: 0;
+                      width: 80%;
+                      height: max-content;
+                      position: absolute;
+                      left: 0;
+                      z-index: 500;
+                      top: 100%;
+                      max-height: 27rem;
+                      background-color: #e9f4ffcc;
+                      box-shadow: .4rem .4rem .6rem #002d5622;
+                      margin-left: 1rem;
+                      border-radius: 1rem;
+                      display: grid;
+                      grid-auto-flow: row;
+                      grid-auto-rows: max-content;
+                      overflow-x: hidden;
+                      overflow-y: auto;
+                      transition: none;
+                      gap: .8rem;
+                      padding: .8rem;
+                      &::-webkit-scrollbar {
+                        -webkit-appearance: none;
+                        width: 0rem;
+                      }
+                      &::-webkit-scrollbar-thumb {
+                        border-radius: 1rem;
+                        background-color: #004f7800;
+                      }
+                      & .unidadDiv{
+                        border: none !important;
+                        padding: 0;
+                        margin: 0;
+                        min-width: 100%;
+                        background-color: #ffffff;
+                        height: 8rem;
+                        display: flex;
+                        border-radius: 1rem;
+                        overflow: hidden;
+                        cursor: pointer;
+                        transition: .3s;
+                        &:hover{
+                          background-color: #82a8cb;
+                          & .divDatos{
+                            & span{
+                              color: #ffffff;
+                            }
+                          }
+                        }
+                        & .imgDiv{
+                          border: none !important;
+                          padding: 0;
+                          margin: 0;
+                          width: 8rem;
+                          height: 100%;
+                          padding: .4rem .6rem;
+                          & img{
+                            border-radius: 1rem;
+                          }
+                        }
+                        & .divDatos{
+                          border: none !important;
+                          padding: 0;
+                          margin: 0;
+                          width: 70%;
+                          height: 100%;
+                          margin-left: 1.4rem;
+                          overflow: hidden;
+                          display: flex;
+                          align-items: center;
+                          & span{
+                            font-size: 1.8rem;
+                            font-weight: 600;
+                            transition: .3s;
+                            text-wrap: nowrap;
+                            color: #002d56aa;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            & .miembroDivGene{
+              width: 100%;
+              height: max-content;
+              display: flex;
+              flex-direction: column;
+              & .miembroDiv{
+                width: 100%;
+                height: max-content;
+                display: flex;
+                flex-direction: column;
+                border-top: 1px solid #002d5633;
+                border-bottom: 1px solid #002d5633;
+                & .miembroSpan{
+                  width: 100%;
+                  font-size: 1.6rem;
+                  color: #002d56aa;
+                  padding-left: 1rem;
+                  margin: 0;
+                  margin-top: 1rem;
+                }
+                & .miembroDiv2{
+                  width: 100%;
+                  height: max-content;
+                  display: flex;
+                  margin-bottom: 1rem;
+                  position: relative;
+                  flex-direction: column;
+                  margin-top: .6rem;
+                  & .div_miemElegidoNRA-O{
+                    width: 0;
+                    height: 0;
+                    display: flex;
+                    overflow: hidden;
+                  }
+                  & .div_miemElegidoNRA-V{
+                    width: 80%;
+                    height: 10rem;
+                    background-color: #ffffff99;
+                    border-radius: 1rem;
+                    padding: 0;
+                    padding: .6rem;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin: 0;
+                    margin-left: 1rem;
+                    & .divMiemElegido{
+                      background-color: #83a0bb;
+                      border-radius: 1rem;
+                      overflow: hidden;
+                      width: 100%;
+                      height: 100%;
+                      position: relative;
+                      display: flex;
+                      & .imgDiv{
+                        width: 10rem;
+                        background-color: #76bbff;
+                        height: 100%;
+                        padding: .8rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        & img{
+                          border-radius: 1rem;
+                        }
+                      }
+                      & .datosDiv{
+                        width: 80%;
+                        height: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        padding-left: 1.4rem;
+                        & span{
+                          font-size: 1.8rem;
+                          color: #ffffff;
+                          &:nth-child(1){
+                            font-weight: 600;
+                            margin-bottom: .6rem;
+                          }
+                        }
+                      }
+                      & .div_svgX{
+                        width: max-content;
+                        height: max-content;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        right: 1.4rem;
+                        &:hover{
+                            & svg{
+                              fill: #aed1f1;
+                            }
+                        }
+                        & svg{
+                          width: 2rem;
+                          height: max-content;
+                          fill: #4182bf;
+                          cursor: pointer;
+                          transition: .3s;
+                        }
+                      }
+                    }
+                  }
+                  & .in_miembroNombreNRA-O{
+                    width: 0;
+                    height: 0;
+                    display: flex;
+                    overflow: hidden;
+                  }
+                  & .in_miembroNombreNRA-D{
+                    width: 80%;
+                    height: 4.8rem;
+                    font-size: 1.8rem;
+                    color: #002d56cc;
+                    padding: 0;
+                    margin: 0;
+                    margin-left: 1rem;
+                    padding-left: 1rem;
+                    padding-right: 1rem;
+                    border-radius: 1rem;
+                    &:focus{
+                      outline: 3px solid #2596ff66;
+                      box-shadow: 0 0 .6rem #002d5644;
+                    }
+                    &::placeholder{
+                      color: #002d5666;
+                    }
+                  }
+                  & .div_listaMiembroNRA-O{
+                    width: 0;
+                    height: 0;
+                    display: flex;
+                    overflow: hidden;
+                  }
+                  & .div_listaMiembroNRA-V{
+                    width: 80%;
+                    height: max-content;
+                    position: absolute;
+                    left: 0;
+                    z-index: 500;
+                    top: 4.8rem;
+                    max-height: 27rem;
+                    background-color: #e9f4ffcc;
+                    box-shadow: .4rem .4rem .6rem #002d5622;
+                    margin-left: 1rem;
+                    border-radius: 1rem;
+                    display: grid;
+                    grid-auto-flow: row;
+                    grid-auto-rows: max-content;
+                    overflow-x: hidden;
+                    overflow-y: auto;
+                    gap: .8rem;
+                    padding: .8rem;
+                    &::-webkit-scrollbar {
+                      -webkit-appearance: none;
+                      width: 0rem;
+                    }
+                    &::-webkit-scrollbar-thumb {
+                      border-radius: 1rem;
+                      background-color: #004f7800;
+                    }
+                    & .divUserNoEncontradoNRA{
+                      width: 100%;
+                      height: max-content;
+                      display: flex;
+                      flex-direction: column;
+                      & .miembroNoEncontrado{
+                        width: 100%;
+                        font-size: 1.8rem;
+                        color: #002d56aa;
+                        font-weight: 600;
+                        text-align: center;
+                        border-radius: 1rem;
+                        margin-top: 1rem;
+                        padding: 1rem 0rem;
+                        background-color: #ffffff;
+                        margin-bottom: 1rem;
+                      }
+                    }
+                    & .div_miembroLi{
+                      width: 100%;
+                      height: 8rem;
+                      display: flex;
+                      border-radius: 1rem;
+                      background-color: #bfcbd7;
+                      cursor: pointer;
+                      transition: .3s;
+                      overflow: hidden;
+                      &:hover{
+                        background-color: #83a0bb;
+                        & .imgMiemDiv{
+                          background-color: #76bbff;
+                        }
+                        & .datosDiv{
+                          & span{
+                            color: #ffffff;
+                          }
+                        }
+                      }
+                      & .imgMiemDiv{
+                        width: 10rem;
+                        background-color: #ccdcec;
+                        transition: .3s;
+                        height: 100%;
+                        padding: .8rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        & img{
+                          border-radius: 1rem;
+                        }
+                      }
+                      & .datosDiv{
+                        width: 70%;
+                        height: 100%;
+                        overflow: hidden;
+                        display: flex;
+                        flex-direction: column;
+                        padding-left: 1.4rem;
+                        justify-content: center;
+                        & span{
+                          font-size: 1.8rem;
+                          color: #002d56aa;
+                          text-wrap: nowrap;
+                          &:nth-child(1){
+                            font-weight: 600;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              } 
+              & .miembrosDiv{
+                width: 100%;
+                height: max-content;
+                display: flex;
+                flex-direction: column;
+                margin-top: 1rem;
+                border-top: 1px solid #002d5644;
+                border-bottom: 1px solid #002d5644;
+                & .miembrosSpan{
+                  width: 100%;
+                  font-size: 1.6rem;
+                  color: #002d56aa;
+                  padding-left: 1rem;
+                  margin: 0;
+                  margin-bottom: .6rem;
+                  margin-top: 1rem;
+                }
+                & .miembrosDiv2{
+                  width: 100%;
+                  height: max-content;
+                  display: flex;
+                  position: relative;
+                  flex-direction: column;
+                  & .div_miembrosElegiNRA-O{
+                    width: 0;
+                    height: 0;
+                    display: flex;
+                    overflow: hidden;
+                  }
+                  & .div_miembrosElegiNRA-V{
+                    width: 80%;
+                    height: 10rem;
+                    border-radius: 1rem;
+                    background-color: #ffffffaa;
+                    margin-left: 1rem;
+                    display: grid;
+                    grid-auto-flow: column;
+                    grid-auto-columns: max-content;
+                    overflow-x: auto;
+                    overflow-y: hidden;
+                    padding: .8rem;
+                    gap: .8rem;
+                    margin-bottom: .6rem;
+                    &::-webkit-scrollbar {
+                      -webkit-appearance: none;
+                      height: 0rem;
+                    }
+                    &::-webkit-scrollbar-thumb {
+                      border-radius: 1rem;
+                      background-color: #004f7800;
+                    }
+                    & .divOtroMiembro{
+                      width: max-content;
+                      height: 100%;
+                      overflow: hidden;
+                      border-radius: 1rem;
+                      position: relative;
+                      background-color: #83A0BB;
+                      display: flex;
+                      & .divImg{
+                        width: 10rem;
+                        height: 100%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background-color: #76BBFF;
+                        padding: .8rem;
+                        & img{
+                          border-radius: 1rem;
+                        }
+                      }
+                      & .divDatos{
+                        width: max-content;
+                        margin-right: 1rem;
+                        height: 100%;
+                        padding-right: 4rem;
+                        margin-left: 1rem;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        & span{
+                          font-size: 1.8rem;
+                          text-wrap: nowrap;
+                          color: #ffffff;
+                          &:nth-child(1){
+                            font-weight: 600;
+                            margin-bottom: .6rem;
+                          }
+                        }
+                      }
+                      & .div_svgX{
+                        width: max-content;
+                        height: max-content;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        right: 1.4rem;
+                        &:hover{
+                            & svg{
+                              fill: #aed1f1;
+                            }
+                        }
+                        & svg{
+                          width: 2rem;
+                          height: max-content;
+                          fill: #4182bf;
+                          cursor: pointer;
+                          transition: .3s;
+                        }
+                      }
+                    }
+                  }
+                  & .in_otrosMiembrosNRA-O{
+                    width: 0;
+                    height: 0;
+                    display: flex;
+                    overflow: hidden;
+                  }
+                  & .in_otrosMiembrosNRA-D{
+                    width: 80%;
+                    height: 4.8rem;
+                    font-size: 1.8rem;
+                    color: #002d56cc;
+                    padding: 0;
+                    margin: 0;
+                    padding-right: 1rem;
+                    margin-left: 1rem;
+                    padding-left: 1rem;
+                    margin-bottom: 1rem;
+                    border-radius: 1rem;
+                    &:focus{
+                      outline: 3px solid #2596ff66;
+                      box-shadow: 0 0 .6rem #002d5644;
+                    }
+                    &::placeholder{
+                      color: #002d5688;
+                    }
+                  }
+                  & .div_lisOMiembrosNRA-O{
+                    width: 0;
+                    height: 0;
+                    display: flex;
+                    overflow: hidden;
+                  }
+                  & .div_lisOMiembrosNRA-V{
+                    width: 80%;
+                    height: max-content;
+                    position: absolute;
+                    left: 0;
+                    top: 100%;
+                    transform: translateY(-1rem);
+                    max-height: 27rem;
+                    background-color: #e9f4ffcc;
+                    box-shadow: .4rem .4rem .6rem #002d5622;
+                    margin-left: 1rem;
+                    border-radius: 1rem;
+                    display: grid;
+                    grid-auto-flow: row;
+                    grid-auto-rows: max-content;
+                    overflow-x: hidden;
+                    overflow-y: auto;
+                    gap: .8rem;
+                    padding: .8rem;
+                    &::-webkit-scrollbar {
+                      -webkit-appearance: none;
+                      width: 0rem;
+                    }
+                    &::-webkit-scrollbar-thumb {
+                      border-radius: 1rem;
+                      background-color: #004f7800;
+                    }
+                    & .divUserNoEncontradoNRA{
+                      width: 100%;
+                      height: max-content;
+                      display: flex;
+                      flex-direction: column;
+                      & .miembroNoEncontrado{
+                        width: 100%;
+                        font-size: 1.8rem;
+                        color: #002d56aa;
+                        font-weight: 600;
+                        text-align: center;
+                        border-radius: 1rem;
+                        margin-top: 1rem;
+                        padding: 1rem 0rem;
+                        background-color: #ffffff;
+                        margin-bottom: 1rem;
+                      }
+                    }
+                    & .div_miembroLi{
+                      width: 100%;
+                      height: 8rem;
+                      display: flex;
+                      border-radius: 1rem;
+                      background-color: #bfcbd7;
+                      cursor: pointer;
+                      transition: .3s;
+                      overflow: hidden;
+                      &:hover{
+                        background-color: #83a0bb;
+                        & .imgMiemDiv{
+                          background-color: #76bbff;
+                        }
+                        & .datosDiv{
+                          & span{
+                            color: #ffffff;
+                          }
+                        }
+                      }
+                      & .imgMiemDiv{
+                        width: 10rem;
+                        background-color: #ccdcec;
+                        transition: .3s;
+                        height: 100%;
+                        padding: .8rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        & img{
+                          border-radius: 1rem;
+                        }
+                      }
+                      & .datosDiv{
+                        width: 70%;
+                        height: 100%;
+                        overflow: hidden;
+                        display: flex;
+                        flex-direction: column;
+                        padding-left: 1.4rem;
+                        justify-content: center;
+                        & span{
+                          font-size: 1.8rem;
+                          color: #002d56aa;
+                          text-wrap: nowrap;
+                          &:nth-child(1){
+                            font-weight: 600;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            & .divNumPerso{
+              width: 100%;
+              height: max-content;
+              display: flex;
+              flex-direction: column;
+              margin-top: 1rem;
+              margin-bottom: 1rem;
+              & .numPersoSpan{
+                width: 100%;
+                font-size: 1.6rem;
+                color: #002d56aa;
+                padding-left: 1rem;
+                margin: 0;
+                margin-top: 1rem;
+              }
+              & .divNumPerso2{
+                width: 100%;
+                display: flex;
+                padding-left: 1rem;
+                align-items: center;
+                margin-top: .6rem;
+                & .in_numPersonasNRA-D{
+                  width: 8rem;
+                  height: 4.8rem;
+                  border-radius: 1rem;
+                  font-size: 1.8rem;
+                  padding-right: 1rem;
+                  color: #002d56cc;
+                  padding-left: 1rem;
+                  &:focus{
+                    outline: 3px solid #2596ff66;
+                    box-shadow: 0 0 .6rem #002d5644;
+                  }
+                  &::-webkit-outer-spin-button{
+                    -webkit-appearance: none;
+                  }
+                  &::-webkit-inner-spin-button{
+                    -webkit-appearance: none;
+                  }
+                }
+                & .maxPersoSpan{
+                  font-size: 1.6rem;
+                  color: #002d56aa;
+                  margin-left: 1rem;
+                  & b{
+                    font-size: 1.6rem;
+                    font-weight: 600;
+                  }
+                }
+              }
+            }
+            & .tituloReservaDiv{
+              width: 100%;
+              height: max-content;
+              display: flex;
+              margin-top: 1rem;
+              flex-direction: column;
+              margin-bottom: 1rem;
+              border-top: 1px solid #002d5644;
+              border-bottom: 1px solid #002d5644;
+              padding-bottom: 1rem;
+              margin-bottom: 16rem;
+              & span{
+                width: 100%;
+                padding-left: 1rem;
+                margin-top: 1rem;
+                font-size: 1.6rem;
+                color: #002d56aa;
+                margin-bottom: .6rem;
+              }
+              & .in_tituloReseNRA-D{
+                width: 60%;
+                height: 4.8rem;
+                border-radius: 1rem;
+                padding-left: 1rem;
+                font-size: 1.8rem;
+                color: #002d56cc;
+                padding-right: 1rem;
+                margin-left: 1rem;
+                margin-bottom: 1rem;
+                &:focus{
+                  outline: 3px solid #2596ff66;
+                  box-shadow: 0 0 .6rem #002d5644;
+                }
+                &::placeholder{
+                  color: #002d5666;
+                }
+              }
+              & .actiSpan{
+                width: 100%;
+                padding-left: 1rem;
+                margin-top: 1.4rem;
+                font-size: 1.6rem;
+                color: #002d56aa;
+                margin-bottom: .6rem;
+              }
+              & .in_actividadReseNRA{
+                width: 60%;
+                height: 14rem;
+                border-radius: 1rem;
+                padding: 1rem;
+                font-size: 1.8rem;
+                margin-left: 1rem;
+                resize: none;
+                color: #002d56cc;
+                &:focus{
+                  outline: 3px solid #2596ff66;
+                  box-shadow: 0 0 .6rem #002d5644;
+                }
+                &::placeholder{
+                  color: #002d5666;
                 }
               }
             }
@@ -7035,4 +8132,150 @@
       }
     }
   }
+}
+
+.spanUnid {
+  cursor: default; 
+}
+
+/* FACTURA DEL CLIENTE GENERADA POR ADMIN */
+
+.facturaTodoInfo {
+    width: 170mm; 
+    max-width: 100%;
+    margin: auto;
+    padding: 15px; 
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    page-break-after: always;
+}
+.facturaBase1 {
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px; 
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+.facturaBase1 .facturaLogo img {
+    max-width: 130px; 
+    margin-right: 15px; 
+}
+
+.facturaBase1 .facturaInfoEmpresa {
+    text-align: left;
+}
+.facturaBase1 .facturaInfoEmpresa h1 {
+    margin: 0;
+    font-size: 22px; 
+    color: #333;
+}
+.facturaBase1 .facturaInfoEmpresa p {
+    margin: 2px 0;
+    font-size: 14px;
+    color: #555;
+}
+.facturaBase2 {
+    margin-bottom: 15px; 
+}
+.facturaBase2 .facturaInfoCliente,
+.facturaBase2 .facturaInfoReserva {
+    margin-bottom: 15px; 
+}
+.facturaBase2 .facturaInfoCliente p,
+.facturaBase2 .facturaInfoReserva p {
+    margin: 2px 0; 
+    font-size: 17px;
+    color: #CDCDCD;
+}
+
+.facturaBase2 .facturaInfoReserva {
+    border-top: 2px solid #333;
+    padding-top: 10px;
+}
+.facturaTotalCompra {
+    border-top: 2px solid #333;
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.aa {
+ display: flex;
+}
+
+.facturaTotalCompra .total {
+    font-size: 16px; 
+    font-weight: bold;
+}
+.facturaTotalCompra .notes {
+    text-align: right;
+    font-size: 14px;
+    color: #555;
+}
+
+.inputMiembro {
+  width: 170mm; 
+  max-width: 100%;
+  margin: 10px auto; 
+  padding: 10px;
+  border: 1px solid #ddd; 
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+  font-size: 14px; 
+  color: #333; 
+}
+
+.inputMiembro:focus {
+  outline: none;
+  border-color: #333; 
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); 
+}
+
+.miemSeleDiv-C {
+  width: 170mm; 
+  max-width: 100%;
+  border: 1px solid #ddd; 
+  border-radius: 8px; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+  margin-top: 5px; 
+}
+
+#resultadosOtrosSeleccionados {
+    display: flex;
+    flex-direction: column; 
+    max-height: 100px; 
+    overflow-y: auto; 
+    border: 1px solid #ccc; 
+    padding: 5px; 
+}
+
+
+/*////////////////////////*/
+
+.contenedor_botones {
+    display: flex; 
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+.contenedor_b {
+    margin: 1rem; 
+}
+.boton {
+    background-color: #3B83BD;
+    color: white; 
+    border: none; 
+    padding: 10px 12px; 
+    border-radius: 14px; 
+    font-size: 12px; 
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s; 
+    opacity: 80%;
+    border: 0.5px black solid;
+}
+.boton:hover {
+    transform: scale(1.001); 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
 }

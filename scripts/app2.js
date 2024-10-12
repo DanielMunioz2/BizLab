@@ -56,6 +56,8 @@
       12: "DIC",
     };
 
+    var diasSemana = 0;
+    var desdeHastaSemana = "sabado";
 
   //-------------------------------------------------------------------------------------------------
 
@@ -272,18 +274,48 @@ if (document.querySelector(".administracionHTML") != null) {
     const div_pdtSeleContainer = document.querySelector("#div_pdtSeleContainer");
     const div_tipoReseYTiempoGene = document.querySelector("#div_tipoReseYTiempoGene");
     const div_tiempoReseBase = document.querySelector("#div_tiempoReseBase");
+
+    const div_listaMiembroNRA = document.querySelector("#div_listaMiembroNRA");
     //-------------------------------------------------------------------------
 
     //INPUTS
     const in_pdtNomAdminNR = document.querySelector("#in_pdtNomAdminNR");
+    
 
     const inO_idPdtSelecNR = document.querySelector("#inO_idPdtSelecNR");
-    const inO_tipoReseNR = document.querySelector("#inO_tipoReseNR");
+    
     //-------------------------------------------------------------------------
 
   //----------------------------------------------------------------------------------------------------------------------
 
+    const nombreUsuario = document.querySelector("#nombreUsuario");
+    const membresiaUsuario = document.querySelector("#membresiaUsuario");
+    const direccionUsuario = document.querySelector("#direccionUsuario");
+    const cedulaUsuario = document.querySelector("#cedulaUsuario");
+    const celularUsuario = document.querySelector("#celularUsuario");
+    const correoUsuario = document.querySelector("#correoUsuario");
+
+    const nombreOtrosUsuarios = document.querySelector("#nombreOtrosUsuarios");
+    // Seleccionar los elementos
+    const precioCompra = document.querySelector("#precioCompra");
+    const facturaFechaCompra = document.querySelector("#facturaFechaCompra");
+    const facturaHoraCompra = document.querySelector("#facturaHoraCompra");
+    const facturaInicio = document.querySelector("#facturaInicio");
+    const facturaFinalizacion = document.querySelector("#facturaFinalizacion");
+    const facturaDuracion = document.querySelector("#facturaDuracion");
+    const productoElemento = document.querySelector("#producto");
+    const unidadElemento = document.querySelector("#unidad");
+
+    const subtotalCompraRE = document.querySelector("#subtotalCompraX");
+    const ivaCompraRE = document.querySelector("#ivaCompraX");
+    const totalCompraRE = document.querySelector("#totalCompraX");
+
+    // Asignar valores a los campos
+
+
+
   //----------------------------------------------------------------------------------------------------------------------
+
   //-----------------------------------
   // VARIABLES GENERALES Y CONSTANTES 
   //-----------------------------------
@@ -364,6 +396,83 @@ if (document.querySelector(".administracionHTML") != null) {
   //------------
   // FUNCIONES 
   //------------
+
+      function semanaAdelanteAtras(pos){
+
+        if(pos == "adelante"){
+          diasSemana += 1;
+        }else{
+          if(diasSemana > 0){
+            diasSemana -= 1;
+          }
+        }
+
+        definirSemanaReservaXS();
+
+      }
+
+      function longitudSemana(longi){
+
+        document.querySelector(".in_lunesAViernes").classList.replace("in_lunesAViernes-A", "in_lunesAViernes-N");
+        document.querySelector(".in_lunesASabado").classList.replace("in_lunesASabado-A", "in_lunesASabado-N");
+
+        if(longi == "viernes"){
+          document.querySelector(".in_lunesAViernes").classList.replace("in_lunesAViernes-N", "in_lunesAViernes-A");
+        }else{
+          document.querySelector(".in_lunesASabado").classList.replace("in_lunesASabado-N", "in_lunesASabado-A");
+        }
+
+        desdeHastaSemana = longi;
+
+        definirSemanaReservaXS();
+
+      }
+
+      function definirSemanaReservaXS(){
+
+        if(diasSemana == 0){
+          document.querySelector(".btn_atrasSemana").setAttribute("disabled", "");
+          document.querySelector(".btn_atrasSemana").classList.replace("btn_atrasSemana-D", "btn_atrasSemana-B");
+        }else{
+          document.querySelector(".btn_atrasSemana").removeAttribute("disabled");
+          document.querySelector(".btn_atrasSemana").classList.replace("btn_atrasSemana-B", "btn_atrasSemana-D");
+        }
+
+        let diaSemanaNumero = numeroDiaSemana(cadenaFechaActual);
+        let cantiSemanasNum = document.querySelector("#in_numeroSemanasCant").value;
+
+        console.log(cantiSemanasNum);
+
+        let formSemanaFechas = new FormData();
+
+        formSemanaFechas.append("fechasSemana", true);
+        formSemanaFechas.append("diaSemanaFecha", cadenaFechaActual);
+        formSemanaFechas.append("diaSemanaNum", diaSemanaNumero);
+        formSemanaFechas.append("numeroSemana", diasSemana);
+        formSemanaFechas.append("longitudSemana", desdeHastaSemana);
+        formSemanaFechas.append("cantiSemanas", cantiSemanasNum);
+
+        fetch(urlBuscarInfoAdminDB, {
+          method: "POST",
+          body: formSemanaFechas,
+        })
+          .then((response) => response.json())
+          .then((data) => {
+
+            console.log(data);
+
+            document.querySelector("#inO_iniSemanaFecha").value = data[0];
+            document.querySelector("#inO_finSemanaFecha").value = data[1];
+
+            document.querySelector(".span_fechaIniSemana").textContent = data[0];
+            document.querySelector(".span_fechaFinSemana").textContent = data[1];
+
+            revisarDispoReserva('semana');
+
+          })
+          .catch((err) => console.log(err));
+
+      }
 
     //-------------------------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------
@@ -2504,120 +2613,346 @@ if (document.querySelector(".administracionHTML") != null) {
       //-----------------------------------------------------------------------------------------------------------------------------------
       // Func C Calendario-Día - Desplegar cuadro con datos de la reserva al hacer click sobre esta.
 
-        const rangeTipoReserva = document.createRange();
+      const rangoPdtSeleNRAdmin = document.createRange();
+      const rangoPdtUnidades = document.createRange();
+      
+      function selectSetPdtNRAdmin(
+        idPdtSelect,
+        pdtNombre,
+        precioXhora,
+        precioXDia,
+        precioXSemana,
+        pdtMaxPerso,
+        pdtDescri,
+        pdtCaracteris,
+        unidDisponibles,
+        pdtImgPrins,
+        ivaPdt,
+        descuPdt
+      ) {
 
-        function abrirCuadroDuracionRese(tipoRese){
+        div_listaPdt.innerHTML = "";
+        div_listaPdt.classList.replace("listaPdt-V", "listaPdt-O");
+        in_pdtNomAdminNR.value = "";
+        in_pdtNomAdminNR.classList.replace("in_pdtNomAdminNR-V", "in_pdtNomAdminNR-O");
 
-          div_tiempoReseBase.classList.replace("div_tiempoReseBase-O", "div_tiempoReseBase-V");
-
-          let htmlTipoRese = "";
-
-          if(tipoRese == "hora"){
-
-            htmlTipoRese = `
-            <span>Agendamiento</span>
-            <div class="div_fechaInicio">
-                <span>Fecha</span>
-                <input type="date" id="in_fechaIniRese" class="in_fechaIniRese-V" value="">
-            </div>
-            <div class="div_horaInicio">
-                <span>Hora</span>
-                <input type="time" id="in_horaIniRese" class="in_horaIniRese-V" value="">
-            </div>
-            <div class="div_cantHoras">
-                <span>Duración</span>
-                <input type="number" min="1" max="12" id="in_cantHorasRese" class="in_cantHorasRese-V" value="">
-                <span class="spanDuracion">Horas</span>
-            </div>
-            <span class="span_errorReseH span_errorReseH-O">############ ########## ########## ###############</span>
-            `;
-
+        document.querySelector(".baseBotones").classList.replace("baseBotones-O", "baseBotones-V");
+      
+        div_pdtSeleContainer.innerHTML = "";
+        
+      
+        //-------------------------------------------------------------------------------------------------
+        // Disponibilidad tipo de Reserva
+      
+        let reseXH = precioXhora == 0 ? 0 : 1;
+        reseXH = precioXhora == 1 ? 2 : reseXH;
+      
+        let reseXD = precioXDia == 0 ? 0 : 1;
+        reseXD = precioXDia == 1 ? 2 : reseXD;
+      
+        let reseXS = precioXSemana == 0 ? 0 : 1;
+        reseXS = precioXSemana == 1 ? 2 : reseXS;
+      
+        //-------------------------------------------------------------------------------------------------
+      
+        let precioXH = precioXhora == 0 ? "N/A" : precioXhora;
+        precioXH = precioXhora == 1 ? "A consultar" : precioXhora + " COP";
+        precioXH = precioXH == "0 COP" ? "N/A" : precioXH;
+      
+        let precioXD = precioXDia == 0 ? "N/A" : precioXDia;
+        precioXD = precioXDia == 1 ? "A consultar" : precioXDia + " COP";
+        precioXD = precioXD == "0 COP" ? "N/A" : precioXD;
+      
+        let precioXS = precioXSemana == 0 ? "N/A" : precioXSemana;
+        precioXS = precioXSemana == 1 ? "A consultar" : precioXSemana + " COP";
+        precioXS = precioXS == "0 COP" ? "N/A" : precioXS;
+      
+        let caracteristicas = pdtCaracteris.split(",");
+        let htmlCaracteristiPdt = "";
+      
+        if (caracteristicas.length != 1) {
+          for (let e = 0; e < caracteristicas.length; e++) {
+            htmlCaracteristiPdt += `<span class="spanCaracter">${caracteristicas[e]}</span>`;
           }
-
-          if(tipoRese == "dia"){
-
-            htmlTipoRese = `
-            <span>Agendamiento</span>
-            <div class="div_fechaInicio">
-              <span>Fecha</span>
-              <input type="date" id="in_fechaIniRese" class="in_fechaIniRese-V" value="">
-            </div>
-            <div class="div_cantHoras">
-              <span>Duración</span>
-              <input type="number" min="1" id="in_cantHorasRese" class="in_cantHorasRese-V" value="">
-              <span class="spanDuracion">Días</span>
-            </div>
-            <span class="span_errorReseH span_errorReseH-O">############ ########## ########## ###############</span>
-            `;
-
-          }
-
-          if(tipoRese == "semana"){
-
-            htmlTipoRese = `
-            <span>Agendamiento</span>
-            <div class="div_semanaBase">
-                <span>Semana</span>
-                <div class="div_fechasSemana">
-                    <button class="btn_atrasSemana"><</button>
-                    <div class="div_fechas">
-                        <span class="span_fechaIniSemana">08-04-2025</span>
-                        <span class="separadorFecha">-</span>
-                        <span class="span_fechaFinSemana">08-04-2025</span>
-                    </div>
-                    <button class="btn_adelanteSemana">></button>
-                </div>
-            </div>
-            <span class="span_errorReseH span_errorReseH-O">############ ########## ########## ###############</span>
-            `;
-
-          }
-
-          if(tipoRese == "mes"){
-
-            htmlTipoRese = `
-            <span>Agendamiento</span>
-            <div class="div_fechaInicio">
-                <span>Fecha</span>
-                <input type="date" id="in_fechaIniRese" class="in_fechaIniRese-V" value="">
-            </div>
-            <div class="div_cantHoras">
-                <span>Duración</span>
-                <input type="number" id="in_cantHorasRese" class="in_cantHorasRese-V" value="">
-                <span class="spanDuracion">Meses</span>
-            </div>
-            <div class="div_precioAConsultar">
-                <div class="divPrecio">
-                    <span>Precio (Definido por admin)</span>
-                    <input max="10000000000000" min="10000" type="number" id="in_precioACRese" class="in_precioACRese in_precioACRese-V" value="">
-                    <span class="spanMoneda">COP</span>
-                </div>
-                <div class="divIva">
-                    <span>IVA</span>
-                    <input max="1000000" min="1" type="number" id="in_ivaPrecioACRese" class="in_ivaPrecioACRese in_ivaPrecioACRese-V" value="">
-                    <span class="spanMoneda">%</span>
-                </div>
-                <div class="divDescu">
-                    <span>Descuento</span>
-                    <input max="1000000" min="1" type="number" id="in_descuPrecioACRese" class="in_descuPrecioACRese in_descuPrecioACRese-V" value="">
-                    <span class="spanMoneda">%</span>
-                </div>
-            </div>
-            <span class="span_errorReseH span_errorReseH-O">############ ########## ########## ###############</span>
-            `;
-
-          }
-
-          inO_tipoReseNR.value = tipoRese;
-
-          div_tiempoReseBase.innerHTML = "";
-          
-          rangeTipoReserva.selectNode(document.getElementsByTagName("div").item(0));
-          const tipoReseSelect =
-            rangeTipoReserva.createContextualFragment(htmlTipoRese);
-          div_tiempoReseBase.appendChild(tipoReseSelect);
-
+        } else {
+          htmlCaracteristiPdt += `<span class="spanCaracterVacio">Sin Datos</span>`;
         }
+
+        const rangeTipoReserva = document.createRange();
+        let contenedorPrecioAdicional = "";
+
+        if (precioXS === "A consultar" || precioXS === 1) {
+            contenedorPrecioAdicional = `
+                <div class="div_precioAConsultar">
+                    <div class="divPrecio">
+                        <span>Precio (Definido por admin)</span>
+                        <input max="10000000000000" min="10000" type="number" id="in_precioACRese" class="in_precioACRese in_precioACRese-V" value="">
+                        <span class="spanMoneda">COP</span>
+                    </div>
+                    <div class="divIva">
+                        <span>IVA</span>
+                        <input max="1000000" min="1" type="number" id="in_ivaPrecioACRese" class="in_ivaPrecioACRese in_ivaPrecioACRese-V" value="">
+                        <span class="spanMoneda">%</span>
+                    </div>
+                    <div class="divDescu">
+                        <span>Descuento</span>
+                        <input max="1000000" min="1" type="number" id="in_descuPrecioACRese" class="in_descuPrecioACRese in_descuPrecioACRese-V" value="">
+                        <span class="spanMoneda">%</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Selecciona el input donde se guardará la fecha de inicio
+        const inO_fechaInicioNR = document.querySelector("#inO_fechaInicioNR");
+        const inO_fechaFinalNR = document.querySelector("#inO_fechaFinalNR");
+
+        const inO_horaIncioNR = document.querySelector("#inO_horaInicioNR");
+        const inO_horaFinalNR = document.querySelector("#inO_horaFinalNR");
+
+        const inO_cadenaFechasNR = document.querySelector("#inO_cadenaFechasNR");
+
+        const inO_cantHorasNR = document.querySelector("#inO_cantHorasNR");
+        const inO_cantDiasNR = document.querySelector("#inO_cantDiasNR");
+
+        // Función para abrir el cuadro de duración de reserva segun el tipo de reserva (hora, día, semana, mes)
+        function abrirCuadroDuracionRese(tipoRese) {
+          
+            const div_tiempoReseBase = document.getElementById('div_tiempoReseBase');
+            const inO_tipoReseNR = document.getElementById('inO_tipoReseNR');
+            const rangeTipoReserva = document.createRange();
+
+            div_tiempoReseBase.classList.replace("div_tiempoReseBase-O", "div_tiempoReseBase-V");
+
+            let htmlTipoRese = "";
+
+            if (tipoRese === "hora") {
+                htmlTipoRese = `
+                    <span>Agendamiento</span>
+                    <div class="div_fechaInicio">
+                        <span>Fecha</span>
+                        <input oninput="revisarDispoReserva('hora')" type="date" id="in_fechaIniRese" class="in_fechaIniRese-V" value="">
+                    </div>
+                    <div class="div_horaInicio">
+                        <span>Hora</span>
+                        <input oninput="revisarDispoReserva('hora')" type="time" id="in_horaIniRese" class="in_horaIniRese-V" value="">
+                    </div>
+                    <div class="div_cantHoras">
+                        <span>Duración</span>
+                        <input oninput="revisarDispoReserva('hora')" type="number" min="1" max="12" id="in_cantHorasRese" class="in_cantHorasRese-V" value="">
+                        <span class="spanDuracion">Horas</span>
+                    </div>
+                    <span class="span_errorReseH span_errorReseH-O">############ ########## ########## ###############</span>
+                    <div id="div_unidadBaseGene" class="div_unidadBaseGene div_unidadBaseGene-O">
+                      <span class="tituloUnid">Seleccione la <b>Unidad</b></span>
+                      <div 
+                        id="div_unidSeleBase" 
+                        class="div_unidSeleBase div_unidSeleBase-O"
+                      >
+                      </div>
+                      <div class="div_inYListaUnidad">
+                        <input 
+                          id="in_unidadTocaElige" 
+                          class="in_unidadTocaElige in_unidadTocaElige-V"
+                          placeholder = "Toca para ver las unidades disponibles"
+                        >
+                        <div 
+                          id="div_listaUnidDisponibles" 
+                          class="div_listaUnidDisponibles div_listaUnidDisponibles-O"
+                        >
+                        </div>
+                      </div>
+                    </div>
+                `;
+            } else if (tipoRese == "dia") {
+                htmlTipoRese = `
+                    <span>Agendamiento</span>
+                    <div class="div_fechaInicio">
+                        <span>Fecha</span>
+                        <input type="date" id="in_fechaIniRese" class="in_fechaIniRese-V" value="" oninput="revisarDispoReserva('dia')">
+                    </div>
+                    <div class="div_cantHoras">
+                        <span>Duración</span>
+                        <input type="number" min="1" id="in_cantHorasRese" class="in_cantHorasRese-V" value="" oninput="revisarDispoReserva('dia')">
+                        <span class="spanDuracion">Días</span>
+                    </div>
+                    <span class="span_errorReseH span_errorReseH-O">############ ########## ########## ###############</span>
+                    <div id="div_unidadBaseGene" class="div_unidadBaseGene div_unidadBaseGene-O">
+                      <span class="tituloUnid">Seleccione la <b>Unidad</b></span>
+                      <div 
+                        id="div_unidSeleBase" 
+                        class="div_unidSeleBase div_unidSeleBase-O"
+                      >
+                      </div>
+                      <div class="div_inYListaUnidad">
+                        <input 
+                          id="in_unidadTocaElige" 
+                          class="in_unidadTocaElige in_unidadTocaElige-V"
+                          placeholder = "Toca para ver las unidades disponibles"
+                        >
+                        <div 
+                          id="div_listaUnidDisponibles" 
+                          class="div_listaUnidDisponibles div_listaUnidDisponibles-O"
+                        >
+                        </div>
+                      </div>
+                    </div>
+                `;
+            } else if (tipoRese == "mes") {
+                htmlTipoRese = `
+                    <span>Agendamiento</span>
+                    <div class="div_fechaInicio">
+                        <span>Fecha</span>
+                        <input type="date" id="in_fechaIniRese" class="in_fechaIniRese-V" value="" oninput="revisarDispoReserva('mes')">
+                    </div>
+                    <div class="div_cantHoras">
+                        <span>Duración</span>
+                        <input 
+                          type="number" 
+                          id="in_cantHorasRese" 
+                          class="in_cantHorasRese-V"
+                          min = "1"
+                          value = "1"
+                          oninput="revisarDispoReserva('mes')"
+                        >
+                        <span class="spanDuracion">Meses</span>
+                    </div>
+                    <div class="div_precioAConsultar">
+                        <div class="divPrecio">
+                            <span>Precio x Mes (Definido por admin)</span>
+                            <input oninput="revisarDispoReserva('mes')" max="10000000000000" min="10000" type="number" id="in_precioACRese" class="in_precioACRese in_precioACRese-V" value="">
+                            <span class="spanMoneda">COP</span>
+                        </div>
+                        <div class="divIva">
+                            <span>IVA</span>
+                            <input oninput="revisarDispoReserva('mes')" max="1000000" min="1" type="number" id="in_ivaPrecioACRese" class="in_ivaPrecioACRese in_ivaPrecioACRese-V" value="">
+                            <span class="spanMoneda">%</span>
+                        </div>
+                        <div class="divDescu">
+                            <span>Descuento</span>
+                            <input oninput="revisarDispoReserva('mes')" max="1000000" min="1" type="number" id="in_descuPrecioACRese" class="in_descuPrecioACRese in_descuPrecioACRese-V" value="">
+                            <span class="spanMoneda">%</span>
+                        </div>
+                    </div>
+                    <span class="span_errorReseH span_errorReseH-O">############ ########## ########## ###############</span>
+                    <div id="div_unidadBaseGene" class="div_unidadBaseGene div_unidadBaseGene-O">
+                      <span class="tituloUnid">Seleccione la <b>Unidad</b></span>
+                      <div 
+                        id="div_unidSeleBase" 
+                        class="div_unidSeleBase div_unidSeleBase-O"
+                      >
+                      </div>
+                      <div class="div_inYListaUnidad">
+                        <input 
+                          id="in_unidadTocaElige" 
+                          class="in_unidadTocaElige in_unidadTocaElige-V"
+                          placeholder = "Toca para ver las unidades disponibles"
+                        >
+                        <div 
+                          id="div_listaUnidDisponibles" 
+                          class="div_listaUnidDisponibles div_listaUnidDisponibles-O"
+                        >
+                        </div>
+                      </div>
+                    </div>
+                `;
+            } else if (tipoRese == "semana") {
+                htmlTipoRese = `
+                    <span>Agendamiento</span>
+                    <div class="div_semanaBase">
+                        <span class="semanaTitulo">Semana</span>
+                        <div class="div_fechasSemana">
+                            <button 
+                              class="btn_atrasSemana btn_atrasSemana-D"
+                              onclick="semanaAdelanteAtras('atras')"
+                            >
+                            <
+                            </button>
+                            <div class="div_fechas">
+                                <span class="span_fechaIniSemana"></span>
+                                <span class="separadorFecha">-</span>
+                                <span class="span_fechaFinSemana"></span>
+                            </div>
+                            <button 
+                              class="btn_adelanteSemana btn_adelanteSemana-D"
+                              onclick="semanaAdelanteAtras('adelante')"
+                            >
+                            >
+                            </button>
+                        </div>
+                        <div class="div_btnLongiSemana">
+                          <div class="divLuVi">
+                            <button
+                              id="in_lunesAViernes"
+                              class="in_lunesAViernes in_lunesAViernes-N"
+                              onclick = "longitudSemana('viernes')"
+                            >V</button>
+                            <span>Lunes a Viernes</span>
+                          </div>
+                          <div class="divLuSa">
+                            <button
+                              id="in_lunesASabado"
+                              class="in_lunesASabado in_lunesASabado-A"
+                              onclick = "longitudSemana('sabado')"
+                            >S</button>
+                            <span>Lunes a Sábado</span>
+                          </div>
+                        </div>
+                        <div class="div_btnCantiSemana">
+                          <input 
+                            type="number" 
+                            id="in_numeroSemanasCant" 
+                            class="in_numeroSemanasCant in_numeroSemanasCant-D"
+                            value="1"
+                            min="1"
+                            oninput="definirSemanaReservaXS()"
+                          >
+                          <span class="cantSema">Semanas</span>
+                        </div>
+                    </div>
+                    ${contenedorPrecioAdicional} <!-- Aquí se incluye el contenedor adicional solo si corresponde -->
+                    <span class="span_errorReseH span_errorReseH-O">############ ########## ########## ###############</span>
+                    <div class="div_reseSemanaResumen div_reseSemanaResumen-O">
+                      <p class="p_resumenDatosSemana"></p>
+                    </div>
+                    <div id="div_unidadBaseGene" class="div_unidadBaseGene div_unidadBaseGene-O">
+                      <span class="tituloUnid">Seleccione la <b>Unidad</b></span>
+                      <div 
+                        id="div_unidSeleBase" 
+                        class="div_unidSeleBase div_unidSeleBase-O"
+                      >
+                      </div>
+                      <div class="div_inYListaUnidad">
+                        <input 
+                          id="in_unidadTocaElige" 
+                          class="in_unidadTocaElige in_unidadTocaElige-V"
+                          placeholder = "Toca para ver las unidades disponibles"
+                        >
+                        <div 
+                          id="div_listaUnidDisponibles" 
+                          class="div_listaUnidDisponibles div_listaUnidDisponibles-O"
+                        >
+                        </div>
+                      </div>
+                    </div>
+                `;
+            }
+
+            // Incrementador de semanas
+            inO_tipoReseNR.value = tipoRese;
+            div_tiempoReseBase.innerHTML = "";
+
+            rangeTipoReserva.selectNode(document.getElementsByTagName("div").item(0));
+            const tipoReseSelect = rangeTipoReserva.createContextualFragment(htmlTipoRese);
+            div_tiempoReseBase.appendChild(tipoReseSelect);      
+            
+            if(tipoRese == "semana"){
+              definirSemanaReservaXS();
+            }
+            
+        }
+
+        // aqui se acaba el codigo para guardar la informacion en los campos "invisibles"
 
         const rangeReservaDatos = document.createRange();
 
@@ -3024,239 +3359,250 @@ if (document.querySelector(".administracionHTML") != null) {
           }
           
         }
+
+        //////////////////
         
-      //-----------------------------------------------------------------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------------------------------------------------------------
 
-      // < CALENDARIO MODO DÍA - FIN > //
-      //-----------------------------------------------------------------------------------------------------------------------------------
+        // < CALENDARIO MODO DÍA - FIN > //
+        //-----------------------------------------------------------------------------------------------------------------------------------
 
-      //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-      const rangoPdtSeleNRAdmin = document.createRange();
-      const rangoPdtUnidades = document.createRange();
-
-      function selectSetPdtNRAdmin(
-        idPdtSelect,
-        pdtNombre,
-        precioXhora,
-        precioXDia,
-        precioXSemana,
-        pdtMaxPerso,
-        pdtDescri,
-        pdtCaracteris,
-        unidDisponibles,
-        pdtImgPrins
-      ){
-
-        div_listaPdt.innerHTML="";
-        div_listaPdt.classList.replace("listaPdt-V", "listaPdt-O");
-        in_pdtNomAdminNR.value = "";
-        in_pdtNomAdminNR.classList.replace("in_pdtNomAdminNR-V", "in_pdtNomAdminNR-O");
-
-        div_pdtSeleContainer.innerHTML="";
-
-        //-------------------------------------------------------------------------------------------------
-        // Disponibilidad tipo de Reserva 
-
-        let reseXH = precioXhora == 0 ? 0 : 1;
-        reseXH = precioXhora == 1 ? 2 : reseXH; 
-
-        let reseXD = precioXDia == 0 ? 0 : 1;
-        reseXD = precioXDia == 1 ? 2 : reseXD; 
-
-        let reseXS = precioXSemana == 0 ? 0 : 1;
-        reseXS = precioXSemana == 1 ? 2 : reseXS; 
-
-        //-------------------------------------------------------------------------------------------------
-
-        let precioXH = precioXhora == 0 ? "N/A" : precioXhora;
-        precioXH = precioXhora == 1 ? "A consultar" : precioXhora+" COP";
-        precioXH = precioXH == "0 COP" ? "N/A" : precioXH;
-
-        let precioXD = precioXDia == 0 ? "N/A" : precioXDia;
-        precioXD = precioXDia == 1 ? "A consultar" : precioXDia+" COP";
-        precioXD = precioXD == "0 COP" ? "N/A" : precioXD;
-
-        let precioXS = precioXSemana == 0 ? "N/A" : precioXSemana;
-        precioXS = precioXSemana == 1 ? "A consultar" : precioXSemana+" COP";
-        precioXS = precioXS == "0 COP" ? "N/A" : precioXS;
-
-        let caracteristicas = pdtCaracteris.split(",");
-        let htmlCaracteristiPdt = "";
-
-        if(caracteristicas.length != 1){
-          for(let e = 0; e < caracteristicas.length; e++){
-
-            htmlCaracteristiPdt += `
-            <span class="spanCaracter">${caracteristicas[e]}</span>
-            `;
-  
-          }
-        }else{
-          htmlCaracteristiPdt += `
-          <span class="spanCaracterVacio">Sin Datos</span>
-          `;
-        }
+        //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        
+        // Aquí se decide si se muestra el contenedor para el precio a consultar
+        // HTML para el producto seleccionado
       
-        let htmlPdtSelectNRAdmin = `
-        <div class="pdtSelected">
-          <div class="imgDiv">
-              <img src="images/productosImages/${pdtImgPrins}" alt="Imagen del Producto">
-          </div>
-          <div class="divDatos">
-              <span class="nomPdt">${pdtNombre}</span>
-              <div class="divDatos2">
-                  <div class="divDescrip">
-                      <span>Descripción</span>
-                      <p>${pdtDescri}</p>
-                  </div>
-                  <div class="divPrecios">
-                      <span class="precioGeneSpan">Precios</span>
-                      <div class="precioXH">
-                          <span>Hora</span>
-                          <span>${precioXH}</span>
-                      </div>
-                      <div class="precioXD">
-                          <span>Día</span>
-                          <span>${precioXD}</span>
-                      </div>
-                      <div class="precioXS">
-                          <span>Semana</span>
-                          <span>${precioXS}</span>
-                      </div>
-                      <div class="precioXM">
-                          <span>Mes</span>
-                          <span>A Consultar</span>
-                      </div>
-                  </div>
-                  <div class="divOtrasCaracte">
-                      <span class="otrasCaracte">Otros Datos</span>
-                      <div class="cantPersoDiv" title="Máximo de Personas">
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276.47 174.23"><g id="Capa_2" data-name="Capa 2"><g id="Capa_1-2" data-name="Capa 1"><path d="M103.26,97c3.29-2,3.13-3.89,1.29-6.86C89.82,66.33,58.11,56.68,33,69,9.72,80.35-.7,99.62,0,125.29c.29,10.13,5.7,15.84,15.76,16,8.67.09,17.33,0,26,0,8.5,0,17-.17,25.5.08,4,.12,5.9-1.16,7-5.17A64.57,64.57,0,0,1,103.26,97Z"/><path d="M56.44,56.41c16,.08,28.19-12,28.2-28C84.66,12.86,71.79-.15,56.52,0A28.63,28.63,0,0,0,28.31,28.5C28.33,43.69,41.07,56.34,56.44,56.41Z"/><path d="M137.92,89.35h.64a28.06,28.06,0,0,0,27.83-28.13,28.15,28.15,0,1,0-56.3,0A28.06,28.06,0,0,0,137.92,89.35Z"/><path d="M174.54,109.92c-11.23-9.29-23.5-13.8-36.3-13.57-12.8-.23-25.07,4.28-36.3,13.57C87.06,122.24,81,138.59,81.87,157.83c.49,11,5.25,16.3,16.24,16.36,13.33.07,26.66,0,40,0h.26c13.34,0,26.67.06,40,0,11-.06,15.75-5.33,16.24-16.36C195.46,138.59,189.42,122.24,174.54,109.92Z"/><path d="M243.5,69c-25.13-12.29-56.84-2.64-71.57,21.13-1.84,3-2,4.81,1.29,6.86a64.57,64.57,0,0,1,29,39.21c1.08,4,3,5.29,7,5.17,8.5-.25,17-.08,25.5-.08,8.67,0,17.33.07,26,0,10.06-.11,15.47-5.82,15.76-16C277.18,99.62,266.76,80.35,243.5,69Z"/><path d="M220,56.41c15.37-.07,28.11-12.72,28.13-27.91A28.63,28.63,0,0,0,220,0c-15.27-.15-28.14,12.86-28.12,28.43C191.85,44.41,204,56.49,220,56.41Z"/></g></g></svg>
-                          <span>${pdtMaxPerso}</span>
-                      </div>
-                      <div class="caracterisDiv">
-                          <span>Características</span>
-                          <div class="listaCaracteris">
-                            ${htmlCaracteristiPdt}
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="divDatos3">
-                  <span>Unidades para el producto</span>
-                  <div class="divUnidadesLis">
-                  </div>
-              </div>
-          </div>
-          <svg class="borrarPdtSeleIconX" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 174.71 174.71"><g id="Capa_2" data-name="Capa 2"><g id="Capa_1-2" data-name="Capa 1"><path d="M111.41,95.37a11.33,11.33,0,0,1,0-16l60-60a11.34,11.34,0,0,0,0-16h0a11.34,11.34,0,0,0-16,0l-60,60a11.33,11.33,0,0,1-16,0l-60-60a11.34,11.34,0,0,0-16,0h0a11.34,11.34,0,0,0,0,16l60,60a11.33,11.33,0,0,1,0,16l-60,60a11.34,11.34,0,1,0,16,16l60-60a11.33,11.33,0,0,1,16,0l60,60a11.34,11.34,0,1,0,16-16Z"/></g></g></svg>
+      let htmlPdtSelectNRAdmin = `
+      <div class="pdtSelected">
+        <div class="imgDiv">
+            <img src="images/productosImages/${pdtImgPrins}" alt="Imagen del Producto">
         </div>
-        `;
+        <div class="divDatos">
+            <input type="hidden" value="${unidDisponibles}" id="inO_unidDispoPdt" class="inO_unidDispoPdt">
+            <input type="hidden" value="${precioXH}" id="inO_precioXH" class="inO_precioXH">
+            <input type="hidden" value="${precioXD}" id="inO_precioXD" class="inO_precioXD">
+            <input type="hidden" value="${precioXS}" id="inO_precioXS" class="inO_precioXS">
+            <input type="hidden" value="${ivaPdt}" id="inO_ivaPdt" class="inO_ivaPdt">
+            <input type="hidden" value="${descuPdt}" id="inO_descuPdt" class="inO_descuPdt">
+            <span class="nomPdt">${pdtNombre}</span>
+            <div class="divDatos2">
+                <div class="divDescrip">
+                    <span>Descripción</span>
+                    <p>${pdtDescri}</p>
+                </div>
+                <div class="divPrecios">
+                    <span class="precioGeneSpan">Precios</span>
+                    <div class="precioXH">
+                        <span>Hora</span>
+                        <span>${precioXH}</span>
+                    </div>
+                    <div class="precioXD">
+                        <span>Día</span>
+                        <span>${precioXD}</span>
+                    </div>
+                    <div class="precioXS">
+                        <span>Semana</span>
+                        <span>${precioXS}</span>
+                    </div>
+                    <div class="precioXM">
+                        <span>Mes</span>
+                        <span>A Consultar</span>
+                    </div>
+                </div>
+                <div class="divOtrasCaracte">
+                    <span class="otrasCaracte">Otros Datos</span>
+                    <div class="cantPersoDiv" title="Máximo de Personas">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 276.47 174.23"><g id="Capa_2" data-name="Capa 2"><g id="Capa_1-2" data-name="Capa 1"><path d="M103.26,97c3.29-2,3.13-3.89,1.29-6.86C89.82,66.33,58.11,56.68,33,69,9.72,80.35-.7,99.62,0,125.29c.29,10.13,5.7,15.84,15.76,16,8.67.09,17.33,0,26,0,8.5,0,17-.17,25.5.08,4,.12,5.9-1.16,7-5.17A64.57,64.57,0,0,1,103.26,97Z"/><path d="M56.44,56.41c16,.08,28.19-12,28.2-28C84.66,12.86,71.79-.15,56.52,0A28.63,28.63,0,0,0,28.31,28.5C28.33,43.69,41.07,56.34,56.44,56.41Z"/><path d="M137.92,89.35h.64a28.06,28.06,0,0,0,27.83-28.13,28.15,28.15,0,1,0-56.3,0A28.06,28.06,0,0,0,137.92,89.35Z"/><path d="M174.54,109.92c-11.23-9.29-23.5-13.8-36.3-13.57-12.8-.23-25.07,4.28-36.3,13.57C87.06,122.24,81,138.59,81.87,157.83c.49,11,5.25,16.3,16.24,16.36,13.33.07,26.66,0,40,0h.26c13.34,0,26.67.06,40,0,11-.06,15.75-5.33,16.24-16.36C195.46,138.59,189.42,122.24,174.54,109.92Z"/><path d="M243.5,69c-25.13-12.29-56.84-2.64-71.57,21.13-1.84,3-2,4.81,1.29,6.86a64.57,64.57,0,0,1,29,39.21c1.08,4,3,5.29,7,5.17,8.5-.25,17-.08,25.5-.08,8.67,0,17.33.07,26,0,10.06-.11,15.47-5.82,15.76-16C277.18,99.62,266.76,80.35,243.5,69Z"/><path d="M220,56.41c15.37-.07,28.11-12.72,28.13-27.91A28.63,28.63,0,0,0,220,0c-15.27-.15-28.14,12.86-28.12,28.43C191.85,44.41,204,56.49,220,56.41Z"/></g></g></svg>
+                        <span class="numeroPersoMax">${pdtMaxPerso}</span>
+                    </div>
+                    <div class="caracterisDiv">
+                        <span>Características</span>
+                        <div class="listaCaracteris">
+                          ${htmlCaracteristiPdt}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="divDatos3">
+                <span>Unidades relacionadas con el producto</span>
+                <div class="divUnidadesLis">
+                </div>
+            </div>
+        </div>
+        <svg class="borrarPdtSeleIconX" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 174.71 174.71"><g id="Capa_2" data-name="Capa 2"><g id="Capa_1-2" data-name="Capa 1"><path d="M111.41,95.37a11.33,11.33,0,0,1,0-16l60-60a11.34,11.34,0,0,0,0-16h0a11.34,11.34,0,0,0-16,0l-60,60a11.33,11.33,0,0,1-16,0l-60-60a11.34,11.34,0,0,0-16,0h0a11.34,11.34,0,0,0,0,16l60,60a11.33,11.33,0,0,1,0,16l-60,60a11.34,11.34,0,1,0,16,16l60-60a11.33,11.33,0,0,1,16,0l60,60a11.34,11.34,0,1,0,16-16Z"/></g></g></svg>
+      </div>
+      `;
+      
+      rangoPdtSeleNRAdmin.selectNode(document.getElementsByTagName("div").item(0));
+      const pdtSelectedNRAd = rangoPdtSeleNRAdmin.createContextualFragment(htmlPdtSelectNRAdmin);
+      div_pdtSeleContainer.appendChild(pdtSelectedNRAd);
 
-        rangoPdtSeleNRAdmin.selectNode(document.getElementsByTagName("div").item(0));
-        const pdtSelectedNRAd =
-          rangoPdtSeleNRAdmin.createContextualFragment(htmlPdtSelectNRAdmin);
-        div_pdtSeleContainer.appendChild(pdtSelectedNRAd);
+      document.querySelector("#inO_maxPersoNum").value = document.querySelector(".numeroPersoMax").textContent;
 
-        // Unidades producto selecionado
-
-        let unidadesHtml = "";
-
-        let formUnidadesDispoForm = new FormData();
-
-        formUnidadesDispoForm.append("unidadesPdtNRAdmin", unidDisponibles);
-
-        fetch(urlBuscarInfoAdminDB, {
-          method: "POST",
-          body: formUnidadesDispoForm,
-        })
-          .then((response) => response.json())
-          .then((data) => {
-
-            if(data.length != 1){
-
-              for(let i = 1; i < data.length; i++){
-
-                unidadesHtml += `
-                <span class="spanUnid">${data[i]["unidad_nombre"]}</span>
-                `;
-  
-              }
-
-            }else{
-
-              unidadesHtml = `
-              <span class="spanUnidVacio">Sin Datos</span>
+      document.querySelector("#in_numPersonasNRA").setAttribute("max", document.querySelector(".numeroPersoMax").textContent);
+      document.querySelector(".numPersoBold").textContent = document.querySelector(".numeroPersoMax").textContent;
+      
+      // Unidades producto seleccionado por el administrador
+      let unidadesHtml = "";
+      let formUnidadesDispoForm = new FormData();
+      formUnidadesDispoForm.append("unidadesPdtNRAdmin", unidDisponibles);
+      
+      fetch(urlBuscarInfoAdminDB, {
+        method: "POST",
+        body: formUnidadesDispoForm,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.length != 1) {
+            for (let i = 1; i < data.length; i++) {
+              unidadesHtml += `
+              <span class="spanUnid">${data[i]["unidad_nombre"]}</span>
               `;
-
             }
-            
-
-            document.querySelector(".divUnidadesLis").innerHTML = "";
-
-            rangoPdtUnidades.selectNode(document.getElementsByTagName("div").item(0));
-            const unidadesPdt =
-              rangoPdtUnidades.createContextualFragment(unidadesHtml);
-            document.querySelector(".divUnidadesLis").appendChild(unidadesPdt);
-
-          })
-          .catch((err) => console.log(err));
+          } else {
+            unidadesHtml = `
+            <span class="spanUnidVacio">Sin Datos</span>
+            `;
+          }
+      
+          document.querySelector(".divUnidadesLis").innerHTML = "";
+          
+          rangoPdtUnidades.selectNode(document.getElementsByTagName("div").item(0));
+          const unidadesPdt = rangoPdtUnidades.createContextualFragment(unidadesHtml);
+          document.querySelector(".divUnidadesLis").appendChild(unidadesPdt);
+      
+        })
         
-        //---------------------------------------------------------------------------------------------------------------------------------
+        .catch((err) => console.log(err));      
 
+        //---------------------------------------------------------------------------------------------------------------------------------
+      
+        div_pdtSeleContainer.classList.replace("pdtSeleContainer-O", "pdtSeleContainer-V");
+      
+        inO_idPdtSelecNR.value = idPdtSelect;
+      
+        document.addEventListener('DOMContentLoaded', () => {
+          const borrarPdtSeleIconX = document.querySelector('.borrarPdtSeleIconX');
+          const div_pdtSeleContainer = document.querySelector('.pdtSeleContainer');
+          const div_tipoReseYTiempoGene = document.querySelector('.div_tipoReseYTiempoGene');
+      
+          if (borrarPdtSeleIconX) {
+            borrarPdtSeleIconX.addEventListener('click', () => {
+              div_pdtSeleContainer.innerHTML = ""; // Elimina el contenido del contenedor
+              div_pdtSeleContainer.classList.replace("pdtSeleContainer-V", "pdtSeleContainer-O"); // Restaura la visibilidad inicial
+              div_tipoReseYTiempoGene.classList.replace("div_tipoReseYTiempoGene-V", "div_tipoReseYTiempoGene-O"); // Oculta el apartado de tipo de reserva y duración
+              in_pdtNomAdminNR.value = ""; // Limpiar el valor del input
+              in_pdtNomAdminNR.classList.replace("in_pdtNomAdminNR-O", "in_pdtNomAdminNR-V"); // Volver a mostrar el input
+              inO_idPdtSelecNR.value = ""; // Limpiar el valor del ID del producto seleccionado
+            });
+          }
+
+        });
+      
+        // Mostrar el contenedor del producto
         div_pdtSeleContainer.classList.replace("pdtSeleContainer-O", "pdtSeleContainer-V");
 
-        inO_idPdtSelecNR.value = idPdtSelect;
-
+      
+        // Configurar el evento de borrado
+        const borrarPdtSeleIconX = document.querySelector('.borrarPdtSeleIconX');
+        if (borrarPdtSeleIconX) {
+          borrarPdtSeleIconX.addEventListener('click', () => {
+            div_pdtSeleContainer.innerHTML = ""; // Elimina el contenido del contenedor
+            div_pdtSeleContainer.classList.replace("pdtSeleContainer-V", "pdtSeleContainer-O"); // Restaura la visibilidad inicial
+            div_tipoReseYTiempoGene.classList.replace("div_tipoReseYTiempoGene-V", "div_tipoReseYTiempoGene-O"); // Oculta el apartado de tipo de reserva y duración
+            in_pdtNomAdminNR.value = ""; // Limpiar el valor del input
+            in_pdtNomAdminNR.classList.replace("in_pdtNomAdminNR-O", "in_pdtNomAdminNR-V"); // Volver a mostrar el input
+            inO_idPdtSelecNR.value = ""; // Limpiar el valor del ID del producto seleccionado
+          });
+        }
+      
+      
         //---------------------------------------------------------------------------------------------------------------------------------
         // Desplegar cuadro de duración y el tipo de reserva
-
+      
         // Verificar que tipo de reserva estan disponibles
-        if(reseXH == 1 || reseXH == 2){
+        if (reseXH == 1 || reseXH == 2) {
           btn_reseXH.removeAttribute("disabled");
+      
+          btn_reseXH.addEventListener("click", (e) => {
 
-          btn_reseXH.addEventListener("click", (e)=>{
+            btn_reseXH.classList.remove("btnTipoRese-hora_select");
+            btn_reseXD.classList.remove("btnTipoRese-dia_select");
+            btn_reseXS.classList.remove("btnTipoRese-semana_select");
+            btn_reseXM.classList.remove("btnTipoRese-mes_select");
+
+            btn_reseXH.classList.add("btnTipoRese-hora_select");
+
             abrirCuadroDuracionRese("hora");
-          });
 
-        }else{
+          });
+      
+        } else {
           btn_reseXH.removeAttribute("tipo");
           btn_reseXH.setAttribute("tipo", "bloq");
         }
-
-        if(reseXD == 1 || reseXD == 2){
+      
+        if (reseXD == 1 || reseXD == 2) {
           btn_reseXD.removeAttribute("disabled");
+      
+          btn_reseXD.addEventListener("click", (e) => {
 
-          btn_reseXD.addEventListener("click", (e)=>{
+            btn_reseXH.classList.remove("btnTipoRese-hora_select");
+            btn_reseXD.classList.remove("btnTipoRese-dia_select");
+            btn_reseXS.classList.remove("btnTipoRese-semana_select");
+            btn_reseXM.classList.remove("btnTipoRese-mes_select");
+
+            btn_reseXD.classList.add("btnTipoRese-dia_select");
+
             abrirCuadroDuracionRese("dia");
-          });
 
-        }else{
+          });
+      
+        } else {
           btn_reseXD.removeAttribute("tipo");
           btn_reseXD.setAttribute("tipo", "bloq");
         }
+      
+        if (reseXS == 1 || reseXS == 2) {
 
-        if(reseXS == 1 || reseXS == 2){
           btn_reseXS.removeAttribute("disabled");
+      
+          btn_reseXS.addEventListener("click", (e) => {
 
-          btn_reseXS.addEventListener("click", (e)=>{
+            btn_reseXH.classList.remove("btnTipoRese-hora_select");
+            btn_reseXD.classList.remove("btnTipoRese-dia_select");
+            btn_reseXS.classList.remove("btnTipoRese-semana_select");
+            btn_reseXM.classList.remove("btnTipoRese-mes_select");
+
+            btn_reseXS.classList.add("btnTipoRese-semana_select");
+
             abrirCuadroDuracionRese("semana");
-          });
 
-        }else{
+          });
+      
+        } else {
           btn_reseXS.removeAttribute("tipo");
           btn_reseXS.setAttribute("tipo", "bloq");
         }
+      
+        btn_reseXM.addEventListener("click", (e) => {
 
-        btn_reseXM.addEventListener("click", (e)=>{
+          btn_reseXH.classList.remove("btnTipoRese-hora_select");
+          btn_reseXD.classList.remove("btnTipoRese-dia_select");
+          btn_reseXS.classList.remove("btnTipoRese-semana_select");
+          btn_reseXM.classList.remove("btnTipoRese-mes_select");
+
+          btn_reseXM.classList.add("btnTipoRese-mes_select");
+
           abrirCuadroDuracionRese("mes");
         });
-
+      
         div_tipoReseYTiempoGene.classList.replace("div_tipoReseYTiempoGene-O", "div_tipoReseYTiempoGene-V");
-
+      
         //---------------------------------------------------------------------------------------------------------------------------------
-
+      
       }
+
     //-------------------------------------------------
     // << Calendario de Reservas - FUNCIONES - FIN >>
     //-------------------------------------------------
@@ -4781,6 +5127,21 @@ if (document.querySelector(".administracionHTML") != null) {
 
       // Función 1
 
+      window.addEventListener('click', function ocultarListaPdt(e) {
+
+        if(div_listaPdt != null){
+          if (document.getElementById('div_listaPdt').contains(e.target)) {
+            
+
+          } else {
+                  
+            div_listaPdt.classList.replace("listaPdt-V", "listaPdt-O");
+  
+          }
+        }
+
+      });
+
       const rangoLisPdtNRAdmin = document.createRange();
 
       function insertarListaPdtNR(data){
@@ -4808,6 +5169,8 @@ if (document.querySelector(".administracionHTML") != null) {
                 '${data[i]["produCaracteris"]}',
                 '${data[i]["unidDisponibles"]}',
                 '${data[i]["productoImgPrin"]}',
+                '${data[i]["produIva"]}',
+                '${data[i]["produDescu"]}'
               )
               "
             >
@@ -6557,6 +6920,96 @@ if(document.querySelector(".ajustesCuentaHTML") != null){
 //------------------------------------------
 //-----------------------------------------------------------------------------------------------------------------------------------------
 
+const otrosUsuariosSelec = [];
+let usuarioMiembroSeleccionado = null;
+
+
+
+function mostrarInformacionMiembro(usuario) {
+    const nombreUsuario = document.querySelector("#nombreUsuario");
+    const membresiaUsuario = document.querySelector("#membresiaUsuario");
+    const direccionUsuario = document.querySelector("#direccionUsuario");
+    const cedulaUsuario = document.querySelector("#cedulaUsuario");
+    const celularUsuario = document.querySelector("#celularUsuario");
+    const correoUsuario = document.querySelector("#correoUsuario");
+    const inO_idUserNR = document.querySelector("#inO_idUserNR");
+
+    nombreUsuario.textContent = `${usuario.user_nombre} ${usuario.user_apellido}`;
+    membresiaUsuario.textContent = usuario.membre_nombre || "Membresía no disponible"; 
+    direccionUsuario.textContent = usuario.user_direc;
+    correoUsuario.textContent = usuario.user_correo;
+    celularUsuario.textContent = usuario.user_celular;
+    cedulaUsuario.textContent = usuario.user_documento;
+    inO_idUserNR.value = usuario.id_usuario;
+}
+
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 // DOM - FINAL
-//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
+
+// Funciones para buscar otros usuarios y mostrar la informacion de cada uno
+
+function buscarOtrosUsuario() {
+    const input = document.getElementById('inputOtrosMiembro');
+    const query = input.value.toLowerCase();
+    const resultadosDiv = document.getElementById('resultadosOtros');
+    resultadosDiv.innerHTML = '';
+
+    if (query) {
+        fetch(`administracion.php?query=${query}`)
+            .then(response => response.json())
+            .then(usuarios => {
+                usuarios.forEach(usuario => {
+                    if (usuarioMiembroSeleccionado && usuario.user_documento === usuarioMiembroSeleccionado.user_documento) {
+                        return;
+                    }
+
+                    const usuarioDiv = document.createElement('div');
+                    usuarioDiv.classList.add('usuarioResultado');
+                    usuarioDiv.innerHTML = `
+                        <div style="display: flex; align-items: center; margin: 5px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                            <img src="${usuario.user_imagen}" alt="${usuario.user_nombre} ${usuario.user_apellido}" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;">
+                            <div>
+                                <strong>${usuario.user_nombre} ${usuario.user_apellido}</strong><br>
+                                <span>${usuario.user_cargo} - ${usuario.user_empresa}</span>
+                            </div>
+                        </div>
+                    `;
+
+                    usuarioDiv.addEventListener('click', () => {
+                        if (!otrosUsuariosSelec.find(u => u.user_documento === usuario.user_documento)) {
+                            otrosUsuariosSelec.push(usuario);
+                        } 
+
+                        mostrarUsuariosSeleccionados();
+                        resultadosDiv.innerHTML = ''; 
+                    });
+
+                    resultadosDiv.appendChild(usuarioDiv);
+                });
+            })
+            .catch(error => console.error('Error fetching users:', error));
+    }
+}
+
+function mostrarUsuariosSeleccionados() {
+    const seleccionadosDiv = document.getElementById('resultadosOtrosSeleccionados');
+    seleccionadosDiv.innerHTML = otrosUsuariosSelec.map(usuario => `
+        <div class="usuarioSeleccionado" style="display: flex; align-items: center; margin: 5px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; flex-shrink: 0;">
+            <img src="${usuario.user_imagen}" alt="${usuario.user_nombre} ${usuario.user_apellido}" style="width: 40px; height: 40px; border-radius: 50%; margin-right: 5px;">
+            <div>
+                <strong>${usuario.user_nombre} ${usuario.user_apellido}</strong>
+            </div>
+        </div>
+    `).join('');
+
+    const nombreOtrosUsuarios = document.querySelector("#nombreOtrosUsuarios");
+    const inO_idOtrosUsersNR = document.querySelector("#inO_idOtrosUsersNR");
+    nombreOtrosUsuarios.textContent = otrosUsuariosSelec.map(u => `${u.user_nombre} ${u.user_apellido}`).join(', ');
+    inO_idOtrosUsersNR.value = otrosUsuariosSelec.map(u => `${u.id_usuario}`).join(', ');
+}
+
+////////////////////////////////////
+
+function imprimirFactura() {
+}
