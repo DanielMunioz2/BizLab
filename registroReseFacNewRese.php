@@ -1,6 +1,8 @@
 <?php
     
     session_start();
+    session_destroy();
+    session_start();
 
     require("conexion.php");
 
@@ -60,8 +62,9 @@
         $respuestaEpaycoTransa = $_POST["respuestaEpaycoTransa"];
         $motivoEpaycoTransa = $_POST["motivoEpaycoTransa"];
 
-        $_SESSION["iniciado"] = intval($idUserRese);
+        $_SESSION["iniciado"] = $_POST["inO_idUserIni"];
         $_SESSION["stdProd"] = 4;
+        $_SESSION["tipoUsuario"] = $_POST["inO_tipoUser"];
 
         if($tipoRese == "hora"){
 
@@ -423,7 +426,8 @@
     history.replaceState(null,null,"index.php");
     document.querySelector(".btnVolver").addEventListener("click", ()=>{
 
-        window.location.href = "index.php";
+        //window.location.href = "http://165.22.176.119/BizLab/index.php";
+        window.location.href = "http://localhost/BizLab/index.php";
 
     });
 

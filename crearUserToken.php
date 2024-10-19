@@ -7,10 +7,18 @@
     require("vendor\autoload.php");
     require("conexion.php");
 
+    // Personal
+    // 2748d9ab9c7041e36711c19f4802c8cf
+    // f668dd14c93aff3d78e8876a4634628e
+
+    // Bizlab
+    // 2005c19424c83d33b146c7045647bff0
+    // 4c3b836dec966604dd24c98a910a267d
+
     // Conexión con Epayco
     $epayco = new Epayco\Epayco(array(
-        "apiKey" => "2748d9ab9c7041e36711c19f4802c8cf",
-        "privateKey" => "f668dd14c93aff3d78e8876a4634628e",
+        "apiKey" => "2005c19424c83d33b146c7045647bff0",
+        "privateKey" => "4c3b836dec966604dd24c98a910a267d",
         "lenguage" => "ES",
         "test" => true
     ));

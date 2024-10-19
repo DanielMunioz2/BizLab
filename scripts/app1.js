@@ -3349,6 +3349,12 @@ if(document.querySelector("#comprobarMembreHTML") != null){
       </div>
       `;
 
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: "instant",
+      });
+
       body.style.overflowY = "hidden";
 
       // Desplegando Spinner

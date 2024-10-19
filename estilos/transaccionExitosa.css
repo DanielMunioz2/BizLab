@@ -2,6 +2,43 @@
     width: 100vw;
 }
 
+.cubiertaBase{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 500;
+    background-color: #ffffffdd;
+    & .baseSpinnerCargaRese-A{
+        width: 106.7rem;
+        height: 52.1rem;
+        position: absolute;
+        top: 5.4rem;
+        z-index: 1000;
+        left: 1rem;
+        display: flex;
+        border-radius: 0 0 1rem 1rem;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffffffdd;
+        transition: opacity .75s, visibility .75s;
+    }
+    & .baseSpinnerCargaRese-A::after{
+        content: "";
+        width: 10rem;
+        height: 10rem;
+        border: 15px solid #b8cee244;
+        border-top-color: #1568b7;
+        border-radius: 50%;
+        animation: spinnerLoad 0.75s ease infinite;
+    }
+    & .baseSpinnerCargaRese-C{
+        visibility: hidden;
+        opacity: 0;
+    }
+}
+
 .btnContainerVolver{
     width: 100%;
     height: max-content;
@@ -34,4 +71,15 @@
             height: max-content;
         }
     }
+}
+
+@keyframes spinnerLoad {
+
+    from{
+      transform: rotate(0turn);
+    }
+    to{
+      transform: rotate(1turn);
+    }
+  
 }

@@ -30,10 +30,16 @@
         //-------------------------------------------------------------------------------------------------------------------------
         // CURL LOGIN EPAYCO
 
+        // Personal
+        // AUTHORIZATION: Basic Mjc0OGQ5YWI5YzcwNDFlMzY3MTFjMTlmNDgwMmM4Y2Y6ZjY2OGRkMTRjOTNhZmYzZDc4ZTg4NzZhNDYzNDYyOGU=
+
+        // BizLab
+        // AUTHORIZATION: Basic MjAwNWMxOTQyNGM4M2QzM2IxNDZjNzA0NTY0N2JmZjA6NGMzYjgzNmRlYzk2NjYwNGRkMjRjOThhOTEwYTI2N2Q=
+        
         $curl = curl_init();
     
         $httpHeaders = array(
-            'AUTHORIZATION: Basic Mjc0OGQ5YWI5YzcwNDFlMzY3MTFjMTlmNDgwMmM4Y2Y6ZjY2OGRkMTRjOTNhZmYzZDc4ZTg4NzZhNDYzNDYyOGU=',
+            'AUTHORIZATION: Basic MjAwNWMxOTQyNGM4M2QzM2IxNDZjNzA0NTY0N2JmZjA6NGMzYjgzNmRlYzk2NjYwNGRkMjRjOThhOTEwYTI2N2Q=',
             'Content-Type: application/json'
         );
     

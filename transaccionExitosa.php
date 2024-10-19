@@ -12,6 +12,31 @@
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="shortcut icon" type="x-icon" href="images/favicon_bizclub.svg">
   <link rel="stylesheet" href="estilos/transaccionExitosa.css">
+  <style type="text/css">
+    *{
+      font-size: 10px;
+    }
+    .body{
+      max-width: 100vw;
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 0;
+      margin: 0;
+    }
+    @keyframes spinnerLoad {
+
+      from{
+        transform: rotate(0turn);
+      }
+      to{
+        transform: rotate(1turn);
+      }
+
+    }
+  </style>
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -21,6 +46,26 @@
 </head>
 
 <body class="body">
+  <div 
+    class="cubiertaBase"
+    style="width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: #ffffff;"
+  >
+    <div 
+      id="baseSpinnerCargaRese" 
+      class="baseSpinnerCargaRese"
+      style="visibility: hidden;
+      opacity: 0;"
+    >
+      <div id="spinnerLoad"></div>
+      <span id="spanSpinnerLoad" style="opacity: 0;">Procesando... Espera</span>
+    </div>
+  </div>
   <header id="main-header" style="margin-top:20px">
     <div class="row">
       <div class="col-lg-12 franja">
@@ -115,6 +160,8 @@
     <input type="hidden" name="precio" id="precio" value="">
     <input type="hidden" name="precioXCant" id="precioXCant" value="">
     <input type="hidden" name="precioTotal" id="precioTotal" value="">
+    <input type="hidden" name="inO_tipoUser" id="inO_tipoUser" value="">
+    <input type="hidden" name="inO_idUserIni" id="inO_idUserIni" value="">
 
     <!-- Lo demás -->
     <input type="hidden" name="referenceEpaycoRese" id="referenceEpaycoRese" value="">
@@ -169,7 +216,12 @@
             //Codigo personalizado
             alert("Transaccion Aprobada");
 
-            console.log('transacción aceptada');
+            document.querySelector("#baseSpinnerCargaRese").removeAttribute("style");
+            document.querySelector("#baseSpinnerCargaRese").setAttribute("style", "width: 100%; height: 100%; position: absolute; top: 0; z-index: 1000; left: 0; display: flex; flex-direction: column; justify-content: center; align-items: center;");
+            document.querySelector("#spinnerLoad").setAttribute("style", "width: 15rem; height: 15rem; border: 15px solid #b8cee244; border-top-color: #1568b7; border-radius: 50%; animation: spinnerLoad 0.75s ease infinite;");
+            document.querySelector("#spanSpinnerLoad").removeAttribute("style");
+            document.querySelector("#spanSpinnerLoad").setAttribute("style", "width: 100%; font-size: 2.6rem; text-align: center; margin-top: 1.6rem; color: #002d56aa;");
+            // console.log('transacción aceptada');
 
             document.querySelector("#tituloRese").value = response.data.x_extra1;
             document.querySelector("#activiRese").value = response.data.x_extra2; 
@@ -210,6 +262,8 @@
             document.querySelector("#precio").value = response.data.x_extra27;
             document.querySelector("#precioXCant").value = response.data.x_extra28;
             document.querySelector("#precioTotal").value = response.data.x_extra29;
+            document.querySelector("#inO_tipoUser").value = response.data.x_extra30;
+            document.querySelector("#inO_idUserIni").value = response.data.x_extra31;
 
             // Lo demas
             document.querySelector("#referenceEpaycoRese").value = response.data.x_ref_payco;
@@ -246,7 +300,7 @@
           $('#autorizacion').text(response.data.x_approval_code);
           $('#total').text(response.data.x_amount + ' ' + response.data.x_currency_code);
           
-          console.log(response.data);
+          // console.log(response.data);
 
 
         } else {

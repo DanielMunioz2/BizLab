@@ -6,8 +6,18 @@ Ingresar  el valor de p_cust_id_cliente lo encuentras en la configuración de tu
 Ingresar  el valor de p_key lo encuentras en la configuración de tu cuenta ePayco
 */
 
-$p_cust_id_cliente = '1475696';
-$p_key             = '8805ed9259269323d45afeff2fb9fc4a049b4b5c';
+// 1511557
+// 22287e20748f2006e410e9ad8a1372124be0d71f
+// curl --location 'https://apify.epayco.co/login' \
+// --header 'Authorization: Basic MjAwNWMxOTQyNGM4M2QzM2IxNDZjNzA0NTY0N2JmZjA6NGMzYjgzNmRlYzk2NjYwNGRkMjRjOThhOTEwYTI2N2Q='
+
+// Personal
+// $p_cust_id_cliente = '1475696';
+// $p_key             = '8805ed9259269323d45afeff2fb9fc4a049b4b5c';
+
+// BizLab
+$p_cust_id_cliente = '1511557';
+$p_key             = '22287e20748f2006e410e9ad8a1372124be0d71f';
 
 $x_ref_payco      = $_REQUEST['x_ref_payco'];
 $x_transaction_id = $_REQUEST['x_transaction_id'];

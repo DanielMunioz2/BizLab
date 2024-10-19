@@ -957,6 +957,10 @@
 
 </head>
 <body class="body">
+    <div id="baseSpinnerCargaRese" class="baseSpinnerCargaRese baseSpinnerCargaRese-C">
+        <div class="spinnerLoad"></div>
+        <span class="spanLoadSpin">Procesando... Espera</span>
+    </div>
     <div class="fondoN fondoNegroGene1">
         <div class="detailMembreCompraGene">
             <div class="divProductoGene">

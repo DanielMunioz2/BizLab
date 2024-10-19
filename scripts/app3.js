@@ -393,6 +393,7 @@ if(document.querySelector(".membreCliDetailHTML") != null){
 
         // CONTENEDORES
         const cuadroOPerfil = document.querySelector(".cuadroPOculto");
+        const baseSpinnerCargaRese = document.querySelector("#baseSpinnerCargaRese");
 
         // BOTONES
         const flechaPerfilDiv = document.querySelector(".divPerfil");
@@ -1191,6 +1192,16 @@ if(document.querySelector(".membreCliDetailHTML") != null){
                                 precioTotalSpan.textContent != ""
                             ){  
 
+                                window.scroll({
+                                    top: 0,
+                                    left: 0,
+                                    behavior: "instant",
+                                });
+
+                                document.querySelector(".body").style.overflowY="hidden";
+
+                                baseSpinnerCargaRese.classList.replace("baseSpinnerCargaRese-C", "baseSpinnerCargaRese-A");
+
                                 if(tokenUser == ""){
                                     
                                     let formCreaUserToken = new FormData();
@@ -1342,7 +1353,7 @@ if(document.querySelector("#realizarReseCLI-HTML") != null){
 
         // Conexión EPAYCO (Pasarela de Pago)
         var handler = ePayco.checkout.configure({
-            key: '2748d9ab9c7041e36711c19f4802c8cf',
+            key: '2005c19424c83d33b146c7045647bff0',
             test: true
         });
 
@@ -6688,6 +6699,9 @@ if(document.querySelector("#realizarReseCLI-HTML") != null){
                     }
                 }
 
+                let tipoUser = document.querySelector("#inO_tipoUser").value;
+                let idUserIni = document.querySelector("#inO_idUserIni").value;
+
                 precioXCant = precio*cantidad;
                 let ivaPdt = Number(document.querySelector("#ivaPdtElegido").value);
                 let descuPdt = Number(document.querySelector("#ivaDescuElegido").value);
@@ -6809,6 +6823,8 @@ if(document.querySelector("#realizarReseCLI-HTML") != null){
                     extra27: precio,
                     extra28: precioXCant,
                     extra29: precioTotal,
+                    extra30: tipoUser,
+                    extra31: idUserIni,
 
                     // confirmation: "http://165.22.176.119/BizLab/confirmacionPage.php",
                     // response: "http://165.22.176.119/BizLab/transaccionExitosa.php",

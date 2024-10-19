@@ -63,7 +63,11 @@ if(isset($_SESSION["iniciado"])){
     //---------------------------------------------------------------------------------------------------------------------------
     // Dias disponibles
 
-        $diasDispo = $arrayMembreGene[strval($resultadoUser["user_membresia"])][13];
+        if($resultadoUser["user_membresia"] != 0){
+            $diasDispo = $arrayMembreGene[strval($resultadoUser["user_membresia"])][13];
+        }else{
+            $diasDispo = 6;
+        }
 
     //------------------------------------------------------------------------------------
 
@@ -94,6 +98,8 @@ if(isset($_SESSION["iniciado"])){
         <input type = "hidden" id="celularUserOcul" value = "<?php echo $resultadoUser["user_celular"]; ?>">
         <input type = "hidden" id="direccUserOcul" value = "<?php echo $resultadoUser["user_direc"]; ?>">
         <input type = "hidden" id="emailUserOcul" value = "<?php echo $resultadoUser["user_correo"]; ?>">
+        <input type = "hidden" id="inO_tipoUser" value = "<?php echo $resultadoUser["user_rol"]; ?>">
+        <input type = "hidden" id="inO_idUserIni" value = "<?php echo $_SESSION["iniciado"] ?>">
         <!-------------------------------------------------------------------------------------------------------->
 
         <!-- Datos de la reserva -->
