@@ -67,6 +67,20 @@
 // Funciones Globales
 //-----------------------
 
+  // Verificar Estado de la Membresía
+  function verificarMembresiaStd(){
+
+    document.querySelector("#form_btnPagarMensu").submit();
+
+  }
+
+  // Realizar Reserva Nueva
+  function nuevaReserva(){
+    
+    document.querySelector("#form_btnRealizaRese").submit();
+
+  }
+  
   // Día de la semana, número (domingo = 0 - sábado = 6)
 
     function numeroDiaSemana(fecha){

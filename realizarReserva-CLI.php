@@ -71,6 +71,21 @@ if(isset($_SESSION["iniciado"])){
 
     //------------------------------------------------------------------------------------
 
+    $htmlLi = "";
+        
+    if($_SESSION["tipoUsuario"] == "Miembro"){
+        $htmlLi = '
+        <li><a onclick="verificarMembresiaStd()" class="btnPagarMensuali">Pagar Mensualidad</a></li>
+        <li><a href="membresiasCliente.php" class="btnRealizaRese">Membresías</a></li>
+        ';
+    }
+
+    if($_SESSION["tipoUsuario"] == "Usuario"){
+        $htmlLi = '
+        <li><a href="membresiasCliente.php" class="btnRealizaRese">Membresías</a></li>
+        ';
+    }
+
 }else{
     
     header("location: inicioSesion.php");
@@ -195,8 +210,7 @@ if(isset($_SESSION["iniciado"])){
                     <input name="verifiMembresiaEstd" type="hidden" value="true">
                 </form>
                 <ul class="ulNav">
-                    <li><a class="btnPagarMensuali">Pagar Mensualidad</a></li>
-                    <li><a href="membresiasCliente.php" class="btnRealizaRese">Membresías</a></li>
+                    <?php echo $htmlLi; ?>
                 </ul>
             </nav>   
         </header>

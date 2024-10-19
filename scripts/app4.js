@@ -1,5 +1,19 @@
 //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
+// Verificar Estado de la Membresía
+function verificarMembresiaStd(){
+
+    document.querySelector("#form_btnPagarMensu").submit();
+
+}
+
+// Realizar Reserva Nueva
+function nuevaReserva(){
+    
+    document.querySelector("#form_btnRealizaRese").submit();
+
+}
+
 //------------------------------------------------------------
 // RESERVAS ADMINISTRACIÓN.PHP | INICIO
 //------------------------------------------------------------

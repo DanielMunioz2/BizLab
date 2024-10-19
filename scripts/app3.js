@@ -51,6 +51,20 @@
         
     //------------------------------------------------------------------------------------------------------------------------------------------
     
+    // Verificar Estado de la Membresía
+    function verificarMembresiaStd(){
+
+        document.querySelector("#form_btnPagarMensu").submit();
+
+    }
+
+    // Realizar Reserva Nueva
+    function nuevaReserva(){
+        
+        document.querySelector("#form_btnRealizaRese").submit();
+
+    }
+    
     // Crear Fecha
     function crearFecha(){
 
@@ -1340,7 +1354,7 @@ if(document.querySelector("#realizarReseCLI-HTML") != null){
         // const btnRealizaRese = document.querySelector(".btnRealizaRese");
 
         // FORMULARIOS
-        const form_btnPagarMensu = document.querySelector("#form_btnPagarMensu");
+        
         // const form_btnRealizaRese = document.querySelector("#form_btnRealizaRese");
 
         // INPUTS
@@ -6373,13 +6387,6 @@ if(document.querySelector("#realizarReseCLI-HTML") != null){
             });
     
         }
-
-        // Botón Pagar Mensualidad
-        if(btnPagarMensualidad != null){
-            btnPagarMensualidad.addEventListener("click", (e)=>{
-            form_btnPagarMensu.submit();
-            })
-        }
     
         // Botón Realizar Reserva
         // if(btnRealizaRese != null){
@@ -6883,10 +6890,6 @@ if(document.querySelector("#usuarioPerfilHTML") != null){
     // CONTENEDORES
     const cuadroOPerfil = document.querySelector(".cuadroPOculto");
 
-    // FORMULARIOS
-    const form_btnPagarMensu = document.querySelector("#form_btnPagarMensu");
-    const form_btnRealizaRese = document.querySelector("#form_btnRealizaRese");
-
     //------------------------------------------------------------------------------------------------------------------------------------------
     
     // Cliente header
@@ -7006,20 +7009,6 @@ if(document.querySelector("#usuarioPerfilHTML") != null){
 
     }
     //-------------------------------------------------------------------------------------------
-
-    // Botón Pagar Mensualidad
-    if(btnPagarMensualidad != null){
-        btnPagarMensualidad.addEventListener("click", (e)=>{
-            form_btnPagarMensu.submit();
-        });
-    }
-
-    // Botón Realizar Reserva
-    if(btnRealizaRese != null){
-        btnRealizaRese.addEventListener("click", (e)=>{
-            form_btnRealizaRese.submit();
-        });
-    }
 
     var arrayDatos = null;
 

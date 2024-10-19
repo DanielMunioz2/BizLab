@@ -62,6 +62,20 @@
   //-----------------------------------------------------------------------------------------------------------------------------
   // FUNCIONES
 
+  // Verificar Estado de la Membresía
+  function verificarMembresiaStd(){
+
+    document.querySelector("#form_btnPagarMensu").submit();
+
+  }
+
+  // Realizar Reserva Nueva
+  function nuevaReserva(){
+      
+      document.querySelector("#form_btnRealizaRese").submit();
+
+  }
+
   // Crear Fecha
   function crearFecha(){
 
@@ -274,10 +288,6 @@ if(document.querySelector("#indexHTML") != null){
     const btnPagarMensualidad = document.querySelector(".btnPagarMensuali");
     const btnRealizaRese = document.querySelector(".btnRealizaRese");
 
-    // FORMULARIOS
-    const form_btnPagarMensu = document.querySelector("#form_btnPagarMensu");
-    const form_btnRealizaRese = document.querySelector("#form_btnRealizaRese");
-
   // Tomando elementos del DOM
   //---------------------------------------------------------------------------------------------------------------------------
 
@@ -344,20 +354,6 @@ if(document.querySelector("#indexHTML") != null){
   
       });
 
-    }
-
-    // Botón Pagar Mensualidad
-    if(btnPagarMensualidad != null){
-      btnPagarMensualidad.addEventListener("click", (e)=>{
-        form_btnPagarMensu.submit();
-      })
-    }
-
-    // Botón Realizar Reserva
-    if(btnRealizaRese != null){
-      btnRealizaRese.addEventListener("click", (e)=>{
-        form_btnRealizaRese.submit();
-      })
     }
 
   // EVENTOS
@@ -2018,10 +2014,6 @@ if(document.querySelector("#serviciosHTML-CLI") != null){
     const btnPagarMensualidad = document.querySelector(".btnPagarMensuali");
     const btnRealizaRese = document.querySelector(".btnRealizaRese");
 
-    // FORMULARIOS
-    const form_btnPagarMensu = document.querySelector("#form_btnPagarMensu");
-    const form_btnRealizaRese = document.querySelector("#form_btnRealizaRese");
-
   //------------------------------------------------------------------------------------------------------------------------------
 
   //------------------------------------------------------------------------------------------------------------------------------
@@ -2184,20 +2176,6 @@ if(document.querySelector("#serviciosHTML-CLI") != null){
   
       });
 
-    }
-
-    // Botón Pagar Mensualidad
-    if(btnPagarMensualidad != null){
-      btnPagarMensualidad.addEventListener("click", (e)=>{
-        form_btnPagarMensu.submit();
-      })
-    }
-
-    // Botón Realizar Reserva
-    if(btnRealizaRese != null){
-      btnRealizaRese.addEventListener("click", (e)=>{
-        form_btnRealizaRese.submit();
-      })
     }
 
   //------------------------------------------------------------------------------------------------------------------------------

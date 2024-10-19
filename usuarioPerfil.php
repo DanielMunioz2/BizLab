@@ -29,15 +29,14 @@
         
         if($_SESSION["tipoUsuario"] == "Miembro"){
             $htmlLi = '
-            <li><a class="btnPagarMensuali">Pagar Mensualidad</a></li>
-            <li><a class="btnRealizaRese">Reservar Unidad</a></li>
-            <li><a href="membresiasCliente.php" class="btnRealizaRese">Membresías</a></li>
+            <li><a onclick="verificarMembresiaStd()" class="btnPagarMensuali">Pagar Mensualidad</a></li>
+            <li><a onclick="nuevaReserva()" class="btnRealizaRese">Reservar Unidad</a></li>
             ';
         }
 
         if($_SESSION["tipoUsuario"] == "Usuario"){
             $htmlLi = '
-            <li><a class="btnRealizaRese">Reservar Unidad</a></li>
+            <li><a onclick="nuevaReserva()" class="btnRealizaRese">Reservar Unidad</a></li>
             <li><a href="membresiasCliente.php" class="btnRealizaRese">Membresías</a></li>
             ';
         }

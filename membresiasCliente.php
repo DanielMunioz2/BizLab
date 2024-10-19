@@ -87,14 +87,14 @@
         
         if($_SESSION["tipoUsuario"] == "Miembro"){
             $htmlLi = '
-            <li><a class="btnPagarMensuali">Pagar Mensualidad</a></li>
-            <li><a class="btnRealizaRese">Reservar Unidad</a></li>
+            <li><a onclick="verificarMembresiaStd()" class="btnPagarMensuali">Pagar Mensualidad</a></li>
+            <li><a onclick="nuevaReserva()" class="btnRealizaRese">Reservar Unidad</a></li>
             ';
         }
 
         if($_SESSION["tipoUsuario"] == "Usuario"){
             $htmlLi = '
-            <li><a class="btnRealizaRese">Reservar Unidad</a></li>
+            <li><a onclick="nuevaReserva()" class="btnRealizaRese">Reservar Unidad</a></li>
             ';
         }
 
@@ -157,6 +157,22 @@
             </div>
         </div> 
         <nav class="headerNav">
+            <form
+                id = "form_btnPagarMensu"
+                name = "form_btnPagarMensu"
+                method = "post"
+                action = "comprobarStdMembresia.php"
+            >
+                <input name="verifiMembresiaEstd" type="hidden" value="true">
+            </form>
+            <form
+                id = "form_btnRealizaRese"
+                name = "form_btnRealizaRese"
+                method = "post"
+                action = "realizarReserva-CLI.php"
+            >
+                <input name="realizaReseCli" type="hidden" value="true">
+            </form>
             <ul class="ulNav">
                 <?php echo $htmlLi; ?>
             </ul>
