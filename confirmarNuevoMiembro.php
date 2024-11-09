@@ -32,19 +32,19 @@
     <link rel="shortcut icon" type="x-icon" href="images/favicon_bizclub.svg">
     <link rel="stylesheet" href="estilos/confirmarNuevoMiembro.css">
 
-    <input type="text" value="<?php echo $nombreM?>" class="inputNom">
-    <input type="text" value="<?php echo $apellidoM?>" class="inputApe">
-    <input type="text" value="<?php echo $documentoM?>" class="inputDocu">
-    <input type="text" value="<?php echo $fechaNM?>" class="inputFecha">
-    <input type="text" value="<?php echo $telefM?>" class="inputTelef">
-    <input type="text" value="<?php echo $direccM?>" class="inputDirecc">
-    <input type="text" value="<?php echo $rolM?>" class="inputRol">
-    <input type="text" value="<?php echo $correoM?>" class="inputCorreo">
-    <input type="text" value="<?php echo $contraM?>" class="inputContra">
-    <input type="text" value="<?php echo $empreM?>" class="inputEmpre">
-    <input type="text" value="<?php echo $nitM?>" class="inputNit">
-    <input type="text" value="<?php echo $correoA?>" class="correoAdmin">
-    <input type="text" value="<?php echo $contraA?>" class="contraAdmin">
+    <input type="hidden" value="<?php echo $nombreM?>" class="inputNom">
+    <input type="hidden" value="<?php echo $apellidoM?>" class="inputApe">
+    <input type="hidden" value="<?php echo $documentoM?>" class="inputDocu">
+    <input type="hidden" value="<?php echo $fechaNM?>" class="inputFecha">
+    <input type="hidden" value="<?php echo $telefM?>" class="inputTelef">
+    <input type="hidden" value="<?php echo $direccM?>" class="inputDirecc">
+    <input type="hidden" value="<?php echo $rolM?>" class="inputRol">
+    <input type="hidden" value="<?php echo $correoM?>" class="inputCorreo">
+    <input type="hidden" value="<?php echo $contraM?>" class="inputContra">
+    <input type="hidden" value="<?php echo $empreM?>" class="inputEmpre">
+    <input type="hidden" value="<?php echo $nitM?>" class="inputNit">
+    <input type="hidden" value="<?php echo $correoA?>" class="correoAdmin">
+    <input type="hidden" value="<?php echo $contraA?>" class="contraAdmin">
     
 </head>
 <body class="body">

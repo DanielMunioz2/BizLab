@@ -22,7 +22,7 @@
         if($tipo=="producto"){
         //
 
-            $query = "SELECT * FROM `bizlabDB`.`productos` WHERE `productos`.`id_producto` = $id";
+            $query = "SELECT * FROM `gdrfkbmy_bizlabDB`.`productos` WHERE `productos`.`id_producto` = $id";
 
             $resultado = $conn->query($query); 
 
@@ -348,7 +348,7 @@
             $precioD = "";
             $precioS = "";
 
-            $query = "SELECT * FROM `bizlabDB`.`unidades` WHERE `unidades`.`id_unidad` = $id";
+            $query = "SELECT * FROM `gdrfkbmy_bizlabDB`.`unidades` WHERE `unidades`.`id_unidad` = $id";
 
             $resultado = $conn->query($query); 
 

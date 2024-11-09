@@ -78,8 +78,7 @@ if(document.querySelector("#reservasAdminHTML") != null){
 
         // Urls
 
-            // var urlInfoAdmin = "http://165.22.176.119/BizLab/consultarInfoAdmin.php";
-            var urlInfoAdmin = "http://localhost/BizLab/consultarInfoAdmin.php";
+            var urlInfoAdmin = "https://gdr.fkb.mybluehost.me/website_bizlabv1/consultarInfoAdmin.php";
         
         //-------------------------------------------------------------------------------------
 
@@ -919,9 +918,8 @@ if(document.querySelector("#reservasAdminHTML") != null){
                                             actualizaEnProceso = 0;
     
                                             clearInterval(intervalTiempoRestante);
+                                            
                                             intervalTiempoRestante = null;
-    
-                                            console.log("La reserva a terminado, el intervalo se ha parado");
     
                                         }
     
@@ -934,8 +932,6 @@ if(document.querySelector("#reservasAdminHTML") != null){
     
                                     actuEstadoDiv = 0;
                                     actualizaEnProceso = 0;
-    
-                                    console.log("Reserva terminada previamente, el intervalo se ha parado");
     
                                 }
 
@@ -1062,9 +1058,8 @@ if(document.querySelector("#reservasAdminHTML") != null){
                                             actualizaEnProceso = 0;
     
                                             clearInterval(intervalTiempoRestante);
+                                            
                                             intervalTiempoRestante = null;
-    
-                                            console.log("La reserva a terminado, el intervalo se ha parado");
     
                                         }
     
@@ -1077,8 +1072,6 @@ if(document.querySelector("#reservasAdminHTML") != null){
     
                                     actuEstadoDiv = 0;
                                     actualizaEnProceso = 0;
-    
-                                    console.log("Reserva terminada previamente, el intervalo se ha parado");
     
                                 }
 
@@ -1094,15 +1087,11 @@ if(document.querySelector("#reservasAdminHTML") != null){
                         actuEstadoDiv = 0;
                         actualizaEnProceso = 0;
 
-                        console.log("Intervalo Reiniciado");
-
                         intervaloTiempoRestanteRese();
     
                     }
 
                 }else{
-
-                    console.log("Primera vuelta");
 
                     // Si existe un intervalo en ese momento, se elimina
                     if(intervalTiempoRestante != null){
@@ -1111,8 +1100,6 @@ if(document.querySelector("#reservasAdminHTML") != null){
                         intervalTiempoRestante = null;
                         actuEstadoDiv = 0;
                         actualizaEnProceso = 0;
-
-                        console.log("Intervalo terminado por salir de reservas o no tener una reserva seleccionada");
 
                     }
 
@@ -1467,7 +1454,7 @@ if(document.querySelector("#reservasAdminHTML") != null){
                     intervalReservasLista = setInterval(()=>{
                         
                         elegidosInputsWhere = 
-                        " JOIN `bizlabDB`.`unidades` ON `bizlabDB`.`reservas`.`id_unidad` = `bizlabDB`.`unidades`.`id_unidad` JOIN `bizlabDB`.`usuarios` ON `bizlabDB`.`reservas`.`id_usuario` = `bizlabDB`.`usuarios`.`id_usuario` JOIN `bizlabDB`.`productos` ON `bizlabDB`.`reservas`.`id_producto` = `bizlabDB`.`productos`.`id_producto` WHERE ";
+                        " JOIN `gdrfkbmy_bizlabDB`.`unidades` ON `gdrfkbmy_bizlabDB`.`reservas`.`id_unidad` = `gdrfkbmy_bizlabDB`.`unidades`.`id_unidad` JOIN `gdrfkbmy_bizlabDB`.`usuarios` ON `gdrfkbmy_bizlabDB`.`reservas`.`id_usuario` = `gdrfkbmy_bizlabDB`.`usuarios`.`id_usuario` JOIN `gdrfkbmy_bizlabDB`.`productos` ON `gdrfkbmy_bizlabDB`.`reservas`.`id_producto` = `gdrfkbmy_bizlabDB`.`productos`.`id_producto` WHERE ";
                         let filtrosFechaWhere = "";
 
                         if(inBusquedaEspecifi.value == "" && hoy == "" && general == ""){
@@ -1710,21 +1697,21 @@ if(document.querySelector("#reservasAdminHTML") != null){
 
                             let valorEspecifi = inBusquedaEspecifi.value;
                             elegidosInputsWhere = 
-                                " JOIN `bizlabDB`.`unidades` ON `bizlabDB`.`reservas`.`id_unidad` = `bizlabDB`.`unidades`.`id_unidad` JOIN `bizlabDB`.`usuarios` ON `bizlabDB`.`reservas`.`id_usuario` = `bizlabDB`.`usuarios`.`id_usuario` JOIN `bizlabDB`.`productos` ON `bizlabDB`.`reservas`.`id_producto` = `bizlabDB`.`productos`.`id_producto` WHERE `reservas`.`codigoReserva` LIKE '%"+valorEspecifi+"%' OR `reservas`.`nombreUser` LIKE '%"+valorEspecifi+"%'";
+                                " JOIN `gdrfkbmy_bizlabDB`.`unidades` ON `gdrfkbmy_bizlabDB`.`reservas`.`id_unidad` = `gdrfkbmy_bizlabDB`.`unidades`.`id_unidad` JOIN `gdrfkbmy_bizlabDB`.`usuarios` ON `gdrfkbmy_bizlabDB`.`reservas`.`id_usuario` = `gdrfkbmy_bizlabDB`.`usuarios`.`id_usuario` JOIN `gdrfkbmy_bizlabDB`.`productos` ON `gdrfkbmy_bizlabDB`.`reservas`.`id_producto` = `gdrfkbmy_bizlabDB`.`productos`.`id_producto` WHERE `reservas`.`codigoReserva` LIKE '%"+valorEspecifi+"%' OR `reservas`.`nombreUser` LIKE '%"+valorEspecifi+"%'";
 
                         }else{
 
                             if(hoy != ""){
 
                                 elegidosInputsWhere = 
-                                    " JOIN `bizlabDB`.`unidades` ON `bizlabDB`.`reservas`.`id_unidad` = `bizlabDB`.`unidades`.`id_unidad` JOIN `bizlabDB`.`usuarios` ON `bizlabDB`.`reservas`.`id_usuario` = `bizlabDB`.`usuarios`.`id_usuario` JOIN `bizlabDB`.`productos` ON `bizlabDB`.`reservas`.`id_producto` = `bizlabDB`.`productos`.`id_producto` WHERE `reservas`.`fechaReserva` = '"+cadenaFechaActual+"'";
+                                    " JOIN `gdrfkbmy_bizlabDB`.`unidades` ON `gdrfkbmy_bizlabDB`.`reservas`.`id_unidad` = `gdrfkbmy_bizlabDB`.`unidades`.`id_unidad` JOIN `gdrfkbmy_bizlabDB`.`usuarios` ON `gdrfkbmy_bizlabDB`.`reservas`.`id_usuario` = `gdrfkbmy_bizlabDB`.`usuarios`.`id_usuario` JOIN `gdrfkbmy_bizlabDB`.`productos` ON `gdrfkbmy_bizlabDB`.`reservas`.`id_producto` = `gdrfkbmy_bizlabDB`.`productos`.`id_producto` WHERE `reservas`.`fechaReserva` = '"+cadenaFechaActual+"'";
 
                             }else{
 
                                 if(general != ""){
 
                                     elegidosInputsWhere = 
-                                    " JOIN `bizlabDB`.`unidades` ON `bizlabDB`.`reservas`.`id_unidad` = `bizlabDB`.`unidades`.`id_unidad` JOIN `bizlabDB`.`usuarios` ON `bizlabDB`.`reservas`.`id_usuario` = `bizlabDB`.`usuarios`.`id_usuario` JOIN `bizlabDB`.`productos` ON `bizlabDB`.`reservas`.`id_producto` = `bizlabDB`.`productos`.`id_producto` ";
+                                    " JOIN `gdrfkbmy_bizlabDB`.`unidades` ON `gdrfkbmy_bizlabDB`.`reservas`.`id_unidad` = `gdrfkbmy_bizlabDB`.`unidades`.`id_unidad` JOIN `gdrfkbmy_bizlabDB`.`usuarios` ON `gdrfkbmy_bizlabDB`.`reservas`.`id_usuario` = `gdrfkbmy_bizlabDB`.`usuarios`.`id_usuario` JOIN `gdrfkbmy_bizlabDB`.`productos` ON `gdrfkbmy_bizlabDB`.`reservas`.`id_producto` = `gdrfkbmy_bizlabDB`.`productos`.`id_producto` ";
                                 
                                 }
 
@@ -1733,8 +1720,6 @@ if(document.querySelector("#reservasAdminHTML") != null){
                         }
 
                     }
-
-                    // console.log(elegidosInputsWhere);
 
                     let formReservasLista = new FormData();
 

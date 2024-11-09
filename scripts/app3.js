@@ -4,20 +4,13 @@
     //------------------------------------------------------------------------------------------------------------------------------------------
     // Variables Globales
 
-    // var urlInfoAdmin = "http://165.22.176.119/BizLab/consultarInfoAdmin.php";
-    // var urlConfirTDC = "http://165.22.176.119/BizLab/confirTarjetaCredito.php";
-    // var urlCreaFacMembre = "http://165.22.176.119/BizLab/registrarFacMembre.php";
-    // var urlGuardaTokenUser = "http://165.22.176.119/BizLab/guardarMiembroEpayco.php";
-    // var urlCrearSub = "http://165.22.176.119/BizLab/crearSubNueva.php";
-    // var urlCrearUserToken = "http://165.22.176.119/BizLab/crearUserToken.php";
-    // var urlModoCLienteData = "http://165.22.176.119/BizLab/consultarInfoCliente.php";
-    var urlInfoAdmin = "http://localhost/BizLab/consultarInfoAdmin.php";
-    var urlConfirTDC = "http://localhost/BizLab/confirTarjetaCredito.php";
-    var urlCreaFacMembre = "http://localhost/BizLab/registrarFacMembre.php";
-    var urlGuardaTokenUser = "http://localhost/BizLab/guardarMiembroEpayco.php";
-    var urlCrearSub = "http://localhost/BizLab/crearSubNueva.php";
-    var urlCrearUserToken = "http://localhost/BizLab/crearUserToken.php";
-    var urlModoCLienteData = "http://localhost/BizLab/consultarInfoCliente.php";
+    var urlInfoAdmin = "https://gdr.fkb.mybluehost.me/website_bizlabv1/consultarInfoAdmin.php";
+    var urlConfirTDC = "https://gdr.fkb.mybluehost.me/website_bizlabv1/confirTarjetaCredito.php";
+    var urlCreaFacMembre = "https://gdr.fkb.mybluehost.me/website_bizlabv1/registrarFacMembre.php";
+    var urlGuardaTokenUser = "https://gdr.fkb.mybluehost.me/website_bizlabv1/guardarMiembroEpayco.php";
+    var urlCrearSub = "https://gdr.fkb.mybluehost.me/website_bizlabv1/crearSubNueva.php";
+    var urlCrearUserToken = "https://gdr.fkb.mybluehost.me/website_bizlabv1/crearUserToken.php";
+    var urlModoCLienteData = "https://gdr.fkb.mybluehost.me/website_bizlabv1/consultarInfoCliente.php";
 
     var mesesFactura = {
         1 : "enero",
@@ -700,8 +693,6 @@ if(document.querySelector(".membreCliDetailHTML") != null){
                   .then((response) => response.json())
                   .then((data) => {
 
-                    console.log(data);
-
                     // Tarjeta Inexistente
                     if(data[2]["status"] == false){
                         
@@ -1076,8 +1067,6 @@ if(document.querySelector(".membreCliDetailHTML") != null){
                         // Función 1: Crear el token del usuario
                         function userNewToken(tokenUserEpayco, creada){
 
-                            console.log(creada);
-
                             tokenUserNewG = tokenUserEpayco;
 
                             let membreCod = document.querySelector(".membreCodigo").value;
@@ -1142,9 +1131,6 @@ if(document.querySelector(".membreCliDetailHTML") != null){
                             })
                                 .then((response) => response.json())
                                 .then((datas) => {
-
-                                    console.log("Pago Mensualidad: ")
-                                    console.log(datas);
 
                                     let refEpayco = datas.data.ref_payco;
                                     let franquiciaTarje = datas.data.franquicia;
@@ -1253,7 +1239,6 @@ if(document.querySelector(".membreCliDetailHTML") != null){
 
                                 }else{
 
-                                    console.log("PAGO SIGUIENTE MENSUALIDAD: ");
                                     userNewToken(tokenUser, true);
 
                                 }
@@ -2049,8 +2034,6 @@ if(document.querySelector("#realizarReseCLI-HTML") != null){
                                 String(Number(fechaSeparadaGene[2]))+
                                 String(Number(fechaSeparadaGene[1]))+
                                 fechaSeparadaGene[0];
-                            
-                            console.log(diaNumeroId);
 
                             if(numeroSemana > 0){
 
@@ -2234,14 +2217,6 @@ if(document.querySelector("#realizarReseCLI-HTML") != null){
                             
                             let cadenaDiasDia = data[1];
         
-                            console.log(cadenaDiasDia);
-                            console.log(diaInicio);
-                            console.log(diaFinal);
-                            console.log(diaInicioSuma);
-                            console.log(diaFinalSuma);
-                            console.log(fechaActualCadena);
-                            console.log(diaActualSuma);
-        
                             //------------------------------------------------------------------------------------------
         
                             // Confirmando Errores Posibles
@@ -2358,8 +2333,6 @@ if(document.querySelector("#realizarReseCLI-HTML") != null){
                                     
                                     const rangoUnidadesLisSema = document.createRange();
 
-                                    console.log("Dias: "+cadenaDiasDia);
-
                                     let formDispoReseXD = new FormData();
         
                                     formDispoReseXD.append("fechaDiaElegidaXD", cadenaDiasDia);
@@ -2370,8 +2343,6 @@ if(document.querySelector("#realizarReseCLI-HTML") != null){
                                     })
                                         .then((response) => response.json())
                                         .then((data) => {
-
-                                            console.log(data);
 
                                             for(let i = 0; i < data.length; i++){
                                                 
@@ -2412,8 +2383,6 @@ if(document.querySelector("#realizarReseCLI-HTML") != null){
                                             }
 
                                             let unidadesDispoXDStr = unidadesDispoXD.toString();
-
-                                            console.log("Resultado: "+unidadesDispoXDStr);
 
                                             if(unidadesDispoXDStr != ""){
 
@@ -4463,16 +4432,6 @@ if(document.querySelector("#realizarReseCLI-HTML") != null){
                     : minuS;
 
                 horaSaleXH = horaS+":"+minuS+" "+meriS;
-                //-----------------------------------------------------------------------------------------
-
-                // console.log(sumaFechaReseXH);
-                // console.log(sumaFechaActualXH);
-                // console.log(fechaReservaXH);
-                // console.log(fechaActualXH);
-                // console.log(horaEntraSumaXH);
-                // console.log(horaSaleSumaXH);
-                // console.log(horaEntraXH);
-                // console.log(horaSaleXH);
 
                 //-------------------------------------------
                 // Confirmando datos y filtrando errores
@@ -4893,7 +4852,6 @@ if(document.querySelector("#realizarReseCLI-HTML") != null){
                                 }
                                 
                                 unidadesProdDispo = unidProdDispoArray.toString();
-                                console.log("ejecutando");
 
                                 if(
                                     horaDispo == true &&
@@ -5432,16 +5390,6 @@ if(document.querySelector("#realizarReseCLI-HTML") != null){
                     : minuS;
 
                 horaSaleXH = horaS+":"+minuS+" "+meriS;
-                //-----------------------------------------------------------------------------------------
-
-                // console.log(sumaFechaReseXH);
-                // console.log(sumaFechaActualXH);
-                // console.log(fechaReservaXH);
-                // console.log(fechaActualXH);
-                // console.log(horaEntraSumaXH);
-                // console.log(horaSaleSumaXH);
-                // console.log(horaEntraXH);
-                // console.log(horaSaleXH);
 
                 //-------------------------------------------
                 // Confirmando datos y filtrando errores
@@ -5862,7 +5810,6 @@ if(document.querySelector("#realizarReseCLI-HTML") != null){
                                 }
                                 
                                 unidadesProdDispo = unidProdDispoArray.toString();
-                                console.log("ejecutando");
 
                                 if(
                                     horaDispo == true &&
@@ -6321,17 +6268,6 @@ if(document.querySelector("#realizarReseCLI-HTML") != null){
     //----------------------------------------------------------------------------------------------------------------------------------------------
     // EVENTOS - INICIO
 
-        // (Bloquear Boton CTRL, CTRL+F5)
-        window.addEventListener("keypress", function(event){
-
-            console.log(event);
-            // if (event.keyCode == ){
-            //     event.preventDefault();
-            //     alert("Acción NO Permitida");
-            // }
-
-        }, false);
-
         // (Click fuera) ocultar cuadro perfil opciones
         if(document.querySelector("#cuadroPOculto") != null){
 
@@ -6780,8 +6716,6 @@ if(document.querySelector("#realizarReseCLI-HTML") != null){
 
                 //----------------------------------------------------------------------------------------
                 
-                console.log(precioTotal);
-                
                 var dataReserva = {
 
                     //Parametros compra (obligatorio)
@@ -6833,10 +6767,8 @@ if(document.querySelector("#realizarReseCLI-HTML") != null){
                     extra30: tipoUser,
                     extra31: idUserIni,
 
-                    // confirmation: "http://165.22.176.119/BizLab/confirmacionPage.php",
-                    // response: "http://165.22.176.119/BizLab/transaccionExitosa.php",
-                    confirmation: "http://127.0.0.1/BizLab/confirmacionPage.php",
-                    response: "http://127.0.0.1/BizLab/transaccionExitosa.php",
+                    confirmation: "https://gdr.fkb.mybluehost.me/website_bizlabv1/confirmacionPage.php",
+                    response: "https://gdr.fkb.mybluehost.me/website_bizlabv1/transaccionExitosa.php",
 
                     //Atributos cliente
                     name_billing: String(nombreUser),
@@ -7203,13 +7135,6 @@ if(document.querySelector("#usuarioPerfilHTML") != null){
                     imagenPdt = btnSubir.files[0];
                 }
 
-                console.log(userId);
-                console.log(document.querySelector(".inputEmail").value);
-                console.log(document.querySelector(".inputCelular").value);
-                console.log(document.querySelector(".inputDirecc").value);
-                console.log(imagenNombre);
-                console.log(genero);
-
                 formActuPerfil.append("idUserActuPerfil", userId);
                 formActuPerfil.append("emailActuPerfil", document.querySelector(".inputEmail").value);
                 formActuPerfil.append("celularActuPerfil", document.querySelector(".inputCelular").value);
@@ -7227,8 +7152,6 @@ if(document.querySelector("#usuarioPerfilHTML") != null){
                 })
                     .then((response) => response.json())
                     .then((data) => {
-                        
-                        console.log(data);
 
                     })
                     .catch((err) => console.log(err));

@@ -56,7 +56,7 @@
             $membreIdEpayco = $membreIdEpayco[0];
 
             $resultMembresia = $conn->query(
-                "SELECT `membreFechaPagoP` FROM `bizlabDB`.`membresiauser`
+                "SELECT `membreFechaPagoP` FROM `gdrfkbmy_bizlabDB`.`membresiauser`
                 WHERE `membresiauser`.`membreIdEpayco` = '$membresiaIDEpayco';"
             );
 
@@ -65,7 +65,7 @@
             $fechaFacCaduca = date("Y-m-d",strtotime($resultMembresia["membreFechaPagoP"]."+ 30 days")); 
             
             $insertFactu = $conn->query(
-                "INSERT INTO `bizlabDB`.`facturas` 
+                "INSERT INTO `gdrfkbmy_bizlabDB`.`facturas` 
                 (`refEpayco`, `epaycoRespuesta`, `epaycoMotivo`, `factuEpayco`, 
                 `facturaCodigo`, `facturaSerie`, `fechaFactura`, `horaFactura`, 
                 `fechaFacturaV`, `estadoFactura`, `precioFactura`, `factuSubTotal`, 
@@ -86,7 +86,7 @@
             $idinsertadoFac = $conn->insert_id;
 
             $updateMembreUser = $conn->query(
-                "UPDATE `bizlabDB`.`membresiauser` 
+                "UPDATE `gdrfkbmy_bizlabDB`.`membresiauser` 
                 SET `membreFechaPagoP` = '$fechaFacCaduca' 
                 WHERE (`membreIdEpayco` = '$membreIdEpayco');"
             );
@@ -103,7 +103,7 @@
             $estadoMembre = $_POST["estadoMembre"];
 
             $resultUpdateMembre = $conn->query(
-                "UPDATE `bizlabDB`.`membresiauser` SET `membreEstado` = '$estadoMembre' WHERE (`membreIdEpayco` = '$idMembresiaUser');"
+                "UPDATE `gdrfkbmy_bizlabDB`.`membresiauser` SET `membreEstado` = '$estadoMembre' WHERE (`membreIdEpayco` = '$idMembresiaUser');"
             );
 
             echo json_encode('Cuenta '.$estadoMembre, JSON_UNESCAPED_UNICODE);
@@ -117,14 +117,14 @@
             $idMembresia = $_POST["idMembreEpayco"];
 
             $resultMembresia = $conn->query(
-                "SELECT `membreFechaPagoP` FROM `bizlabDB`.`membresiauser`
+                "SELECT `membreFechaPagoP` FROM `gdrfkbmy_bizlabDB`.`membresiauser`
                 WHERE `membresiauser`.`membreIdEpayco` = '$idMembresia';"
             );
 
             $resultMembresia = $resultMembresia->fetch_assoc();
 
             $resultFactura = $conn->query(
-                "SELECT * FROM `bizlabDB`.`facturas`
+                "SELECT * FROM `gdrfkbmy_bizlabDB`.`facturas`
                 WHERE `facturas`.`fechaFactura` = '".$resultMembresia["membreFechaPagoP"]."'
                 AND `facturas`.`factuEpayco` LIKE '%".$idMembresia."%';"
             );
@@ -142,7 +142,7 @@
         if(isset($_POST["serviciosCLIMostrar"])){
 
             $resultServices = $conn->query(
-                "SELECT * FROM `bizlabDB`.`productos`;"
+                "SELECT * FROM `gdrfkbmy_bizlabDB`.`productos`;"
             );
 
             $numRowsServi = $resultServices->num_rows;
@@ -187,7 +187,7 @@
 
                 $resultadoReservas = 
                 $conn->query(
-                    "SELECT * FROM `bizlabDB`.`reservas`
+                    "SELECT * FROM `gdrfkbmy_bizlabDB`.`reservas`
                     WHERE `reservas`.`serieReserva` = '".$fecha."'
                     AND `reservas`.`estadoReserva` = 'Pendiente'
                     $idProducto
@@ -199,7 +199,7 @@
 
                 $resultadoReservas = 
                 $conn->query(
-                    "SELECT * FROM `bizlabDB`.`reservas`
+                    "SELECT * FROM `gdrfkbmy_bizlabDB`.`reservas`
                     WHERE `reservas`.`estadoReserva` = 'Pendiente'
                     $idProducto;");
 
@@ -229,7 +229,7 @@
             $nombre = $_POST["pdtSelectReseNew"];
 
             $resultadoPdt = $conn->query(
-                "SELECT * FROM `bizlabDB`.`productos` 
+                "SELECT * FROM `gdrfkbmy_bizlabDB`.`productos` 
                 WHERE `productos`.`produNombre` 
                 LIKE '%".$nombre."%'");
 
@@ -275,7 +275,7 @@
             if($idPdt != null && is_numeric($idPdt)){
 
                 $resultPdtSele = $conn->query(
-                    "SELECT * FROM `bizlabDB`.`productos` 
+                    "SELECT * FROM `gdrfkbmy_bizlabDB`.`productos` 
                     WHERE `productos`.`id_producto` = $idPdt");
     
                 $numRowsPdtSele = $resultPdtSele->num_rows;
@@ -359,7 +359,7 @@
             $nomMiembro = $_POST["miemSelectReseNew"];
 
             $resultadoMiem = $conn->query(
-                "SELECT * FROM `bizlabDB`.`usuarios` 
+                "SELECT * FROM `gdrfkbmy_bizlabDB`.`usuarios` 
                 WHERE `usuarios`.`user_nombre` 
                 LIKE '%".$nomMiembro."%'
                 OR `usuarios`.`user_apellido`
@@ -408,7 +408,7 @@
             if($idMiem != null && is_numeric($idMiem)){
 
                 $resultMiemSele = $conn->query(
-                    "SELECT * FROM `bizlabDB`.`usuarios` 
+                    "SELECT * FROM `gdrfkbmy_bizlabDB`.`usuarios` 
                     WHERE `usuarios`.`id_usuario` = $idMiem");
     
                 $numRowsMiemSele = $resultMiemSele->num_rows;
@@ -455,7 +455,7 @@
             if($idUnid != null && is_numeric($idUnid)){
 
                 $resultUnidSele = $conn->query(
-                    "SELECT * FROM `bizlabDB`.`unidades` 
+                    "SELECT * FROM `gdrfkbmy_bizlabDB`.`unidades` 
                     WHERE `unidades`.`id_unidad` = $idUnid");
 
                 $numRowsUnidSele = $resultUnidSele->num_rows;
@@ -499,7 +499,7 @@
             // Reserva por Día
             $resultadoReser = 
                 $conn->query(
-                    "SELECT * FROM `bizlabDB`.`reservas`
+                    "SELECT * FROM `gdrfkbmy_bizlabDB`.`reservas`
                     WHERE `reservas`.`reserDiaFechas` LIKE '%".$fechaRese."%';");
             
             $numRowsRese = $resultadoReser->num_rows;
@@ -517,7 +517,7 @@
             // Reservas por Semana
             $resultadoReser = 
                 $conn->query(
-                    "SELECT * FROM `bizlabDB`.`reservas`
+                    "SELECT * FROM `gdrfkbmy_bizlabDB`.`reservas`
                     WHERE `reservas`.`reserSemanaFechas` LIKE '%".$fechaRese."%';");
             
             $numRowsRese = $resultadoReser->num_rows;
@@ -535,7 +535,7 @@
             // Reserva por hora
             $resultadoReser = 
                 $conn->query(
-                    "SELECT * FROM `bizlabDB`.`reservas`
+                    "SELECT * FROM `gdrfkbmy_bizlabDB`.`reservas`
                     WHERE `reservas`.`fechaReserva` = '".$fechaRese."'
                     AND `reservas`.`reserTipo` = 'hora';");
             
@@ -568,7 +568,7 @@
 
                 $resultadoUnidDispo = 
                     $conn->query(
-                        "SELECT * FROM `bizlabDB`.`unidades`
+                        "SELECT * FROM `gdrfkbmy_bizlabDB`.`unidades`
                         WHERE `unidades`.`id_unidad` IN ($unidDispo);"
                     );
 
@@ -611,7 +611,7 @@
 
                     // Reservas por HORA
                     $resultadoHora = $conn->query(
-                        "SELECT * FROM `bizlabDB`.`reservas`
+                        "SELECT * FROM `gdrfkbmy_bizlabDB`.`reservas`
                         WHERE `reservas`.`reserTipo` = 'hora'
                         AND `reservas`.`fechaReserva` = '".$fechaReseXHora."';"
                     );
@@ -631,7 +631,7 @@
 
                     // Reservas por DÍA
                     $resultadoDia = $conn->query(
-                        "SELECT * FROM `bizlabDB`.`reservas`
+                        "SELECT * FROM `gdrfkbmy_bizlabDB`.`reservas`
                         WHERE `reservas`.`reserDiaFechas` LIKE '%".$fechaReseXHora."%';"
                     );
 
@@ -650,7 +650,7 @@
 
                     // Reservas por SEMANA
                     $resultadoSema = $conn->query(
-                        "SELECT * FROM `bizlabDB`.`reservas`
+                        "SELECT * FROM `gdrfkbmy_bizlabDB`.`reservas`
                         WHERE `reservas`.`reserSemanaFechas` LIKE '%".$fechaReseXHora."%';"
                     );
 
@@ -716,7 +716,7 @@
                         // Reservs por Semana
 
                         $resultadoHora = $conn->query(
-                            "SELECT * FROM `bizlabDB`.`reservas`
+                            "SELECT * FROM `gdrfkbmy_bizlabDB`.`reservas`
                             WHERE `reservas`.`reserTipo` = 'semana'
                             AND ".$likeWhereSema.";"
                         );
@@ -738,7 +738,7 @@
                         // Reservas por Día
 
                         $resultadoHora = $conn->query(
-                            "SELECT * FROM `bizlabDB`.`reservas`
+                            "SELECT * FROM `gdrfkbmy_bizlabDB`.`reservas`
                             WHERE ".$likeWhereDia.";"
                         );
 
@@ -759,7 +759,7 @@
                         // Reservas por Hora
 
                         $resultadoHora = $conn->query(
-                            "SELECT * FROM `bizlabDB`.`reservas`
+                            "SELECT * FROM `gdrfkbmy_bizlabDB`.`reservas`
                             WHERE `reservas`.`reserTipo` = 'hora'
                             AND `reservas`.`fechaReserva` IN (".$likeWhereDia2.");"
                         );
@@ -848,7 +848,7 @@
                 // Reservas por Hora
 
                     $resultadoHora = $conn->query(
-                        "SELECT * FROM `bizlabDB`.`reservas`
+                        "SELECT * FROM `gdrfkbmy_bizlabDB`.`reservas`
                         WHERE `reservas`.`reserTipo` = 'hora'
                         AND `reservas`.`fechaReserva` IN (".$fechaCompletaDiaHora.");"
                     );
@@ -870,7 +870,7 @@
                 // Reservas por Día
 
                     $resultadoHora = $conn->query(
-                        "SELECT * FROM `bizlabDB`.`reservas`
+                        "SELECT * FROM `gdrfkbmy_bizlabDB`.`reservas`
                         WHERE ".$likeWhereDia.";"
                     );
 
@@ -891,7 +891,7 @@
                 // Reservs por Semana
 
                     $resultadoHora = $conn->query(
-                        "SELECT * FROM `bizlabDB`.`reservas`
+                        "SELECT * FROM `gdrfkbmy_bizlabDB`.`reservas`
                         WHERE ".$likeWhereSema.";"
                     );
 

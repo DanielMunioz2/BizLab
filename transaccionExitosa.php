@@ -118,8 +118,7 @@
       </div>
     </div>
   </div>
-  <!--<form method="post" action="http://165.22.176.119/BizLab/registroReseFacNewRese.php" id="indexRegistroFacRese" name="indexRegistroFacRese">-->
-  <form method="post" action="http://127.0.0.1/BizLab/registroReseFacNewRese.php" id="indexRegistroFacRese" name="indexRegistroFacRese">
+  <form method="post" action="https://gdr.fkb.mybluehost.me/website_bizlabv1/registroReseFacNewRese.php" id="indexRegistroFacRese" name="indexRegistroFacRese">
 
     <input type="hidden" name="tituloRese" id="tituloRese" value="">
     <input type="hidden" name="activiRese" id="activiRese" value="">

@@ -9,7 +9,7 @@
             $contra1 = $_POST["contra1"];
             $correo = $_POST["correo"];
     
-            $conn->query("UPDATE `bizlabDB`.`usuarios` SET `usuarios`.`user_contrasenia` = '".$contra1."' WHERE `bizlabDB`.`usuarios`.`user_correo` = '".$correo."';");
+            $conn->query("UPDATE `gdrfkbmy_bizlabDB`.`usuarios` SET `usuarios`.`user_contrasenia` = '".$contra1."' WHERE `gdrfkbmy_bizlabDB`.`usuarios`.`user_correo` = '".$correo."';");
     
             $row =  $conn->insert_id;
 
@@ -33,7 +33,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Nueva Contraseña</title>
         <link rel="shortcut icon" type="x-icon" href="images/favicon_bizclub.svg">
-        <link rel="stylesheet" href="estilos/recuperarContraseña2.css">
+        <link rel="stylesheet" href="estilos/recuperarContrasenia2.css">
     </head>
     <body class="body">
         <main class="main">

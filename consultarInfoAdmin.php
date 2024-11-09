@@ -20,7 +20,7 @@
             //Consulta 1: Facturas 
 
             $resultadoFactuas = $conn->query(
-                "SELECT * FROM `bizlabDB`.`facturas`;"
+                "SELECT * FROM `gdrfkbmy_bizlabDB`.`facturas`;"
             );
 
             $numRowsFactu = $resultadoFactuas->num_rows;
@@ -40,7 +40,7 @@
             //Consulta 2: Miembros
 
             $resultadoMiembros = $conn->query(
-                "SELECT * FROM `bizlabDB`.`usuarios`
+                "SELECT * FROM `gdrfkbmy_bizlabDB`.`usuarios`
                 WHERE `usuarios`.`user_rol` = 'Miembro';"
             );
 
@@ -61,7 +61,7 @@
             //Consulta 3: Reservas
 
             $resultadoReservas = $conn->query(
-                "SELECT * FROM `bizlabDB`.`reservas`
+                "SELECT * FROM `gdrfkbmy_bizlabDB`.`reservas`
                 WHERE `reservas`.`estadoReserva` = 'Pendiente' 
                 OR `reservas`.`estadoReserva` = 'En Proceso';"
             );
@@ -88,7 +88,7 @@
         if(isset($_POST["formReseActuGene"])){
 
             $resultReseActuGene = $conn->query(
-                "SELECT * FROM `bizlabDB`.`reservas`
+                "SELECT * FROM `gdrfkbmy_bizlabDB`.`reservas`
                 WHERE `reservas`.`estadoReserva` = 'Pendiente'
                 OR `reservas`.`estadoReserva` = 'En Proceso';"
             );
@@ -116,7 +116,7 @@
             $idRese = $_POST["idReseEstado"];
             
             $resultReseEstado = $conn->query(
-                "SELECT `estadoReserva` FROM `bizlabDB`.`reservas`
+                "SELECT `estadoReserva` FROM `gdrfkbmy_bizlabDB`.`reservas`
                 WHERE `reservas`.`id_reserva` = ".intval($idRese).";"
             );
 
@@ -140,7 +140,7 @@
             $idUnidades= $_POST["unidadesPdtNRAdmin"];
 
             $resultUnidades = $conn->query(
-                "SELECT * FROM `bizlabDB`.`unidades`
+                "SELECT * FROM `gdrfkbmy_bizlabDB`.`unidades`
                 WHERE `unidades`.`id_unidad` IN (".$idUnidades.");"
             );
 
@@ -167,7 +167,7 @@
             $nombre= $_POST["nombrePdtNRAdmin"];
 
             $resultPdt = $conn->query(
-                "SELECT * FROM `bizlabDB`.`productos`
+                "SELECT * FROM `gdrfkbmy_bizlabDB`.`productos`
                 WHERE `productos`.`produNombre` LIKE '%".$nombre."%';"
             );
 
@@ -217,7 +217,7 @@
                 move_uploaded_file($ImagenPrinTemp, "imagesUser/".$ImagenPrin);
 
                 $resultUpdateUser = $conn->query(
-                    "UPDATE `bizlabDB`.`usuarios` 
+                    "UPDATE `gdrfkbmy_bizlabDB`.`usuarios` 
                     SET 
                     `user_correo` = '".$email."',
                     `user_celular` = ".intval($celular).",
@@ -231,7 +231,7 @@
             }else{
 
                 $resultUpdateUser = $conn->query(
-                    "UPDATE `bizlabDB`.`usuarios` 
+                    "UPDATE `gdrfkbmy_bizlabDB`.`usuarios` 
                     SET 
                     `user_correo` = '".$email."',
                     `user_celular` = ".intval($celular).",
@@ -265,7 +265,7 @@
             {
 
                 $resultMiembroNRA = $conn->query(
-                    "SELECT * FROM `bizlabDB`.`usuarios`
+                    "SELECT * FROM `gdrfkbmy_bizlabDB`.`usuarios`
                     WHERE `usuarios`.`id_usuario` LIKE '%".$idMiembro."%';"
                 );
 
@@ -303,7 +303,7 @@
             {
 
                 $resultMiembrosListaNRA = $conn->query(
-                    "SELECT * FROM `bizlabDB`.`usuarios`
+                    "SELECT * FROM `gdrfkbmy_bizlabDB`.`usuarios`
                     WHERE `usuarios`.`user_nombre` LIKE '%".$nombreMiembro."%'
                     OR `usuarios`.`user_apellido` LIKE '%".$nombreMiembro."%';"
                 );
@@ -361,7 +361,7 @@
             $unidadesSele = $_POST["unidadesNRA"];
 
             $queryUnid = 
-                "SELECT * FROM `bizlabDB`.`unidades` 
+                "SELECT * FROM `gdrfkbmy_bizlabDB`.`unidades` 
                 WHERE `unidades`.`id_unidad` IN (".$unidadesSele.");";
             
             $resultUnidades = $conn->query($queryUnid);
@@ -392,7 +392,7 @@
             $fechaFinal =  date("Y-m-d",strtotime($fechaInicio."+ ".$diasCant." days")); 
 
             $queryReservas = 
-                "SELECT * FROM `bizlabDB`.`reservas`
+                "SELECT * FROM `gdrfkbmy_bizlabDB`.`reservas`
                 WHERE `reservas`.`fechaReserva` = '".$fechaInicio."'
                 OR `reservas`.`reserDiaFinal` = '".$fechaInicio."'
                 OR `reservas`.`reserDiaFechas` LIKE '%".$fechaInicio."%'
@@ -428,7 +428,7 @@
             $fechaFinal =  $_POST["fechaFinal"]; 
 
             $queryReservas = 
-                "SELECT * FROM `bizlabDB`.`reservas`
+                "SELECT * FROM `gdrfkbmy_bizlabDB`.`reservas`
                 WHERE `reservas`.`fechaReserva` = '".$fechaInicio."'
                 OR `reservas`.`reserDiaFinal` = '".$fechaInicio."'
                 OR `reservas`.`reserDiaFechas` LIKE '%".$fechaInicio."%'
@@ -520,7 +520,7 @@
             }
 
             $queryMes = 
-                "SELECT * FROM `bizlabDB`.`reservas`
+                "SELECT * FROM `gdrfkbmy_bizlabDB`.`reservas`
                 WHERE $queryMesWhere;";
 
             $resultFechaMes = $conn->query($queryMes);
@@ -622,7 +622,7 @@
             $fechaV = date("Y-m-d",strtotime($fecha."+ 7 days")); 
 
             $resultNombre = $conn->query(
-                "SELECT * FROM `bizlabDB`.`usuarios` 
+                "SELECT * FROM `gdrfkbmy_bizlabDB`.`usuarios` 
                 WHERE `usuarios`.`id_usuario` = ".intval($idMiembro).";");
 
             $resultNombre2 = $resultNombre->fetch_assoc();
@@ -630,7 +630,7 @@
             $membresia = $resultNombre2["user_membresia"];
 
             $resultadoInserReseNRA = $conn->query(
-                "INSERT INTO `bizlabDB`.`reservas`
+                "INSERT INTO `gdrfkbmy_bizlabDB`.`reservas`
                 (`codigoReserva`, `serieReserva`, `estadoReserva`, 
                 `fechaCompraReser`, `horaCompraReser`, `reserTipo`, `fechaReserva`, 
                 `horaEntradaR`, `horaSalidaR`, `reserHorasDuracion`, 
@@ -649,7 +649,7 @@
             $ultimaReseInsertada =  $conn->insert_id;
 
             $resultInsertFactuNRA = $conn->query(
-                "INSERT INTO `bizlabDB`.`facturas`
+                "INSERT INTO `gdrfkbmy_bizlabDB`.`facturas`
                 (`facturaCodigo`, `facturaSerie`, `fechaFactura`, `horaFactura`, 
                 `fechaFacturaV`, `estadoFactura`, `precioFactura`, `factuSubTotal`, 
                 `ivaFactura`, `descuFactura`, `montoFactuTotal`, 
@@ -664,7 +664,7 @@
             $ultimaFactuInsertada =  $conn->insert_id;
 
             $resultInsertHistoNRA = $conn->query(
-                "INSERT INTO `bizlabDB`.`historial`
+                "INSERT INTO `gdrfkbmy_bizlabDB`.`historial`
                 (tarea_fOrigen, tarea_hOrigen, tarea_fechaEje, tarea_fechaFEje, 
                 tarea_horaEje, tarea_horaFEje, tarea_tipo, tarea_estado, 
                 tarea_usuario, tarea_producto, tarea_mensaje, tarea_membresiaUser, 
@@ -692,7 +692,7 @@
             $arrayReseOMiembros = [];
 
             $resultOtrosM = $conn->query(
-                "SELECT * FROM `bizlabDB`.`usuarios`
+                "SELECT * FROM `gdrfkbmy_bizlabDB`.`usuarios`
                 WHERE `usuarios`.`id_usuario` IN (".$idOtrosM.");"
             );
 
@@ -722,7 +722,7 @@
             $estado = $_POST["actuReseEstado"];
 
             $resultadoReseActu = $conn->query(
-                "UPDATE `bizlabDB`.`reservas` SET `estadoReserva` = '".$estado."' WHERE (`id_reserva` = '".$idRese."');"
+                "UPDATE `gdrfkbmy_bizlabDB`.`reservas` SET `estadoReserva` = '".$estado."' WHERE (`id_reserva` = '".$idRese."');"
             );
 
             echo json_encode("Reserva Actualizada", JSON_UNESCAPED_UNICODE);
@@ -736,12 +736,12 @@
             $fecha = $_POST["fechaDia"];
 
             $resultado = $conn->query(
-                "SELECT * FROM `bizlabDB`.`reservas` 
-                JOIN `bizlabDB`.`usuarios` ON
+                "SELECT * FROM `gdrfkbmy_bizlabDB`.`reservas` 
+                JOIN `gdrfkbmy_bizlabDB`.`usuarios` ON
                 `usuarios`.`id_usuario` = `reservas`.`id_usuario`
-                JOIN `bizlabDB`.`unidades` ON
+                JOIN `gdrfkbmy_bizlabDB`.`unidades` ON
                 `unidades`.`id_unidad` = `reservas`.`id_unidad`
-                JOIN `bizlabDB`.`productos` ON
+                JOIN `gdrfkbmy_bizlabDB`.`productos` ON
                 `productos`.`id_producto` = `reservas`.`id_producto`
                 WHERE (`reservas`.`fechaReserva` = '".$fecha."' 
                 AND `reservas`.`estadoReserva` = 'Pendiente')
@@ -816,8 +816,8 @@
                 $fecha4 = $mesP."-".$fechaAño;
             }
 
-            $queryMesReservas = "SELECT * FROM `bizlabDB`.`reservas`
-            INNER JOIN `bizlabDB`.`usuarios` 
+            $queryMesReservas = "SELECT * FROM `gdrfkbmy_bizlabDB`.`reservas`
+            INNER JOIN `gdrfkbmy_bizlabDB`.`usuarios` 
             ON `usuarios`.`id_usuario` = `reservas`.`id_usuario`
             WHERE `reservas`.`serieReserva` = '".$fecha2."'
             OR `reservas`.`serieReserva` = '".$fecha3."'
@@ -910,7 +910,7 @@
             $ImagenPrinTemp = $_FILES["prodImg"]['tmp_name'];
             move_uploaded_file($ImagenPrinTemp, "images/productosImages/".$ImagenPrin);
             
-            $query = "UPDATE `bizlabDB`.`productos` SET 
+            $query = "UPDATE `gdrfkbmy_bizlabDB`.`productos` SET 
             `productos`.`produNombre` = '$prodNom', 
             `productos`.`produCategoria` = '$prodCatego',
             `productos`.`produTipo` = '$prodTipo', 
@@ -920,7 +920,7 @@
             `productos`.`precioXSemana` = $prodPreXSema,
             `productos`.`produDescri` = '$prodDescrip',
             `productos`.`productoImgPrin` = '$ImagenPrin'
-            WHERE `bizlabDB`.`productos`.`id_producto` = $prodId;";
+            WHERE `gdrfkbmy_bizlabDB`.`productos`.`id_producto` = $prodId;";
 
             $resultado = $conn->query($query);
 
@@ -957,13 +957,13 @@
             $ImagenPrinTemp = $_FILES["prodImg"]['tmp_name'];
             move_uploaded_file($ImagenPrinTemp, "images/productosImages/".$ImagenPrin);
             
-            $query = "UPDATE `bizlabDB`.`unidades` SET 
+            $query = "UPDATE `gdrfkbmy_bizlabDB`.`unidades` SET 
             `unidades`.`unidad_nombre` = '$prodNom',
             `unidades`.`unidad_precios` = '$precios',
             `unidades`.`unidad_descrip` = '$prodDescrip',
             `unidades`.`unidad_imagen` = '$ImagenPrin',
             `unidades`.`unidad_caracte` = '$prodCaracteris'
-            WHERE `bizlabDB`.`unidades`.`id_unidad` = $prodId;";
+            WHERE `gdrfkbmy_bizlabDB`.`unidades`.`id_unidad` = $prodId;";
 
             $resultado = $conn->query($query);
 
@@ -983,7 +983,7 @@
             
             $nombre = $_POST["BEspeMiembro"];
 
-            $queryMiembro = "SELECT * FROM `bizlabDB`.`usuarios` WHERE `usuarios`.`user_nombre` LIKE '%".$nombre."%'";
+            $queryMiembro = "SELECT * FROM `gdrfkbmy_bizlabDB`.`usuarios` WHERE `usuarios`.`user_nombre` LIKE '%".$nombre."%'";
 
             $resultMiembro = $conn->query($queryMiembro);
 
@@ -1057,7 +1057,7 @@
             }
 
             $resultFactu = $conn->query(
-                "SELECT * FROM `bizlabDB`.`facturas`
+                "SELECT * FROM `gdrfkbmy_bizlabDB`.`facturas`
                 WHERE `facturas`.`fechaFactura` IN ($cadenaMesActu);"
             );
 
@@ -1074,7 +1074,7 @@
             };
 
             $resultFactu = $conn->query(
-                "SELECT * FROM `bizlabDB`.`facturas`
+                "SELECT * FROM `gdrfkbmy_bizlabDB`.`facturas`
                 WHERE `facturas`.`fechaFactura` IN ($cadenaMesAnte);"
             );
 
@@ -1102,7 +1102,7 @@
 
             $nombre = $_POST["BEspeOMiembro"];
 
-            $queryMiembro = "SELECT * FROM `bizlabDB`.`usuarios` WHERE `usuarios`.`user_nombre` LIKE '%".$nombre."%'";
+            $queryMiembro = "SELECT * FROM `gdrfkbmy_bizlabDB`.`usuarios` WHERE `usuarios`.`user_nombre` LIKE '%".$nombre."%'";
 
             $resultMiembro = $conn->query($queryMiembro);
 
@@ -1141,7 +1141,7 @@
 
             $nomProd = $_POST["prodNomNewRese"];
 
-            $queryProd = "SELECT * FROM `bizlabDB`.`productos` WHERE `productos`.`produNombre` LIKE '%".$nomProd."%' AND `productos`.`produCategoria` = 'Individuales'";
+            $queryProd = "SELECT * FROM `gdrfkbmy_bizlabDB`.`productos` WHERE `productos`.`produNombre` LIKE '%".$nomProd."%' AND `productos`.`produCategoria` = 'Individuales'";
 
             $resultProd = $conn->query($queryProd);
 
@@ -1186,7 +1186,7 @@
             
             $unidadNom = $_POST["unidNomNewRese"];
 
-            $queryUnid = "SELECT * FROM `bizlabDB`.`unidades` WHERE `unidades`.`unidad_nombre` LIKE '%".$unidadNom."%'";
+            $queryUnid = "SELECT * FROM `gdrfkbmy_bizlabDB`.`unidades` WHERE `unidades`.`unidad_nombre` LIKE '%".$unidadNom."%'";
 
             $resultUnid = $conn->query($queryUnid);
 
@@ -1236,7 +1236,7 @@
 
             $idUser = $_POST["idUserIni"];
 
-            // $resultado = $conn->query("SELECT * FROM `bizlabDB`.`usuarios` WHERE `usuarios`.`id_usuario` = ".$idUser.";");
+            // $resultado = $conn->query("SELECT * FROM `gdrfkbmy_bizlabDB`.`usuarios` WHERE `usuarios`.`id_usuario` = ".$idUser.";");
             
             // $resultado = $resultado->fetch_assoc();
 
@@ -1256,20 +1256,20 @@
             $fechaAnte = $_POST["fechaActualAnte"];
 
             $resultadoHistorial = $conn->query(
-                "SELECT * FROM `bizlabDB`.`historial`
-                JOIN `bizlabDB`.`reservas` ON 
+                "SELECT * FROM `gdrfkbmy_bizlabDB`.`historial`
+                JOIN `gdrfkbmy_bizlabDB`.`reservas` ON 
                 `reservas`.`id_reserva` = `historial`.`tarea_reserva`
-                JOIN `bizlabDB`.`usuarios` ON 
+                JOIN `gdrfkbmy_bizlabDB`.`usuarios` ON 
                 `usuarios`.`id_usuario` = `historial`.`tarea_usuario`
-                JOIN `bizlabDB`.`unidades` ON 
+                JOIN `gdrfkbmy_bizlabDB`.`unidades` ON 
                 `unidades`.`id_unidad` = `historial`.`tarea_unidad`
-                JOIN `bizlabDB`.`productos` ON 
+                JOIN `gdrfkbmy_bizlabDB`.`productos` ON 
                 `productos`.`id_producto` = `historial`.`tarea_producto`
-                JOIN `bizlabDB`.`facturas` ON 
+                JOIN `gdrfkbmy_bizlabDB`.`facturas` ON 
                 `facturas`.`id_Factura` = `historial`.`tarea_factura`
-                JOIN `bizlabDB`.`membresiauser` ON 
+                JOIN `gdrfkbmy_bizlabDB`.`membresiauser` ON 
                 `membresiauser`.`id_membreUser` = `historial`.`tarea_membresiaUser`
-                JOIN `bizlabDB`.`membresias` ON 
+                JOIN `gdrfkbmy_bizlabDB`.`membresias` ON 
                 `membresias`.`id_membresia` = `historial`.`tarea_membresia`
                 WHERE `historial`.`tarea_fOrigen` = '".$fecha."'
                 OR `historial`.`tarea_fOrigen` = '".$fechaAnte."'
@@ -1302,7 +1302,7 @@
             $arrayReservasAdmin = [];
 
             $resultReservas = $conn->query(
-                "SELECT * FROM `bizlabDB`.`reservas` ".$where." ORDER BY `reservas`.`id_reserva` DESC;"
+                "SELECT * FROM `gdrfkbmy_bizlabDB`.`reservas` ".$where." ORDER BY `reservas`.`id_reserva` DESC;"
             );
 
             $rowsReservas = $resultReservas->num_rows;
@@ -1332,15 +1332,15 @@
             $arrayReservasAdmin = [];
 
             $resultadoRese = $conn->query(
-                "SELECT * FROM `bizlabDB`.`reservas` 
-                JOIN `bizlabDB`.`unidades` 
-                ON `bizlabDB`.`reservas`.`id_unidad` = `bizlabDB`.`unidades`.`id_unidad` 
-                JOIN `bizlabDB`.`usuarios` 
-                ON `bizlabDB`.`reservas`.`id_usuario` = `bizlabDB`.`usuarios`.`id_usuario` 
-                JOIN `bizlabDB`.`productos` 
-                ON `bizlabDB`.`reservas`.`id_producto` = `bizlabDB`.`productos`.`id_producto`
-                JOIN `bizlabDB`.`facturas`
-                ON `bizlabDB`.`facturas`.`id_reserva` = `bizlabDB`.`reservas`.`id_reserva`
+                "SELECT * FROM `gdrfkbmy_bizlabDB`.`reservas` 
+                JOIN `gdrfkbmy_bizlabDB`.`unidades` 
+                ON `gdrfkbmy_bizlabDB`.`reservas`.`id_unidad` = `gdrfkbmy_bizlabDB`.`unidades`.`id_unidad` 
+                JOIN `gdrfkbmy_bizlabDB`.`usuarios` 
+                ON `gdrfkbmy_bizlabDB`.`reservas`.`id_usuario` = `gdrfkbmy_bizlabDB`.`usuarios`.`id_usuario` 
+                JOIN `gdrfkbmy_bizlabDB`.`productos` 
+                ON `gdrfkbmy_bizlabDB`.`reservas`.`id_producto` = `gdrfkbmy_bizlabDB`.`productos`.`id_producto`
+                JOIN `gdrfkbmy_bizlabDB`.`facturas`
+                ON `gdrfkbmy_bizlabDB`.`facturas`.`id_reserva` = `gdrfkbmy_bizlabDB`.`reservas`.`id_reserva`
                 WHERE `reservas`.`id_reserva` = $idRese;");
 
             $row = $resultadoRese->fetch_assoc();
@@ -1362,7 +1362,7 @@
             $arrayOtrosMimebros = [];
 
             $resultadoOtros = $conn->query(
-                "SELECT * FROM `bizlabDB`.`usuarios`
+                "SELECT * FROM `gdrfkbmy_bizlabDB`.`usuarios`
                 WHERE `usuarios`.`id_usuario` IN ($idOtrosMiembros);"
             );
 
@@ -1391,7 +1391,7 @@
             $arrayReservasGene = [];
 
             $resultReseGene = $conn->query(
-                "SELECT * FROM `bizlabDB`.`reservas`
+                "SELECT * FROM `gdrfkbmy_bizlabDB`.`reservas`
                 WHERE `reservas`.`estadoReserva` = 'Pendiente'
                 OR `reservas`.`estadoReserva` = 'En Proceso';"
             );
@@ -1423,7 +1423,7 @@
             $idRese = $_POST["idCancelarRese"];
 
             $resultadoResCancel = $conn->query(
-                "SELECT * FROM `bizlabDB`.`reservas`
+                "SELECT * FROM `gdrfkbmy_bizlabDB`.`reservas`
                 WHERE `reservas`.`id_reserva` = $idRese;"
             );
 
@@ -1451,7 +1451,7 @@
                 $fechaCancelaRese = $_POST["fechaCancelaRese"];
 
                 $resultadoReseActuCancel = $conn->query(
-                    "UPDATE `bizlabDB`.`reservas` 
+                    "UPDATE `gdrfkbmy_bizlabDB`.`reservas` 
                     SET 
                     `estadoReserva` = 'Cancelada', 
                     `reservaCancel24H` = ".intval($horasRestantes).",
@@ -1463,7 +1463,7 @@
                 );
 
                 $resultadoDeudaNueva = $conn->query(
-                    "INSERT INTO `bizlabDB`.`deudas_users` 
+                    "INSERT INTO `gdrfkbmy_bizlabDB`.`deudas_users` 
                     (`tipoDeuda`, `estadoDeuda`, `precioDeuda`, `id_usuario`)
                     VALUES
                     ('".$tipoDeuda."', 'Pendiente', ".intval($cargoAdicional).", ".intval($idUserRese).");"
@@ -1480,7 +1480,7 @@
                 $motivoCancel = $_POST["motivoCancelacion"];
 
                 $resultadoReseActuCancel = $conn->query(
-                    "UPDATE `bizlabDB`.`reservas` 
+                    "UPDATE `gdrfkbmy_bizlabDB`.`reservas` 
                     SET 
                     `estadoReserva` = 'Cancelada',
                     `reservaCancel24H` = ".intval($horasRestantes).",

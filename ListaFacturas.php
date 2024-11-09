@@ -11,7 +11,7 @@
     // Buscando USER INICIADO
 
     $resultUserIni = $conn->query(
-        "SELECT * FROM `bizlabDB`.`usuarios` 
+        "SELECT * FROM `gdrfkbmy_bizlabDB`.`usuarios` 
         WHERE `usuarios`.`id_usuario` = ".$_SESSION["iniciado"].";"
     );
 

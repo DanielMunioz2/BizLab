@@ -53,7 +53,7 @@
 
                 // Usuario Datos
                 $resultadoUser = $conn->query(
-                    "SELECT * FROM `bizlabDB`.`usuarios`
+                    "SELECT * FROM `gdrfkbmy_bizlabDB`.`usuarios`
                     WHERE `usuarios`.`id_usuario` = ".intval($_SESSION["iniciado"]).";"
                 );
 
@@ -64,7 +64,7 @@
                 $idMembresia = "";
 
                 $resultadoMembresia = $conn->query(
-                    "SELECT `membreIdEpayco`, `membreId`, `membreCodEpayco`, `membreCodigo` FROM `bizlabDB`.`membresiauser`
+                    "SELECT `membreIdEpayco`, `membreId`, `membreCodEpayco`, `membreCodigo` FROM `gdrfkbmy_bizlabDB`.`membresiauser`
                     WHERE `membresiauser`.`membreUser` = ".intval($_SESSION["iniciado"]).";"
                 );
 
@@ -75,7 +75,7 @@
                 $membresiaUser = "";
 
                 $resultadoMembreDatos = $conn->query(
-                    "SELECT * FROM `bizlabDB`.`membresias`
+                    "SELECT * FROM `gdrfkbmy_bizlabDB`.`membresias`
                     WHERE `membresias`.`id_membresia` = ".$idMembresia["membreId"].";"
                 );
 

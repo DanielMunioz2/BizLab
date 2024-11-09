@@ -3,7 +3,7 @@
     session_start();
 
     require("conexion.php");
-    require("vendor\autoload.php");
+    require("vendor/autoload.php");
 
     // Comprobamos si el usuario esta logueado
     if(isset($_SESSION["iniciado"])){
@@ -36,7 +36,7 @@
             $resultUser = "";
 
             $resultUser = $conn->query(
-                "SELECT * FROM `bizlabDB`.`usuarios`
+                "SELECT * FROM `gdrfkbmy_bizlabDB`.`usuarios`
                 WHERE `usuarios`.`id_usuario` = ".$_SESSION['iniciado'].";"
             );
 
@@ -47,7 +47,7 @@
             $resultadoTarjetas = "";
 
             $resultadoTarjetas = $conn->query(
-                "SELECT * FROM `bizlabDB`.`tarjetascredito`
+                "SELECT * FROM `gdrfkbmy_bizlabDB`.`tarjetascredito`
                 WHERE `tarjetascredito`.`tarje_numero` = '".$numTarje."'"
             );
 
@@ -86,7 +86,7 @@
                     $nameCard = $token->{"card"}->{"name"};
 
                     $conn->query(
-                        "INSERT INTO `bizlabDB`.`tarjetascredito` 
+                        "INSERT INTO `gdrfkbmy_bizlabDB`.`tarjetascredito` 
                         (`tarje_mask`, 
                         `tarje_tokenEpayco`, 
                         `tarje_numero`, 
@@ -130,7 +130,7 @@
                     $nameCard = $token->{"card"}->{"name"};
 
                     $conn->query(
-                        "UPDATE `bizlabDB`.`tarjetascredito` 
+                        "UPDATE `gdrfkbmy_bizlabDB`.`tarjetascredito` 
                         SET 
                         `tarjetascredito`.`tarje_tokenEpayco` = '$idTarjeta', 
                         `tarjetascredito`.`tarje_mask` = '$maskCard' 

@@ -5,8 +5,7 @@
 //---------------------------------------
 
     // URLS
-    // var url_buscarInfoAdminDB = "http://165.22.176.119/BizLab/consultarInfoAdmin.php";
-    var url_buscarInfoAdminDB = "http://localhost/BizLab/consultarInfoAdmin.php";
+    var url_buscarInfoAdminDB = "https://gdr.fkb.mybluehost.me/website_bizlabv1/consultarInfoAdmin.php";
 
     // Fechas
 
@@ -406,9 +405,6 @@
 
         }
 
-        console.log(erroresNRA);
-        console.log(erroresDatosNRA);
-
         return [sumaErrores, sumaErrores2];
 
     }
@@ -689,7 +685,7 @@
                     let formReseXHora = new FormData();
 
                     let queryReseXHora = 
-                        "SELECT * FROM `bizlabDB`.`reservas` WHERE `reservas`.`fechaReserva` = '"
+                        "SELECT * FROM `gdrfkbmy_bizlabDB`.`reservas` WHERE `reservas`.`fechaReserva` = '"
                         +in_fechaIniRese.value+"' OR `reservas`.`reserDiaFechas` LIKE '%"+in_fechaIniRese.value+
                         "%' OR `reservas`.`reserSemanaFechas` LIKE '%"+in_fechaIniRese.value+"%' OR `reservas`.`reserDiaFinal` = '"
                         +in_fechaIniRese.value+"' OR `reservas`.`reserDiaFinal` LIKE '%"+in_fechaIniRese.value+
@@ -703,8 +699,6 @@
                       })
                         .then((response) => response.json())
                         .then((data) => {
-
-                            console.log(data);
 
                             let unidDispo = document.querySelector("#inO_unidDispoPdt").value.split(",");
 
@@ -749,16 +743,10 @@
 
                             }
 
-                            console.log(unidDispo);
-
                             let unidadesDispo = unidDispo.toString();
-                            // console.log(unidDispo.length);
-
-                            console.log(unidadesDispo);
 
                             document.querySelector("#in_unidadTocaElige").addEventListener("keydown", (e)=>{
                                 e.preventDefault();
-                                console.log("tocado");
                             });
 
                             if(unidDispo.length == 0){
@@ -803,8 +791,6 @@
                                 })
                                     .then((response) => response.json())
                                     .then((data) => {
-
-                                        console.log(data);
 
                                         let htmlUnidadesNRA = "";
 
@@ -900,8 +886,6 @@
                         .then((response) => response.json())
                         .then((data) => {
 
-                            console.log(data);
-
                             let unidDispo = document.querySelector("#inO_unidDispoPdt").value.split(",");
 
                             let fechasReserva = data[1].split("_");
@@ -929,16 +913,10 @@
 
                             }
 
-                            console.log(unidDispo);
-
                             let unidadesDispo = unidDispo.toString();
-                            // console.log(unidDispo.length);
-
-                            console.log(unidadesDispo);
 
                             document.querySelector("#in_unidadTocaElige").addEventListener("keydown", (e)=>{
                                 e.preventDefault();
-                                console.log("tocado");
                             });
 
                             if(unidDispo.length == 0){
@@ -983,8 +961,6 @@
                                 })
                                     .then((response) => response.json())
                                     .then((data) => {
-
-                                        console.log(data);
 
                                         let htmlUnidadesNRA = "";
 
@@ -1081,8 +1057,6 @@
                         .then((response) => response.json())
                         .then((data) => {
 
-                            console.log(data);
-
                             let unidDispo = document.querySelector("#inO_unidDispoPdt").value.split(",");
 
                             let diaInicioNumero = fechaANumero(document.querySelector(".span_fechaIniSemana").textContent);
@@ -1108,16 +1082,10 @@
 
                             }
 
-                            console.log(unidDispo);
-
                             let unidadesDispo = unidDispo.toString();
-                            // console.log(unidDispo.length);
-
-                            console.log(unidadesDispo);
 
                             document.querySelector("#in_unidadTocaElige").addEventListener("keydown", (e)=>{
                                 e.preventDefault();
-                                console.log("tocado");
                             });
 
 
@@ -1165,8 +1133,6 @@
                                 })
                                     .then((response) => response.json())
                                     .then((data) => {
-
-                                        console.log(data);
 
                                         let htmlUnidadesNRA = "";
 
@@ -1284,11 +1250,7 @@
                         .then((response) => response.json())
                         .then((data) => {
 
-                            console.log(data);
-
                             let unidDispo = document.querySelector("#inO_unidDispoPdt").value.split(",");
-
-                            console.log(unidDispo);
 
                             let fechaFinalMes = data[1].split("_")[1];
 
@@ -1309,20 +1271,13 @@
                                     diaFinReseNumero == diaFinalNumero 
                                 ){
 
-                                    console.log(data[0][i]["id_unidad"]);
-
                                     unidDispo = unidDispo.filter(unid => unid != data[0][i]["id_unidad"]);
 
                                 }
 
                             }
 
-                            console.log(unidDispo);
-
                             let unidadesDispo = unidDispo.toString();
-                            // console.log(unidDispo.length);
-
-                            console.log(unidadesDispo);
 
                             document.querySelector("#in_unidadTocaElige").addEventListener("keydown", (e)=>{
                                 e.preventDefault();
@@ -1371,8 +1326,6 @@
                                 })
                                     .then((response) => response.json())
                                     .then((data) => {
-
-                                        console.log(data);
 
                                         let htmlUnidadesNRA = "";
 
@@ -1540,8 +1493,6 @@
 
         }
 
-        console.log(arrayMiembrosElegidos);
-
     }
     
     function elegirMiembroNRA(idMiembro, tipo){
@@ -1558,8 +1509,6 @@
             }
 
         }
-
-        console.log(prevRegistro);
 
         let formMiembroNRA = new FormData();
 
@@ -1623,8 +1572,6 @@
 
                         div_miemElegidoNRA.classList.replace("div_miemElegidoNRA-O", "div_miemElegidoNRA-V");
 
-                        console.log(arrayMiembrosElegidos);
-
                         if(document.querySelector(".divOtroMiembro"+idMiembro) != null){
 
                             document.querySelector(".divOtroMiembro"+idMiembro).remove();
@@ -1682,8 +1629,6 @@
     
                             div_miembrosElegiNRA.classList.replace("div_miembrosElegiNRA-O", "div_miembrosElegiNRA-V");
                         }
-
-                        console.log(arrayMiembrosElegidos);
 
                     }
                     
@@ -2037,8 +1982,6 @@
               })
                 .then((response) => response.json())
                 .then((data) => {
-
-                    console.log(data);
 
                     document.querySelector("#div_pdtSeleContainer").innerHTML = "";
                     document.querySelector("#div_pdtSeleContainer").classList.replace("pdtSeleContainer-V", "pdtSeleContainer-O");

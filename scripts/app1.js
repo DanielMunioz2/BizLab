@@ -6,16 +6,11 @@
   //-----------------------------------------------------------------------------------------------------------------------------
   // VARIABLES
 
-  // var urlEnviContraRecu = "http://165.22.176.119/BizLab/enviarContraRecu.php";
-  // var urlInfoClienteDB = "http://165.22.176.119/BizLab/consultarInfoCliente.php";
-  // var urlConsultarUser = "http://165.22.176.119/BizLab/consultarUsuario.php";
-  // var urlConsultarTDC = "http://165.22.176.119/BizLab/confirTarjetaCredito.php";
-  // var urlPagarMensualidadTDC = "http://165.22.176.119/BizLab/transapagoMensualidad.php";
-  var urlEnviContraRecu = "http://localhost/BizLab/enviarContraRecu.php";
-  var urlInfoClienteDB = "http://localhost/BizLab/consultarInfoCliente.php";
-  var urlConsultarUser = "http://localhost/BizLab/consultarUsuario.php";
-  var urlConsultarTDC = "http://localhost/BizLab/confirTarjetaCredito.php";
-  var urlPagarMensualidadTDC = "http://localhost/BizLab/transapagoMensualidad.php";
+  var urlEnviContraRecu = "https://gdr.fkb.mybluehost.me/website_bizlabv1/enviarContraRecu.php";
+  var urlInfoClienteDB = "https://gdr.fkb.mybluehost.me/website_bizlabv1/consultarInfoCliente.php";
+  var urlConsultarUser = "https://gdr.fkb.mybluehost.me/website_bizlabv1/consultarUsuario.php";
+  var urlConsultarTDC = "https://gdr.fkb.mybluehost.me/website_bizlabv1/confirTarjetaCredito.php";
+  var urlPagarMensualidadTDC = "https://gdr.fkb.mybluehost.me/website_bizlabv1/transaPagoMensualidad.php";
 
   var diaGeneNum = new Date().getDate();
   var mesGeneNum = new Date().getMonth()+1;
@@ -432,8 +427,7 @@ if(document.querySelector("#iniSesionHTML") !== null) {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data[0]);
-          console.log(data[1]);
+          
           if (data[0] == 3) {
             spanErrorEntrada.innerHTML = `<span style="color: #f20; font-size:2rem">El usuario que ingresó NO Existe</span>`;
             spanCorreoErr.textContent = "";
@@ -611,7 +605,7 @@ if (document.querySelector(".registroHTML") != null) {
   var numeros2 = "1234567890+ ";
   var numeros3 = "1234567890- ";
   var arroba = "@";
-  var letras = "abcdefghijklmnñopqrstuvwxyz";
+  var letras = "abcdefghijklmnñopqrstuvwxyzáéíóú ";
 
   //Array para verificar que los inputs tengan datos correctos (0=TRUE, 1=FALSE).
   //Si es FALSE, se desactivarán algunos botones.
@@ -691,8 +685,8 @@ if (document.querySelector(".registroHTML") != null) {
       }
     }
 
-    console.log(erroneos);
     return estadoInputs;
+    
   };
 
   const verificarErroneos = (indice, numero) => {
@@ -1104,7 +1098,7 @@ if (document.querySelector(".registroHTML") != null) {
   inputSelectRol.addEventListener("input", () => {
     let seleccion = inputSelectRol.options[inputSelectRol.selectedIndex].text;
 
-    if (seleccion == "Miembro Común" || seleccion == "Administrador") {
+    if (seleccion == "Usuario" || seleccion == "Administrador") {
       verificarErroneos(8, 0);
       sparErrTipoUser.style.opacity = "0";
       sparErrTipoUser.textContent = "#";
@@ -1529,7 +1523,7 @@ if (document.querySelector(".registroHTML") != null) {
   //
 
   btnSiguiente.addEventListener("click", (e) => {
-    console.log("Boton Siguiente Tocado");
+    
     e.preventDefault();
     if (
       nombreRegisInput.value == "" ||
@@ -1545,13 +1539,13 @@ if (document.querySelector(".registroHTML") != null) {
       direccInputRegis.value == "" ||
       direccInputRegis.value == null ||
       (inputSelectRol.options[inputSelectRol.selectedIndex].text !=
-        "Miembro Común" &&
+        "Usuario" &&
         inputSelectRol.options[inputSelectRol.selectedIndex].text !=
           "Administrador")
     ) {
       sparErrTipoUser.textContent = "Debe llenar los campos";
       sparErrTipoUser.style.opacity = "1";
-      console.log("Boton Siguiente Vacios Bloqueados");
+      
     } else {
       if (sparErrTipoUser.textContent == "Debe llenar los campos") {
         sparErrTipoUser.textContent = "#";
@@ -1565,7 +1559,7 @@ if (document.querySelector(".registroHTML") != null) {
         telefonoInputRegis.value !== "" &&
         direccInputRegis.value !== "" &&
         inputSelectRol.options[inputSelectRol.selectedIndex].text ==
-          "Miembro Común"
+          "Usuario"
       ) {
         if (formRegisF1.classList.contains("formRegisF1")) {
           formRegisF1.classList.replace("formRegisF1", "formRegisF1B");
@@ -1656,13 +1650,14 @@ if (document.querySelector(".registroHTML") != null) {
       inputNit.value == "" ||
       inputNit.value == null
     ) {
+        
       spanErrNit.textContent = "Debe llenar los campos";
       spanErrNit.style.opacity = "1";
-      console.log("Boton Registrarse Vacios Bloqueados");
+      
     } else {
-      console.log("Boton Registrarse Tocado");
+      
       if (estadoBTN != false) {
-        console.log(estadoBTN);
+          
         spanErrNit.textContent = "Redireccionando...";
         spanErrNit.classList.replace("spanErr", "spanRegisAdminExito");
         spanErrNit.style.opacity = "1";
@@ -1718,11 +1713,12 @@ if (document.querySelector(".registroHTML") != null) {
       inputCodigoAcce.value == "" ||
       inputCodigoAcce.value == null
     ) {
+        
       spanErrCodigoAcc.textContent = "Debe llenar los campos";
       spanErrCodigoAcc.style.opacity = "1";
-      console.log("Boton Registrarse Admin Vacios Bloqueados");
+      
     } else {
-      console.log("Boton Registrarse Admin Tocado");
+      
       estadoBTNA = desbloqBloqBoton();
 
       if (estadoBTNA != false) {
@@ -1747,6 +1743,7 @@ if (document.querySelector(".registroHTML") != null) {
               spanErrCodigoAcc.style.opacity = "1";
             } else {
               if (data != null) {
+                  
                 e.preventDefault();
 
                 inputNomM.value = nombreRegisInput.value;
@@ -1785,86 +1782,6 @@ if (document.querySelector(".registroHTML") != null) {
 
                 formRegistrarseM.submit();
 
-                // let nombre = nombreRegisInput.value;
-                // let apellidos = apellidoRegisInput.value;
-                // let documento = documentoInput.value;
-                // let fechaNacimiento = fechaNInputRegis.value;
-                // let telefono = telefonoInputRegis.value;
-                // let direccion = direccInputRegis.value;
-                // let rol =
-                //   inputSelectRol.options[inputSelectRol.selectedIndex].text;
-                // let correo = correoAdminInput.value;
-                // let contrasenia = inputContraseña2.value;
-                // var ultimoAdminRegistrado = 0;
-
-                // let formRegisAdmin = new FormData();
-
-                // formRegisAdmin.append("nombreAdmin", nombre);
-                // formRegisAdmin.append("apellidoAdmin", apellidos);
-                // formRegisAdmin.append("documentoAdmin", documento);
-                // formRegisAdmin.append("fechaNAdmin", fechaNacimiento);
-                // formRegisAdmin.append("telefonoAdmin", telefono);
-                // formRegisAdmin.append("direccAdmin", direccion);
-                // formRegisAdmin.append("rolAdmin", rol);
-                // formRegisAdmin.append("correoAdmin", correo);
-                // formRegisAdmin.append("contraseniaAdmin", contrasenia);
-                // formRegisAdmin.append("empresaAdmin", "");
-                // formRegisAdmin.append("nitAdmin", 0);
-                // formRegisAdmin.append("userVerifi", true);
-
-                // fetch(urlConsultarUser, {
-                //   method: "POST",
-                //   body: formRegisAdmin,
-                // })
-                //   .then((response) => response.json())
-                //   .then((data) => {
-                //     ultimoAdminRegistrado = data;
-                //     console.log(ultimoAdminRegistrado);
-
-                //     btnRegistrarseA.setAttribute("disabled", "");
-                //     btnRegistrarseA.classList.replace(
-                //       "btnRegistrarFA-1",
-                //       "btnRegistrarFA-2"
-                //     );
-
-                //     btnAtrasA.setAttribute("disabled", "");
-                //     btnAtrasA.classList.replace("btnAtrasFA-1", "btnAtrasFA-2");
-
-                //     document
-                //       .querySelector(".btnCancelRegisFA")
-                //       .setAttribute("disabled", "");
-                //     document
-                //       .querySelector(".btnCancelRegisFA")
-                //       .classList.replace("btnCancelarFA-1", "btnCancelarFA-2");
-
-                //     nombreRegisInput.value = "";
-                //     apellidoRegisInput.value = "";
-                //     documentoInput.value = "";
-                //     fechaNInputRegis.value = "";
-                //     telefonoInputRegis.value = "";
-                //     direccInputRegis.value = "";
-                //     inputSelectRol.value = "";
-                //     inputCorreo.value = "";
-                //     correoAdminInput.value = "";
-                //     empresaInput.value = "";
-                //     inputContraseña.value = "";
-                //     inputContraConfir.value = "";
-                //     inputContraseña2.value = "";
-                //     inputContraConfir2.value = "";
-                //     inputNit.value = "";
-                //     inputCodigoAcce.value = "";
-
-                //     setTimeout(() => {
-                //       window.location.href = "index.php";
-                //     }, 1200);
-                //   })
-                //   .catch((err) => console.log(err));
-
-                // spanErrCodigoAcc.textContent = "Registrando...";
-                // spanErrCodigoAcc.classList.replace(
-                //   "spanErr",
-                //   "spanRegisAdminExito"
-                // );
               }
             }
           })
@@ -2261,14 +2178,20 @@ if (document.querySelector(".recuvaContraHTML") !== null) {
           }
         })
         .catch((err) => console.log(err));
+        
     } else {
+        
       spanErrCorreo.textContent = "#";
       spanErrCorreo.style.opacity = "0";
       btnCancelar.classList.replace("btnCancelar1", "btnCancelar2");
+      
       if (btnEnviar.removeAttribute("disabled") == null) {
+          
         btnEnviar.setAttribute("disabled", "");
         btnEnviar.classList.replace("btnEnv2", "btnEnv1");
+        
       }
+      
     }
   });
 
@@ -2302,32 +2225,37 @@ if (document.querySelector(".recuvaContraHTML") !== null) {
             "click",
             (funcionEnv1 = (e) => {
               e.preventDefault();
-              console.log("boton codigo verificar tocado");
+              
               let codigo = codigoInput.value;
 
               if (cod != codigo && codigo.length != 0) {
+                  
                 spanErrCodigo.textContent =
                   "El código es incorrecto, intente de nuevo";
                 spanErrCodigo.style.opacity = "1";
+                
               } else {
                 if (cod == codigo && codigo.length != 0) {
+                    
                   spanErrCodigo.textContent = "#";
                   spanErrCodigo.style.opacity = "0";
                   cod = "";
                   codigoInput.value = "";
                   correoInput.value = "";
-                  console.log("te fuiste por el boton normal");
+                  
                   inputOConfirmado.value = spanCorreoEnviar.textContent;
                   document.getElementById("formCambioPassConfir").submit();
+                  
                 }
               }
             })
           );
 
           aReenviarCodigo.addEventListener("click", (e) => {
+              
             cod = "";
             btnVerifCodi.removeEventListener("click", funcionEnv1);
-            console.log("boton codigo REENVIAR tocado");
+            
             btnVerifCodi.setAttribute("disabled", "");
             let correo = correoInput.value.trim();
 
@@ -2347,24 +2275,27 @@ if (document.querySelector(".recuvaContraHTML") !== null) {
                 btnVerifCodi.addEventListener("click", (e) => {
                   e.preventDefault();
 
-                  console.log("boton codigo verificar tocado");
                   let codigo = codigoInput.value;
 
                   if (data != codigo && codigo.length != 0) {
+                      
                     spanErrCodigo.textContent =
                       "El código es incorrecto, intente de nuevo";
                     spanErrCodigo.style.opacity = "1";
+                    
                   } else {
+                      
                     if (data == codigo && codigo.length != 0) {
                       spanErrCodigo.textContent = "#";
                       spanErrCodigo.style.opacity = "0";
                       cod = "";
                       codigoInput.value = "";
                       correoInput.value = "";
-                      console.log("te fuiste por boton REENVIADO");
+                      
                       inputOConfirmado.value = spanCorreoEnviar.textContent;
                       document.getElementById("formCambioPassConfir").submit();
                     }
+                    
                   }
                 });
               })
@@ -2602,7 +2533,6 @@ if(document.querySelector(".confirmarCorreoHTML") != null) {
     datos[11] = inputCorreoA.value;
     datos[12] = inputContraA.value;
 
-    console.log(datos);
     let correo = "";
 
     if (inputCorreoM.value != "") {
@@ -2612,8 +2542,6 @@ if(document.querySelector(".confirmarCorreoHTML") != null) {
         correo = inputCorreoA.value;
       }
     }
-
-    
 
     let formCorreoCodigo = new FormData();
 
@@ -2627,10 +2555,9 @@ if(document.querySelector(".confirmarCorreoHTML") != null) {
       .then((response) => response.json())
       .then((data) => {
         if (datos[10] != "") {
+            
           btnConfirmar.addEventListener("click", (e) => {
             e.preventDefault();
-
-            console.log("correcto1");
 
             if (
               inputNomM.value == datos[0] &&
@@ -2645,9 +2572,9 @@ if(document.querySelector(".confirmarCorreoHTML") != null) {
               inputEmpresaM.value == datos[9] &&
               inputNitM.value == datos[10]
             ) {
-              console.log("correcto2");
 
               if (data == inputCodigo.value) {
+                
                 var ultimoMiembroRegistrado = 0;
 
                 let formRegisMiembro = new FormData();
@@ -2674,6 +2601,7 @@ if(document.querySelector(".confirmarCorreoHTML") != null) {
                 })
                   .then((response) => response.json())
                   .then((data) => {
+                    
                     ultimoMiembroRegistrado = data;
 
                     btnConfirmar.setAttribute("disabled", "");
@@ -2705,8 +2633,6 @@ if(document.querySelector(".confirmarCorreoHTML") != null) {
             btnConfirmar.addEventListener("click", (e) => {
               e.preventDefault();
 
-              console.log("correcto1");
-
               if (
                 inputNomM.value == datos[0] &&
                 inputApeM.value == datos[1] &&
@@ -2718,7 +2644,6 @@ if(document.querySelector(".confirmarCorreoHTML") != null) {
                 inputCorreoA.value == datos[11] &&
                 inputContraA.value == datos[12]
               ) {
-                console.log("correcto2");
 
                 if (data == inputCodigo.value) {
                   var ultimoMiembroRegistrado = 0;
@@ -2877,9 +2802,6 @@ if(document.querySelector("#comprobarMembreHTML") != null){
         })
           .then((response) => response.json())
           .then((data) => {
-              
-            console.log("Estado Cuenta:");
-            console.log(data);
 
           })
           .catch((err) => console.log(err));
@@ -2915,9 +2837,6 @@ if(document.querySelector("#comprobarMembreHTML") != null){
           })
             .then((response) => response.json())
             .then((data) => {
-                
-              console.log("Estado Cuenta:");
-              console.log(data);
 
             })
             .catch((err) => console.log(err));
@@ -2956,9 +2875,6 @@ if(document.querySelector("#comprobarMembreHTML") != null){
           })
             .then((response) => response.json())
             .then((data) => {
-                
-              console.log("Estado Cuenta:");
-              console.log(data);
 
             })
             .catch((err) => console.log(err));
@@ -2992,9 +2908,6 @@ if(document.querySelector("#comprobarMembreHTML") != null){
           })
             .then((response) => response.json())
             .then((data) => {
-                
-              console.log("Estado Cuenta:");
-              console.log(data);
 
             })
             .catch((err) => console.log(err));
@@ -3069,9 +2982,6 @@ if(document.querySelector("#comprobarMembreHTML") != null){
       // Verificar Errores
       let sumaErrores = verificarErroresIN();
 
-      console.log(sumaErrores);
-      console.log(erroresInputs);
-
       if(
         in_numTDC.value != "" &&
         in_mesVTDC.value != "" &&
@@ -3095,19 +3005,6 @@ if(document.querySelector("#comprobarMembreHTML") != null){
             .then((data) => {
 
               let formPagarMensualidad = new FormData();
-
-              // console.log(data[0]);
-              // console.log(document.querySelector("#inO_totalMembre").value);
-              // console.log(document.querySelector("#inO_ivaCantMembre").value);
-              // console.log(document.querySelector("#inO_mensualidadMembre").value);
-              // console.log(document.querySelector("#inO_userDocumento").value);
-              // console.log(document.querySelector("#inO_userNombre").value);
-              // console.log(document.querySelector("#inO_userApellido").value);
-              // console.log(document.querySelector("#inO_userEmail").value);
-              // console.log(document.querySelector("#inO_userCelular").value);
-              // console.log(cadenaFechaActuAnioPeque);
-              // console.log(document.querySelector("#inO_ipUser").value);
-              // console.log(data[3]);
 
               formPagarMensualidad.append("transaPagoMembresia", true);
               formPagarMensualidad.append("tokenTarjeta", data[0]);
@@ -3133,8 +3030,6 @@ if(document.querySelector("#comprobarMembreHTML") != null){
               })
                 .then((response) => response.json())
                 .then((data) => {
-
-                  console.log(data);
                   
                   let factuCod = creaFechaCodFac();
                   let fechaCrea = factuCod[0];

@@ -132,7 +132,9 @@
                 // </script>
                 // ";
             //}
+            
             echo json_encode($codigo, JSON_UNESCAPED_UNICODE);
+            
         }else{
             header("location:inicioSesion.php");
         }  

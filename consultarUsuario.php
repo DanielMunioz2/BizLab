@@ -1,8 +1,10 @@
 <?php
 
-    require_once("conexion.php");
+    require("conexion.php");
 
     session_start();
+    
+    date_default_timezone_set('America/Bogota');
 
     if(!isset($_POST["userVerifi"])){
         header("location:index.php");
@@ -13,7 +15,7 @@
         $contraseña = isset($_POST["contraseñaUser"]) ? $conn->real_escape_string($_POST["contraseñaUser"]) : null;
 
         if($correo!==null && $contraseña!==null){
-            $queryUser = "SELECT * FROM `bizlabDB`.`usuarios` 
+            $queryUser = "SELECT * FROM `gdrfkbmy_bizlabDB`.`usuarios` 
             WHERE `usuarios`.`user_correo` = '".$correo."';";
 
             $resultadoUser = $conn->query($queryUser);
@@ -52,8 +54,8 @@
         
         if($documento!=null){
             $queryDocumento = 
-            "SELECT `user_documento` FROM `bizlabDB`.`usuarios`
-            WHERE `bizlabDB`.`usuarios`.`user_documento` = ".$documento.";";
+            "SELECT `user_documento` FROM `gdrfkbmy_bizlabDB`.`usuarios`
+            WHERE `gdrfkbmy_bizlabDB`.`usuarios`.`user_documento` = ".$documento.";";
 
             $resultadoDocumento = $conn->query($queryDocumento);
 
@@ -75,8 +77,8 @@
     
         if($telef!=null){
             $queryTelefonoExi = 
-            "SELECT `user_telefono` FROM `bizlabDB`.`usuarios`
-            WHERE `bizlabDB`.`usuarios`.`user_telefono` = ".$telef.";";
+            "SELECT `user_telefono` FROM `gdrfkbmy_bizlabDB`.`usuarios`
+            WHERE `gdrfkbmy_bizlabDB`.`usuarios`.`user_telefono` = ".$telef.";";
 
             $resultadoTelefono = $conn->query($queryTelefonoExi);
 
@@ -97,8 +99,8 @@
     
         if($correoMiembroExi!=null){
             $queryCorreoExi = 
-            "SELECT `user_correo` FROM `bizlabDB`.`usuarios`
-            WHERE `bizlabDB`.`usuarios`.`user_correo` = '".$correoMiembroExi."';";
+            "SELECT `user_correo` FROM `gdrfkbmy_bizlabDB`.`usuarios`
+            WHERE `gdrfkbmy_bizlabDB`.`usuarios`.`user_correo` = '".$correoMiembroExi."';";
 
             $resultadoCorreo = $conn->query($queryCorreoExi);
 
@@ -119,8 +121,8 @@
     
         if($correoMiembroExi!=null){
             $queryCorreoExi = 
-            "SELECT `user_correo` FROM `bizlabDB`.`usuarios`
-            WHERE `bizlabDB`.`usuarios`.`user_correo` = '".$correoMiembroExi."';";
+            "SELECT `user_correo` FROM `gdrfkbmy_bizlabDB`.`usuarios`
+            WHERE `gdrfkbmy_bizlabDB`.`usuarios`.`user_correo` = '".$correoMiembroExi."';";
 
             $resultadoCorreo = $conn->query($queryCorreoExi);
 
@@ -141,8 +143,8 @@
     
         if($correoMiembroExi!=null){
             $queryCorreoExi = 
-            "SELECT `user_correo` FROM `bizlabDB`.`usuarios`
-            WHERE `bizlabDB`.`usuarios`.`user_correo` = '".$correoMiembroExi."';";
+            "SELECT `user_correo` FROM `gdrfkbmy_bizlabDB`.`usuarios`
+            WHERE `gdrfkbmy_bizlabDB`.`usuarios`.`user_correo` = '".$correoMiembroExi."';";
 
             $resultadoCorreo = $conn->query($queryCorreoExi);
 
@@ -193,7 +195,7 @@
         $row = "";
 
         if($codigoAcce!=null){
-            $queryCodAdmi = "SELECT * FROM `bizlabDB`.`codigoadmin` 
+            $queryCodAdmi = "SELECT * FROM `gdrfkbmy_bizlabDB`.`codigoadmin` 
             WHERE `codigoadmin`.`codigoAdmin` = '".$codigoAcce."';";
 
             $resultadoAdmiCode = $conn->query($queryCodAdmi);
@@ -211,10 +213,7 @@
         echo json_encode($dato, JSON_UNESCAPED_UNICODE);
     }
 
-    
-
     if(isset($_POST["nombreMiembroR"])){
-        date_default_timezone_set('America/Bogota');
 
         $nombre = $_POST["nombreMiembroR"];
         $apellido = $_POST["apellidoMiembro"];
@@ -227,32 +226,32 @@
         if($rolMiembro == "Administrador"){
             $empresaMiembro = "";
             $nitMiembro = "";
-        }else{
-            if($rolMiembro == "Usuario"){
-                $empresaMiembro = $_POST["empresaMiembro"];
-                $nitMiembro = $_POST["nitMiembro"];
-            }
+        }else if($rolMiembro == "Usuario"){
+            $empresaMiembro = $_POST["empresaMiembro"];
+            $nitMiembro = $_POST["nitMiembro"];
         }
         $correoMiembro = $_POST["correoMiembro"];
         $contraseniaMiembro = $_POST["contraseniaMiembro"];
-        
 
         $fechaActual = date("Y-m-d");
         $horaActual = date("h:i:s");
-        $fechaYHoraU = $fechaActual." ".$horaActual;
 
         $queryRegisMiembro =
-        "INSERT INTO `bizlabDB`.`usuarios`(
+        "INSERT INTO `gdrfkbmy_bizlabDB`.`usuarios`(
             `user_nombre`, 
             `user_apellido`, 
             `user_correo`, 
             `user_contrasenia`, 
-            `user_telefono`, 
+            `user_telefono`,
+            `user_celular`, 
             `user_documento`, 
             `user_fNacimiento`, 
             `user_direc`, 
             `user_rol`, 
-            `user_fechaHoraU`, 
+            `user_estado`,
+            `user_imagen`,
+            `user_fechaU`,
+            `user_horaU`,
             `user_empresa`, 
             `user_empresaNit`)
         VALUES (
@@ -260,12 +259,16 @@
             '$apellido',
             '$correoMiembro',
             '$contraseniaMiembro', 
-            '$telefonoMiembro', 
-            '$documento', 
+            0,
+            $telefonoMiembro, 
+            $documento, 
             '$fechaNacimi', 
             '$direccMiembro', 
             '$rolMiembro',
-            '$fechaYHoraU',
+            'Activo',
+            'userDefaultProfileMan.webp',
+            '$fechaActual',
+            '$horaActual',
             '$empresaMiembro', 
             '$nitMiembro');";
 

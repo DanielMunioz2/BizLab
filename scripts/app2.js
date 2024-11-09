@@ -4,8 +4,7 @@
 
   // URLS para consultas a la base de datos
 
-    // var urlBuscarInfoAdminDB = "http://165.22.176.119/BizLab/consultarInfoAdmin.php";
-    var urlBuscarInfoAdminDB = "http://localhost/BizLab/consultarInfoAdmin.php";
+    var urlBuscarInfoAdminDB = "https://gdr.fkb.mybluehost.me/website_bizlabv1/consultarInfoAdmin.php";
 
   //-------------------------------------------------------------------------------------------------
 
@@ -455,8 +454,6 @@ if (document.querySelector(".administracionHTML") != null) {
         let diaSemanaNumero = numeroDiaSemana(cadenaFechaActual);
         let cantiSemanasNum = document.querySelector("#in_numeroSemanasCant").value;
 
-        console.log(cantiSemanasNum);
-
         let formSemanaFechas = new FormData();
 
         formSemanaFechas.append("fechasSemana", true);
@@ -472,8 +469,6 @@ if (document.querySelector(".administracionHTML") != null) {
         })
           .then((response) => response.json())
           .then((data) => {
-
-            console.log(data);
 
             document.querySelector("#inO_iniSemanaFecha").value = data[0];
             document.querySelector("#inO_finSemanaFecha").value = data[1];
@@ -3326,15 +3321,11 @@ if (document.querySelector(".administracionHTML") != null) {
                 clearInterval(intrvalDataReseCuadro);
                 intrvalDataReseCuadro = null;
 
-                console.log("terminado por cuadro cerrado");
-
               }
               
             }, 600);
 
           }else{
-
-            console.log("Intervalo Reiniciado");
 
             clearInterval(intrvalDataReseCuadro);
             intrvalDataReseCuadro = null;
@@ -4004,9 +3995,6 @@ if (document.querySelector(".administracionHTML") != null) {
               let sumaActualFac = 0;
               let sumaAnteFac = 0;
 
-              console.log(arrayAnteFacPrecios);
-              console.log(arrayActuFacPrecios);
-
               // For suma de ingresos Mes Actual
               for(let i = 1; i < arrayActuFacPrecios.length; i++){
 
@@ -4021,13 +4009,9 @@ if (document.querySelector(".administracionHTML") != null) {
 
               }
 
-              console.log(sumaActualFac);
-              console.log(sumaAnteFac);
-
               let porcentajeActual = sumaActualFac - sumaAnteFac;
               let porcentajeNumero = sumaActualFac - sumaAnteFac;
 
-              console.log(porcentajeActual);
               let htmlPorcentaje = "";
 
               if(porcentajeNumero > 0){
@@ -4156,7 +4140,6 @@ if (document.querySelector(".administracionHTML") != null) {
           // Variable para cambiar el panel de productos (4 = producto/ 5 = unidad)
 
             estadoDivProductos = document.querySelector(".stdProd").value;
-            console.log(estadoDivProductos);
 
           //-----------------------------------------------------------------
 
@@ -5026,9 +5009,13 @@ if (document.querySelector(".administracionHTML") != null) {
                           for(let d = 0; d < btnsEstadisUnid.length; d++){
 
                             btnsEstadisUnid[d].addEventListener("click", (e)=>{
-
+                            
+                              if(
+                                  e.target.getAttribute("tipo").split(",")!= null
+                              ){
                               let datos = e.target.getAttribute("tipo").split(",");
                               document.querySelector("#"+datos[0]).submit();
+                              }
 
                             });
 
@@ -5454,7 +5441,6 @@ if(document.querySelector(".editarProdHTML")){
           datos[4] = inputDescrip.value;
           datos[5] = document.querySelector("#caracterisProd").value;
           datos[6] = imagenSelect.getAttribute("src");
-          console.log(datos);
 
         }
         
@@ -5810,7 +5796,6 @@ if(document.querySelector(".editarProdHTML")){
         
   
         suma = Number(suma);
-        console.log(suma);
   
         if(isNaN(suma)){
   
@@ -5837,7 +5822,6 @@ if(document.querySelector(".editarProdHTML")){
       
 
       suma = Number(suma);
-      console.log(suma);
 
       if(isNaN(suma)){
 
@@ -5863,7 +5847,6 @@ if(document.querySelector(".editarProdHTML")){
       
 
       suma = Number(suma);
-      console.log(suma);
 
       if(isNaN(suma)){
 
@@ -5889,7 +5872,6 @@ if(document.querySelector(".editarProdHTML")){
       
 
       suma = Number(suma);
-      console.log(suma);
 
       if(isNaN(suma)){
 
@@ -5970,7 +5952,6 @@ if(document.querySelector(".editarProdHTML")){
 
         if(document.querySelector(".divPrin").getAttribute("tipo") == "unidad"){
 
-          console.log("modo unidad");
           inputNombre.removeAttribute("disabled"); 
           inputPreXHora.removeAttribute("disabled"); 
           inputPreXDia.removeAttribute("disabled"); 
@@ -6150,8 +6131,6 @@ if(document.querySelector(".editarProdHTML")){
             let id = document.querySelector("#idprod").value; 
     
             let formActuProduct = new FormData();
-            
-            console.log(document.querySelector("#caracterisProd").value);
 
             formActuProduct.append("prodId", id);
             formActuProduct.append("prodNom", inputNombre.value);
@@ -6188,8 +6167,6 @@ if(document.querySelector(".editarProdHTML")){
                 imagenSelect.removeAttribute("src");
                 imagenSelect.setAttribute("src", "images/productosImages/"+data[6]);
                 imagenNombre.textContent = "";
-                
-                console.log(data);
 
                 //
               })
@@ -6635,7 +6612,6 @@ if(document.querySelector(".crearProdHTML")){
 
       if(btnSubir.files.length == 0){
 
-        console.log("imagen vacia")
         erroresInputs[6] = 1;
         verificarBtnGuardar();
   

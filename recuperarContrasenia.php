@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Recupera tu Contraseña</title>
         <link rel="shortcut icon" type="x-icon" href="images/favicon_bizclub.svg">
-        <link rel="stylesheet" href="estilos/recuperarContraseña.css">
+        <link rel="stylesheet" href="estilos/recuperarContrasenia.css">
     </head>
     <body class="body">
         <main class="main">

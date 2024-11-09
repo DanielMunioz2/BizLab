@@ -9,7 +9,7 @@
     $userId = $_SESSION["iniciado"];
 
     $resultUserIni = $conn->query(
-        "SELECT * FROM `bizlabDB`.`usuarios` 
+        "SELECT * FROM `gdrfkbmy_bizlabDB`.`usuarios` 
         WHERE `usuarios`.`id_usuario` = $userId;"
     );
 
@@ -24,8 +24,8 @@
 
         $result = $conn->query(
             "SELECT u.*, m.membre_nombre 
-            FROM `bizlabDB`.`usuarios` u
-            LEFT JOIN `bizlabDB`.`membresias` m ON u.user_membresia = m.id_membresia
+            FROM `gdrfkbmy_bizlabDB`.`usuarios` u
+            LEFT JOIN `gdrfkbmy_bizlabDB`.`membresias` m ON u.user_membresia = m.id_membresia
             WHERE u.`user_nombre` LIKE '%$query%' 
             OR u.`user_apellido` LIKE '%$query%'"
         );
@@ -236,7 +236,7 @@
                 <div class="divPerfilContaint">
                     <div class="divImgCont">
                         <div>
-                            <img src="imagesUser\userDefaultProfileMan.webp" alt="Imágen de Perfil">
+                            <img src="imagesUser/<?php echo $resultUserIni["user_imagen"]; ?>" alt="Imágen de Perfil">
                         </div>
                     </div>
                     <div class="divNombreCont">

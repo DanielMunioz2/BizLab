@@ -51,7 +51,7 @@
             $idSubEpayco = explode("-", $facTranId);
 
             $resultado = $conn->query(
-                "INSERT INTO `bizlabDB`.`facturas` 
+                "INSERT INTO `gdrfkbmy_bizlabDB`.`facturas` 
                 (`refEpayco`, `factuEpayco`, `facturaCodigo`, 
                 `facturaSerie`, `fechaFactura`, `horaFactura`, 
                 `fechaFacturaV`, `estadoFactura`, `precioFactura`, 
@@ -71,7 +71,7 @@
             $idInsertadoFactura = $conn->insert_id;
 
             $conn->query(
-                "INSERT INTO `bizlabDB`.`membresiauser`
+                "INSERT INTO `gdrfkbmy_bizlabDB`.`membresiauser`
                 (`membreIdEpayco`, `membreCodEpayco`, `membreCodigo`, 
                 `membreFechaC`, `membreHoraC`, `membreEstado`, 
                 `membreFechaPagoA`, `membreFechaPagoP`, `membreUser`, 
@@ -85,7 +85,7 @@
             $idMembreInsertId = $conn->insert_id;
 
             $conn->query(
-                "INSERT INTO `bizlabDB`.`historial`
+                "INSERT INTO `gdrfkbmy_bizlabDB`.`historial`
                 (tarea_fOrigen, tarea_hOrigen, tarea_tipo, 
                 tarea_estado, tarea_usuario, tarea_membresia, 
                 tarea_factura)
@@ -96,7 +96,7 @@
             
             $idHistoInsertId = $conn->insert_id;
 
-            $conn->query("UPDATE `bizlabDB`.`usuarios` SET `usuarios`.`user_membresia` = ".$idMembresia.", `usuarios`.`user_rol` = 'Miembro' WHERE (`usuarios`.`id_usuario` = ".$_SESSION["iniciado"].");");
+            $conn->query("UPDATE `gdrfkbmy_bizlabDB`.`usuarios` SET `usuarios`.`user_membresia` = ".$idMembresia.", `usuarios`.`user_rol` = 'Miembro' WHERE (`usuarios`.`id_usuario` = ".$_SESSION["iniciado"].");");
 
             echo json_encode([$idHistoInsertId, $idInsertadoFactura, $idMembreInsertId, intval($_SESSION["iniciado"])], JSON_UNESCAPED_UNICODE);
 

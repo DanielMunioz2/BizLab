@@ -53,7 +53,7 @@
                         <span>Rol Persona</span>
                         <select name="inputSelectRol" id="inputSelectRol" required>
                             <option value="" selected disabled>Selección</option>
-                            <option value="">Miembro Común</option>
+                            <option value="">Usuario</option>
                             <option value="">Administrador</option>
                         </select>
                         <span class="spanErr sparErrTipoUser">##################</span>

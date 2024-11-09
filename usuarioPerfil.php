@@ -10,7 +10,7 @@
         $userTipo = $_SESSION["tipoUsuario"];
 
         $resultadoUser = $conn->query(
-            "SELECT * FROM `bizlabDB`.`usuarios` 
+            "SELECT * FROM `gdrfkbmy_bizlabDB`.`usuarios` 
             WHERE `usuarios`.`id_usuario` =  $id;"
         );
 
