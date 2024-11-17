@@ -4,7 +4,8 @@
 
   // URLS para consultas a la base de datos
 
-    var urlBuscarInfoAdminDB = "https://gdr.fkb.mybluehost.me/website_bizlabv1/consultarInfoAdmin.php";
+    //var urlBuscarInfoAdminDB = "https://gdr.fkb.mybluehost.me/website_bizlabv1/consultarInfoAdmin.php";
+    var urlBuscarInfoAdminDB = "http://localhost/website_bizlabv1/consultarInfoAdmin.php";
 
   //-------------------------------------------------------------------------------------------------
 
@@ -5011,7 +5012,7 @@ if (document.querySelector(".administracionHTML") != null) {
                             btnsEstadisUnid[d].addEventListener("click", (e)=>{
                             
                               if(
-                                  e.target.getAttribute("tipo").split(",")!= null
+                                  e.target.getAttribute("tipo") != null
                               ){
                               let datos = e.target.getAttribute("tipo").split(",");
                               document.querySelector("#"+datos[0]).submit();
@@ -5658,7 +5659,7 @@ if(document.querySelector(".editarProdHTML")){
       
       if(document.querySelector(".divPrin").getAttribute("tipo") == "producto"){
 
-        if(datos[1]=="Mensuales"){
+        if(datos[1]=="Grupal"){
 
           let suma=0;
   
@@ -5669,7 +5670,6 @@ if(document.querySelector(".editarProdHTML")){
           if(
             inputNombre.value != "" &&
             inputCatego.value != "" &&
-            inputTipo.value != "" &&
             inputPreXMembre.value != "" && 
             inputDescrip.value != "" &&
             btnSubir.files[0] != "" &&
@@ -5688,12 +5688,11 @@ if(document.querySelector(".editarProdHTML")){
   
         }else{
   
-          if(datos[1]=="Individuales"){
+          if(datos[1]=="Individual"){
   
             if(
               inputNombre.value != "" &&
               inputCatego.value != "" &&
-              inputTipo.value != "" &&
               inputPreXMembre.value != "" && 
               inputPreXHora.value != "" &&
               inputPreXDia.value != "" &&
@@ -5905,7 +5904,7 @@ if(document.querySelector(".editarProdHTML")){
 
       if(document.querySelector(".divPrin").getAttribute("tipo") == "producto"){
 
-        if(datos[1]=="Mensuales"){
+        if(datos[1]=="Grupal"){
 
           inputNombre.removeAttribute("disabled"); 
           inputCatego.removeAttribute("disabled"); 
@@ -5924,12 +5923,11 @@ if(document.querySelector(".editarProdHTML")){
   
         }else{
   
-          if(datos[1]=="Individuales"){
+          if(datos[1]=="Individual"){
   
             inputNombre.removeAttribute("disabled"); 
             inputCatego.removeAttribute("disabled"); 
             inputTipo.removeAttribute("disabled"); 
-            inputPreXMembre.removeAttribute("disabled"); 
             inputPreXHora.removeAttribute("disabled"); 
             inputPreXDia.removeAttribute("disabled"); 
             inputPreXSemana.removeAttribute("disabled"); 
@@ -6049,7 +6047,7 @@ if(document.querySelector(".editarProdHTML")){
     }
 
     //
-
+    
     btnGuardar.onclick = () => {
 
       if(document.querySelector(".divPrin").getAttribute("tipo") == "producto"){
@@ -6076,9 +6074,13 @@ if(document.querySelector(".editarProdHTML")){
           formActuProduct.append("prodPreXDia", inputPreXDia.value);
           formActuProduct.append("prodPreXSemana", inputPreXSemana.value);
           formActuProduct.append("prodDescrip", inputDescrip.value);
-          formActuProduct.append("prodImg", btnSubir.files[0]);
+          if(btnSubir.files[0] != undefined){
+            formActuProduct.append("prodImg", btnSubir.files[0]);
+          }
+          formActuProduct.append("imgActual", document.querySelector("#imagenSelected").getAttribute("src"));
+          formActuProduct.append("imgActual2", document.querySelector("#inO_imgPdt").value);
           formActuProduct.append("editProd", true);
-  
+    
           fetch(urlBuscarInfoAdminDB, {
             method: "POST",
             body: formActuProduct,
@@ -6086,7 +6088,7 @@ if(document.querySelector(".editarProdHTML")){
             .then((response) => response.json())
             .then((data) => {
               //
-              
+                
               datos[0] = data[0];
               datos[1] = data[1];
               datos[2] = data[2];
@@ -6108,6 +6110,8 @@ if(document.querySelector(".editarProdHTML")){
               imagenSelect.removeAttribute("src");
               imagenSelect.setAttribute("src", "images/productosImages/"+data[8]);
               imagenNombre.textContent = "";
+              document.querySelector("#inO_imgPdtElimi").value = data[8];
+              document.querySelector("#inO_imgPdt").value = data[8];
   
               //
             })
@@ -6139,7 +6143,11 @@ if(document.querySelector(".editarProdHTML")){
             formActuProduct.append("prodPreXSemana", inputPreXSemana.value);
             formActuProduct.append("prodDescrip", inputDescrip.value);
             formActuProduct.append("prodCaracte", document.querySelector("#caracterisProd").value);
-            formActuProduct.append("prodImg", btnSubir.files[0]);
+            if(btnSubir.files[0] != undefined){
+                formActuProduct.append("prodImg", btnSubir.files[0]);
+            }
+            formActuProduct.append("imgActual", document.querySelector("#imagenSelected").getAttribute("src"));
+            formActuProduct.append("imgActual2", document.querySelector("#inO_imgPdt").value);
             formActuProduct.append("editUnidad", true);
     
             fetch(urlBuscarInfoAdminDB, {
@@ -6167,6 +6175,8 @@ if(document.querySelector(".editarProdHTML")){
                 imagenSelect.removeAttribute("src");
                 imagenSelect.setAttribute("src", "images/productosImages/"+data[6]);
                 imagenNombre.textContent = "";
+                document.querySelector("#inO_imgPdtElimi").value = data[6];
+                document.querySelector("#inO_imgPdt").value = data[6];
 
                 //
               })
@@ -6464,9 +6474,9 @@ if(document.querySelector(".crearProdHTML")){
 
       function verificarCategoria () {
 
-        if(selectCatego.value == "Mensuales"){
+        if(selectCatego.value == "Grupal"){
 
-          document.querySelector("#categoriaInputOculto").value = "mensuales";
+          document.querySelector("#categoriaInputOculto").value = "Grupal";
           
           if(inputPreMensuales.getAttribute("disabled") != null){
             
@@ -6485,9 +6495,9 @@ if(document.querySelector(".crearProdHTML")){
 
         }else{
 
-          if(selectCatego.value == "Individuales"){
+          if(selectCatego.value == "Individual"){
 
-            document.querySelector("#categoriaInputOculto").value = "individuales";
+            document.querySelector("#categoriaInputOculto").value = "Individual";
 
             if(inputPreMensuales.getAttribute("disabled") == null){
               

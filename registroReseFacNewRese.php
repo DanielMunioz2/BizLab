@@ -426,7 +426,8 @@
     history.replaceState(null,null,"index.php");
     document.querySelector(".btnVolver").addEventListener("click", ()=>{
 
-        window.location.href = "https://gdr.fkb.mybluehost.me/website_bizlabv1/index.php";
+        //window.location.href = "https://gdr.fkb.mybluehost.me/website_bizlabv1/index.php";
+        window.location.href = "http://localhost/website_bizlabv1/index.php";
 
     });
 

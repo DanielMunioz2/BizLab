@@ -6,11 +6,16 @@
   //-----------------------------------------------------------------------------------------------------------------------------
   // VARIABLES
 
-  var urlEnviContraRecu = "https://gdr.fkb.mybluehost.me/website_bizlabv1/enviarContraRecu.php";
-  var urlInfoClienteDB = "https://gdr.fkb.mybluehost.me/website_bizlabv1/consultarInfoCliente.php";
-  var urlConsultarUser = "https://gdr.fkb.mybluehost.me/website_bizlabv1/consultarUsuario.php";
-  var urlConsultarTDC = "https://gdr.fkb.mybluehost.me/website_bizlabv1/confirTarjetaCredito.php";
-  var urlPagarMensualidadTDC = "https://gdr.fkb.mybluehost.me/website_bizlabv1/transaPagoMensualidad.php";
+  // var urlEnviContraRecu = "https://gdr.fkb.mybluehost.me/website_bizlabv1/enviarContraRecu.php";
+  // var urlInfoClienteDB = "https://gdr.fkb.mybluehost.me/website_bizlabv1/consultarInfoCliente.php";
+  // var urlConsultarUser = "https://gdr.fkb.mybluehost.me/website_bizlabv1/consultarUsuario.php";
+  // var urlConsultarTDC = "https://gdr.fkb.mybluehost.me/website_bizlabv1/confirTarjetaCredito.php";
+  // var urlPagarMensualidadTDC = "https://gdr.fkb.mybluehost.me/website_bizlabv1/transaPagoMensualidad.php";
+  var urlEnviContraRecu = "http://localhost/website_bizlabv1/enviarContraRecu.php";
+  var urlInfoClienteDB = "http://localhost/website_bizlabv1/consultarInfoCliente.php";
+  var urlConsultarUser = "http://localhost/website_bizlabv1/consultarUsuario.php";
+  var urlConsultarTDC = "http://localhost/website_bizlabv1/confirTarjetaCredito.php";
+  var urlPagarMensualidadTDC = "http://localhost/website_bizlabv1/transaPagoMensualidad.php";
 
   var diaGeneNum = new Date().getDate();
   var mesGeneNum = new Date().getMonth()+1;
@@ -78,8 +83,8 @@
     let diaNumActual = new Date().getDate();
     let mesNumActual = new Date().getMonth()+1;
     let mesNumAnterior = new Date().getMonth();
-    let anioNumAnte = mesNumAnterior == 0 ? anioNumActual-1 : anioNumActual;
-    mesNumAnterior = mesNumAnterior == 0 ? 12 : mesNumAnterior;
+    let anioNumAnte = mesNumAnterior === 0 ? anioNumActual-1 : anioNumActual;
+    mesNumAnterior = mesNumAnterior === 0 ? 12 : mesNumAnterior;
     let mesNumPosterior = new Date().getMonth()+2;
     let anioNumPoste =  mesNumPosterior == 13 ? anioNumActual+1 : anioNumActual;
     mesNumPosterior = mesNumPosterior == 13 ? 1 : mesNumPosterior;
@@ -130,11 +135,11 @@
   }
 
   // Sumar o restar dias a una fecha
-  function sumaRestaDiasFecha(fecha, operacion, dias) {
+  function sumaRestaDiasFecha(fecha, operacion, diass) {
 
     var date = fecha.split("-"),
     hoy = new Date(Number(date[0]), (Number(date[1])-1), Number(date[2])),
-    dias = parseInt(dias),
+    dias = parseInt(diass),
     calculado = new Date(),
     dateResul = operacion == "sumar" ? hoy.getDate() + dias : hoy.getDate() - dias;
 

@@ -11,14 +11,17 @@
     }
     
     if(isset($_POST["correoUser"])){
+        
         $correo = isset($_POST["correoUser"]) ? $conn->real_escape_string($_POST["correoUser"]) : null;
         $contraseña = isset($_POST["contraseñaUser"]) ? $conn->real_escape_string($_POST["contraseñaUser"]) : null;
 
         if($correo!==null && $contraseña!==null){
-            $queryUser = "SELECT * FROM `gdrfkbmy_bizlabDB`.`usuarios` 
-            WHERE `usuarios`.`user_correo` = '".$correo."';";
 
-            $resultadoUser = $conn->query($queryUser);
+            $resultadoUser = 
+            $conn->query(
+                "SELECT * FROM `gdrfkbmy_bizlabdb`.`usuarios` 
+                WHERE `usuarios`.`user_correo` = '".$correo."';"
+            );
 
             $row = $resultadoUser -> fetch_assoc();
 

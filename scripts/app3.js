@@ -11,6 +11,13 @@
     var urlCrearSub = "https://gdr.fkb.mybluehost.me/website_bizlabv1/crearSubNueva.php";
     var urlCrearUserToken = "https://gdr.fkb.mybluehost.me/website_bizlabv1/crearUserToken.php";
     var urlModoCLienteData = "https://gdr.fkb.mybluehost.me/website_bizlabv1/consultarInfoCliente.php";
+    // var urlInfoAdmin = "http://localhost/website_bizlabv1/consultarInfoAdmin.php";
+    // var urlConfirTDC = "http://localhost/website_bizlabv1/confirTarjetaCredito.php";
+    // var urlCreaFacMembre = "http://localhost/website_bizlabv1/registrarFacMembre.php";
+    // var urlGuardaTokenUser = "http://localhost/website_bizlabv1/guardarMiembroEpayco.php";
+    // var urlCrearSub = "http://localhost/website_bizlabv1/crearSubNueva.php";
+    // var urlCrearUserToken = "http://localhost/website_bizlabv1/crearUserToken.php";
+    // var urlModoCLienteData = "http://localhost/website_bizlabv1/consultarInfoCliente.php";
 
     var mesesFactura = {
         1 : "enero",
@@ -1353,7 +1360,7 @@ if(document.querySelector("#realizarReseCLI-HTML") != null){
         // Conexión EPAYCO (Pasarela de Pago)
         var handler = ePayco.checkout.configure({
             key: '2005c19424c83d33b146c7045647bff0',
-            test: true
+            test: false
         });
 
         // Intervalos
@@ -2383,73 +2390,90 @@ if(document.querySelector("#realizarReseCLI-HTML") != null){
                                             }
 
                                             let unidadesDispoXDStr = unidadesDispoXD.toString();
+                                            
+                                            let oficina8Perso = false;
+                                            let oficina8PersoUsada = false;
+                                            
+                                            if(
+                                                unidadesDispoXDStr.includes("31") && unidadesDispoXDStr.includes("32")
+                                            ){
+                                                oficina8Perso = true;
+                                            }
+
+                                            if(
+                                                unidadesDispoXDStr.includes("35")
+                                            ){
+                                                oficina8PersoUsada = true;
+                                            }
 
                                             if(unidadesDispoXDStr != ""){
 
-                                                let formUnidadesDispon = new FormData();
+                                                if
+                                                (
+                                                document.querySelector(".nombrePdt").textContent == "Oficina Privada para 8 Personas" && 
+                                                oficina8Perso == true
+                                                )
+                                                {
 
-                                                formUnidadesDispon.append("unidDispoXH", unidadesDispoXDStr);
-        
-                                                fetch(urlModoCLienteData, {
-                                                    method: "POST",
-                                                    body: formUnidadesDispon,
-                                                })
-                                                    .then((response) => response.json())
-                                                    .then((data) => {
+                                                    document.querySelector(".spanErrHorario").style.color = "#ff2222"
+                                                    document.querySelector(".spanErrHorario").textContent = "El horario elegido ya está ocupado";
+                                                    document.querySelector(".spanHorarioDias").textContent = "";
+
+                                                }else if
+                                                (
+                                                    document.querySelector(".nombrePdt").textContent == "Oficina Privada para 4 Personas" && 
+                                                    oficina8PersoUsada == false
+                                                ){
+
+                                                    document.querySelector(".spanErrHorario").style.color = "#ff2222"
+                                                    document.querySelector(".spanErrHorario").textContent = "El horario elegido ya está ocupado";
+                                                    document.querySelector(".spanHorarioDias").textContent = "";
+                                                    
+                                                }else{
+
+                                                    let formUnidadesDispon = new FormData();
+
+                                                    formUnidadesDispon.append("unidDispoXH", unidadesDispoXDStr);
             
-                                                        document.querySelector("#diaInicioInputXD").value = diaInicio;
-                                                        document.querySelector("#diaFinalInputXD").value = diaFinal;
-                                                        document.querySelector("#cadenaDiasInputXD").value = cadenaDiasDia;
-                                                        document.querySelector("#cantDiasInputXD").value = 
-                                                            document.querySelector("#cantDiasIN-Dia").value;
+                                                    fetch(urlModoCLienteData, {
+                                                        method: "POST",
+                                                        body: formUnidadesDispon,
+                                                    })
+                                                        .then((response) => response.json())
+                                                        .then((data) => {
+                
+                                                            document.querySelector("#diaInicioInputXD").value = diaInicio;
+                                                            document.querySelector("#diaFinalInputXD").value = diaFinal;
+                                                            document.querySelector("#cadenaDiasInputXD").value = cadenaDiasDia;
+                                                            document.querySelector("#cantDiasInputXD").value = 
+                                                                document.querySelector("#cantDiasIN-Dia").value;
 
-                                                        erroresInput[7] = 0;
-                                                        erroresInput[8] = 0;
-                                                        erroresInput[9] = 0;
-                                                        erroresInput[10] = 0;
-                                                        confirmarErrores();
-        
-                                                        document.querySelector("#inputUnid").removeAttribute("disabled");
-                                                        
-                                                        document.querySelector(".lisUnidad").innerHTML = "";
-                                                        document.querySelector(".spanErrHorario").style.color = "#22aa22"
-                                                        document.querySelector(".spanErrHorario").textContent = "Fecha y horario disponibles";
-                                                        document.querySelector(".spanHorarioDias").style.color = "#22aa22"
-                                                        document.querySelector(".spanHorarioDias").textContent = "Inicio: "+diaInicio+" - Final: "+diaFinal;
-
-                                                        if(document.querySelector("#tipoReservaIn").value == "hora"){
-
-                                                            let precio = Number(document.querySelector("#precioIndividualIn").value);
-                                                            let iva = Number(document.querySelector("#ivaPdtElegido").value);
-                                                            let descu = Number(document.querySelector("#ivaDescuElegido").value);
-                                                            let cantidad = Number(document.querySelector("#cantHorasInputXH").value);
+                                                            erroresInput[7] = 0;
+                                                            erroresInput[8] = 0;
+                                                            erroresInput[9] = 0;
+                                                            erroresInput[10] = 0;
+                                                            confirmarErrores();
+            
+                                                            document.querySelector("#inputUnid").removeAttribute("disabled");
                                                             
-                                                            let precioCantidad = cantidad*precio;
-                                                            let precioIva =  precioCantidad+(precioCantidad*(iva/100));
-                                                            let precioDescu =  precioCantidad-(precioCantidad*(descu/100));
-
-                                                            document.querySelector(".precioTituloSpan").textContent = "Precio por Hora";
-                                                            document.querySelector(".spanPrecio").textContent = precio+"$";
-                                                            document.querySelector(".spanCantidad").textContent = cantidad;
-                                                            document.querySelector(".spanSubtotal").textContent = precioCantidad+"$";
-                                                            document.querySelector(".spanPrecioIva").textContent = precioIva+"$";
-                                                            document.querySelector(".spanPrecioDescu").textContent = precioDescu+"$";
-                                                            document.querySelector(".spanTotalPrecio").textContent = precioDescu+"$";
-
-                                                        }else{
-
-                                                            if(document.querySelector("#tipoReservaIn").value == "dia"){
+                                                            document.querySelector(".lisUnidad").innerHTML = "";
+                                                            document.querySelector(".spanErrHorario").style.color = "#22aa22"
+                                                            document.querySelector(".spanErrHorario").textContent = "Fecha y horario disponibles";
+                                                            document.querySelector(".spanHorarioDias").style.color = "#22aa22"
+                                                            document.querySelector(".spanHorarioDias").textContent = "Inicio: "+diaInicio+" - Final: "+diaFinal;
+                                                            
+                                                            if(document.querySelector("#tipoReservaIn").value == "hora"){
 
                                                                 let precio = Number(document.querySelector("#precioIndividualIn").value);
                                                                 let iva = Number(document.querySelector("#ivaPdtElegido").value);
                                                                 let descu = Number(document.querySelector("#ivaDescuElegido").value);
-                                                                let cantidad = Number(document.querySelector("#cantDiasInputXD").value);
+                                                                let cantidad = Number(document.querySelector("#cantHorasInputXH").value);
                                                                 
                                                                 let precioCantidad = cantidad*precio;
                                                                 let precioIva =  precioCantidad+(precioCantidad*(iva/100));
                                                                 let precioDescu =  precioCantidad-(precioCantidad*(descu/100));
 
-                                                                document.querySelector(".precioTituloSpan").textContent = "Precio por Día";
+                                                                document.querySelector(".precioTituloSpan").textContent = "Precio por Hora";
                                                                 document.querySelector(".spanPrecio").textContent = precio+"$";
                                                                 document.querySelector(".spanCantidad").textContent = cantidad;
                                                                 document.querySelector(".spanSubtotal").textContent = precioCantidad+"$";
@@ -2459,39 +2483,68 @@ if(document.querySelector("#realizarReseCLI-HTML") != null){
 
                                                             }else{
 
-                                                                if(document.querySelector("#tipoReservaIn").value == "semana"){
+                                                                if(document.querySelector("#tipoReservaIn").value == "dia"){
 
                                                                     let precio = Number(document.querySelector("#precioIndividualIn").value);
                                                                     let iva = Number(document.querySelector("#ivaPdtElegido").value);
                                                                     let descu = Number(document.querySelector("#ivaDescuElegido").value);
+                                                                    let cantidad = Number(document.querySelector("#cantDiasInputXD").value);
                                                                     
-                                                                    let precioIva =  precio+(precio*(iva/100));
-                                                                    let precioDescu =  precio-(precio*(descu/100));
+                                                                    let precioCantidad = cantidad*precio;
+                                                                    let precioIva =  precioCantidad+(precioCantidad*(iva/100));
+                                                                    let precioDescu =  precioCantidad-(precioCantidad*(descu/100));
 
-                                                                    document.querySelector(".precioTituloSpan").textContent = "Precio por Semana";
+                                                                    document.querySelector(".precioTituloSpan").textContent = "Precio por Día";
                                                                     document.querySelector(".spanPrecio").textContent = precio+"$";
-                                                                    document.querySelector(".spanCantidad").textContent = 1;
-                                                                    document.querySelector(".spanSubtotal").textContent = precio+"$";
+                                                                    document.querySelector(".spanCantidad").textContent = cantidad;
+                                                                    document.querySelector(".spanSubtotal").textContent = precioCantidad+"$";
                                                                     document.querySelector(".spanPrecioIva").textContent = precioIva+"$";
                                                                     document.querySelector(".spanPrecioDescu").textContent = precioDescu+"$";
                                                                     document.querySelector(".spanTotalPrecio").textContent = precioDescu+"$";
 
+                                                                }else{
+
+                                                                    if(document.querySelector("#tipoReservaIn").value == "semana"){
+
+                                                                        let precio = Number(document.querySelector("#precioIndividualIn").value);
+                                                                        let iva = Number(document.querySelector("#ivaPdtElegido").value);
+                                                                        let descu = Number(document.querySelector("#ivaDescuElegido").value);
+                                                                        
+                                                                        let precioIva =  precio+(precio*(iva/100));
+                                                                        let precioDescu =  precio-(precio*(descu/100));
+
+                                                                        document.querySelector(".precioTituloSpan").textContent = "Precio por Semana";
+                                                                        document.querySelector(".spanPrecio").textContent = precio+"$";
+                                                                        document.querySelector(".spanCantidad").textContent = 1;
+                                                                        document.querySelector(".spanSubtotal").textContent = precio+"$";
+                                                                        document.querySelector(".spanPrecioIva").textContent = precioIva+"$";
+                                                                        document.querySelector(".spanPrecioDescu").textContent = precioDescu+"$";
+                                                                        document.querySelector(".spanTotalPrecio").textContent = precioDescu+"$";
+
+                                                                    }
+
                                                                 }
 
                                                             }
+            
+                                                            rangoUnidadesLisSema.selectNode(document.getElementsByTagName("div").item(0));
+                                                            const listaUnidadesSema =
+                                                                rangoUnidadesLisSema.createContextualFragment(data);
+                                                            document.querySelector(".lisUnidad").appendChild(listaUnidadesSema);
 
-                                                        }
-        
-                                                        rangoUnidadesLisSema.selectNode(document.getElementsByTagName("div").item(0));
-                                                        const listaUnidadesSema =
-                                                            rangoUnidadesLisSema.createContextualFragment(data);
-                                                        document.querySelector(".lisUnidad").appendChild(listaUnidadesSema);
-        
-                                                    })
-                                                    .catch((err) => console.log(err));
+                                                            if(document.querySelector(".nombrePdt").textContent == "Oficina Privada para 4 Personas"){
+                                                                document.querySelector(".lisUnidad").removeChild(document.querySelector(".lisUnidad").lastChild);
+                                                            }
+            
+                                                        })
+                                                        .catch((err) => console.log(err));
 
-                                            }else{
+                                                }
 
+                                            }else if(
+                                                unidadesDispoXDStr == "" ||
+                                                (document.querySelector(".nombrePdt").textContent == "Oficina Privada para 8 Personas" && oficina8Perso == false)){
+                                                
                                                 document.querySelector("#diaInicioInputXD").value = "";
                                                 document.querySelector("#diaFinalInputXD").value = "";
                                                 document.querySelector("#cadenaDiasInputXD").value = "";
@@ -2519,7 +2572,7 @@ if(document.querySelector("#realizarReseCLI-HTML") != null){
                                                 document.querySelector(".spanErrHorario").style.color = "#ff2222"
                                                 document.querySelector(".spanErrHorario").textContent = "El horario elegido ya está ocupado";
                                                 document.querySelector(".spanHorarioDias").textContent = "";
-
+                                                
                                             }
         
                                         })
@@ -4852,7 +4905,16 @@ if(document.querySelector("#realizarReseCLI-HTML") != null){
                                 }
                                 
                                 unidadesProdDispo = unidProdDispoArray.toString();
-
+                                
+                                
+                                let oficina8Perso = false;
+                                            
+                                if(
+                                    unidadesProdDispo.includes("31") && unidadesProdDispo.includes("32")
+                                ){
+                                    oficina8Perso = true;
+                                }
+                                
                                 if(
                                     horaDispo == true &&
                                     diaDispo == true &&
@@ -4971,7 +5033,10 @@ if(document.querySelector("#realizarReseCLI-HTML") != null){
 
                                 }else{
 
-                                    if(horaDispo == false){
+                                    if(horaDispo == false || (
+                                            oficina8Perso == false && 
+                                            document.querySelector(".nombrePdt").textContent == "Oficina Privada para 8 Personas"
+                                            )){
 
                                         document.querySelector("#diaInicioInputXH").value = "";
                                         document.querySelector("#horaEntradaXH").value = ""; 
@@ -5023,7 +5088,10 @@ if(document.querySelector("#realizarReseCLI-HTML") != null){
 
                                     }else{
 
-                                        if(diaDispo == false){
+                                        if(diaDispo == false || (
+                                            oficina8Perso == false && 
+                                            document.querySelector(".nombrePdt").textContent == "Oficina Privada para 8 Personas"
+                                            )){
 
                                             document.querySelector("#diaInicioInputXH").value = "";
                                             document.querySelector("#horaEntradaXH").value = ""; 
@@ -5075,7 +5143,10 @@ if(document.querySelector("#realizarReseCLI-HTML") != null){
 
                                         }else{
 
-                                            if(semaDispo == false){
+                                            if(semaDispo == false || (
+                                            oficina8Perso == false && 
+                                            document.querySelector(".nombrePdt").textContent == "Oficina Privada para 8 Personas"
+                                            )){
 
                                                 document.querySelector("#diaInicioInputXH").value = "";
                                                 document.querySelector("#horaEntradaXH").value = ""; 
@@ -5810,6 +5881,15 @@ if(document.querySelector("#realizarReseCLI-HTML") != null){
                                 }
                                 
                                 unidadesProdDispo = unidProdDispoArray.toString();
+                                
+                                let oficina8Perso = false;
+                                        
+                                
+                                if(
+                                    unidadesProdDispo.includes("31") && unidadesProdDispo.includes("32")
+                                ){
+                                    oficina8Perso = true;
+                                }
 
                                 if(
                                     horaDispo == true &&
@@ -5927,7 +6007,10 @@ if(document.querySelector("#realizarReseCLI-HTML") != null){
 
                                 }else{
 
-                                    if(horaDispo == false){
+                                    if(horaDispo == false || (
+                                            oficina8Perso == false && 
+                                            document.querySelector(".nombrePdt").textContent == "Oficina Privada para 8 Personas"
+                                            )){
 
                                         document.querySelector("#diaInicioInputXH").value = "";
                                         document.querySelector("#horaEntradaXH").value = ""; 
@@ -5979,7 +6062,10 @@ if(document.querySelector("#realizarReseCLI-HTML") != null){
 
                                     }else{
 
-                                        if(diaDispo == false){
+                                        if(diaDispo == false || (
+                                            oficina8Perso == false && 
+                                            document.querySelector(".nombrePdt").textContent == "Oficina Privada para 8 Personas"
+                                            )){
 
                                             document.querySelector("#diaInicioInputXH").value = "";
                                             document.querySelector("#horaEntradaXH").value = ""; 
@@ -6031,7 +6117,10 @@ if(document.querySelector("#realizarReseCLI-HTML") != null){
 
                                         }else{
 
-                                            if(semaDispo == false){
+                                            if(semaDispo == false || (
+                                            oficina8Perso == false && 
+                                            document.querySelector(".nombrePdt").textContent == "Oficina Privada para 8 Personas"
+                                            )){
 
                                                 document.querySelector("#diaInicioInputXH").value = "";
                                                 document.querySelector("#horaEntradaXH").value = ""; 
@@ -6769,6 +6858,8 @@ if(document.querySelector("#realizarReseCLI-HTML") != null){
 
                     confirmation: "https://gdr.fkb.mybluehost.me/website_bizlabv1/confirmacionPage.php",
                     response: "https://gdr.fkb.mybluehost.me/website_bizlabv1/transaccionExitosa.php",
+                    // confirmation: "http://localhost/website_bizlabv1/confirmacionPage.php",
+                    // response: "http://localhost/website_bizlabv1/transaccionExitosa.php",
 
                     //Atributos cliente
                     name_billing: String(nombreUser),

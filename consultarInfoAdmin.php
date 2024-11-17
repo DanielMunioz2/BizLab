@@ -888,7 +888,7 @@
         }
 
         if(isset($_POST["editProd"])){
-
+            
             $prodId = $_POST["prodId"];
             $prodNom = $_POST["prodNom"];
             $prodCatego = $_POST["prodCatego"];
@@ -898,6 +898,8 @@
             $prodPreXDia = $_POST["prodPreXDia"];
             $prodPreXSema = $_POST["prodPreXSemana"];
             $prodDescrip = $_POST["prodDescrip"];
+            $imgActual = $_POST["imgActual"];
+            $imgActual2 = $_POST["imgActual2"];
 
             $prodPrecio = floatval($prodPrecio);
             $prodPreXHora = intval($prodPreXHora);
@@ -905,10 +907,25 @@
             $prodPreXSema = intval($prodPreXSema);
 
             $fecha=new DateTime();
-
-            $ImagenPrin = $fecha->getTimestamp()."_".$_FILES["prodImg"]['name'];
-            $ImagenPrinTemp = $_FILES["prodImg"]['tmp_name'];
-            move_uploaded_file($ImagenPrinTemp, "images/productosImages/".$ImagenPrin);
+    
+            if
+            (
+            $_FILES["prodImg"]['name'] != null && 
+            $_FILES["prodImg"]['name'] != ""
+            )
+            {
+                
+                $ImagenPrin = $fecha->getTimestamp()."_".$_FILES["prodImg"]['name'];
+                $ImagenPrinTemp = $_FILES["prodImg"]['tmp_name'];
+                move_uploaded_file($ImagenPrinTemp, "images/productosImages/".$ImagenPrin);
+                
+                unlink("images/productosImages/".$imgActual2);
+                
+            }else{
+                
+                $ImagenPrin = explode("/", $imgActual)[2];
+                
+            }
             
             $query = "UPDATE `gdrfkbmy_bizlabDB`.`productos` SET 
             `productos`.`produNombre` = '$prodNom', 
@@ -948,14 +965,31 @@
             $prodPreXSema = $_POST["prodPreXSemana"];
             $prodDescrip = $_POST["prodDescrip"];
             $prodCaracteris = $_POST["prodCaracte"];
+            $imgActual = $_POST["imgActual"];
+            $imgActual2 = $_POST["imgActual2"];
 
             $precios = $prodPreXHora.",".$prodPreXDia.",".$prodPreXSema;
 
             $fecha=new DateTime();
 
-            $ImagenPrin = $fecha->getTimestamp()."_".$_FILES["prodImg"]['name'];
-            $ImagenPrinTemp = $_FILES["prodImg"]['tmp_name'];
-            move_uploaded_file($ImagenPrinTemp, "images/productosImages/".$ImagenPrin);
+            if
+            (
+            $_FILES["prodImg"]['name'] != null && 
+            $_FILES["prodImg"]['name'] != ""
+            )
+            {
+                
+                $ImagenPrin = $fecha->getTimestamp()."_".$_FILES["prodImg"]['name'];
+                $ImagenPrinTemp = $_FILES["prodImg"]['tmp_name'];
+                move_uploaded_file($ImagenPrinTemp, "images/productosImages/".$ImagenPrin);
+                
+                unlink("images/productosImages/".$imgActual2);
+                
+            }else{
+                
+                $ImagenPrin = explode("/", $imgActual)[2];
+                
+            }
             
             $query = "UPDATE `gdrfkbmy_bizlabDB`.`unidades` SET 
             `unidades`.`unidad_nombre` = '$prodNom',

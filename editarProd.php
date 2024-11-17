@@ -18,6 +18,7 @@
         $htmlProductoEdit = "";
         $htmlEstadis = "";
         $estadisSTD = false;
+        $imgPdt = "";
 
         if($tipo=="producto"){
         //
@@ -44,12 +45,12 @@
 
             }
 
-            if($arrayData[1]["produCategoria"]=="Mensuales"){
+            if($arrayData[1]["produCategoria"]=="Grupal"){
                 
                 //
 
-                $catego = "Mensuales";
-                $tipo2 = "Membresía";
+                $catego = "Grupal";
+                $tipo2 = "Sin Dato";
                 $precioM = $arrayData[1]["produPrecio"];
                 $precioH = $arrayData[1]["precioXhora"];
                 $precioD = $arrayData[1]["precioXDia"];
@@ -163,7 +164,7 @@
 
                 //
 
-                $catego = "Individuales";
+                $catego = "Individual";
                 $tipo2 = "Sin Dato";
                 $precioM = $arrayData[1]["produPrecio"];
                 $precioH = $arrayData[1]["precioXhora"];
@@ -239,6 +240,7 @@
             }    
 
             $imagen = $arrayData[1]["productoImgPrin"];
+            $imgPdt = $arrayData[1]["productoImgPrin"];
 
             $htmlProductoEdit = '
             <div class="divPrin" tipo="producto">
@@ -263,13 +265,13 @@
                             <div class="divCatego">
                                 <span>Categoría</span>
                                 <select name="selectCatego" id="selectCatego" disabled>
-                                    <option value="Mensuales" selected>'.$catego.'</option>
+                                    <option value="Individual" selected>'.$catego.'</option>
                                 </select>
                             </div>
                             <div class="divTipo">
                                 <span>Tipo</span>
                                 <select name="selectTipo" id="selectTipo" disabled>
-                                    <option value="Membresía" selected>'.$tipo2.'</option>
+                                    <option value="" selected>'.$tipo2.'</option>
                                 </select>
                             </div>
                         </div>
@@ -376,6 +378,7 @@
             $tipo2 = "Sin Dato";
 
             $imagen = $arrayData[1]["unidad_imagen"];
+            $imgPdt = $arrayData[1]["unidad_imagen"];
 
             $htmlProductoEdit = '
             <div class="divPrin" tipo="unidad">
@@ -400,13 +403,13 @@
                             <div class="divCatego">
                                 <span>Categoría</span>
                                 <select name="selectCatego" id="selectCatego" disabled>
-                                    <option value="Mensuales" selected>'.$catego.'</option>
+                                    <option value="Individual" selected>'.$catego.'</option>
                                 </select>
                             </div>
                             <div class="divTipo">
                                 <span>Tipo</span>
                                 <select name="selectTipo" id="selectTipo" disabled>
-                                    <option value="Membresía" selected>'.$tipo2.'</option>
+                                    <option value="" selected>'.$tipo2.'</option>
                                 </select>
                             </div>
                         </div>
@@ -546,13 +549,15 @@
     <title>Editar Producto</title>
     <input type="hidden" id="idprod" value="<?php echo $id?>">
     <input type="hidden" id="estadisSTD" value="<?php echo $estadisSTD?>">
+    <input type="hidden" id="inO_imgPdt" value="<?php echo $imgPdt?>">
     <form id="formEliminarProd" method="post" action="eliminarProd.php">
         <input type="hidden" value="<?php echo $id?>" name="idEliminarProdEdit">
         <input type="hidden" value="<?php echo $tipo?>" name="tipoEditEli">
-        <input type="hidden" value="<?php echo $imagen?>" name="imagen">
+        <input id="inO_imgPdtElimi" type="hidden" value="<?php echo $imagen?>" name="imagen">
     </form>
-    <link rel="shortcut icon" type="x-icon" href="images/favicon_bizclub.svg">
+    
     <link rel="stylesheet" href="estilos/editarProd.css">
+    <link rel="shortcut icon" type="x-icon" href="images/favicon_bizclub.svg">
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

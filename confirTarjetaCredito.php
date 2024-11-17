@@ -24,7 +24,7 @@
                 "apiKey" => "2005c19424c83d33b146c7045647bff0",
                 "privateKey" => "4c3b836dec966604dd24c98a910a267d",
                 "lenguage" => "ES",
-                "test" => true
+                "test" => false
             ));
 
             $numTarje = $_POST["numeroTarjeta"];
