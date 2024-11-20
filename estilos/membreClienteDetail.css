@@ -1987,3 +1987,428 @@ justify-content: flex-end;
     }
   
 }
+
+@media only screen and (max-width: 500px) {
+    .body{
+        padding-top: 28rem;
+        & .fondoNegroGene2{
+            & .detailMembreCompraGene{
+                width: 90%;
+                height: 90%;
+                &::-webkit-scrollbar {
+                    -webkit-appearance: none;
+                    width: 0;
+                }
+                & .divProductoGene{
+                    &::-webkit-scrollbar {
+                        -webkit-appearance: none;
+                        width: 0;
+                    }
+                    & .div1{
+                        flex-direction: column;
+                        height: max-content;
+                        justify-content: center;
+                        & .divOjo{
+                            align-items: center;
+                            margin: 0;
+                            padding: 0;
+                            & svg{
+                                width: 3rem;
+                            }
+                            & span{
+                                font-size: 1.8rem;
+                            }
+                        }
+                        & .spanRevise{
+                            font-size: 1.6rem;
+                            text-align: center;
+                        }
+                    }
+                    & .div2{
+                        max-width: 100%;
+                        height: max-content;
+                        & .spnPdt{
+                            text-align: center;
+                            padding: 0;
+                            margin: 0;
+                            padding: 1rem 0;
+                        }
+                        & .imgInfoDivGene{
+                            flex-direction: column;
+                            max-width: 100%;
+                            align-items: center;
+                            & .imgGeneDiv{
+                                width: 80%;
+                                justify-content: center;
+                                margin: 0;
+                                margin: 1rem 0;
+                            }
+                            & .infoPdt{
+                                width: 90%;
+                                margin: 0;
+                                align-items: center;
+                                & .spanNombre{
+                                    width: 100%;
+                                    text-align: center;
+                                    margin: 0;
+                                    padding: 0;
+                                }
+                                & .div1{
+                                    width: 100%;
+                                    margin: 0;
+                                    margin-top: 1rem;
+                                    & span{
+                                        font-size: 1.6rem;
+                                    }
+                                }
+                                & .divMensualidad{
+                                    & span:nth-child(5){
+                                        margin-left: 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    & .div3{
+                        flex-direction: column;
+                        height: max-content;
+                        & .divPagoInfoGene{
+                            width: 100%;
+                            height: max-content;
+                            & .div1{
+                                & #divTp{
+                                    & .spanTPago{
+                                        font-size: 1.6rem;
+                                    }
+                                    & .spanTPago2{
+                                        font-size: 1.6rem;
+                                    }
+                                }
+                                & .divTarjeta{
+                                    width: 100%;
+                                    flex-direction: column;
+                                    & span{
+                                        font-size: 1.6rem;
+                                    }
+                                }
+                            }
+                        }
+                        & .divPreciosGene{
+                            width: 100%;
+                            height: 26rem;
+                            & .preciosDiv{
+                                width: 100%;
+                                height: max-content;
+                                & .precioDiv{
+                                    flex-direction: column;
+                                    height: max-content;
+                                    & span{
+                                        font-size: 1.6rem;
+                                        &:nth-child(1){
+                                            width: 100%;
+                                            text-align: left;
+                                            padding: 0;
+                                            margin: 0;
+                                            padding-left: 1rem;
+                                        }
+                                        &:nth-child(2){
+                                            font-size: 2rem;
+                                            font-weight: 600;
+                                            width: 100%;
+                                            padding: 0;
+                                            margin: 0;
+                                            text-align: left;
+                                            padding-left: 1rem;
+                                        }
+                                    }
+                                }
+                                & .subTDiv{
+                                    flex-direction: column;
+                                    & span{
+                                        font-size: 1.6rem;
+                                        &:nth-child(1){
+                                            width: 100%;
+                                            text-align: left;
+                                            padding: 0;
+                                            margin: 0;
+                                            padding-left: 1rem;
+                                        }
+                                        &:nth-child(2){
+                                            font-size: 2rem;
+                                            font-weight: 600;
+                                            width: 100%;
+                                            padding: 0;
+                                            margin: 0;
+                                            text-align: left;
+                                            padding-left: 1rem;
+                                        }
+                                    }
+                                }
+                                & .ivaDiv{
+                                    flex-direction: column;
+                                    & span{
+                                        font-size: 1.6rem;
+                                        &:nth-child(1){
+                                            width: 100%;
+                                            text-align: left;
+                                            padding: 0;
+                                            margin: 0;
+                                            padding-left: 1rem;
+                                        }
+                                        &:nth-child(2){
+                                            font-size: 2rem;
+                                            font-weight: 600;
+                                            width: 100%;
+                                            padding: 0;
+                                            margin: 0;
+                                            text-align: left;
+                                            padding-left: 1rem;
+                                        }
+                                    }
+                                }
+                                & .descuentoDiv{
+                                    flex-direction: column;
+                                    & span{
+                                        font-size: 1.6rem;
+                                        &:nth-child(1){
+                                            width: 100%;
+                                            text-align: left;
+                                            padding: 0;
+                                            margin: 0;
+                                            padding-left: 1rem;
+                                        }
+                                        &:nth-child(2){
+                                            font-size: 2rem;
+                                            font-weight: 600;
+                                            width: 100%;
+                                            padding: 0;
+                                            margin: 0;
+                                            text-align: left;
+                                            padding-left: 1rem;
+                                        }
+                                    }
+                                }
+                                & .totalDiv{
+                                    flex-direction: column;
+                                    & span{
+                                        font-size: 1.6rem;
+                                        &:nth-child(1){
+                                            width: 100%;
+                                            text-align: left;
+                                            padding: 0;
+                                            margin: 0;
+                                            padding-left: 1rem;
+                                        }
+                                        &:nth-child(2){
+                                            font-size: 2rem;
+                                            font-weight: 600;
+                                            width: 100%;
+                                            padding: 0;
+                                            margin: 0;
+                                            text-align: left;
+                                            padding-left: 1rem;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    & .div4{
+                       & p{
+                        font-size: 1.6rem;
+                       }
+                       & .divTerminos{
+                        & span{
+                            font-size: 1.6rem;
+                        }
+                       }
+                       & .divInfoCorrect{
+                        & span{
+                            font-size: 1.6rem;
+                        }
+                       }
+                    }
+                }
+            }
+        }
+        & .headerCli{
+            height: max-content;
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            & .headerDiv1{
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                & .cuadroOPerfil2{
+                    width: 90%;
+                    right: 50%;
+                    transform: translateX(50%);
+                }
+                & .divLogo{
+                    left: 50%;
+                    height: max-content;
+                    transform: translateX(-50%);
+                    padding: 0;
+                    align-items: flex-start;
+                    padding-top: 2rem;
+                    & svg{
+                        width: 20rem;
+                    }
+                }
+                & .divPerfilGene{
+                    padding: 0;
+                    margin-top: 8rem;
+                    margin-bottom: 2rem;
+                }
+                & .divBtnInicioRegis{
+                    margin-top: 10rem;
+                    margin-bottom: 2rem;
+                    gap: 2rem;
+                    & .divBtnInicio{
+                      margin: 0;
+                      padding: 0;
+                      & a{
+                        & button{
+                          font-size: 1.6rem;
+                        }
+                      }
+                    }
+                    & .divBtnRegis{
+                      margin: 0;
+                      padding: 0;
+                      z-index: 1000;
+                      & a{
+                        & button{
+                          font-size: 1.6rem;
+                        }
+                      }
+                    }
+                  }
+            }
+            & .headerNav{
+                height: 6rem;
+                padding: 0;
+                & .ulNav{
+                    width: 100%;
+                    padding: 0;
+                    height: 100%;
+                    align-items: center;
+                    display: grid;
+                    grid-auto-flow: column;
+                    grid-auto-rows: 100%;
+                    overflow-x: auto;
+                    overflow-y: hidden;
+                    gap: 1rem;
+                    &::-webkit-scrollbar {
+                        -webkit-appearance: none;
+                    }
+                    & li{
+                        height: 100%;
+                        & a{
+                            height: 100%;
+                            display: flex;
+                            align-items: center;
+                        }
+                    }
+                }
+            }
+            
+        }
+        & .main{
+            & .divMainMembre{
+                margin-top: 4rem;
+                & .div1{
+                    flex-direction: column;
+                    & .divMembreImgNomGene{
+                        width: 100%;
+                        & .divMembreImgMovil{
+                            & .div1{
+                                display: flex;
+                                align-items: center;
+                                & span{
+                                    font-size: 1.6rem;
+                                    height: 100%;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                }
+                            }
+                            & .div2{
+                                & .divImgGene{
+                                    width: 16rem;
+                                    height: 16rem;
+                                }
+                                & .divNombreMembre{
+                                    & .tituloMembre{
+                                        font-size: 1.8rem;
+                                    }
+                                }
+                            }
+                            & .div4{
+                                height: 6rem;
+                                & span{
+                                    font-size: 1.6rem;
+                                }
+                            }
+                        }
+                    }
+                    & .divMembreDatosGene{
+                        width: 100%;
+                        & .divMembreDatos{
+                            & .divBeneficios{
+                                height: max-content;
+                                flex-direction: column;
+                                & .divBeneLista{
+                                    height: 7rem;
+                                    width: 100%;
+                                    display: grid;
+                                    grid-auto-flow: column;
+                                    grid-auto-rows: max-content;
+                                    column-gap: 1rem;
+                                    overflow-x: auto;
+                                    overflow-y: hidden;
+                                    &::-webkit-scrollbar {
+                                        -webkit-appearance: none;
+                                        height: 0;
+                                    }
+                                }
+                                & .divBeneData{
+                                    width: 100%;
+                                    height: 20rem;
+                                }
+                            }
+                            & .divMenbrePagoGene{
+                                & .div2{
+                                    & .tarjeSoporDiv{
+                                        display: grid;
+                                        grid-auto-flow: column;
+                                        grid-auto-rows: 100%;
+                                        overflow-x: auto;
+                                        overflow-y: hidden;
+                                        &::-webkit-scrollbar {
+                                            -webkit-appearance: none;
+                                        }
+                                    }
+                                }
+                                & .div3{
+                                    flex-direction: column;
+                                    & .div1{
+                                        width: 100%;
+                                    }
+                                    & .div2{
+                                        width: 100%;
+                                    }
+                                }
+                                & .div4{
+                                    margin-top: 6rem;
+                                    gap: 1.4rem;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

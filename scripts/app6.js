@@ -5,8 +5,8 @@
 //---------------------------------------
 
     // URLS
-    //var url_buscarInfoAdminDB = "https://gdr.fkb.mybluehost.me/website_bizlabv1/consultarInfoAdmin.php";
-    var url_buscarInfoAdminDB = "http://localhost/website_bizlabv1/consultarInfoAdmin.php";
+    var url_buscarInfoAdminDB = "https://gdr.fkb.mybluehost.me/website_bizlabv1/consultarInfoAdmin.php";
+    //var url_buscarInfoAdminDB = "http://localhost/website_bizlabv1/consultarInfoAdmin.php";
 
     // Fechas
 

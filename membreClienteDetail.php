@@ -924,10 +924,8 @@
     <input class="telfUser" type="hidden" value="<?php echo $resultUser["user_celular"]; ?>">
     <input class="userDoc" type="hidden" value="<?php echo $resultUser["user_documento"]; ?>">
 
-    <!-- IP USER-->
     <input type="hidden" value="<?php echo $ipUser; ?>" id="ipUserIN">
 
-    <!-- Form crea Facturas Membresía y correo -->
     <form
         id="formCreaFacMem"
         name="formCreaFacMem"
@@ -953,7 +951,6 @@
         <input type="hidden" class="corrUserFac" name="corrUserFac" value="<?php echo $resultUser["user_correo"]; ?>">
 
     </form>
-    <!------------------------------------------------------------------------------->
 
 </head>
 <body class="body">

@@ -17,7 +17,7 @@
         $correoA = $_POST["correoAdmi"];  
         $contraA = $_POST["contraAdmi"];
     }else{
-        header("location: index.php");
+        // header("location: index.php");
     }
 
 ?>

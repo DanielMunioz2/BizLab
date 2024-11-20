@@ -307,7 +307,7 @@
         }
       }
     }
-  }
+}
 
 .main{
     max-width: 100%;
@@ -2400,3 +2400,384 @@
         }
     }
   }
+
+@media only screen and (max-width: 1340px) {
+    body{
+        & .main{
+            .divGeneReserva{
+                & .div3-A{
+                    & .divDaReGene-A{
+                        width: 100%;
+                    }
+                    & .divCalendaGene{
+                        width: 0;
+                        overflow: hidden;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .body{
+        padding-top: 28rem;
+        & .headerCli{
+            height: max-content;
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            & .headerDiv1{
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                & .cuadroOPerfil2{
+                    width: 90%;
+                    right: 50%;
+                    transform: translateX(50%);
+                }
+                & .divLogo{
+                    left: 50%;
+                    height: max-content;
+                    transform: translateX(-50%);
+                    padding: 0;
+                    align-items: flex-start;
+                    padding-top: 2rem;
+                    & svg{
+                        width: 20rem;
+                    }
+                }
+                & .divPerfilGene{
+                    padding: 0;
+                    margin-top: 8rem;
+                    margin-bottom: 2rem;
+                }
+                & .divBtnInicioRegis{
+                    margin-top: 10rem;
+                    margin-bottom: 2rem;
+                    gap: 2rem;
+                    & .divBtnInicio{
+                      margin: 0;
+                      padding: 0;
+                      & a{
+                        & button{
+                          font-size: 1.6rem;
+                        }
+                      }
+                    }
+                    & .divBtnRegis{
+                      margin: 0;
+                      padding: 0;
+                      z-index: 1000;
+                      & a{
+                        & button{
+                          font-size: 1.6rem;
+                        }
+                      }
+                    }
+                }
+            }
+            & .headerNav{
+                height: 6rem;
+                padding: 0;
+                & .ulNav{
+                    width: 100%;
+                    padding: 0;
+                    height: 100%;
+                    align-items: center;
+                    display: grid;
+                    grid-auto-flow: column;
+                    grid-auto-rows: 100%;
+                    overflow-x: auto;
+                    overflow-y: hidden;
+                    gap: 1rem;
+                    &::-webkit-scrollbar {
+                        -webkit-appearance: none;
+                    }
+                    & li{
+                        height: 100%;
+                        & a{
+                            height: 100%;
+                            display: flex;
+                            align-items: center;
+                        }
+                    }
+                }
+            }
+        }
+        & .main{
+            .realiceReseDiv{
+                padding: 0;
+                & span{
+                    text-align: center;
+                }
+            }
+            .divGeneReserva{
+                & .div1-A{
+                    & .divInputGene{
+                        & .divInput{
+                            width: 90%;
+                            & .inputReser-A{
+                                min-width: 100%;
+                                border-radius: 1rem;
+                            }
+                            & .prodRLista-A{
+                                width: 100%;
+                                height: max-content;
+                                & .divProducto{
+                                    width: 100%;
+                                    min-height: 6rem;
+                                    max-height: 6rem;
+                                    & .imgDiv{
+                                        width: 6rem;
+                                        height: 100%;
+                                        display: flex;
+                                        padding: .6rem;
+                                        & img{
+                                            border-radius: 1rem;
+                                        }
+                                    }
+                                    & .divDato{
+                                        width: 76%;
+                                        height: 100%;
+                                        display: flex;
+                                        align-items: center;
+                                        & span{
+                                            margin-left: 1rem;
+                                            font-size: 2rem;
+                                            width: 100%;
+                                            color: #2a4a7a;
+                                            overflow: hidden;
+                                            text-wrap: nowrap;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                & .div2-A{
+                    & .prodContGene-A{
+                        height: max-content;
+                        & .pdtElegido{
+                            height: 40rem;
+                            flex-direction: column;
+                            & .imgDiv{
+                                min-width: 86%;
+                                max-width: 86%;
+                                min-height: 14rem;
+                            }
+                            & .divDatos{
+                                flex-grow: 1;
+                                height: 100%;
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                                & .nombrePdt{
+                                    font-size: 1.8rem;
+                                    font-weight: 600;
+                                }
+                                & .categoTipoDiv{
+                                    & span{
+                                        font-size: 1.6rem;
+                                    }
+                                }
+                                & .divDescriCaracte{
+                                    width: 100%;
+                                    height: max-content;
+                                    display: flex;
+                                    flex-direction: column;
+                                    & .divDescripGene{
+                                        width: 24rem;
+                                        display: flex;
+                                        flex-direction: column;
+                                        height: max-content;
+                                        & span{
+                                            font-size: 1.6rem;
+                                        }
+                                    }
+                                    & .divCaracGene{
+                                        width: 0;
+                                        height: 0;
+                                    }
+                                }
+                            }
+                            & .divSvg{
+                                width: 2rem;
+                            }
+                        }
+                    }
+                }
+                & .div3-A{
+                    & .divDaReGene-A{
+                        width: 100%;
+                        height: max-content;
+                        overflow: hidden;
+                        & .divTipoReserva{
+                            .btnDiv-A{
+                                flex-direction: column;
+                                align-items: center;
+                                & button{
+                                    width: 80%;
+                                }
+                            }
+                        }
+                        & .divDurGene-A{
+                            & .divDuracion2{
+                                & .divDia{
+                                    & .divDia2{
+                                        flex-direction: column;
+                                        & span{
+                                            margin-bottom: .6rem;
+                                        }
+                                    }
+                                    & .divHora{
+                                        margin-top: 1rem;
+                                        flex-direction: column;
+                                        & span{
+                                            margin-bottom: .6rem;
+                                        }
+                                    }
+                                }
+                                & .divCantidad{
+                                    flex-direction: column;
+                                    padding: 0;
+                                    margin: 0;
+                                    margin-top: 1.6rem;
+                                    & span{
+                                        padding: 0;
+                                        margin: 0;
+                                        margin-bottom: .6rem;
+                                    }
+                                    & .divHora{
+                                        & input{
+                                            padding: 0;
+                                            margin: 0;
+                                            padding-left: 1rem;
+                                        }
+                                        & .diasSpan{
+                                            padding: 0;
+                                            margin: 0;
+                                            margin-left: 1rem;
+                                        }
+                                    }
+                                    & .divMinu{
+                                        padding: 0;
+                                        margin: 0;
+                                        justify-content: center;
+                                        margin-top: .6rem;
+                                        & input{
+                                            padding: 0;
+                                            margin: 0;
+                                            padding-left: 1rem;
+                                        }
+                                        & .diasSpan{
+                                            padding: 0;
+                                            margin: 0;
+                                            margin-left: 1rem;
+                                        }
+                                    } 
+                                }
+                                & .divUnidGene-A{
+                                    & .divUnidad2{
+                                        & .div1{
+                                            width: 28rem;
+                                            & .inputUnid-A{
+                                                width: 100%;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        & .divMiemGene-A{
+                            width: 100%;
+                            & .divMiemIn-A{
+                                width: 100%;
+                                & .miembroSpan{
+                                    width: 100%;
+                                }
+                                & .divMiembroInput2{
+                                    width: 100%;
+                                    & .miemSeleDiv-A{
+                                        width: 29rem;
+                                    }
+                                    & .miembroLis-A{
+                                        width: 29rem;
+                                    }
+                                    & .inputMiembro-A{
+                                        width: 29rem;
+                                    }
+                                    & .inputMiembro-A-Bloq{
+                                        width: 29rem;
+                                    }
+                                }
+                            }
+                        }
+                        & .divTituActiGene-A{
+                            width: 100%;
+                            & .tituloDiv{
+                                width: 100%;
+                                & input{
+                                    width: 29rem;
+                                }
+                            }
+                            & .actividadDiv{
+                                & textarea{
+                                    width: 29rem;
+                                }
+                            }
+                        }
+                    }
+                    & .divCalendaGene{
+                        width: 0;
+                        overflow: hidden;
+                    }
+                }
+                & .div4-A{
+                    & .contPrecios{
+                        & div{
+                            & span{
+                                width: 15rem;
+                                font-size: 1.6rem;
+                            }
+                        }
+                        & .divTotal{
+                            justify-content: center;
+                            & span:nth-child(1){
+                                width: max-content;
+                            }
+                        }
+                    }
+                    & .btnDivGene{
+                        flex-direction: column;
+                        height: max-content;
+                        padding-bottom: 10rem;
+                        & .spanInstru{
+                            width: 100%;
+                            & .spanInstruBtn{
+                                width: 90%;
+                                height: max-content;
+                                text-wrap: wrap;
+                            }
+                        }
+                        & .btnCancelar-A{
+                            bottom: 1.4rem;
+                            left: 1rem;
+                        }
+                        & .btnContinuar{
+                            position: absolute;
+                            bottom: 1.4rem;
+                            right: 1rem;
+                        }
+                        & .btnContinuar-A{
+                            position: absolute;
+                            bottom: 1.4rem;
+                            right: 1rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -316,3 +316,48 @@
     }
   }
 }
+
+@media only screen and (max-width: 500px) {
+  .body{
+      padding-top: 0;
+      & .main{
+        flex-direction: column;
+        & .imgContDere{
+          width: 0;
+          height: 0;
+        }
+        & .imgContIzqui{
+          width: 0;
+          height: 0;
+        }
+        & .contenido{
+          width: 100%;
+          & span{
+            text-align: center;
+          }
+          & .cuadroInicioSesion{
+            & div:nth-child(2){
+              width: 100%;
+              & .formInicioSesion{
+                width: 90%;
+              }
+              & .divRegistrar{
+                width: 100%;
+                flex-direction: column;
+                & div{
+                  width: 100%;
+                  & span{
+                    font-size: 1.7rem;
+                    margin-left: .6rem;
+                  }
+                  & a{
+                    font-size: 1.7rem;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+  }
+}

@@ -4,8 +4,8 @@
 
   // URLS para consultas a la base de datos
 
-    //var urlBuscarInfoAdminDB = "https://gdr.fkb.mybluehost.me/website_bizlabv1/consultarInfoAdmin.php";
-    var urlBuscarInfoAdminDB = "http://localhost/website_bizlabv1/consultarInfoAdmin.php";
+    var urlBuscarInfoAdminDB = "https://gdr.fkb.mybluehost.me/website_bizlabv1/consultarInfoAdmin.php";
+    //var urlBuscarInfoAdminDB = "http://localhost/website_bizlabv1/consultarInfoAdmin.php";
 
   //-------------------------------------------------------------------------------------------------
 

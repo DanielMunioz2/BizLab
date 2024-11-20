@@ -883,3 +883,97 @@ padding-bottom: 20px;
   padding: 10px 20px;
 }
 }
+
+@media only screen and (max-width: 500px) {
+  .body{
+      padding-top: 28rem;
+      max-width: 100%;
+      & .headerCli{
+          height: max-content;
+          display: flex;
+          flex-direction: column;
+          padding: 0;
+          & .headerDiv1{
+              width: 100%;
+              flex-direction: column;
+              align-items: center;
+              & .cuadroOPerfil2{
+                  width: 90%;
+                  right: 50%;
+                  transform: translateX(50%);
+              }
+              & .divLogo{
+                  left: 50%;
+                  height: max-content;
+                  transform: translateX(-50%);
+                  padding: 0;
+                  align-items: flex-start;
+                  padding-top: 2rem;
+                  & svg{
+                      width: 20rem;
+                  }
+              }
+              & .divPerfilGene{
+                  padding: 0;
+                  margin-top: 8rem;
+                  margin-bottom: 2rem;
+              }
+              & .divBtnInicioRegis{
+                margin-top: 10rem;
+                margin-bottom: 2rem;
+                gap: 2rem;
+                & .divBtnInicio{
+                  margin: 0;
+                  padding: 0;
+                  & a{
+                    & button{
+                      font-size: 1.6rem;
+                    }
+                  }
+                }
+                & .divBtnRegis{
+                  margin: 0;
+                  padding: 0;
+                  & a{
+                    & button{
+                      font-size: 1.6rem;
+                    }
+                  }
+                }
+              }
+          }
+          & .headerNav{
+              height: 6rem;
+              padding: 0;
+              & .ulNav{
+                  width: 100%;
+                  padding: 0;
+                  height: 100%;
+                  align-items: center;
+                  display: grid;
+                  grid-auto-flow: column;
+                  grid-auto-rows: 100%;
+                  overflow-x: auto;
+                  overflow-y: hidden;
+                  gap: 1rem;
+                  &::-webkit-scrollbar {
+                      -webkit-appearance: none;
+                  }
+                  & li{
+                      height: 100%;
+                      & a{
+                          height: 100%;
+                          display: flex;
+                          align-items: center;
+                      }
+                  }
+              }
+          }
+      }
+      & .main{
+        & .content_serviciosTodo{
+          flex-direction: column;
+        }
+      }
+  }
+}

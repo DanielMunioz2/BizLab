@@ -6,16 +6,16 @@
   //-----------------------------------------------------------------------------------------------------------------------------
   // VARIABLES
 
-  // var urlEnviContraRecu = "https://gdr.fkb.mybluehost.me/website_bizlabv1/enviarContraRecu.php";
-  // var urlInfoClienteDB = "https://gdr.fkb.mybluehost.me/website_bizlabv1/consultarInfoCliente.php";
-  // var urlConsultarUser = "https://gdr.fkb.mybluehost.me/website_bizlabv1/consultarUsuario.php";
-  // var urlConsultarTDC = "https://gdr.fkb.mybluehost.me/website_bizlabv1/confirTarjetaCredito.php";
-  // var urlPagarMensualidadTDC = "https://gdr.fkb.mybluehost.me/website_bizlabv1/transaPagoMensualidad.php";
-  var urlEnviContraRecu = "http://localhost/website_bizlabv1/enviarContraRecu.php";
-  var urlInfoClienteDB = "http://localhost/website_bizlabv1/consultarInfoCliente.php";
-  var urlConsultarUser = "http://localhost/website_bizlabv1/consultarUsuario.php";
-  var urlConsultarTDC = "http://localhost/website_bizlabv1/confirTarjetaCredito.php";
-  var urlPagarMensualidadTDC = "http://localhost/website_bizlabv1/transaPagoMensualidad.php";
+  var urlEnviContraRecu = "https://gdr.fkb.mybluehost.me/website_bizlabv1/enviarContraRecu.php";
+  var urlInfoClienteDB = "https://gdr.fkb.mybluehost.me/website_bizlabv1/consultarInfoCliente.php";
+  var urlConsultarUser = "https://gdr.fkb.mybluehost.me/website_bizlabv1/consultarUsuario.php";
+  var urlConsultarTDC = "https://gdr.fkb.mybluehost.me/website_bizlabv1/confirTarjetaCredito.php";
+  var urlPagarMensualidadTDC = "https://gdr.fkb.mybluehost.me/website_bizlabv1/transaPagoMensualidad.php";
+  // var urlEnviContraRecu = "http://localhost/website_bizlabv1/enviarContraRecu.php";
+  // var urlInfoClienteDB = "http://localhost/website_bizlabv1/consultarInfoCliente.php";
+  // var urlConsultarUser = "http://localhost/website_bizlabv1/consultarUsuario.php";
+  // var urlConsultarTDC = "http://localhost/website_bizlabv1/confirTarjetaCredito.php";
+  // var urlPagarMensualidadTDC = "http://localhost/website_bizlabv1/transaPagoMensualidad.php";
 
   var diaGeneNum = new Date().getDate();
   var mesGeneNum = new Date().getMonth()+1;

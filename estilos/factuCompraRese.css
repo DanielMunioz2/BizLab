@@ -216,3 +216,111 @@
         }
     }
 }
+
+
+@media only screen and (max-width: 500px) {
+    .main{
+      overflow-x: hidden;
+      & .baseFactura{
+        & .divDataRespuestaTransa{
+            height: max-content;
+            & .divDatoBasePri{
+                height: max-content;
+                flex-direction: column;
+                & .div1{
+                    width: 100%;
+                    margin: 0;
+                    padding: 0;
+                    padding: .8rem;
+                    & span{
+                        font-size: 2rem;
+                        width: 100%;
+                        text-align: center;
+                        font-weight: 600;
+                    }
+                }
+                & .div2{
+                    width: 100%;
+                    margin: 0;
+                    padding: 0;
+                    padding: .8rem;
+                    & span{
+                        font-size: 2rem;
+                        width: 100%;
+                        text-align: center;
+                    }
+                }
+            }
+            & .divDatoBase{
+                height: max-content;
+                flex-direction: column;
+                & .div1{
+                    width: 100%;
+                    margin: 0;
+                    padding: 0;
+                    padding: .8rem;
+                    & span{
+                        font-size: 2rem;
+                        width: 100%;
+                        text-align: center;
+                        font-weight: 600;
+                    }
+                }
+                & .div2{
+                    width: 100%;
+                    margin: 0;
+                    padding: 0;
+                    padding: .8rem;
+                    & span{
+                        font-size: 2rem;
+                        width: 100%;
+                        text-align: center;
+                    }
+                }
+            }
+            & .divDatoBaseUlti{
+                height: max-content;
+                flex-direction: column;
+                & .div1{
+                    width: 100%;
+                    margin: 0;
+                    padding: 0;
+                    padding: .8rem;
+                    & span{
+                        font-size: 2rem;
+                        width: 100%;
+                        text-align: center;
+                        font-weight: 600;
+                    }
+                }
+                & .div2{
+                    width: 100%;
+                    margin: 0;
+                    padding: 0;
+                    padding: .8rem;
+                    & span{
+                        font-size: 2rem;
+                        width: 100%;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+      }
+      & .spanInfoCorreo{
+        width: 90%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        margin-top: 4rem;
+        & span{
+            margin: 0;
+            width: 90%;
+            text-wrap: wrap;
+            display: flex;
+            flex-wrap: wrap;
+        }
+      }
+    }
+  }

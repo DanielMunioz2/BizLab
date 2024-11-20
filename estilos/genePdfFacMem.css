@@ -314,3 +314,67 @@
       }
     }
 }
+
+@media only screen and (max-width: 500px) {
+  .main{
+    & .divContentGene{
+      width: 90%;
+      & .img1{
+        width: 4rem;
+      }
+      & .img2{
+        width: 4rem;
+      }
+      & .divTarjetaMem{
+        flex-direction: column;
+        align-items: center;
+        height: max-content;
+        & .tarjeta{
+          flex-direction: column;
+          width: 100%;
+          height: max-content;
+          & .imgPersoGene{
+            height: max-content;
+            flex-direction: column;
+            padding: 0;
+            padding: .4rem;
+            align-items: center;
+            & .divSpans{
+              margin: 0;
+              width: 100%;
+            }
+          }
+        }
+      }
+      & .divCodNewMiembro{
+        & .divCod{
+          & .divCod2{
+            width: 90%;
+          }
+        }
+      }
+      & .divBtns{
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        margin-top: 4rem;
+        margin-bottom: 6rem;
+        & .divBtnVol{
+          width: 100%;
+          justify-content: center;
+          & .btnVolver{
+            margin: 0;
+          }
+        }
+        & .divBtnDes{
+          width: 100%;
+          margin-top: 2rem;
+          justify-content: center;
+          & .btnFactuDescargar{
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+}

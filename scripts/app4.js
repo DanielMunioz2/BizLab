@@ -78,8 +78,8 @@ if(document.querySelector("#reservasAdminHTML") != null){
 
         // Urls
 
-            //var urlInfoAdmin = "https://gdr.fkb.mybluehost.me/website_bizlabv1/consultarInfoAdmin.php";
-            var urlInfoAdmin = "http://localhost/website_bizlabv1/consultarInfoAdmin.php";
+            var urlInfoAdmin = "https://gdr.fkb.mybluehost.me/website_bizlabv1/consultarInfoAdmin.php";
+            //var urlInfoAdmin = "http://localhost/website_bizlabv1/consultarInfoAdmin.php";
         
         //-------------------------------------------------------------------------------------
 

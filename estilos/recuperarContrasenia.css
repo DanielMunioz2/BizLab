@@ -296,3 +296,64 @@
     }
   }
 }
+
+@media only screen and (max-width: 500px) {
+  .body{
+      padding-top: 0;
+      & .main{
+        & div:nth-child(1){
+          width: 100%;
+          height: max-content;
+          padding: 1rem;
+          & #formCorreoRecuContra{
+            width: 100%;
+            margin: 0;
+            margin-top: 4rem;
+            margin-bottom: 4rem;
+            & .divBotones{
+              width: 100%;
+              & button{
+                font-size: 1.6rem;
+                width: max-content;
+              }
+            }
+          }
+          & .conteForm2{
+            & #formCod{
+              width: 100%;
+              flex-direction: column;
+              & div{
+                width: 100%;
+                & .iconCorreo{
+                  width: 10rem;
+                }
+                & .spanCorreo2{
+                  text-wrap: wrap;
+                  width: 90%;
+                  overflow: hidden;
+                  display: flex;
+                  height: max-content;
+                  flex-wrap: wrap;
+                  justify-content: center;
+                }
+                &:nth-child(2){
+                  & span{
+                    margin-top: 2rem;
+                    font-size: 1.8rem;
+                    & a{
+                      font-size: 1.8rem;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        & .divImg{
+          width: 0;
+          height: 0;
+          overflow: hidden;
+        }
+      }
+  }
+}
