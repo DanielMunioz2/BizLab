@@ -1,0 +1,533 @@
+.header {
+    width: 100%;
+    height: 16rem;
+    background-color: #004f78;
+    position: absolute;
+    top: 0;
+    left: 0;
+    & .header_div1 {
+      width: 100%;
+      height: 70%;
+      display: flex;
+      align-items: center;
+      & .divPerfilContaint {
+        width: 26%;
+        height: 90%;
+        border-radius: 1rem;
+        background-color: #002d56aa;
+        margin-left: 2rem;
+        display: flex;
+        position: relative;
+        & .divFlecha {
+          width: 10%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: absolute;
+          right: 0;
+          top: 0;
+          border-radius: 0 1rem 1rem 0;
+          cursor: pointer;
+          transition: 0.3s;
+          background-color: #ffffff11;
+          &:hover {
+            & .flecha1 {
+              fill: #ffffff;
+            }
+            & .flecha2 {
+              fill: #ffffff;
+            }
+          }
+          & .flecha1 {
+            width: 1rem;
+            height: max-content;
+            transition: 0.3s;
+            fill: #002d56;
+            transform-origin: center;
+          }
+          & .flecha2 {
+            width: 1rem;
+            height: max-content;
+            transition: 0.3s;
+            fill: #002d56;
+            transform-origin: center;
+            transition: 0.3s;
+            transform: rotate(90deg);
+          }
+        }
+        & .divImgCont {
+          width: 10.08rem;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          & div {
+            width: 94%;
+            height: 94%;
+            border-radius: 1rem;
+            overflow: hidden;
+          }
+        }
+        & .divNombreCont {
+          width: 76%;
+          height: 100%;
+          display: flex;
+          position: relative;
+          flex-direction: column;
+          padding-left: 1.2rem;
+          & span {
+            font-size: 1.2rem;
+            color: #ffffff;
+          }
+          & .nombrePerfil {
+            width: 100%;
+            margin-top: 0.6%;
+            font-size: 1.2rem;
+            font-weight: 600;
+          }
+          & .carreraUPerfil {
+            font-size: 1.2rem;
+            color: #ffffffbb;
+          }
+          & .divTipo {
+            width: 100%;
+            height: 3.8rem;
+            position: absolute;
+            left: 1.2rem;
+            bottom: 0.6%;
+            display: flex;
+            align-items: center;
+            & span {
+              margin-left: 1.2rem;
+              color: #ffffffaa;
+            }
+            & svg {
+              height: 80%;
+              width: max-content;
+              fill: #ffffffaa;
+            }
+          }
+        }
+        & .cuadroOPerfil1 {
+          height: 0rem;
+          width: 0rem;
+          box-shadow: none;
+          overflow: hidden;
+          position: absolute;
+          transform-origin: top right;
+          transition: 0.3s;
+          z-index: 1000;
+        }
+        & .cuadroOPerfil2 {
+          display: flex;
+          position: absolute;
+          z-index: 1000;
+          width: 100%;
+          height: max-content;
+          display: flex;
+          flex-direction: column;
+          border-radius: 1rem;
+          top: 100%;
+          right: 0;
+          transition: 0.3s;
+          overflow: hidden;
+          background-color: #e9e8e8;
+          transform-origin: top right;
+          box-shadow: 0.2rem 0.4rem 0.4rem #33333355;
+          & .div1 {
+            width: 100%;
+            height: max-content;
+            display: flex;
+            flex-direction: column;
+            border-bottom: 1px solid #002d5622;
+            & div {
+              width: 100%;
+              height: max-content;
+              display: flex;
+              align-items: center;
+              padding-top: 1.4rem;
+              padding-left: 2rem;
+              padding-bottom: 1.4rem;
+              & svg {
+                width: 2rem;
+                height: max-content;
+                fill: #002d5699;
+              }
+              & span {
+                font-size: 1.2rem;
+                margin-left: 1rem;
+                color: #002d56aa;
+              }
+            }
+            & button {
+              width: 100%;
+              display: flex;
+              justify-content: flex-start;
+              padding: 1.2rem;
+              font-size: 1.2rem;
+              color: #002d56aa;
+              cursor: pointer;
+              transition: 0.2s;
+              & svg {
+                width: 2rem;
+                height: max-content;
+                fill: #002d56aa;
+                margin-right: 1rem;
+                transition: 0.2s;
+              }
+              &:hover {
+                background-color: #002d5633;
+                color: #ffffff;
+                & svg {
+                  fill: #ffffff;
+                }
+              }
+            }
+          }
+          & .div2 {
+            width: 100%;
+            display: flex;
+            height: max-content;
+            & a {
+              width: 100%;
+            }
+            & button {
+              font-size: 1.2rem;
+              width: 100%;
+              padding: 1.2rem;
+              display: flex;
+              justify-content: flex-start;
+              color: #002d56aa;
+              transition: 0.2s;
+              cursor: pointer;
+              & svg {
+                width: 2rem;
+                height: max-content;
+                fill: #002d56aa;
+                margin-right: 1rem;
+                transition: 0.2s;
+              }
+              &:hover {
+                background-color: #002d5633;
+                color: #ffffff;
+                & svg {
+                  fill: #ffffff;
+                }
+              }
+            }
+          }
+          & .div3 {
+            width: 100%;
+            display: flex;
+            height: max-content;
+            & button {
+              font-size: 1.2rem;
+              width: 100%;
+              padding: 1.2rem;
+              display: flex;
+              justify-content: flex-start;
+              color: #002d56aa;
+              transition: 0.2s;
+              cursor: pointer;
+              & svg {
+                width: 2rem;
+                height: max-content;
+                fill: #002d56aa;
+                margin-right: 1rem;
+                transition: 0.2s;
+              }
+              &:hover {
+                background-color: #002d5633;
+                color: #ffffff;
+                & svg {
+                  fill: #ffffff;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    & .header_nav {
+      width: 100%;
+      height: 30%;
+      display: flex;
+      align-items: center;
+      background-color: #0077b299;
+      justify-content: flex-end;
+      & .nav_ul {
+        width: 30%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        position: relative;
+        
+        & .li {
+        display: flex;
+        width: max-content;
+        height: max-content;
+        justify-content: center;
+        align-items: center;
+        background-color: #004f7888;
+        border-radius: 1.8rem;
+        margin-right: 1.4rem;
+        transition: 0.3s;
+        cursor: pointer;
+        &:hover {
+          background-color: #3298cf;
+        }
+        
+        & a {
+          font-size: 1.4rem;
+          color: #ffffff;
+          margin: 0.4rem 0.6rem;
+          padding: 0.4rem 2rem;
+          width max-content;
+          text-wrap: nowrap;
+        }
+      }
+        & .activeLi {
+          background-color: #3298cf;
+          cursor: default;
+        }
+        & .liUltimo {
+          margin-right: 3rem;
+        }
+      }
+    }
+}
+
+h1 {
+    font-size: 2rem;          /* Tamaño grande (30px si 1rem = 10px) */
+    text-align: center; 
+    margin-left: 1.2rem;    /* Centrado horizontalmente */
+    margin-top: 4rem;         /* Espacio del header */
+    margin-bottom: 1rem;      /* Espacio con el contenido siguiente */
+    color: #333333;           /* Un color oscuro pero suave */
+    font-weight: bold;        /* Texto en negrita */
+    letter-spacing: 0.1rem;   /* Espaciado entre letras */
+}
+
+
+.main {
+    display: flex;
+    flex-direction: column;  /* Organización vertical del contenido */
+    align-items: flex-start;     /* Centra el contenido horizontalmente */
+    justify-content: flex-start; /* Alinea el contenido en la parte superior */
+
+    margin: 0;       /* Márgenes sutiles para separación */
+    padding: 0;           /* Espaciado interno cómodo */
+
+    width: 100%;           
+
+    margin-top: 16rem;
+    margin-bottom: 24rem;
+
+    height: max-content;            /* Se ajusta al contenido automáticamente */
+    background-color: transparent;  /* Sin color de fondo */
+    border: none;            /* Sin bordes */
+    box-shadow: none;        /* Sin sombras */
+}
+
+.btn-confirmar-precio {
+  background-color: green;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.btn-cerrar-panel {
+  background-color: gray;
+  color: white;
+  border: none;
+  font-size: 1.2rem;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+label {
+    font-size: 1.2rem;     /* Tamaño de fuente de 16px */
+    color: #333333;        /* Color oscuro pero suave */
+    margin-bottom: 0.5rem; /* Espacio debajo de cada label */
+    display: block;        /* Cada label en su propia línea */
+}
+
+strong {
+    font-size: 1.2rem;     /* Un poco más grande (18px) para resaltar */
+    color: #000000;        /* Color negro para énfasis */
+    font-weight: bold;     /* Asegura que esté en negrita */
+}
+
+/* Estilo general del contenedor principal */
+#reservas-container {
+    width: 60%;   /* 400px de ancho máximo */
+    margin: 0;
+    margin-left: 1.2rem;
+    margin-top: 1rem;  /* Centrado con espacio superior e inferior */
+    padding: 1.2rem;    /* Espaciado interno */
+    border-radius: 1rem; /* Bordes redondeados */
+    background-color: #d6dfe7; /* Fondo claro */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Estilo de cada reserva */
+.reserva {
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 0.8rem;
+    list-style: none;
+    font-size: 1.4rem;  /* Tamaño de texto general */
+    line-height: 1.5;
+}
+
+/* Colores según el estado de la reserva */
+.activa {
+    background-color: #d4edda;
+    border: 0.1rem solid #5fa728;
+}
+
+.por_confirmar {
+    background-color: #e2d6f3;
+    border: 0.1rem solid #6f42c1;
+}
+
+.terminada {
+    background-color: #d1ecf1;
+    border: 0.1rem solid #007bff;
+}
+
+.pendiente {
+  background-color: #fff3cd;  
+  border: 0.1rem solid #e6ad03;  
+}
+
+/* Botones generales */
+.btn {
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 0.5rem 0 0;
+    border: none;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+/* Botones de acción específicos */
+.btn-confirmar {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-terminar {
+    background-color: #f11717;
+    color: white;
+}
+
+.btn-consultar {
+    background-color: #ffc107;
+    color: black;
+}
+
+/* Ocultar paneles cuando sea necesario */
+.hidden {
+    display: none;
+}
+
+/* Estilo para los inputs del panel de precios */
+#reservas-container input[type="number"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border: 0.1rem solid #ccc;
+    border-radius: 0.4rem;
+    font-size: 1.2rem;
+}
+
+/* Estilo para los textos importantes (precio final) */
+#reservas-container span {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.btn-ver-detalles {
+  background-color: #007bff;  /* Azul */
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.btn-ver-detalles i {
+  font-size: 1.2rem;
+}
+
+/* Ocultar y mostrar el contenedor de detalles */
+.hidden {
+  display: none;
+}
+
+#reserva-detalles {
+    width: 30%;
+    border: 0.1rem solid #ccc;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    position: fixed;  /* Fijo para que se mantenga visible al hacer scroll */
+    right: 1rem;      /* Espaciado desde el borde derecho */
+    top: 1rem;        /* Espaciado desde la parte superior */
+    display: none;    /* Oculto por defecto */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Sombra para resaltar */
+    z-index: 1000;    /* Asegura que esté por encima de otros elementos */
+    transition: all 0.3s ease-in-out;  /* Suaviza la aparición */
+    border-radius: 8px; /* Bordes redondeados */
+}
+
+#reserva-detalles p , #reserva-detalles strong{
+  font-size: 1.2rem;
+}
+
+#reserva-detalles h3{
+  font-size: 1.4rem;
+}
+
+/* Mostrar el panel cuando esté activo */
+#reserva-detalles.visible {
+    display: block;
+}
+
+/* Botón para cerrar el panel de detalles */
+#cerrar-detalles {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+#detalles-contenido p strong {
+  color: #333;
+}
+
+#detalles-contenido p:nth-child(13) strong, /* Precio Unitario */
+#detalles-contenido p:nth-child(14) strong  /* Total Pagado */ {
+  color: #007bff;  /* Azul para destacar los precios */
+}
+
+

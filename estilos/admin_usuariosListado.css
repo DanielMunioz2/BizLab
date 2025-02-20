@@ -1,0 +1,201 @@
+/* Contenedor principal */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    overflow: auto;
+}
+
+/* Botón para volver al panel principal */
+#volverBtn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 12px 25px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#volverBtn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Título Principal */
+h1 {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #333;
+    font-weight: 600;
+}
+
+/* Filtros */
+.filtros-container {
+    display: flex;
+    flex-direction: row; /* Los filtros estarán en fila */
+    align-items: center; /* Centrar los elementos verticalmente */
+    justify-content: center; /* Centrar los elementos horizontalmente */
+    margin-bottom: 30px;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.filtros-container label {
+    font-size: 16px;
+    margin-right: 10px; /* Espaciado entre las etiquetas y los campos */
+    font-weight: 600;
+    color: #444;
+}
+
+.filtros-container input,
+.filtros-container button {
+    padding: 8px 15px;
+    margin-right: 10px; /* Espaciado entre los inputs y botones */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+}
+
+.filtros-container input:focus,
+.filtros-container button:focus {
+    outline: none;
+    border-color: #007BFF;
+}
+
+.filtros-container button {
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.filtros-container button:hover {
+    background-color: #0056b3;
+}
+
+/* Lista de usuarios */
+#listaUsuarios {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 900px;
+    box-sizing: border-box;
+}
+
+#listaUsuarios li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    background-color: #fff;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+#listaUsuarios span {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+#listaUsuarios button {
+    padding: 8px 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#listaUsuarios button:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+/* Modal para detalles del usuario */
+#usuarioModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#usuarioModal.show {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 700px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    transform: scale(0.9);
+}
+
+.modal-content.show {
+    transform: scale(1);
+}
+
+.modal-content h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.modal-content p {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.modal-content button {
+    background-color: #dc3545;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 20px;
+}
+
+.modal-content button:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}

@@ -1,0 +1,550 @@
+body{
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 9rem;
+    padding-bottom: 20rem;
+}
+
+.header {
+    width: 100%;
+    height: 16rem;
+    background-color: #004f78;
+    position: absolute;
+    top: 0;
+    left: 0;
+    & .header_div1 {
+      width: 100%;
+      height: 70%;
+      display: flex;
+      align-items: center;
+      & .divPerfilContaint {
+        width: 26%;
+        height: 90%;
+        border-radius: 1rem;
+        background-color: #002d56aa;
+        margin-left: 2rem;
+        display: flex;
+        position: relative;
+        & .divFlecha {
+          width: 10%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: absolute;
+          right: 0;
+          top: 0;
+          border-radius: 0 1rem 1rem 0;
+          cursor: pointer;
+          transition: 0.3s;
+          background-color: #ffffff11;
+          &:hover {
+            & .flecha1 {
+              fill: #ffffff;
+            }
+            & .flecha2 {
+              fill: #ffffff;
+            }
+          }
+          & .flecha1 {
+            width: 1rem;
+            height: max-content;
+            transition: 0.3s;
+            fill: #002d56;
+            transform-origin: center;
+          }
+          & .flecha2 {
+            width: 1rem;
+            height: max-content;
+            transition: 0.3s;
+            fill: #002d56;
+            transform-origin: center;
+            transition: 0.3s;
+            transform: rotate(90deg);
+          }
+        }
+        & .divImgCont {
+          width: 10.08rem;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          & div {
+            width: 94%;
+            height: 94%;
+            border-radius: 1rem;
+            overflow: hidden;
+          }
+        }
+        & .divNombreCont {
+          width: 76%;
+          height: 100%;
+          display: flex;
+          position: relative;
+          flex-direction: column;
+          padding-left: 1.2rem;
+          & span {
+            font-size: 1.6rem;
+            color: #ffffff;
+          }
+          & .nombrePerfil {
+            width: 100%;
+            margin-top: 0.6%;
+            font-size: 1.8rem;
+            font-weight: 600;
+          }
+          & .carreraUPerfil {
+            font-size: 1.6rem;
+            color: #ffffffbb;
+          }
+          & .divTipo {
+            width: 100%;
+            height: 3.8rem;
+            position: absolute;
+            left: 1.2rem;
+            bottom: 0.6%;
+            display: flex;
+            align-items: center;
+            & span {
+              margin-left: 1.2rem;
+              color: #ffffffaa;
+            }
+            & svg {
+              height: 80%;
+              width: max-content;
+              fill: #ffffffaa;
+            }
+          }
+        }
+        & .cuadroOPerfil1 {
+          height: 0rem;
+          width: 0rem;
+          box-shadow: none;
+          overflow: hidden;
+          position: absolute;
+          transform-origin: top right;
+          transition: 0.3s;
+          z-index: 1000;
+        }
+        & .cuadroOPerfil2 {
+          display: flex;
+          position: absolute;
+          z-index: 1000;
+          width: 100%;
+          height: max-content;
+          display: flex;
+          flex-direction: column;
+          border-radius: 1rem;
+          top: 100%;
+          right: 0;
+          transition: 0.3s;
+          overflow: hidden;
+          background-color: #e9e8e8;
+          transform-origin: top right;
+          box-shadow: 0.2rem 0.4rem 0.4rem #33333355;
+          & .div1 {
+            width: 100%;
+            height: max-content;
+            display: flex;
+            flex-direction: column;
+            border-bottom: 1px solid #002d5622;
+            & div {
+              width: 100%;
+              height: max-content;
+              display: flex;
+              align-items: center;
+              padding-top: 1.4rem;
+              padding-left: 2rem;
+              padding-bottom: 1.4rem;
+              & svg {
+                width: 2rem;
+                height: max-content;
+                fill: #002d5699;
+              }
+              & span {
+                font-size: 1.6rem;
+                margin-left: 1rem;
+                color: #002d56aa;
+              }
+            }
+            & button {
+              width: 100%;
+              display: flex;
+              justify-content: flex-start;
+              padding: 1.8rem;
+              font-size: 1.6rem;
+              color: #002d56aa;
+              cursor: pointer;
+              transition: 0.2s;
+              & svg {
+                width: 2rem;
+                height: max-content;
+                fill: #002d56aa;
+                margin-right: 1rem;
+                transition: 0.2s;
+              }
+              &:hover {
+                background-color: #002d5633;
+                color: #ffffff;
+                & svg {
+                  fill: #ffffff;
+                }
+              }
+            }
+          }
+          & .div2 {
+            width: 100%;
+            display: flex;
+            height: max-content;
+            & a {
+              width: 100%;
+            }
+            & button {
+              font-size: 1.6rem;
+              width: 100%;
+              padding: 1.8rem;
+              display: flex;
+              justify-content: flex-start;
+              color: #002d56aa;
+              transition: 0.2s;
+              cursor: pointer;
+              & svg {
+                width: 2rem;
+                height: max-content;
+                fill: #002d56aa;
+                margin-right: 1rem;
+                transition: 0.2s;
+              }
+              &:hover {
+                background-color: #002d5633;
+                color: #ffffff;
+                & svg {
+                  fill: #ffffff;
+                }
+              }
+            }
+          }
+          & .div3 {
+            width: 100%;
+            display: flex;
+            height: max-content;
+            & button {
+              font-size: 1.6rem;
+              width: 100%;
+              padding: 1.8rem;
+              display: flex;
+              justify-content: flex-start;
+              color: #002d56aa;
+              transition: 0.2s;
+              cursor: pointer;
+              & svg {
+                width: 2rem;
+                height: max-content;
+                fill: #002d56aa;
+                margin-right: 1rem;
+                transition: 0.2s;
+              }
+              &:hover {
+                background-color: #002d5633;
+                color: #ffffff;
+                & svg {
+                  fill: #ffffff;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    & .header_nav {
+      width: 100%;
+      height: 30%;
+      display: flex;
+      align-items: center;
+      background-color: #0077b299;
+      justify-content: flex-end;
+      & .nav_ul {
+        width: 30%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        position: relative;
+       & .li {
+        display: flex;
+        width: max-content;
+        height: max-content;
+        justify-content: center;
+        align-items: center;
+        background-color: #004f7888;
+        border-radius: 1.8rem;
+        margin-right: 1.4rem;
+        transition: 0.3s;
+        cursor: pointer;
+        &:hover {
+          background-color: #3298cf;
+        }
+        
+        & a {
+          font-size: 1.4rem;
+          color: #ffffff;
+          margin: 0.4rem 0.6rem;
+          padding: 0.4rem 2rem;
+          width max-content;
+          text-wrap: nowrap;
+        }
+      }
+        & .activeLi {
+          background-color: #3298cf;
+          cursor: default;
+        }
+        & .liUltimo {
+          margin-right: 3rem;
+        }
+      }
+    }
+  }
+
+.main{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    background-color: #ebebeb;
+    justify-content: center;
+}
+
+/* Form Registro de Visita Nueva */
+.form_visitanteDatos-1 {
+    background-color: #F8F8F9;
+    padding: 2rem; 
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+    border-radius: 0.8rem; 
+    width: 36rem; 
+    height: 66rem;
+    margin: 8rem 0;
+}
+
+.form_visitanteDatos-1 h2 {
+    text-align: center;
+    margin-bottom: 2rem; 
+    font-size: 1.6rem; 
+    color: #1a365f;
+}
+
+.form_visitanteDatos-1 span {
+    margin-bottom: 1rem; 
+    font-size: 1rem; 
+    color: #1a365faa;
+    font-weight: 600;
+}
+
+.form_visitanteDatos-1 input, .form_visitanteDatos-1 textarea {
+    width: 100%;
+    padding: 1rem; 
+    margin-bottom: 1.5rem; 
+    border: 1px solid #ddd;
+    border-radius: 0.4rem; 
+    box-sizing: border-box;
+    font-size: 1.2rem; 
+    resize: none;
+    color: #1a365f;
+}
+
+.form_visitanteDatos-1 textarea {
+    height: 8rem;
+}
+
+.form_visitanteDatos-1 button {
+    width: 100%;
+    padding: 1rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 0.4rem; 
+    cursor: pointer;
+    font-size: 1.6rem;
+}
+
+.form_visitanteDatos-1 button:hover {
+    background-color: #45a049;
+}
+/* Form Registro de Visita Nueva */
+
+/* Contenedor Visitas Activas */
+.div_basePrinVisitasActi-1{
+    width: 34rem;
+    height: 40rem;
+    background-color: #F8F8F9;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+    border-radius: 1rem;
+    margin: 8rem 1rem 0 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.span_visitasAPrinTitulo{
+    width: 100%;
+    font-size: 1.2rem;
+    color: #1a365f;
+    font-weight: 600;
+    margin: 1rem 0 .6rem 0;
+    padding-left: 1.2rem;
+}
+
+.ul_visitasActivas-1{
+    width: 100%;
+    height: 86%;
+    border-top: 1px solid #1a365f44;
+    border-bottom: 1px solid #1a365f44;;
+    padding: 1.2rem;
+    padding-top: 1rem;
+    padding-bottom: 0;
+    display: grid;
+    grid-auto-flow: row;
+    grid-auto-rows: max-content;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.ul_visitasActivas-1 .li_visitaItem-1{
+    width: 100%;
+    border: 1px solid #1a365f44;
+    height: max-content;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.ul_visitasActivas-1 .li_visitaItem-1 p{
+    padding-left: .8rem;
+    padding-top: .8rem;
+}
+
+.p_documento-1{
+    padding-top: 0;
+    font-size: .8rem;
+    width: 100%;
+    padding-left: 1rem;
+    font-weight: 600;
+}
+
+.p_motivo-1{
+    padding-top: 0;
+    font-size: .8rem;
+    font-weight: 600;
+    width: 100%;
+    padding-left: 1rem;
+}
+
+.btn_terminarVisita-1{
+    width: 60%;
+    height: max-content;
+    font-size: 1.2rem;
+    padding: .4rem .8rem;
+    color: #1a3d5f;
+    background-color: #1e579144;
+    border-radius: 1rem;
+    margin-top: .6rem;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: .3s;
+}
+
+.btn_terminarVisita-1:hover{
+    color: #ffffff;
+    background-color: #196bbc;
+}
+
+.ul_visitasActivas-1 .li_visitaItem-1 p strong{
+    font-size: 1rem;
+    color: #1a365faa;
+    width: 100%;
+}
+/* Contenedor Visitas Activas */
+
+/* Contenedor Visitas Terminadas */
+.div_baseVisitasPrinTerminadas-1{
+    margin-top: 8rem;
+    border-radius: 1rem;
+    background-color: #F8F8F9;
+    padding-top: 1rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+    width: 36rem;
+    height: 66rem;
+    position: relative;
+}
+
+.span_buscarVisiPrin{
+    font-size: 1.2rem;
+    color: #1a365f;
+    max-width: 80%;
+    font-weight: 600;
+    padding-top: 1rem;
+    padding-left: 1rem;
+}
+
+.in_buscarVisitasAnte{
+    max-width: 90%;
+    padding-left: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #aaa;
+    color: #1a365f;
+    font-size: 1.2rem;
+    margin: 0 1rem;
+    margin-top: 1rem;
+}
+
+.ul_resultadoVisitasAnte{
+    width: 100%;
+    border-top: 1px solid #1a365f44;
+    border-bottom: 1px solid #1a365f44;
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+    height: 44%;
+    padding: 1.2rem;
+    padding-top: 1rem;
+    padding-bottom: 0;
+    display: grid;
+    grid-auto-flow: row;
+    grid-auto-rows: max-content;
+    overflow-x: hidden;
+    overflow-y: auto;
+    row-gap: 1rem;
+}
+
+.ul_resultadoVisitasAnte li{
+    font-size: 1rem;
+}
+
+.ul_resultadoVisitasAnte li strong{
+    font-size: 1rem;
+}
+
+.ul_resultadoVisitasAnte button{
+    font-size: 1rem;
+}
+
+.ul_resultadoVisitasAnte li .form-reRegistro-1 span, .ul_resultadoVisitasAnte li .form-reRegistro-1 label{
+    font-size: 1rem;
+}
+
+.ul_resultadoVisitasAnte li .form-reRegistro-1 label{
+    color: #1a365f99;
+}
+
+.ul_resultadoVisitasAnte li .form-reRegistro-1 input, .ul_resultadoVisitasAnte li .form-reRegistro-1 textarea{
+    font-size: 1rem;
+}
+
+#detalle-visita #detalle-contenido p, #detalle-visita #detalle-contenido p strong{
+    font-size: 1rem;
+}
+
+#detalle-visita h3{
+    font-size: 1.1rem;
+}
+/* Contenedor Visitas Terminadas */

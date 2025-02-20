@@ -1,0 +1,1861 @@
+:root {
+    /* Botones de Reservas */
+    --boton-colorBase: gray;
+    --boton-colorBaseCod: white;
+    --boton-colorTexVerdeOscuro: green;
+    --boton-colorBaseSpanTipoR: green;
+    --boton-colorBaseSpanEstadoR: green;
+    --boton-colorSpanEstado: white;
+    --boton-colorBaseSpanTituHorarios: green;
+    --boton-colorBordes: green;
+    --boton-baseColorUser: green;
+    --boton-outlineColor: green;
+
+    /* Casillas de los dias del calendario MODO MES */
+    --casilla_colorFondo: #a8aaad44;
+    --casilla_colorTextoBlanco: #bcbdbf;
+    --casilla_bordeColor1: #52555c44;
+    --casilla_colorOjoSvg: #41465433;
+    --casilla_spanColor1: #0d1a3f44;
+    --casilla_colorCantReseBase: #1e273f55;
+
+    /* Span Muestra de Datos - Estado Reserva*/
+    --span_colorBaseReseEstado: #1e273f55;
+
+    /* Botones Opciones para la Reserva */
+    --colorBordes_btnOpcionRese: #1e273f55;
+    --colorBase_btnOpcionRese: #1e273f55;
+    --colorBaseHover_btnOpcionRese: #1e273f44;
+}
+
+.body{
+    flex-direction: column;
+    background-color: #f8faff;
+    padding: unset;
+    position: relative;
+}
+
+.header {
+    width: 100%;
+    height: 16rem;
+    background-color: #004f78;
+    position: absolute;
+    top: 0;
+    left: 0;
+    & .header_div1 {
+      width: 100%;
+      height: 70%;
+      display: flex;
+      align-items: center;
+      & .divPerfilContaint {
+        width: 26%;
+        height: 90%;
+        border-radius: 1rem;
+        background-color: #002d56aa;
+        margin-left: 2rem;
+        display: flex;
+        position: relative;
+        & .divFlecha {
+          width: 10%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: absolute;
+          right: 0;
+          top: 0;
+          border-radius: 0 1rem 1rem 0;
+          cursor: pointer;
+          transition: 0.3s;
+          background-color: #ffffff11;
+          &:hover {
+            & .flecha1 {
+              fill: #ffffff;
+            }
+            & .flecha2 {
+              fill: #ffffff;
+            }
+          }
+          & .flecha1 {
+            width: 1rem;
+            height: max-content;
+            transition: 0.3s;
+            fill: #002d56;
+            transform-origin: center;
+          }
+          & .flecha2 {
+            width: 1rem;
+            height: max-content;
+            transition: 0.3s;
+            fill: #002d56;
+            transform-origin: center;
+            transition: 0.3s;
+            transform: rotate(90deg);
+          }
+        }
+        & .divImgCont {
+          width: 10.08rem;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          & div {
+            width: 94%;
+            height: 94%;
+            border-radius: 1rem;
+            overflow: hidden;
+          }
+        }
+        & .divNombreCont {
+          width: 76%;
+          height: 100%;
+          display: flex;
+          position: relative;
+          flex-direction: column;
+          padding-left: 1.2rem;
+          & span {
+            font-size: 1.6rem;
+            color: #ffffff;
+          }
+          & .nombrePerfil {
+            width: 100%;
+            margin-top: 0.6%;
+            font-size: 1.8rem;
+            font-weight: 600;
+          }
+          & .carreraUPerfil {
+            font-size: 1.6rem;
+            color: #ffffffbb;
+          }
+          & .divTipo {
+            width: 100%;
+            height: 3.8rem;
+            position: absolute;
+            left: 1.2rem;
+            bottom: 0.6%;
+            display: flex;
+            align-items: center;
+            & span {
+              margin-left: 1.2rem;
+              color: #ffffffaa;
+            }
+            & svg {
+              height: 80%;
+              width: max-content;
+              fill: #ffffffaa;
+            }
+          }
+        }
+        & .cuadroOPerfil1 {
+          height: 0rem;
+          width: 0rem;
+          box-shadow: none;
+          overflow: hidden;
+          position: absolute;
+          transform-origin: top right;
+          transition: 0.3s;
+          z-index: 1000;
+        }
+        & .cuadroOPerfil2 {
+          display: flex;
+          position: absolute;
+          z-index: 1000;
+          width: 100%;
+          height: max-content;
+          display: flex;
+          flex-direction: column;
+          border-radius: 1rem;
+          top: 100%;
+          right: 0;
+          transition: 0.3s;
+          overflow: hidden;
+          background-color: #e9e8e8;
+          transform-origin: top right;
+          box-shadow: 0.2rem 0.4rem 0.4rem #33333355;
+          & .div1 {
+            width: 100%;
+            height: max-content;
+            display: flex;
+            flex-direction: column;
+            border-bottom: 1px solid #002d5622;
+            & div {
+              width: 100%;
+              height: max-content;
+              display: flex;
+              align-items: center;
+              padding-top: 1.4rem;
+              padding-left: 2rem;
+              padding-bottom: 1.4rem;
+              & svg {
+                width: 2rem;
+                height: max-content;
+                fill: #002d5699;
+              }
+              & span {
+                font-size: 1.6rem;
+                margin-left: 1rem;
+                color: #002d56aa;
+              }
+            }
+            & button {
+              width: 100%;
+              display: flex;
+              justify-content: flex-start;
+              padding: 1.8rem;
+              font-size: 1.6rem;
+              color: #002d56aa;
+              cursor: pointer;
+              transition: 0.2s;
+              & svg {
+                width: 2rem;
+                height: max-content;
+                fill: #002d56aa;
+                margin-right: 1rem;
+                transition: 0.2s;
+              }
+              &:hover {
+                background-color: #002d5633;
+                color: #ffffff;
+                & svg {
+                  fill: #ffffff;
+                }
+              }
+            }
+          }
+          & .div2 {
+            width: 100%;
+            display: flex;
+            height: max-content;
+            & a {
+              width: 100%;
+            }
+            & button {
+              font-size: 1.6rem;
+              width: 100%;
+              padding: 1.8rem;
+              display: flex;
+              justify-content: flex-start;
+              color: #002d56aa;
+              transition: 0.2s;
+              cursor: pointer;
+              & svg {
+                width: 2rem;
+                height: max-content;
+                fill: #002d56aa;
+                margin-right: 1rem;
+                transition: 0.2s;
+              }
+              &:hover {
+                background-color: #002d5633;
+                color: #ffffff;
+                & svg {
+                  fill: #ffffff;
+                }
+              }
+            }
+          }
+          & .div3 {
+            width: 100%;
+            display: flex;
+            height: max-content;
+            & button {
+              font-size: 1.6rem;
+              width: 100%;
+              padding: 1.8rem;
+              display: flex;
+              justify-content: flex-start;
+              color: #002d56aa;
+              transition: 0.2s;
+              cursor: pointer;
+              & svg {
+                width: 2rem;
+                height: max-content;
+                fill: #002d56aa;
+                margin-right: 1rem;
+                transition: 0.2s;
+              }
+              &:hover {
+                background-color: #002d5633;
+                color: #ffffff;
+                & svg {
+                  fill: #ffffff;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    & .header_nav {
+      width: 100%;
+      height: 30%;
+      display: flex;
+      align-items: center;
+      background-color: #0077b299;
+      justify-content: flex-end;
+    
+      .nav_ul {
+        width: 30%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        position: relative;
+    
+    
+        .li {
+          display: flex;
+          width: max-content;
+          height: max-content;
+          justify-content: center;
+          align-items: center;
+          background-color: #004f7888;
+          border-radius: 1.8rem;
+          margin-right: 1.4rem;
+          transition: 0.3s;
+          cursor: pointer;
+          &:hover {
+            background-color: #3298cf;
+          }
+          
+          a {
+            font-size: 1.4rem;
+            color: #ffffff;
+            margin: 0.4rem 0.6rem;
+            padding: 0.4rem 2rem;
+            width: max-content;
+            text-wrap: nowrap;
+          }
+        }
+    
+        .activeLi {
+          background-color: #3298cf;
+          cursor: default;
+        }
+    
+        .liUltimo {
+          margin-right: 3rem;
+        }
+      }
+    }
+    
+  }
+
+.main{
+    width: 100%;
+    height: 100%;
+    margin-top: 16rem;
+    margin-bottom: 20rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.h3_tituloPrinCalendaReser-1{
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-top: 2rem;
+    padding-left: 1.6rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    width: 100%;
+    color: #3c567a;
+    border-top: 1px solid #3c567a44;
+    border-bottom: 1px solid #3c567a44;
+}
+
+/* Base Principal Calendario Render y Datos */
+.div_baseCalendaGene-1{
+    width: 110rem;
+    height: 50rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    position: relative;
+    box-shadow: .4rem .4rem 1rem #3c567a44;
+    margin-top: 2rem;
+    margin-bottom: 10rem;
+    margin-left: 1.6rem;
+    border: 1px solid #3c567a44;
+    display: flex;
+}
+
+/*/* Calendario, Datos de la Reserva Base Principal /*/
+
+/* Datos de la Reserva Base Principal */
+.div_baseDatosReseGene-1{
+    width: 33rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background-color: #ffffff;
+    border-right: 1px solid #3c567a44;
+}
+
+.span_panelControlTitulo{
+    width: 100%;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    font-size: 1.2rem;
+    color: #3c567a;
+    background-color: #819dc922;
+}
+
+.div_baseDatosReseYMas-1{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.div_baseElegirTipoEstaRese-1{
+    width: 100%;
+    height: 4.6rem;
+    display: flex;
+    flex-direction: column;
+    background-color: #3b568033;
+}
+
+.span_buscarPor-1{
+    width: 100%;
+    font-size: 1rem;
+    padding-left: 1rem;
+    color: #3c567aaa;
+    margin-top: .4rem;
+}
+
+.div_baseBtnStdReseFiltros-1{
+    width: 100%;
+    height: 3rem;
+    display: flex;
+}
+
+.div_baseReseInputEstadoFiltro-1{
+    width: max-content;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.in_selectEstadoReseFiltro-1{
+    width: max-content;
+    height: 2rem;
+    border-radius: 1rem;
+    font-size: 1.2rem;
+    color: #3c567a;
+    margin-left: 1rem;
+    padding-left: 1rem;
+    background-color: transparent;
+    border: 1px solid #3c567aaa;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.in_selectEstadoReseFiltro-1:hover{
+    background-color: #629ced44;
+}
+
+.in_selectEstadoReseFiltro-1 option{
+    font-size: 1.2rem;
+}
+
+.div_baseInputTipoReseFiltro-1{
+    width: max-content;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.in_selectTipoReseFiltro-1{
+    width: max-content;
+    height: 2rem;
+    border-radius: 1rem;
+    font-size: 1.2rem;
+    color: #3c567a;
+    margin-left: .6rem;
+    padding-left: 1rem;
+    background-color: transparent;
+    border: 1px solid #3c567aaa;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.in_selectTipoReseFiltro-1:hover{
+    background-color: #629ced44;
+}
+
+.in_selectTipoReseFiltro-1 option{
+    font-size: 1.2rem;
+}
+
+.div_baseListaReseDelDia-1{
+    width: 100%;
+    height: 19rem;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #3c567a44;
+    background: linear-gradient(180deg, rgba(65,171,223,0.2) 0%, rgba(32,104,184,0.2) 100%);
+}
+
+.span_resesTotalesFind-1{
+    width: 100%;
+    font-size: 1.2rem;
+    padding-left: 1rem;
+    margin-top: 1rem;
+    color: #0a1a47;
+}
+
+.span_resesTotalesFind-1 b{
+    font-size: 1.2rem;
+    color: #0a1a47;
+}
+
+/* Base de Búsqueda - Lista de Reservas */
+.div_baseListaRese-1{
+    width: 96%;
+    height: 78%;
+    border-radius: 1rem;
+    border: 1px solid #3c567a44;
+    background-color: #ffffff;
+    margin-top: 2%;
+    margin-left: 2%;
+    position: relative;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-auto-flow: row;
+    grid-auto-rows: max-content;
+    grid-auto-columns: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    gap: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.div_baseListaRese-1::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 0rem;
+}
+/* Base de Búsqueda - Lista de Reservas */
+
+.div_baseReservasNOEncontradas-1{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #0a1a4788;
+}
+
+.div_baseReservasNOEncontradas-1 span{
+    width: 100%;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.div_baseReservasNOEncontradas-1 svg{
+    width: 4rem;
+    height: max-content;
+    margin-top: .8rem;
+    fill: #0a1a4788;
+}
+
+/* Cambiar la variable según el atributo de los botones de Reserva */
+
+div[tipo="Activa"] {
+    --boton-colorBase: #A6D87D;
+    --boton-colorBaseCod: #CAE8B0;
+    --boton-colorTexVerdeOscuro: #1b460e;
+    --boton-colorBaseSpanTipoR: #95C966;
+    --boton-colorBaseSpanEstadoR: #66a128;
+    --boton-colorSpanEstado: #edffcf;
+    --boton-colorBaseSpanTituHorarios: #487633;
+    --boton-colorBordes: #1b460e66;
+    --boton-baseColorUser: #81B55E;
+    --boton-outlineColor: #bcff5e;
+}
+
+div[tipo="Pendiente"] {
+    --boton-colorBase: #e9de94;
+    --boton-colorBaseCod: #efe4c0;
+    --boton-colorTexVerdeOscuro: #47320a;
+    --boton-colorBaseSpanTipoR: #dec17d;
+    --boton-colorBaseSpanEstadoR: #bb9b3d;
+    --boton-colorSpanEstado: #ffedcf;
+    --boton-colorBaseSpanTituHorarios: #938041;
+    --boton-colorBordes: #9d792a66;
+    --boton-baseColorUser: #b59e5e;
+    --boton-outlineColor: #ffdc5e;
+}
+
+div[tipo="Pausada"] {
+    --boton-colorBase: #cd94e9;
+    --boton-colorBaseCod: #dbc0ef;
+    --boton-colorTexVerdeOscuro: #370a47;
+    --boton-colorBaseSpanTipoR: #bf7dde;
+    --boton-colorBaseSpanEstadoR: #9b4cc5;
+    --boton-colorSpanEstado: #eccfff;
+    --boton-colorBaseSpanTituHorarios: #734193;
+    --boton-colorBordes: #6b2a9d66;
+    --boton-baseColorUser: #a579c4;
+    --boton-outlineColor: #cf5eff;
+}
+
+div[tipo="Terminada"] {
+    --boton-colorBase: #94bce9;
+    --boton-colorBaseCod: #c0d3ef;
+    --boton-colorTexVerdeOscuro: #0a1a47;
+    --boton-colorBaseSpanTipoR: #7db2de;
+    --boton-colorBaseSpanEstadoR: #4c81c5;
+    --boton-colorSpanEstado: #cfe6ff;
+    --boton-colorBaseSpanTituHorarios: #416793;
+    --boton-colorBordes: #2a5a9d66;
+    --boton-baseColorUser: #8094cc;
+    --boton-outlineColor: #5e89ff;
+}
+
+div[tipo="Cancelada"] {
+    --boton-colorBase: #e99494;
+    --boton-colorBaseCod: #efc0c0;
+    --boton-colorTexVerdeOscuro: #470a0a;
+    --boton-colorBaseSpanTipoR: #de7d7d;
+    --boton-colorBaseSpanEstadoR: #c54c4c;
+    --boton-colorSpanEstado: #ffcfcf;
+    --boton-colorBaseSpanTituHorarios: #934141;
+    --boton-colorBordes: #9d2a2a66;
+    --boton-baseColorUser: #cc8080;
+    --boton-outlineColor: #ff5e5e;
+}
+
+/* Botón Div - Reservas */
+.btn_reservaDatos-A-1{
+    width: 96%;
+    height: 12rem;
+    margin: 0;
+    padding: 0;
+    background-color: var(--boton-colorBase);
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    outline: 1px solid #ffffff00;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.btn_reservaDatos-A-1:hover{
+    outline: 3px solid var(--boton-outlineColor);
+}
+
+.btn_reservaDatos-A-1 .div_datoEstadoYCodigo-1{
+    width: 100%;
+    height: 1.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    background-color: var(--boton-colorBaseCod);
+}
+
+.btn_reservaDatos-A-1 .div_datoEstadoYCodigo-1 .span_codigoRese-1{
+    font-size: 1rem;
+    padding: 0 .8rem;
+    display: flex;
+    align-items: center;
+    width: max-content;
+    height: 100%;
+    font-weight: 600;
+    color: var(--boton-colorTexVerdeOscuro);
+}
+
+.btn_reservaDatos-A-1 .div_datoEstadoYCodigo-1 .span_tipoRese-1{
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid var(--boton-colorBordes);
+    width: 5rem;
+    height: 100%;
+    font-weight: 600;
+    color: var(--boton-colorTexVerdeOscuro);
+    background-color: var(--boton-colorBaseSpanTipoR);
+    position: absolute;
+    right: 7rem;
+    top: 0;
+}
+
+.btn_reservaDatos-A-1 .div_datoEstadoYCodigo-1 .span_estadoRese-1{
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--boton-colorSpanEstado);
+    background-color: var(--boton-colorBaseSpanEstadoR);
+    height: 100%;
+    width: 7rem;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.btn_reservaDatos-A-1 .div_baseDatos-1{
+    width: 100%;
+    height: 10.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.div_baseSpansData-1{
+    flex-grow: 1;
+    height: 8.8rem;
+}
+
+.div_spanFechas-1{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.div_spanFechas-1 span{
+    width: max-content;
+    font-size: 1rem;
+    margin-left: .8rem;
+}
+
+.div_spanFechas-1 span:nth-child(1){
+    margin-top: .4rem;
+    background-color: var(--boton-colorBaseSpanTituHorarios);
+    color: var(--boton-colorSpanEstado);
+    border-radius: 1rem;
+    padding: 0 .4rem;
+}
+
+.div_spanHoras-1{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.div_spanHoras-1 span{
+    width: max-content;
+    font-size: 1rem;
+    margin-left: .8rem;
+}
+
+.div_spanHoras-1 span:nth-child(1){
+    margin-top: .4rem;
+    background-color: var(--boton-colorBaseSpanTituHorarios);
+    color: var(--boton-colorSpanEstado);
+    border-radius: 1rem;
+    padding: 0 .4rem;
+}
+
+.div_baseImagenData-1{
+    width: 12rem;
+    height: 8.8rem;
+    border-left: 1px solid var(--boton-colorBordes);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.div_baseUser-1{
+    width: 10rem;
+    height: 8rem;
+    background-color: var(--boton-baseColorUser);
+    border-radius: 1rem;
+}
+
+.div_imgBase-1{
+    width: 100%;
+    border-bottom: 1px solid var(--boton-colorBordes);
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div_imgBase-1 img{
+    border-radius: 1rem;
+    height: 5.6rem;
+    width: 5.6rem;
+    border: 1px solid var(--boton-colorBordes);
+}
+
+.div_baseUser-1 span{
+    font-size: 1rem;
+    font-weight: 600;
+    height: 20%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    text-wrap: nowrap;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    padding-left: .4rem;
+    color: var(--boton-colorTexVerdeOscuro);
+}
+
+.div_basePdtSelected-1{
+    width: 100%;
+    height: 1.4rem;
+    background-color: var(--boton-colorBaseSpanTituHorarios);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.span_pdtSelectedRese-1{
+    width: max-content;
+    height: 100%;
+    padding-left: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: var(--boton-colorSpanEstado);
+}
+
+.div_baseTiempo-1{
+    width: max-content;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-right: 1rem;
+}
+/* Botón Div - Reservas */
+
+/* Mostrar Datos de la Reserva - Base Principal */
+
+.div_baseDatosDeReseSelected-1{
+    width: 0;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+
+.div_baseDatosDeReseSelected-2 .svg_xCerrarDatosReseCalenda{
+    width: 1.2rem;
+    height: max-content;
+    fill: #0a1a47aa;
+    right: 1rem;
+    z-index: 500;
+    position: absolute;
+    top: .6rem;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.div_baseDatosDeReseSelected-2 .svg_xCerrarDatosReseCalenda:hover{
+    fill: #a81212;
+}
+
+.div_baseDatosDeReseSelected-2{
+    width: 100%;
+    height: 24.4rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-top: 2.4rem;
+}
+
+.div_baseDatosDeReseSelected-2 .h2_codigoReservaTitulo-1{
+    width: 100%;
+    height: 2.4rem;
+    font-size: 1.2rem;
+    padding-left: 1rem;
+    display: flex;
+    align-items: center;
+    background-color: #97a7d044;
+    color: #112a70cc;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-weight: 400;
+}
+
+.div_baseDatosDeReseSelected-2 .h2_codigoReservaTitulo-1 .b_codigoReservaTitulo-1{
+    margin-left: .4rem;
+    font-size: 1.2rem;
+}
+
+.div_dataReseMuesBasePrin-1{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+
+.div_baseOpcionesReserva-1{
+    width: 100%;
+    min-height: 4rem;
+    margin-top: 1rem;
+    border-top: 1px solid #0a1a4744;
+    border-bottom: 1px solid #0a1a4744;
+    display: flex;
+    padding: .6rem 0;
+    align-items: center;
+    padding-left: 1rem;
+}
+
+.div_baseOpcionesReserva-1 .btn_opcionReservaData{
+    width: max-content;
+    height: 2.6rem;
+    padding: 0 .6rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    border-left: 1px solid #0a1a4744;
+    border-right: 1px solid #0a1a4744;
+    margin-right: .6rem;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.div_baseOpcionesReserva-1 .btn_opcionReservaData:hover{
+    background-color: #0a1a4788;
+    color: #ffffff;
+}
+
+.div_dataReseMuesBasePrin-1 .div_baseDatosReseMPrin-1{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+}
+
+div[tipo="btnOpcion-cancelar"]{
+    --colorBordes_btnOpcionRese: #52121266;
+    --colorBase_btnOpcionRese: #d42316;
+    --colorBaseHover_btnOpcionRese: #e62f22;
+}
+
+/*/*/
+
+/*// Base Secundaria - Opciones de la Reserva //*/
+.div_opcionReservaBasePrin-1{
+    height: 0;
+    width: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+
+.div_opcionReservaBasePrin-2{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    padding-top: .8rem;
+}
+
+.div_opcionReseBtnBase{
+    width: 100%;
+    height: 4rem;
+    min-height: 4rem;
+    display: flex;
+    margin-top: .8rem;
+}
+
+.div_opcionReseBtnBase:first-child{
+    margin-top: 0;
+}
+
+.div_opcionReserva{
+    width: max-content;
+    display: flex;
+    height: 100%;
+    border-radius: 0 3rem 3rem 0;
+    border: 1px solid var(--colorBordes_btnOpcionRese);
+    overflow: hidden;
+}
+
+.div_opcionReserva .btn_opcionRese{
+    background-color: var(--colorBase_btnOpcionRese);
+    color: #ffffff;
+    font-size: 1.2rem;
+    width: max-content;
+    padding: 0 .6rem;
+    margin-left: 1rem;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.div_opcionReserva .btn_opcionRese:hover{
+    background-color: var(--colorBaseHover_btnOpcionRese);
+}
+
+.div_confirmarOpcionBaseBtn-1{
+    width: 0;
+    height: 100%;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.div_confirmarOpcionBaseBtn-2{
+    width: 18rem;
+    display: flex;
+    height: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+    border-right: 1px solid #0a1a4766;
+    border-top: 1px solid #0a1a4766;
+    border-bottom: 1px solid #0a1a4766;
+    border-radius: 0 1rem 1rem 0;
+    padding-left: .8rem;
+    opacity: 1;
+    overflow: hidden;
+    transition: .3s;
+}
+
+.div_confirmarOpcionBaseBtn-2 span{
+    font-size: 1rem;
+    color: #0a1a4799;
+}
+
+.div_confirmarOpcionBaseBtn-2 .div_baseBotones{
+    width: 100%;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+.div_confirmarOpcionBaseBtn-2 .div_baseBotones .btn_confirmarOpcion-1{
+    width: max-content;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    border-radius: 1rem;
+    background-color: #4d9f21;
+    color: #ffffff;
+    padding: 0 1.6rem;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.div_confirmarOpcionBaseBtn-2 .div_baseBotones .btn_confirmarOpcion-1:hover{
+    background-color: #327210;
+}
+
+.div_confirmarOpcionBaseBtn-2 .div_baseBotones .btn_cancelarOpcion-1{
+    width: max-content;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    border-radius: 1rem;
+    background-color: #aaaaaa;
+    color: #ffffff;
+    padding: 0 1.2rem;
+    cursor: pointer;
+    transition: .3s;
+    margin-left: .6rem;
+}
+
+.div_confirmarOpcionBaseBtn-2 .div_baseBotones .btn_cancelarOpcion-1:hover{
+    background-color: #666666;
+}
+/*// Base Secundaria - Opciones de la Reserva //*/
+
+/*/*/
+
+/*// Base Secundaria - Muestra de Datos de la Reserva //*/
+.div_baseDatosReseMuestra-1{
+    height: 0;
+    width: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+
+.div_baseDatosReseMuestra-2{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.li_datoReseMuestra{
+    width: 100%;
+    display: flex;
+    margin: .2rem 0;
+}
+
+.li_datoReseMuestra:nth-child(1){
+    width: 100%;
+    display: flex;
+    margin: 1rem 0 .2rem 0;
+}
+
+.li_datoReseMuestra span{
+    font-size: 1.2rem;
+}
+
+.li_datoReseMuestra span:nth-child(1){
+    border-right: 1px solid #0a1a4744;
+    border-top: 1px solid #0a1a4744;
+    border-bottom: 1px solid #0a1a4744;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10rem;
+    color: #0a1a47;
+}
+
+.li_datoReseMuestra span:nth-child(2){
+    border-right: 1px solid #0a1a4744;
+    border-top: 1px solid #0a1a4744;
+    border-bottom: 1px solid #0a1a4744;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-weight: 600;
+    width: 16rem;
+    background-color: #1a398688;
+    border-radius: 0 1rem 1rem 0;
+}
+
+span[tipo="Activa"]{
+    --span_colorBaseReseEstado: #4ea644;
+}
+
+span[tipo="Pendiente"]{
+    --span_colorBaseReseEstado: #dcb761;
+}
+
+span[tipo="Pausada"]{
+    --span_colorBaseReseEstado: #a565c3;
+}
+
+span[tipo="Terminada"]{
+    --span_colorBaseReseEstado: #3a6ab7;
+}
+
+span[tipo="Cancelada"]{
+    --span_colorBaseReseEstado: #c36565;
+}
+
+#span_estadoReseMuestra{
+    background-color: var(--span_colorBaseReseEstado);
+}
+
+.li_datoReseMuestra-precioU-1 span:nth-child(2),
+.li_datoReseMuestra-iva-1 span:nth-child(2),
+.li_datoReseMuestra-descu-1 span:nth-child(2),
+.li_datoReseMuestra-comisi-1 span:nth-child(2),
+.li_datoReseMuestra-precioF-1 span:nth-child(2){
+    border-color: #3d5a16;
+    background-color: #56841a88;
+}
+
+.li_datoReseMuestra-precioU-1 span:nth-child(1),
+.li_datoReseMuestra-iva-1 span:nth-child(1),
+.li_datoReseMuestra-descu-1 span:nth-child(1),
+.li_datoReseMuestra-comisi-1 span:nth-child(1),
+.li_datoReseMuestra-precioF-1 span:nth-child(1){
+    border-color: #3d5a16;
+    color: #21470a;
+}
+
+.li_datoReseMuestra-acti{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+.li_datoReseMuestra-acti p{
+    width: 80%;
+    height: 10rem;
+    border: 1px solid #0a1a4744;
+    padding: 1rem;
+    overflow-y: scroll;
+    color: #0a1a47;
+    font-size: 1.2rem;
+    margin-top: .4rem;
+}
+
+.div_contDatosUnidad-1,
+.div_contDatosProducto-1,
+.div_contDatosUsuario-1
+{
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid #0a1a4744;
+    border-bottom: 1px solid #0a1a4744;
+    height: max-content;
+}
+
+.div_contDatosUnidad-1 span,
+.div_contDatosProducto-1 span,
+.div_contDatosUsuario-1 span
+{
+    width: 100%;
+    margin-top: .6rem;
+    color: #0a1a47;
+    font-size: 1.2rem;
+    padding-left: 1rem;
+}
+
+.div_contDatosUnidad-1 .div_datos,
+.div_contDatosProducto-1 .div_datos,
+.div_contDatosUsuario-1 .div_datos
+{
+    width: 90%;
+    height: 7rem;
+    margin-top: .6rem;
+    border: 1px solid #0a1a4766;
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: row;
+    background-color: #0a1a4722;
+    border-radius: 1rem;
+    overflow: hidden;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.div_contDatosUnidad-1 .div_img,
+.div_contDatosProducto-1 .div_img,
+.div_contDatosUsuario-1 .div_img{
+    background-color: #0a1a4744;
+    width: 8rem;
+    height: 100%;
+    overflow: hidden;
+}
+
+.div_contDatosUsuario-1{
+    margin-bottom: 8rem;
+}
+
+.div_tiempoRestanteReserva-1{
+    width: 0;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+
+.div_tiempoRestanteReserva-2{
+    width: 100%;
+    height: 2.6rem;
+    background-color: #C4D4BF;
+    overflow: hidden;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.div_tiempoRestanteReserva-2 svg{
+    width: 2rem;
+    height: max-content;
+    margin-right: .8rem;
+    fill: #1b460e;
+}
+
+.div_tiempoRestanteReserva-2 span{
+    font-size: 1.2rem;
+    color: #1b460e;
+    margin-right: .6rem;
+}
+
+.div_tiempoRestanteReserva-2 span:last-child{
+    margin-right: 1.2rem;
+}
+
+/*// Base Secundaria - Muestra de Datos de la Reserva //*/
+
+/*//// Base Principal - Muestra de Datos de la Reserva y Filtrado por Tipo o Estado ////*/
+
+/*/*/
+
+/*:::: Calendario, Calendario Base Render y Movimiento Principal ::::*/
+
+/* Base Zona Calendario */
+.div_baseZonaCalendaPrin-1{
+    width: 77rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.div_basePrinBtnTipoCalenda-1{
+    width: 100%;
+    height: 2.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: #707a9e;
+}
+
+.div_basePrinBtnTipoCalenda-1 .div_baseBtnTipoCalenda-1{
+    width: 298px;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-right: 1rem;
+}
+
+.btn_tipoCalenda-1{
+    font-size: 1.2rem;
+    color: #16295a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: 1px solid #16295a;
+    width: 100px;
+    height: 2rem;
+    cursor: pointer;
+    position: absolute;
+    transition: .3s;
+}
+
+.btn_tipoCalenda-1:hover{
+    color: #e0e9ff;
+    border-color: #e0e9ff;
+}
+
+.btn_tipoCalenda-2{
+    font-size: 1.2rem;
+    color: #e0e9ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: 1px solid #e0e9ff;
+    background-color: #2347a2;
+    width: 100px;
+    height: 2rem;
+    cursor: default;
+    position: absolute;
+}
+
+.btn_tipoCalendaDIA-1{
+    border-radius: 1rem 0 0 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+}
+
+.btn_tipoCalendaSEMA-1{
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.btn_tipoCalendaMES-1{
+    border-radius: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+}
+
+.div_baseBusquedaYFlechas-1{
+    width: 100%;
+    min-height: 3.7rem;
+    background-color: #B9C1CF;
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+}
+
+.div_baseBusquedaYFlechas-1 .div_baseFlechasMovimiento{
+    width: 24rem;
+    height: 100%;
+    background-color: #EEF2F844;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.div_baseFlechasMovimiento .btn_fechaAtras-1{
+    width: max-content;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .4rem 1rem;
+    font-size: 1.2rem;
+    border-radius: 1rem;
+    font-weight: 600;
+    border: 1px solid #0a1a4766;
+    color: #0a1a4766;
+    background-color: transparent;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.div_baseFlechasMovimiento .btn_fechaAtras-1:hover{
+    color: #f8faff;
+    border-color: #f8faff;
+    background-color: #4270e266;
+}
+
+.div_baseFechas-1{
+    width: 8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .4rem;
+}
+
+.span_mesMuestra-1{
+    font-size: 1.1rem;
+    color: #0a1a47;
+}
+
+.span_anioMuestra-1{
+    font-size: 1.1rem;
+    color: #0a1a47;
+}
+
+.div_baseFlechasMovimiento .btn_fechaAdelante-1{
+    width: max-content;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .4rem 1rem;
+    font-size: 1.2rem;
+    border-radius: 1rem;
+    font-weight: 600;
+    background-color: transparent;
+    border: 1px solid #0a1a4766;
+    color: #0a1a4766;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.div_baseFlechasMovimiento .btn_fechaAdelante-1:hover{
+    color: #f8faff;
+    border-color: #f8faff;
+    background-color: #4270e266;
+}
+
+.btn_botonHoy-1{
+    width: max-content;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .4rem 1rem;
+    font-size: 1.2rem;
+    border-radius: 1rem;
+    background-color: transparent;
+    border: 1px solid #0a1a4766;
+    color: #0a1a4766;
+    cursor: pointer;
+    transition: .3s;
+    margin-left: 2rem;
+}
+
+.btn_botonHoy-1:hover{
+    color: #f8faff;
+    border-color: #f8faff;
+    background-color: #4270e266;
+}
+
+.div_baseBuscaEspeciFecha-1{
+    width: 22rem;
+    border-left: 1px solid #0a1a4744;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.div_baseBuscaEspeciFecha-1 span{
+    width: max-content;
+    padding-left: 1rem;
+    font-size: 1rem;
+    color: #0a1a47cc;
+    padding-right: 1rem;
+    margin-top: .2rem;
+}
+
+.div_baseBuscaEspeciFecha-1 div{
+    display: flex;
+    width: 100%;
+    margin-top: .2rem;
+    justify-content: flex-end;
+}
+
+.div_baseBuscaEspeciFecha-1 div select{
+    font-size: 1.2rem;
+    color: #0a1a47;
+    width: 8rem;
+    border-radius: 1rem;
+    padding-left: .6rem;
+}
+
+.div_baseBuscaEspeciFecha-1 div select option{
+    font-size: 1.2rem;
+    color: #0a1a47;
+}
+
+.div_baseBuscaEspeciFecha-1 div input{
+    font-size: 1.2rem;
+    color: #0a1a47;
+    width: 10rem;
+    border-radius: 1rem;padding-left: .6rem;
+    margin-left: .6rem;
+    margin-right: 1rem;
+    -moz-appearance: textfield;
+}
+
+.div_baseBuscaEspeciFecha-1 div input::-webkit-outer-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.div_baseBuscaEspeciFecha-1 div input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/*/* Calendario Base principal para el Render /*/
+
+.div_baseCalendaRender-1{
+    border-top: 1px solid #0a1a4744;
+    height: 43.4rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Calendario MODO MES Base principal */
+.div_baseCalendaRender-1 .div_calendaMesBasePrin-1{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+.div_baseDiasSemaCalenMes-1{
+    width: 100%;
+    height: 1.4rem;
+    display: flex;
+    align-items: center;
+    background-color: #0a1a4733;
+}
+
+.div_baseDiasSemaCalenMes-1 .span_diasSemaCalenMes{
+    max-width: 11rem;
+    width: 11rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    border-left: 1px solid #0a1a4744;
+    color: #0a1a47;
+}
+
+.div_baseDiasSemaCalenMes-1 .span_diasSemaCalenMes:nth-child(1){
+    border-left: none;
+}
+
+.div_baseDiasCalendaMesGene-1{
+    width: 100%;
+    height: 42rem;
+    display: grid;
+    grid-template-columns: repeat(7, 11rem); 
+    grid-template-rows: repeat(6, 7rem); 
+    width: 77rem; 
+    height: 42rem; 
+}
+
+li[tipo="li_diaMesBloq"]{
+    --casilla_colorFondo: #a8aaad44;
+    --casilla_colorTextoBlanco: #bcbdbf;
+    --casilla_bordeColor1: #52555c44;
+    --casilla_colorOjoSvg: #41465433;
+    --casilla_spanColor1: #121f4444;
+    --casilla_colorCantReseBase: #1e273f55;
+    --cursor_estadoCasillasDia: not-allowed;
+}
+
+li[tipo="li_diaMesAnte-1"]{
+    --casilla_colorFondo: #a8bfd644;
+    --casilla_colorTextoBlanco: #ffffff;
+    --casilla_bordeColor1: #16470a44;
+    --casilla_colorOjoSvg: #676d7f33;
+    --casilla_spanColor1: #0c183b44;
+    --casilla_colorCantReseBase: #384b8144;
+    --textoColor_spanReseTipoDelDia: #ffffffaa;
+    --cursor_estadoCasillasDia: default;
+}
+
+li[tipo="li_diaMesActu-1"]{
+    --casilla_colorFondo: #4790d844;
+    --casilla_colorTextoBlanco: #ffffff;
+    --casilla_bordeColor1: #0a1a4744;
+    --casilla_colorOjoSvg: #1c386c33;
+    --casilla_spanColor1: #0c183b44;
+    --casilla_colorCantReseBase: #1a368266;
+    --cursor_estadoCasillasDia: default;
+}
+
+li[tipo="li_diaMesProx-1"]{
+    --casilla_colorFondo: #4d81b944;
+    --casilla_colorTextoBlanco: #ffffff;
+    --casilla_bordeColor1: #0a1a4744;
+    --casilla_colorOjoSvg: #4f196b33;
+    --casilla_spanColor1: #0c183b44;
+    --casilla_colorCantReseBase: #1a368244;
+    --cursor_estadoCasillasDia: default;
+}
+
+li[tipo="li_diaMes-Hoy"]{
+    --casilla_colorFondo: #476bd888;
+    --casilla_colorTextoBlanco: #ffffff;
+    --casilla_bordeColor1: #0a1a4744;
+    --casilla_colorOjoSvg: #4f196b33;
+    --casilla_spanColor1: #ffffff;
+    --casilla_colorCantReseBase: #1a368288;
+    --cursor_estadoCasillasDia: default;
+}
+
+/**/
+
+span[tipo="span_reseActivasCant-ante"]{
+    --colorBase_spanReseTipoDelDia: #67806044;
+}
+
+span[tipo="span_resePendientesCant-ante"]{
+    --colorBase_spanReseTipoDelDia: #9d906b44;
+}
+
+span[tipo="span_resePausadasCant-ante"]{
+    --colorBase_spanReseTipoDelDia: #955e9544;
+}
+
+span[tipo="span_reseTerminadasCant-ante"]{
+    --colorBase_spanReseTipoDelDia: #53628844;
+}
+
+span[tipo="span_reseCanceladasCant-ante"]{
+    --colorBase_spanReseTipoDelDia: #a3646444;
+}
+
+/**/
+
+span[tipo="span_reseActivasCant-actu"]{
+    --colorBase_spanReseTipoDelDia: #47983288;
+}
+
+span[tipo="span_resePendientesCant-actu"]{
+    --colorBase_spanReseTipoDelDia: #bd9b3d88;
+}
+
+span[tipo="span_resePausadasCant-actu"]{
+    --colorBase_spanReseTipoDelDia: #a33fa288;
+}
+
+span[tipo="span_reseTerminadasCant-actu"]{
+    --colorBase_spanReseTipoDelDia: #41599688;
+}
+
+span[tipo="span_reseCanceladasCant-actu"]{
+    --colorBase_spanReseTipoDelDia: #b33d3d88;
+}
+
+/**/
+
+span[tipo="span_reseActivasCant-prox"]{
+    --colorBase_spanReseTipoDelDia: #47983244;
+}
+
+span[tipo="span_resePendientesCant-prox"]{
+    --colorBase_spanReseTipoDelDia: #bd9b3d44;
+}
+
+span[tipo="span_resePausadasCant-prox"]{
+    --colorBase_spanReseTipoDelDia: #a33fa244;
+}
+
+span[tipo="span_reseTerminadasCant-prox"]{
+    --colorBase_spanReseTipoDelDia: #41599644;
+}
+
+span[tipo="span_reseCanceladasCant-prox"]{
+    --colorBase_spanReseTipoDelDia: #b33d3d44;
+}
+
+/**/
+
+span[tipo="bloqueadoSpan"]{
+    --casilla_colorCantReseBase: #53607144;
+}
+
+.div_baseDiasCalendaMesGene-1 .li_diaMes{
+    background-color: var(--casilla_colorFondo);
+    color: var(--casilla_colorTextoBlanco);
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-left: 1px solid var(--casilla_bordeColor1);
+    border-bottom: 1px solid var(--casilla_bordeColor1);
+    cursor: var(--cursor_estadoCasillasDia);
+}
+
+.li_diaMes .div_baseSvgOjo{
+    width: 100%;
+    height: 1.6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.li_diaMes .div_baseSvgOjo .svg_ojoVerDiaCalenMes{
+    fill: var(--casilla_colorOjoSvg);
+    width: 2rem;
+    height: max-content;
+}
+
+.li_diaMes .spanFechaNum{
+    width: 100%;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--casilla_spanColor1);
+    display: flex;
+    justify-content: center;
+}
+
+.li_diaMes .div_liDiaMes{
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.li_diaMes .div_baseDatosDiaMesRese-1{
+    width: 100%;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.div_baseDatosDiaMesRese-1 .span_cantReseDelDia{
+    width: 100%;
+    height: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--casilla_colorCantReseBase);
+}
+
+.span_cantReseDelDia .span_haberRese{
+    font-size: 1rem;
+    font-weight: 400;
+    background-color: var(--colorBase_spanCantiRese);
+}
+
+.span_cantReseDelDia .b_cantReseTotal{
+    font-size: 1rem;
+}
+
+.span_cantReseDelDia .b_cantReseTotal .span_contReseTotalDia{
+    font-size: 1rem;
+    font-weight: 600;
+    margin-left: .4rem;
+}
+
+.span_cantReseDelDia .b_cantReseTotal .span_contResesTexto{
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.div_liDiaMes .div_reseDelDiaCantidadesBase{
+    width: 90%;
+    height: 1.8rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.div_reseDelDiaCantidadesBase .span_reseActivasCant{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    flex-grow: 1;
+    height: 100%;
+    color: var(--textoColor_spanReseTipoDelDia);
+    background-color: var(--colorBase_spanReseTipoDelDia);
+}
+
+.div_reseDelDiaCantidadesBase .span_resePendientesCant{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    flex-grow: 1;
+    height: 100%;
+    color: var(--textoColor_spanReseTipoDelDia);
+    background-color: var(--colorBase_spanReseTipoDelDia);
+}
+
+.div_reseDelDiaCantidadesBase .span_reseTerminadasCant{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    flex-grow: 1;
+    height: 100%;
+    color: var(--textoColor_spanReseTipoDelDia);
+    background-color: var(--colorBase_spanReseTipoDelDia);
+}
+
+.div_reseDelDiaCantidadesBase .span_resePausadasCant{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    flex-grow: 1;
+    height: 100%;
+    color: var(--textoColor_spanReseTipoDelDia);
+    background-color: var(--colorBase_spanReseTipoDelDia);
+}
+
+.div_reseDelDiaCantidadesBase .span_reseCanceladasCant{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    flex-grow: 1;
+    height: 100%;
+    color: var(--textoColor_spanReseTipoDelDia);
+    background-color: var(--colorBase_spanReseTipoDelDia);
+}
+
+/* Calendario MODO MES Base principal */
+
+/*/* Calendario Base principal para el Render /*/
+
+/*/* Calendario, Calendario Base Render y Movimiento Principal /*/

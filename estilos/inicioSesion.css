@@ -1,0 +1,419 @@
+body{
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 20rem;
+}
+
+.main{
+  display: flex;
+  width: 100%;
+  height: max-content;
+}
+
+.main .imgContIzqui{
+  width: 20%;
+  height: 60rem;
+  background-image: url("../images/imgIniSesion1.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: -26rem;
+}
+
+.main .imgContDere{
+  width: 20%;
+  height: 60rem;
+  background-image: url("../images/imgIniSesion2.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: -30rem;
+}
+
+.main .contenido{
+  width: 60%;
+  height: 60rem;
+  overflow: hidden;
+  background-color: #eee;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.contenido .p_tituloPrin{
+  width: 100%;
+  font-size: 2.6rem;
+  text-align: center;
+  color: #7B7B7B; 
+  margin-top: 6rem;
+}
+
+.contenido .p_tituloPrin .span_bizTituloPrin{
+  font-size: 3.6rem;
+  background: linear-gradient(-45deg, rgba(0,97,212,1) 0%, rgba(0,138,255,1) 100%);
+  background-clip: text;
+  color: transparent;
+  font-weight: 700;
+}
+
+.span_titulo2{
+  width: 100%;
+  display: flex;
+  color: #7B7B7B;
+  justify-content: center;
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+
+.span_ingresar{
+  width: 100%;
+  display: flex;
+  color: #7B7B7B;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-top: .4rem;
+}
+
+.contenido .div_cuadroIniSesion{
+  width: 100%;
+  height: max-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 5.6rem;
+}
+
+.div_cuadroIniSesion .div_iconIniSesion{
+  width: 100%;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.div_iconIniSesion .svg_userIconIniSe{
+  fill: #7B7B7B;
+  width: 5.4rem;
+  height: max-content;
+}
+
+.form_inicioSesion-1{
+  width: 100%;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1.2rem;
+}
+
+/* INPUT - CORREO LOGIN */
+.div_baseCorreo-1{
+  width: 100%;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.in_correoLogin-1{
+  width: 50%;
+  height: 3rem;
+  border-radius: 1rem;
+  font-size: 1.4rem;
+  color: #002438;
+  padding: .4rem 0;
+  padding-left: 1rem;
+  background-color: #ffffff;
+  border-bottom: 1px solid #004f7866;
+}
+
+.in_correoLogin-1:focus{
+  outline: 3px solid #0b8bcf44;
+}
+
+.in_correoLogin-1::placeholder{
+  color: #00243888;
+}
+
+.in_correoLogin-2{
+  width: 50%;
+  height: 3rem;
+  border-radius: 1rem;
+  font-size: 1.4rem;
+  padding: .4rem 0;
+  padding-left: 1rem;
+  background-color: #e2e2e2;
+  border-bottom: 1px solid #004f7866;
+}
+
+.in_correoLogin-2::placeholder{
+  color: #00243866;
+}
+
+.span_errCorreo-1{
+  width: 50%;
+  height: max-content;
+  text-align: left;
+  font-size: 1.2rem;
+  opacity: 0;
+}
+
+.span_errCorreo-2{
+  width: 50%;
+  height: max-content;
+  text-align: left;
+  font-size: 1.2rem;
+  color: #ff2713;
+  padding-left: 1rem;
+}
+/* INPUT - CORREO LOGIN */
+
+/* INPUT - CONTRASEÑA LOGIN */
+.div_baseContrase-1{
+  width: 100%;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.in_contraseLogin-1{
+  width: 50%;
+  height: 3rem;
+  border-radius: 1rem;
+  font-size: 1.4rem;
+  color: #002438;
+  padding: .4rem 0;
+  padding-left: 1rem;
+  background-color: #ffffff;
+  border-bottom: 1px solid #004f7866;
+}
+
+.in_contraseLogin-1:focus{
+  outline: 3px solid #0b8bcf44;
+}
+
+.in_contraseLogin-1::placeholder{
+  color: #00243888;
+}
+
+.in_contraseLogin-2{
+  width: 50%;
+  height: 3rem;
+  border-radius: 1rem;
+  font-size: 1.4rem;
+  padding: .4rem 0;
+  padding-left: 1rem;
+  background-color: #e2e2e2;
+  border-bottom: 1px solid #004f7866;
+}
+
+.in_contraseLogin-2::placeholder{
+  color: #00243866;
+}
+
+.span_errContrase-1{
+  width: 50%;
+  height: max-content;
+  text-align: left;
+  font-size: 1.2rem;
+  opacity: 0;
+}
+
+.span_errContrase-2{
+  width: 50%;
+  height: max-content;
+  text-align: left;
+  font-size: 1.2rem;
+  color: #ff2713;
+  padding-left: 1rem;
+}
+
+.btn_ojoMostrarContra-1{
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  position: absolute;
+  z-index: -200;
+}
+
+.btn_ojoMostrarContra-2{
+  width: 4rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 25.4%;
+  top: 0;
+}
+
+.svg_ojoIconA-1{
+  width: max-content;
+  height: 1.4rem;
+  fill: #004f7888;
+  cursor: pointer;
+}
+
+.svg_ojoIconC-1{
+  width: max-content;
+  height: 1.4rem;
+  fill: #004f7888;
+  cursor: pointer;
+}
+
+.svg_ojoIconA-2{
+  display: none;
+}
+
+.svg_ojoIconC-2{
+  display: none;
+}
+/* INPUT - CONTRASEÑA LOGIN */
+
+/* BOTON - INICIAR SESIÓN */
+.btn_iniarSesion-1{
+  width: max-content;
+  height: max-content;
+  border-radius: 1rem;
+  background-color: #dedede;
+  border-bottom: 1px solid #004f7866;
+  font-size: 1.4rem;
+  padding: .6rem 1rem;
+  margin-top: 1rem;
+  color: #7B7B7Baa;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.btn_iniarSesion-1:hover{
+  background-color: #004F7866;
+  color: #ffffff;
+}
+
+.btn_iniarSesion-2{
+  width: max-content;
+  height: max-content;
+  border-radius: 1rem;
+  background-color: #dedede;
+  border-bottom: 1px solid #004f7866;
+  font-size: 1.4rem;
+  padding: .6rem 1rem;
+  margin-top: 1rem;
+  color: #7B7B7Baa;
+  cursor: default;
+}
+/* BOTON - INICIAR SESIÓN */
+
+/* DIV - BASE REGISTRO, RECUPERAR CONTRASEÑA */
+.div_regisYRecuContra-1{
+  width: 100%;
+  height: max-content;
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.div_recuContra-1{
+  width: 50%;
+  height: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid #1e82b966;
+}
+
+.span_recuContra-1{
+  font-size: 1.2rem;
+  color: #00243888;
+}
+
+.a_recuContra-1{
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #005c8eaa;
+  transition: .3s;
+}
+
+.a_recuContra-1:hover{
+  color: #0d7cb9;
+}
+
+.div_registrarse-1{
+  width: 50%;
+  height: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #5d96b4;
+}
+
+.span_registrarse-1{
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+.a_registrarse-1{
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #002a41aa;
+  transition: .3s;
+}
+
+.a_registrarse-1:hover{
+  color: #def3ff;
+}
+/* DIV - BASE REGISTRO, RECUPERAR CONTRASEÑA */
+
+/*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+
+/* Media */
+
+@media only screen and (max-width: 500px) {
+  .body{
+      padding-top: 0;
+      & .main{
+        flex-direction: column;
+        & .imgContDere{
+          width: 0;
+          height: 0;
+        }
+        & .imgContIzqui{
+          width: 0;
+          height: 0;
+        }
+        & .contenido{
+          width: 100%;
+          & span{
+            text-align: center;
+          }
+          & .div_cuadroIniSesion{
+            & div:nth-child(2){
+              width: 100%;
+              & .formInicioSesion{
+                width: 90%;
+              }
+              & .divRegistrar{
+                width: 100%;
+                flex-direction: column;
+                & div{
+                  width: 100%;
+                  & span{
+                    font-size: 1.7rem;
+                    margin-left: .6rem;
+                  }
+                  & a{
+                    font-size: 1.7rem;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+  }
+}

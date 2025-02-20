@@ -1,0 +1,17 @@
+{
+    "name": "bizlab/pagosmembresias",
+    "autoload": {
+        "psr-4": {
+            "Bizlab\\Pagosmembresias\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Daniel Munioz"
+        }
+    ],
+    "require": {
+        "epayco/epayco-php": "^1.6",
+        "dompdf/dompdf": "^3.0"
+    }
+}

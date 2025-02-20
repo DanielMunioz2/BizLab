@@ -1,0 +1,85 @@
+.body{
+    width: 100vw;
+}
+
+.cubiertaBase{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 500;
+    background-color: #ffffffdd;
+    & .baseSpinnerCargaRese-A{
+        width: 106.7rem;
+        height: 52.1rem;
+        position: absolute;
+        top: 5.4rem;
+        z-index: 1000;
+        left: 1rem;
+        display: flex;
+        border-radius: 0 0 1rem 1rem;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffffffdd;
+        transition: opacity .75s, visibility .75s;
+    }
+    & .baseSpinnerCargaRese-A::after{
+        content: "";
+        width: 10rem;
+        height: 10rem;
+        border: 15px solid #b8cee244;
+        border-top-color: #1568b7;
+        border-radius: 50%;
+        animation: spinnerLoad 0.75s ease infinite;
+    }
+    & .baseSpinnerCargaRese-C{
+        visibility: hidden;
+        opacity: 0;
+    }
+}
+
+.btnContainerVolver{
+    width: 100%;
+    height: max-content;
+    margin: 2rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & .btnVolver{
+        width: max-content;
+        font-size: 1.4rem;
+        color: #f3f3f4;
+        background-color: #295a91;
+        padding: 1rem 2rem;
+        border-radius: 1rem;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: .3s;
+        & b{
+            margin-left: .4rem;
+        }
+        &:hover{
+            background-color: #408db9;
+        }
+        & .logoRegistrar{
+            width: 1.8rem;
+            fill: #f3f3f4;
+            margin-right: 1rem;
+            height: max-content;
+        }
+    }
+}
+
+@keyframes spinnerLoad {
+
+    from{
+      transform: rotate(0turn);
+    }
+    to{
+      transform: rotate(1turn);
+    }
+  
+}

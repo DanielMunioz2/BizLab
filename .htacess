@@ -1,0 +1,30 @@
+RewriteEngine On
+
+# Redirección a HTTPS (si la solicitud es HTTP)
+RewriteCond %{HTTP_HOST} plataforma\.the-bizclub\.com [NC]
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://plataforma.the-bizclub.com/$1 [R,L]
+
+# Permitir solicitudes CORS desde cualquier origen
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+    Header set Access-Control-Allow-Headers "Content-Type, Authorization"
+</IfModule>
+
+# Manejar solicitudes OPTIONS (pre-vuelo de CORS)
+<IfModule mod_rewrite.c>
+    RewriteCond %{REQUEST_METHOD} OPTIONS
+    RewriteRule ^(.*)$ $1 [R=200,L]
+</IfModule>
+
+# Permitir acceso al archivo epayco_proxy.php
+<Files "epayco_proxy.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# This domain inherits the “PHP” package.
+# php -- END cPanel-generated handler, do not edit
+

@@ -1,0 +1,1459 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    font-size: 10px;
+    border: none;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    outline: none;
+    & img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.body {
+    max-width: 100vw;
+    min-height: 100vh;
+    position: relative;
+    background-color: #D9DBE0;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding-bottom: 30rem;
+    padding-top: 16rem;
+    &::-webkit-scrollbar {
+        -webkit-appearance: none;
+        width: 1rem;
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 1rem;
+        background-color: #004f7866;
+    }
+}
+
+.headerCli{
+  width: 100%;
+  height: 16rem;
+  background: linear-gradient(0deg, rgba(217,219,224,1) 0%, rgb(100, 113, 209) 100%);
+  position: absolute;
+  left: 0;
+  top: 0;
+  & .headerDiv1{
+    width: 100%;
+    height: 70%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    background: linear-gradient(0deg, #0c79b4 0%, #086496 100%);;
+    & .divLogo{
+      width: max-content;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding-left: 3rem;
+      position: absolute;
+      top: 0;
+      left: 0;
+      & svg{
+        width: 24rem;
+        height: max-content;
+        fill: #ffffff;
+      }
+    }
+    & .divPerfilGene{
+      width: max-content;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      padding-right: 3rem;
+      display: flex;
+      align-items: center;
+      & .divPerfil{
+        width: 10rem;
+        height: 10rem;
+        background-color: #ffffff88;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        align-items: center;
+        border-radius: 100%;
+        cursor: pointer;
+        transition: .3s;
+        &:hover{
+          background-color: #e4f2ffaa;
+          & .divImg{
+            background-color: #e4f2ffaa;
+            & img{
+              width: 106%;
+              height: 106%;
+              position: absolute;
+            }
+          }
+        }
+        & .divImg{
+          width: 9rem;
+          height: 9rem;
+          margin: 0;
+          padding: 0;
+          position: relative;
+          border-radius: 100%;
+          overflow: hidden;
+          display: flex;
+          overflow: hidden;
+          align-items: center;
+          justify-content: center;
+          padding: .2rem;
+          border: 2px solid #003e5f66;
+          transition: .3s;
+          & img{
+            transition: .3s;
+            border-radius: 50%;
+            border: 4px solid #003e5f66;
+          }
+        }
+      }
+    }
+    & .cuadroOPerfil1 {
+      height: 0rem;
+      width: 0rem;
+      box-shadow: none;
+      overflow: hidden;
+      position: absolute;
+      transform-origin: top left;
+      transition: 0.3s;
+      z-index: 1000;
+    }
+    & .cuadroOPerfil2 {
+      display: flex;
+      position: absolute;
+      z-index: 1000;
+      width: 50rem;
+      height: max-content;
+      display: flex;
+      flex-direction: column;
+      border-radius: 1rem;
+      top: 100%;
+      right: 2rem;
+      transition: 0.3s;
+      overflow: hidden;
+      background-color: #e9e8e8;
+      transform-origin: top right;
+      box-shadow: 0.2rem 0.4rem 0.4rem #33333355;
+      & .div1 {
+        width: 100%;
+        height: max-content;
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid #002d5622;
+        & div {
+          width: 100%;
+          height: max-content;
+          display: flex;
+          align-items: center;
+          padding-top: 1.4rem;
+          padding-left: 2rem;
+          padding-bottom: 1.4rem;
+          & svg {
+            width: 2rem;
+            height: max-content;
+            fill: #002d5699;
+          }
+          & span {
+            font-size: 1.6rem;
+            margin-left: 1rem;
+            color: #002d56aa;
+          }
+        }
+        & button {
+          width: 100%;
+          display: flex;
+          justify-content: flex-start;
+          padding: 1.8rem;
+          font-size: 1.6rem;
+          color: #002d56aa;
+          cursor: pointer;
+          transition: 0.2s;
+          & svg {
+            width: 2rem;
+            height: max-content;
+            fill: #002d56aa;
+            margin-right: 1rem;
+            transition: 0.2s;
+          }
+          &:hover {
+            background-color: #002d5633;
+            color: #ffffff;
+            & svg {
+              fill: #ffffff;
+            }
+          }
+        }
+      }
+      & .div2 {
+        width: 100%;
+        display: flex;
+        height: max-content;
+        & a {
+          width: 100%;
+        }
+        & button {
+          font-size: 1.6rem;
+          width: 100%;
+          padding: 1.8rem;
+          display: flex;
+          justify-content: flex-start;
+          color: #002d56aa;
+          transition: 0.2s;
+          cursor: pointer;
+          & svg {
+            width: 2rem;
+            height: max-content;
+            fill: #002d56aa;
+            margin-right: 1rem;
+            transition: 0.2s;
+          }
+          &:hover {
+            background-color: #002d5633;
+            color: #ffffff;
+            & svg {
+              fill: #ffffff;
+            }
+          }
+        }
+      }
+      & .div3 {
+        width: 100%;
+        display: flex;
+        height: max-content;
+        & button {
+          font-size: 1.6rem;
+          width: 100%;
+          padding: 1.8rem;
+          display: flex;
+          justify-content: flex-start;
+          color: #002d56aa;
+          transition: 0.2s;
+          cursor: pointer;
+          & svg {
+            width: 2rem;
+            height: max-content;
+            fill: #002d56aa;
+            margin-right: 1rem;
+            transition: 0.2s;
+          }
+          &:hover {
+            background-color: #002d5633;
+            color: #ffffff;
+            & svg {
+              fill: #ffffff;
+            }
+          }
+        }
+      }
+    }
+  }
+  & .headerNav{
+    background-color: #c4cee4;
+    height: 30%;
+    width: 100%;
+    display: flex;
+    border-bottom: .5rem solid #7A97CC;
+    & ul{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      padding-left: 3rem;
+      justify-content: flex-start;
+      & li{
+        width: max-content;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 1.4rem;
+        &:first-child{
+          margin-left: 0;
+        }
+        & a{
+          font-size: 1.6rem;
+          font-weight: 600;
+          color: #183a6d;
+          cursor: pointer;
+          transition: .3s;
+          padding: .8rem 1rem;
+          border-radius: 1rem;
+          &:hover{
+            background-color: #004f7844;
+            color: #ffffff;
+          }
+        }
+      }
+    }
+  }
+}
+
+.headerDiv1 .cuadroOPerfil1 {
+  height: 0rem;
+  width: 0rem;
+  box-shadow: none;
+  overflow: hidden;
+  position: absolute;
+  transform-origin: top left;
+  transition: 0.3s;
+  z-index: 1000;
+}
+
+.headerDiv1 .cuadroOPerfil2 {
+  display: flex;
+  position: absolute;
+  z-index: 1000;
+  width: 50rem;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+  top: 100%;
+  right: 2rem;
+  transition: 0.3s;
+  overflow: hidden;
+  background-color: #e9e8e8;
+  transform-origin: top right;
+  box-shadow: 0.2rem 0.4rem 0.4rem #33333355;
+}
+
+.headerDiv1 .cuadroOPerfil2 .div1 {
+  width: 100%;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #002d5622;
+}
+
+.headerDiv1 .cuadroOPerfil2 .div1 div {
+  width: 100%;
+  height: max-content;
+  display: flex;
+  align-items: center;
+  padding-top: 1.4rem;
+  padding-left: 2rem;
+  padding-bottom: 1.4rem;
+}
+
+.headerDiv1 .cuadroOPerfil2 .div1 div svg {
+    width: 2rem;
+    height: max-content;
+    fill: #002d5699;
+}
+
+.headerDiv1 .cuadroOPerfil2 .div1 div span {
+  font-size: 1.6rem;
+  margin-left: 1rem;
+  color: #002d56aa;
+}
+
+.headerDiv1 .cuadroOPerfil2 .div1 button {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  padding: 1.8rem;
+  font-size: 1.6rem;
+  color: #002d56aa;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.headerDiv1 .cuadroOPerfil2 .div1 button svg {
+  width: 2rem;
+  height: max-content;
+  fill: #002d56aa;
+  margin-right: 1rem;
+  transition: 0.2s;
+}
+
+.headerDiv1 .cuadroOPerfil2 .div1 button:hover {
+  background-color: #002d5633;
+  color: #ffffff;
+}
+
+.headerDiv1 .cuadroOPerfil2 .div1 button:hover svg {
+  fill: #ffffff;
+}
+
+.headerDiv1 .cuadroOPerfil2 .div2 {
+  width: 100%;
+  display: flex;
+  height: max-content;
+}
+
+.headerDiv1 .cuadroOPerfil2 .div2 a {
+  width: 100%;
+}
+
+.headerDiv1 .cuadroOPerfil2 .div2 button {
+  font-size: 1.6rem;
+  width: 100%;
+  padding: 1.8rem;
+  display: flex;
+  justify-content: flex-start;
+  color: #002d56aa;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.headerDiv1 .cuadroOPerfil2 .div2 button svg{
+  width: 2rem;
+  height: max-content;
+  fill: #002d56aa;
+  margin-right: 1rem;
+  transition: 0.2s;
+}
+
+.headerDiv1 .cuadroOPerfil2 .div2 button:hover{
+  background-color: #002d5633;
+  color: #ffffff;
+}
+
+.headerDiv1 .cuadroOPerfil2 .div2 button:hover svg {
+  fill: #ffffff;
+}
+
+.headerDiv1 .cuadroOPerfil2 .div3{
+  width: 100%;
+  display: flex;
+  height: max-content;
+}
+
+.headerDiv1 .cuadroOPerfil2 .div3 button{
+  font-size: 1.6rem;
+  width: 100%;
+  padding: 1.8rem;
+  display: flex;
+  justify-content: flex-start;
+  color: #002d56aa;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.headerDiv1 .cuadroOPerfil2 .div3 button svg{
+  width: 2rem;
+  height: max-content;
+  fill: #002d56aa;
+  margin-right: 1rem;
+  transition: 0.2s;
+}
+
+.headerDiv1 .cuadroOPerfil2 .div3 button:hover{
+  background-color: #002d5633;
+  color: #ffffff;
+}
+
+.headerDiv1 .cuadroOPerfil2 .div3 button:hover svg{
+  fill: #ffffff;
+}
+
+.buttonBloq2 {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  padding: 1.8rem;
+  font-size: 1.6rem;
+  color: #002d56aa;
+  cursor: default;
+  transition: 0.2s;
+  background-color: #002d5644;
+}
+
+.buttonBloq2 svg {
+  width: 2rem;
+  height: max-content;
+  fill: #002d56aa;
+  margin-right: 1rem;
+  transition: 0.2s;
+}
+
+.buttonBloq2:hover {
+  background-color: #002d5644 !important; 
+  color: #002d56aa !important;
+}
+
+.buttonBloq2:hover svg {
+  fill: #002d56aa !important;
+}
+
+.headerAdmi {
+    width: 100%;
+    height: 16rem;
+    background-color: #004f78;
+    position: absolute;
+    top: 0;
+    left: 0;
+    & .header_div1 {
+      width: 100%;
+      height: 70%;
+      display: flex;
+      align-items: center;
+      & .divPerfilContaint {
+        width: 26%;
+        height: 90%;
+        border-radius: 1rem;
+        background-color: #002d56aa;
+        margin-left: 2rem;
+        display: flex;
+        position: relative;
+        & .divFlecha {
+          width: 10%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: absolute;
+          right: 0;
+          top: 0;
+          border-radius: 0 1rem 1rem 0;
+          cursor: pointer;
+          transition: 0.3s;
+          background-color: #ffffff11;
+          &:hover {
+            & .flecha1 {
+              fill: #ffffff;
+            }
+            & .flecha2 {
+              fill: #ffffff;
+            }
+          }
+          & .flecha1 {
+            width: 1rem;
+            height: max-content;
+            transition: 0.3s;
+            fill: #002d56;
+            transform-origin: center;
+          }
+          & .flecha2 {
+            width: 1rem;
+            height: max-content;
+            transition: 0.3s;
+            fill: #002d56;
+            transform-origin: center;
+            transition: 0.3s;
+            transform: rotate(90deg);
+          }
+        }
+        & .divImgCont {
+          width: 10.08rem;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          & div {
+            width: 94%;
+            height: 94%;
+            border-radius: 1rem;
+            overflow: hidden;
+          }
+        }
+        & .divNombreCont {
+          width: 76%;
+          height: 100%;
+          display: flex;
+          position: relative;
+          flex-direction: column;
+          padding-left: 1.2rem;
+          & span {
+            font-size: 1.6rem;
+            color: #ffffff;
+          }
+          & .nombrePerfil {
+            width: 100%;
+            margin-top: 0.6%;
+            font-size: 1.8rem;
+            font-weight: 600;
+          }
+          & .carreraUPerfil {
+            font-size: 1.6rem;
+            color: #ffffffbb;
+          }
+          & .divTipo {
+            width: 100%;
+            height: 3.8rem;
+            position: absolute;
+            left: 1.2rem;
+            bottom: 0.6%;
+            display: flex;
+            align-items: center;
+            & span {
+              margin-left: 1.2rem;
+              color: #ffffffaa;
+            }
+            & svg {
+              height: 80%;
+              width: max-content;
+              fill: #ffffffaa;
+            }
+          }
+        }
+        & .cuadroOPerfil1 {
+          height: 0rem;
+          width: 0rem;
+          box-shadow: none;
+          overflow: hidden;
+          position: absolute;
+          transform-origin: top right;
+          transition: 0.3s;
+          z-index: 1000;
+        }
+        & .cuadroOPerfil2 {
+          display: flex;
+          position: absolute;
+          z-index: 1000;
+          width: 100%;
+          height: max-content;
+          display: flex;
+          flex-direction: column;
+          border-radius: 1rem;
+          top: 100%;
+          right: 0;
+          transition: 0.3s;
+          overflow: hidden;
+          background-color: #e9e8e8;
+          transform-origin: top right;
+          box-shadow: 0.2rem 0.4rem 0.4rem #33333355;
+          & .div1 {
+            width: 100%;
+            height: max-content;
+            display: flex;
+            flex-direction: column;
+            border-bottom: 1px solid #002d5622;
+            & div {
+              width: 100%;
+              height: max-content;
+              display: flex;
+              align-items: center;
+              padding-top: 1.4rem;
+              padding-left: 2rem;
+              padding-bottom: 1.4rem;
+              & svg {
+                width: 2rem;
+                height: max-content;
+                fill: #002d5699;
+              }
+              & span {
+                font-size: 1.6rem;
+                margin-left: 1rem;
+                color: #002d56aa;
+              }
+            }
+            & button {
+              width: 100%;
+              display: flex;
+              justify-content: flex-start;
+              padding: 1.8rem;
+              font-size: 1.6rem;
+              color: #002d56aa;
+              cursor: pointer;
+              transition: 0.2s;
+              & svg {
+                width: 2rem;
+                height: max-content;
+                fill: #002d56aa;
+                margin-right: 1rem;
+                transition: 0.2s;
+              }
+              &:hover {
+                background-color: #002d5633;
+                color: #ffffff;
+                & svg {
+                  fill: #ffffff;
+                }
+              }
+            }
+            & .buttonBloq {
+                width: 100%;
+                display: flex;
+                justify-content: flex-start;
+                padding: 1.8rem;
+                font-size: 1.6rem;
+                color: #002d56aa;
+                cursor: default;
+                transition: 0.2s;
+                background-color: #002d5644;
+                & svg {
+                  width: 2rem;
+                  height: max-content;
+                  fill: #002d56aa;
+                  margin-right: 1rem;
+                  transition: 0.2s;
+                }
+                &:hover {
+                    background-color: #002d5644;
+                    color: #002d56aa;
+                    & svg {
+                        fill: #002d56aa;
+                    }
+                }
+            }
+          }
+          & .div2 {
+            width: 100%;
+            display: flex;
+            height: max-content;
+            & a {
+              width: 100%;
+            }
+            & button {
+              font-size: 1.6rem;
+              width: 100%;
+              padding: 1.8rem;
+              display: flex;
+              justify-content: flex-start;
+              color: #002d56aa;
+              transition: 0.2s;
+              cursor: pointer;
+              & svg {
+                width: 2rem;
+                height: max-content;
+                fill: #002d56aa;
+                margin-right: 1rem;
+                transition: 0.2s;
+              }
+              &:hover {
+                background-color: #002d5633;
+                color: #ffffff;
+                & svg {
+                  fill: #ffffff;
+                }
+              }
+            }
+          }
+          & .div3 {
+            width: 100%;
+            display: flex;
+            height: max-content;
+            & button {
+              font-size: 1.6rem;
+              width: 100%;
+              padding: 1.8rem;
+              display: flex;
+              justify-content: flex-start;
+              color: #002d56aa;
+              transition: 0.2s;
+              cursor: pointer;
+              & svg {
+                width: 2rem;
+                height: max-content;
+                fill: #002d56aa;
+                margin-right: 1rem;
+                transition: 0.2s;
+              }
+              &:hover {
+                background-color: #002d5633;
+                color: #ffffff;
+                & svg {
+                  fill: #ffffff;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    & .header_nav {
+      width: 100%;
+      height: 30%;
+      display: flex;
+      align-items: center;
+      background-color: #0077b299;
+      justify-content: flex-end;
+      & .nav_ul {
+        width: 30%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        position: relative;
+        &::before {
+          content: "";
+          width: 8%;
+          height: 100%;
+          background-color: #3298cf;
+          position: absolute;
+          left: 4rem;
+        }
+        &::after {
+          content: "";
+          width: 4%;
+          height: 100%;
+          background-color: #3298cf;
+          position: absolute;
+          left: 0rem;
+        }
+        & .li {
+          display: flex;
+          width: max-content;
+          height: max-content;
+          justify-content: center;
+          align-items: center;
+          background-color: #004f7888;
+          border-radius: 1.8rem;
+          margin-right: 1.4rem;
+          transition: 0.3s;
+          cursor: pointer;
+          &:hover {
+            background-color: #3298cf;
+          }
+          & a {
+            font-size: 1.4rem;
+            color: #ffffff;
+            margin: 0.4rem 0.6rem;
+            padding: 0.4rem 2rem;
+          }
+        }
+        & .activeLi {
+          background-color: #3298cf;
+          cursor: default;
+        }
+        & .liUltimo {
+          margin-right: 3rem;
+        }
+      }
+    }
+}
+
+.main{
+    max-width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #D9DBE0;
+    & .baseGeneral{
+        width: 90%;
+        height: 70rem;
+        margin-top: 6rem;
+        display: flex;
+        margin-bottom: 12rem;
+        border-radius: 1rem;
+        background-color: #e7e9ee;
+        border: 1px solid #002d5622;
+        box-shadow: .6rem .6rem .6rem #002d5622;
+        & .divImgGene{
+            width: 20%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-right: 1px solid #002d5644;
+            & .imgBase{
+                width: 100%;
+                height: max-content;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                border-bottom: 1px solid #002d5644;
+                & #subirImagenBtn{
+                    width: 0;
+                    height: 0;
+                    opacity: 0;
+                }
+                & .divImgBase{
+                    width: 80%;
+                    display: flex;
+                    margin-top: 2rem;
+                    margin-bottom: 2rem;
+                    position: relative;
+                    overflow: hidden;
+                    height: max-content;
+                    & .divImgCambio-B{
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        background-color: #002d5600;
+                        z-index: -500;
+                        border-radius: 1rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        & svg{
+                            width: 20%;
+                            height: max-content;
+                            fill: #ffffff00;
+                        }
+                    }
+                    & .divImgCambio-D{
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        background-color: #002d5600;
+                        cursor: pointer;
+                        border-radius: 1rem;
+                        z-index: 500;
+                        display: flex;
+                        align-items: center;
+                        flex-direction: column;
+                        justify-content: center;
+                        transition: .3s;
+                        & svg{
+                            width: 40%;
+                            height: max-content;
+                            fill: #ffffff00;
+                            transition: .3s;
+                        }
+                        & span{
+                            color: #ffffff00;
+                            width: 100%;
+                            margin-top: .6rem;
+                            font-size: 1.6rem;
+                            text-align: center;
+                            transition: .3s;
+                        }
+                        &:hover{
+                            background-color: #002d5666;
+                            & svg{
+                                fill: #ffffffbb;
+                            }
+                            & span{
+                                color: #ffffffbb;
+                            }
+                        }
+                    }
+                    & img{
+                        width: 100%;
+                        border: 1px solid #002d5644;
+                        height: max-content;
+                        border-radius: 1rem;
+                    }
+                }
+            }
+            & .divNombreCargo{
+                width: 100%;
+                height: max-content;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 1rem;
+                & .nombre{
+                    font-size: 1.8rem;
+                    text-wrap: wrap;
+                    color: #002d56aa;
+                    font-weight: 600;
+                }
+                & .cargo{
+                    width: 100%;
+                    font-size: 1.7rem;
+                    display: flex;
+                    margin-top: .6rem;
+                    border-top: 1px solid #002d5644;
+                    border-bottom: 1px solid #002d5644;
+                    padding: 0.6rem 0;
+                    justify-content: center;
+                    color: #f0f5f9cc;
+                    background-color: #002d5666;
+                }
+            }
+            & .divDatos{
+                width: 100%;
+                height: max-content;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                margin-top: 1.6rem;
+                & div{
+                    width: 100%;
+                    height: max-content;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    margin-bottom: .8rem;
+                    & span{
+                        font-size: 1.6rem;
+                        color: #002d56aa;
+                        &:nth-child(1){
+                            padding-left: 1.4rem;
+                            width: 100%;
+                        }
+                        &:nth-child(2){
+                            padding-left: 1.4rem;
+                            width: 100%;
+                            font-weight: 600;
+                        }
+                    }
+                }
+            }
+        }
+        & .divDataGene{
+            width: 80%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            & .divDataBase{
+                width: 100%;
+                height: 100%;
+                display: flex;
+                position: relative;
+                flex-direction: column;
+                border: 1px solid #002d5644;
+                & .divDatosContacto{
+                    width: 100%;
+                    height: max-content;
+                    display: flex;
+                    padding: 1rem;
+                    flex-direction: column;
+                    & .titulo{
+                        width: 100%;
+                        font-size: 1.8rem;
+                        font-weight: 600;
+                        color: #002d5666;
+                    }
+                    & .data{
+                        width: 100%;
+                        height: max-content;
+                        display: flex;
+                        flex-wrap: wrap;
+                        margin-top: .8rem;
+                        padding-bottom: 2rem;
+                        border-bottom: 1px solid #002d5644;
+                        & div{
+                            width: max-content;
+                            height: max-content;
+                            display: flex;
+                            flex-direction: column;
+                            margin-right: 1.4rem;
+                            & span{
+                                font-size: 1.8rem;
+                                color: #002d56cc;
+                                margin: .6rem 0;
+                            }
+                            & input{
+                                width: 28rem;
+                                height: 4rem;
+                                color: #002d56aa;
+                                font-size: 1.8rem;
+                                border-radius: 1rem;
+                                padding: 1rem;
+                                padding-left: 1.4rem;
+                                &::placeholder{
+                                    color: #002d5666;
+                                }
+                            }
+                        }
+                        & .direccionDiv{
+                            width: 70rem;
+                            margin-top: 1rem;
+                            & input{
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+                & .divOtrosDatos{
+                    width: 100%;
+                    height: max-content;
+                    display: flex;
+                    padding: 1rem;
+                    flex-direction: column;
+                    & .titulo{
+                        width: 100%;
+                        font-size: 1.8rem;
+                        font-weight: 600;
+                        color: #002d5666;
+                    }
+                    & .data{
+                        width: 100%;
+                        height: max-content;
+                        display: flex;
+                        flex-wrap: wrap;
+                        margin-top: .8rem;
+                        padding-bottom: 2rem;
+                        border-bottom: 1px solid #002d5644;
+                        & div{
+                            width: max-content;
+                            height: max-content;
+                            display: flex;
+                            flex-direction: column;
+                            margin-right: 1.4rem;
+                            & span{
+                                font-size: 1.8rem;
+                                color: #002d56cc;
+                                margin: .6rem 0;
+                            }
+                            & .select-D{
+                                width: 28rem;
+                                height: 4rem;
+                                color: #002d56aa;
+                                font-size: 1.8rem;
+                                border-radius: 1rem;
+                                padding: 1rem;
+                                padding-left: 1.4rem;
+                                & option{
+                                    color: #002d56aa;
+                                    font-size: 1.8rem;
+                                }
+                            }
+                            & .select-B{
+                                width: 28rem;
+                                height: 4rem;
+                                color: #002d56aa;
+                                background-color: #E9EBEE;
+                                font-size: 1.8rem;
+                                border-radius: 1rem;
+                                padding: 1rem;
+                                padding-left: 1.4rem;
+                            }
+                        }
+                    }
+                }
+                & .divBtnGene{
+                    width: 100%;
+                    height: 8rem;
+                    display: flex;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    justify-content: flex-end;
+                    border-top: 1px solid #002d5644;
+                    & .divBtnGuardaCancel-A{
+                        width: max-content;
+                        height: 100%;
+                        display: flex;
+                        align-items: center;
+                        & button{
+                            width: max-content;
+                            height: max-content;
+                            padding: 1rem 2rem;
+                            font-size: 1.8rem;
+                            font-weight: 600;
+                            color: #fffff3;
+                            border-radius: 1rem;
+                        }
+                        & .btnGuardar-A{
+                            background-color: #5a8918;
+                            transition: .3s;
+                            margin-right: 2rem;
+                            cursor: pointer;
+                            &:hover{
+                                background-color: #7ea535;
+                            }
+                        }
+                        & .btnGuardar-C{
+                            background-color: #4d5c3088;
+                            margin-right: 2rem;
+                            cursor: default;
+                            &:hover{
+                                background-color: #4d5c3088;
+                            }
+                        }
+                        & .btnCancelar{
+                            background-color: #891818;
+                            transition: .3s;
+                            margin-right: 3rem;
+                            cursor: pointer;
+                            &:hover{
+                                background-color: #a53535;
+                            }
+                        }
+                    }
+                    & .divBtnGuardaCancel-C{
+                        width: 0;
+                        height: 0;
+                        display: flex;
+                        overflow: hidden;
+                    }
+                    & .divBtnEdit-A{
+                        width: max-content;
+                        height: 100%;
+                        display: flex;
+                        align-items: center;
+                        & button{
+                            width: max-content;
+                            height: max-content;
+                            font-size: 1.8rem;
+                            font-weight: 600;
+                            padding: 1rem 2rem;
+                            color: #fffff3;
+                            border-radius: 1rem;
+                        }
+                        & .btnActualizar{
+                            background-color: #186189;
+                            transition: .3s;
+                            cursor: pointer;
+                            margin-right: 2rem;
+                            &:hover{
+                                background-color: #357ea5;
+                            }
+                        }
+                    }
+                    & .divBtnEdit-C{
+                        width: 0;
+                        height: 0;
+                        display: flex;
+                        overflow: hidden;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.footer{
+  width: 100%;
+  height: 26rem;
+  background-color: #004f78;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  & .flexContainerEnlaces{
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid #ffffff44;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #ffffff44;
+      & a{
+          margin-right: 2rem;
+          &:last-child{
+              margin-right: 3rem;
+          }
+      }
+  }
+  & .flexContainerLogo{
+      width: 100%;
+      display: flex;
+      margin-top: 2rem;
+      flex-direction: column;
+      align-items: center;
+      height: max-content;
+      & .footer_logoBizSvg {
+          width: 7rem;
+          height: max-content;
+          fill: #ffffffdd;
+          margin: 1rem 0;
+      }
+      & .footer_copyrightContent {
+          width: 100%;
+          height: max-content;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-weight: 400;
+          color: #ffffffdd;
+          font-size: 2rem;
+      }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .body{
+      padding-top: 28rem;
+      & .headerAdmi{
+        & .header_div1{
+          justify-content: center;
+          & .divPerfilContaint{
+            width: 90%;
+            margin: 0;
+            & .divImgCont{
+              min-width: 9.502rem;
+            }
+            & .divNombreCont{
+              & .carreraUPerfil{
+                width: 70%;
+                text-wrap: nowrap;
+                overflow: hidden;
+              }
+              & .divTipo{
+                & span{
+                  width: 60%;
+                  text-wrap: nowrap;
+                  overflow: hidden;
+                }
+              }
+            }
+          }
+        }
+        & .header_nav{
+          & .nav_ul{
+            width: 100%;
+            justify-content: flex-start;
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: max-content;
+            overflow-x: auto;
+            overflow-y: hidden;
+            align-items: center;
+            gap: 1rem;
+            &::before {
+              content: "";
+              width: 0;
+              height: 0;
+            }
+            &::after {
+              content: "";
+              width: 0;
+              height: 0;
+            }
+          }
+        }
+      }
+      & .headerCli{
+          height: max-content;
+          display: flex;
+          flex-direction: column;
+          padding: 0;
+          & .headerDiv1{
+              width: 100%;
+              flex-direction: column;
+              align-items: center;
+              & .cuadroOPerfil2{
+                  width: 90%;
+                  right: 50%;
+                  transform: translateX(50%);
+              }
+              & .divLogo{
+                  left: 50%;
+                  transform: translateX(-50%);
+                  padding: 0;
+                  height: max-content;
+                  align-items: flex-start;
+                  padding-top: 2rem;
+                  & svg{
+                      width: 20rem;
+                  }
+              }
+              & .divPerfilGene{
+                  padding: 0;
+                  margin-top: 8rem;
+                  margin-bottom: 2rem;
+              }
+              & .divBtnInicioRegis{
+                margin-top: 10rem;
+                margin-bottom: 2rem;
+                gap: 2rem;
+                & .divBtnInicio{
+                  margin: 0;
+                  padding: 0;
+                  & a{
+                    & button{
+                      font-size: 1.6rem;
+                    }
+                  }
+                }
+                & .divBtnRegis{
+                  margin: 0;
+                  padding: 0;
+                  & a{
+                    & button{
+                      font-size: 1.6rem;
+                    }
+                  }
+                }
+              }
+          }
+          & .headerNav{
+              height: 6rem;
+              padding: 0;
+              & .ulNav{
+                  width: 100%;
+                  padding: 0;
+                  height: 100%;
+                  align-items: center;
+                  display: grid;
+                  grid-auto-flow: column;
+                  grid-auto-rows: 100%;
+                  overflow-x: auto;
+                  overflow-y: hidden;
+                  gap: 1rem;
+                  &::-webkit-scrollbar {
+                      -webkit-appearance: none;
+                  }
+                  & li{
+                      height: 100%;
+                      & a{
+                          height: 100%;
+                          display: flex;
+                          align-items: center;
+                      }
+                  }
+              }
+          }
+      }
+      & .main{
+        & .baseGeneral{
+          margin-top: 4rem;
+          flex-direction: column;
+          height: max-content;
+          & .divImgGene{
+            width: 100%;
+            & .imgBase{
+              & .divImgBase{
+                width: 10rem;
+              }
+            }
+          }
+          & .divDataGene{
+            width: 100%;
+            padding-bottom: 16rem;
+            & .divDataBase{
+              & .divDatosContacto{
+                & .data{
+                  & div{
+                    margin-bottom: .6rem;
+                    width: 92%;
+                    & .inputEmail{
+                      width: 100%;
+                    }
+                    & .inputTelef{
+                      width: 100%;
+                    }
+                    & .inputCelular{
+                      width: 100%;
+                    }
+                  }
+                }
+              }
+              & .divOtrosDatos{
+                width: 90%;
+                & .data{
+                  width: 24rem;
+                  & div{
+                    width: 23rem;
+                    & .select-B{
+                      width: 100%;
+                    }
+                    & .select-D{
+                      width: 100%;
+                      & option{
+                        font-size: 1.6rem;
+                      }
+                    }
+                  }
+                }
+              }
+              & .divBtnGene{
+                bottom: -14rem;
+                flex-direction: column;
+                overflow: visible;
+                & button{
+                  font-size: 1.4rem;
+                }
+              }
+            }
+          }
+        }
+      }
+  }
+}

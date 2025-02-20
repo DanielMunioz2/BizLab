@@ -1,0 +1,1828 @@
+body{
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 9rem;
+    padding-bottom: 20rem;
+}
+
+.main{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+}
+
+.main .separador{
+    width: 100%;
+    border-top: 3px dashed #2a4a7a44;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.main .separador2{
+    width: 100%;
+    border-top: 2px dashed #2a4a7a44;
+    margin-top: .8rem;
+    margin-bottom: .8rem;
+}
+
+.main .realiceReseDiv{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    background-color: #9FC3D8;
+}
+
+.realiceReseDiv div{
+    width: 100%;
+    height: 2rem;
+    background-color: #D9E7EF;
+}
+.realiceReseDiv svg{
+    width: 4rem;
+    height: max-content;
+    margin: 2rem 0;
+    fill: #2a4a7a;
+}
+.realiceReseDiv span{
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 2rem 0;
+    margin-left: 1rem;
+    color: #2a4a7a;
+}
+
+.div_basePrinRegisReserva-2{
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    margin: 0;
+    opacity: 0;
+}
+
+.div_basePrinRegisReserva-1{
+    width: 88%;
+    height: max-content;
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    border-radius: 1rem;
+    box-shadow: .6rem .6rem 1rem #2a4a7a66;
+    margin: 4rem 0 10rem 0;
+}
+
+.div_contPrinDatosCalenda-1{
+    width: 100%;
+    height: 56rem;
+    display: flex;
+    overflow: hidden;
+    border-bottom: 1px solid #2a4a7a44;
+    background-color: #2a4a7a22;
+}
+
+/* SELECT PRODUCTO BASE */
+.div_selePdtBasePrin-1{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background-color: #ffffff88;
+}
+
+.span_elegirPdtTituPrin-1{
+    width: 100%;
+    height: 4rem;
+    padding-left: 1.2rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    color: #2a4a7a;
+    background-color: #CAD2DE;
+    border-right: 1px solid #1a365f44;
+}
+
+/* BASE SELECCION DE PRODUCTO */
+/* 14rem */
+/* 6.4rem */
+.div_basePrinElegirPdt-1{
+    width: 100%;
+    height: 6.4rem;
+    display: flex;
+    flex-direction: column;
+    background-color: #2a4a7a66;
+    justify-content: center;
+}
+
+.div_pdtElegidoBase-1{
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.div_pdtElegidoBase-2{
+    width: 94%;
+    height: 14rem;
+    border-radius: 1rem;
+    background-color: #ffffff;
+    border: 1px solid #1a365f44;
+    margin: .8rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1.2rem;
+}
+
+.div_pdtElegido-1{
+    height: 94%;
+    width: 98%;
+    background-color: #1a365f44;
+    border-radius: 1rem;
+    display: flex;
+    overflow: hidden;
+}
+
+.div_imgProducto-1{
+    width: 44%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2a4a7a44;
+}
+
+.div_imgProducto-1 img{
+    width: 90%;
+    height: 90%;
+    border-radius: 1rem;
+}
+
+.div_datosPdtElegidoBase-1{
+    width: 56%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    justify-content: center;
+}
+
+.span_nombrePdtElegido-1{
+    width: 100%;
+    height: 3.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: #1a365f;
+    font-weight: 600;
+}
+
+.in_pdtNombre-1{
+    width: 0;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+
+.div_baseInLisPdts-1{
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.div_baseInLisPdts-2{
+    width: 94%;
+    margin-left: 1.2rem;
+    display: flex;
+    height: max-content;
+    position: relative;
+}
+
+.in_pdtNombre-1{
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.in_pdtNombre-2{
+    width: 100%;
+    height: 3.4rem;
+    padding-left: 1rem;
+    font-size: 1.2rem;
+    color: #1a365f;
+    border-radius: 1rem;
+}
+
+.in_pdtNombre-2::placeholder{
+    color: #1a365f88;
+}
+
+.div_lisPdtsReserva-1{
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.div_lisPdtsReserva-2{
+    width: 100%;
+    height: max-content;
+    max-height: 24rem;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: grid;
+    grid-auto-flow: row;
+    grid-auto-rows: max-content;
+    overflow-x: hidden;
+    overflow-y: auto;
+    box-shadow: .2rem .4rem .8rem #1a365f44;
+}
+
+.span_pdtNOEncontrados{
+    width: 100%;
+    height: 4rem;
+    font-size: 1.2rem;
+    color: #1a365fcc;
+    padding-left: 1.2rem;
+    display: flex;
+    align-items: center;
+    background-color: #f7faff;
+}
+
+.div_pdtLiBase-1{
+    width: 100%;
+    height: 8rem;
+    display: flex;
+    align-items: center;
+    padding: .4rem;
+    background-color: #f7faff;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.div_pdtLiBase-1:hover{
+    background-color: #d7dfec;
+}
+
+.div_pdtLiBase-1:hover .div_pdtLi-1{
+    background-color: #2a4a7aaa;
+}
+
+.div_pdtLiBase-1:hover .span_pdtNombre{
+    color: #ffffff;
+}
+
+.div_pdtLi-1{
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    overflow: hidden;
+    display: flex;
+    transition: .3s;
+}
+
+.div_imgBase-1{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1a365f66;
+}
+
+.div_pdtDatos-1{
+    width: 70%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    transition: .3s;
+}
+
+.span_pdtNombre{
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1a365fcc;
+    transition: .3s;
+}
+/* BASE SELECCION DE PRODUCTO */
+
+/* BASE DATOS PRODUCTO SELECCIONADO */
+.div_baseDatosPdtSelec-1{
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.div_baseDatosPdtSelec-2{
+    width: 100%;
+    height: 38rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.span_descripPdt-1{
+    width: 100%;
+    font-size: 1.2rem;
+    color: #1a365f;
+    margin-top: .4rem;
+    height: 3.2rem;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #1a365f44;
+    border-bottom: 1px solid #1a365f44;
+    padding-left: 1.2rem;
+}
+
+.p_descripPdt-1{
+    width: 90%;
+    height: 12.4rem;
+    border-radius: 1rem;
+    border: 1px solid #1a365f44;
+    margin-top: .4rem;
+    overflow-y: scroll;
+    padding: 1rem;
+    font-size: 1.2rem;
+    color: #1a365f;
+    margin-left: 1.2rem;
+}
+
+.div_baseTipoReseOtros-1{
+    width: 100%;
+    height: 22rem;
+    display: flex;
+}
+
+.div_baseTipoReseOpciones-1{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    background-color: #2a4a7a66;
+    flex-direction: column;
+}
+
+.span_tipoReseDatos-1{
+    width: 100%;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1a365f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.8rem;
+}
+
+.div_listaModalidades{
+    width: 100%;
+    height: 20rem;
+    margin-top: .6rem;
+    justify-content: center;
+    display: grid;
+    grid-auto-flow: row;
+    grid-auto-columns: 96%;
+    grid-auto-rows: max-content;
+    overflow-x: hidden;
+    overflow-y: auto;
+    row-gap: .6rem;
+}
+
+[tipo="modaTipoHora"]{
+    width: 100%;
+    height: 3rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    border: 1px solid #4b7f1b;
+}
+
+[tipo="modaTipoHora"] span:nth-child(1){
+    font-size: 1rem;
+    font-weight: 600;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    color: #ffffff;
+    background-color: #4b7f1b;
+}
+
+[tipo="modaTipoHora"] span:nth-child(2){
+    font-size: 1rem;
+    font-weight: 600;
+    height: 100%;
+    display: flex;
+    text-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    background-color: #ffffffaa;
+    color: #146f0e;
+}
+
+[tipo="modaTipoDia"]{
+    width: 100%;
+    height: 3rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    border: 1px solid #1b7f40;
+}
+
+[tipo="modaTipoDia"] span:nth-child(1){
+    font-size: 1rem;
+    font-weight: 600;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    color: #ffffff;
+    background-color: #1b7f40;
+}
+
+[tipo="modaTipoDia"] span:nth-child(2){
+    font-size: 1rem;
+    font-weight: 600;
+    height: 100%;
+    display: flex;
+    text-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    background-color: #ffffffaa;
+    color: #146f0e;
+}
+
+[tipo="modaTipoSema"]{
+    width: 100%;
+    height: 3rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    border: 1px solid #1b5c7f;
+}
+
+[tipo="modaTipoSema"] span:nth-child(1){
+    font-size: 1rem;
+    font-weight: 600;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    color: #ffffff;
+    background-color: #1b5c7f;
+}
+
+[tipo="modaTipoSema"] span:nth-child(2){
+    font-size: 1rem;
+    font-weight: 600;
+    height: 100%;
+    display: flex;
+    text-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    background-color: #ffffffaa;
+    color: #146f0e;
+}
+
+[tipo="modaTipoMes"]{
+    width: 100%;
+    height: 3rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    border: 1px solid #2d1b7f;
+}
+
+[tipo="modaTipoMes"] span:nth-child(1){
+    font-size: 1rem;
+    font-weight: 600;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    color: #ffffff;
+    background-color: #2d1b7f;
+}
+
+[tipo="modaTipoMes"] span:nth-child(2){
+    font-size: 1rem;
+    font-weight: 600;
+    height: 100%;
+    display: flex;
+    text-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    background-color: #ffffffaa;
+    color: #146f0e;
+}
+
+[tipo="modaTipoBloq"]{
+    width: 100%;
+    height: 3rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    border: 1px solid #707070;
+}
+
+[tipo="modaTipoBloq"] span:nth-child(1){
+    font-size: 1rem;
+    font-weight: 600;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    color: #ffffff;
+    background-color: #707070;
+}
+
+[tipo="modaTipoBloq"] span:nth-child(2){
+    font-size: 1rem;
+    font-weight: 600;
+    height: 100%;
+    display: flex;
+    text-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    background-color: #ffffffaa;
+    color: #146f0e;
+}
+/* BASE DATOS PRODUCTO SELECCIONADO */
+
+/* PASO 2: DATOS DE LA RESERVA BASE PRINCIPAL */
+.div_datosReseBasePrin-1{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff88;
+    position: relative;
+}
+
+.div_erroreBaseDatosNR-1{
+    width: 100%;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: .3s;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.div_erroreBaseDatosNR-2{
+    width: 100%;
+    height: 4rem;
+    background-color: #F5C1C4ee;
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.div_svgBase-1{
+    width: 4rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F9D1D4;
+    border-right: 1px solid #bd121244;
+}
+
+.div_svgBase-1 svg{
+    width: 40%;
+    height: max-content;
+    fill: #bd1212;
+}
+
+.span_errorDatosNR-1{
+    height: 100%;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    padding: .4rem;
+    font-size: 1.2rem;
+    color: #bd1212;
+}
+
+.div_cubiertaCuadro2-1{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 400;
+    background-color: #f7faffaa;
+}
+
+.span_datosResePrin-1{
+    width: 100%;
+    height: max-content;
+    padding: 1rem 0;
+    padding-left: 1.2rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2a4a7a;
+    background-color: #CAD2DE;
+}
+
+.div_tipoReseBase-1{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    background-color: #268ac566;
+}
+
+.span_tipoResePrin-1{
+    width: 100%;
+    height: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #2a4a7a;
+    padding: .4rem 0;
+}
+
+.div_btnsTipoReseBase-1{
+    width: 100%;
+    height: 3.4rem;
+    background-color: #2a4a7a22;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: .4rem;
+}
+
+.btn_TipoRese{
+    width: max-content;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    padding: .4rem .6rem;
+    border-radius: 1rem;
+    color: #21243d99;
+    background-color: #2256a444;
+    margin-left: 1rem;
+    cursor: pointer;
+    transition: .3s;
+    outline: 2px solid #21243d99;
+}
+
+.btn_TipoRese:hover{
+    background-color: #2a4a7a;
+    color: #ffffff;
+}
+
+.btn_TipoRese:nth-child(1){
+    margin-left: 0;
+}
+
+.btn_TipoRese-select{
+    width: max-content;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    padding: .4rem .6rem;
+    border-radius: 1rem;
+    background-color: #2a4a7a;
+    color: #ffffff;
+    margin-left: 1rem;
+    outline: 2px solid #ffffff;
+    cursor: default;
+}
+
+.btn_TipoRese-bloq{
+    width: max-content;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    padding: .4rem .6rem;
+    border-radius: 1rem;
+    background-color: #909db0;
+    color: #596a89;
+    margin-left: 1rem;
+    cursor: default;
+    outline: 2px solid #484f5e66;
+}
+
+.div_baseScrollDatos-1{
+    width: 100%;
+    height: 46.4rem;
+    display: grid;
+    grid-auto-flow: row;
+    grid-auto-rows: max-content;
+    overflow-x: hidden;
+    position: relative;
+    overflow-y: auto;
+    background-color: #F7FAFF;
+}
+
+.div_baseScrollDatos-1::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: .2rem;
+}
+
+.div_baseScrollDatos-1::-webkit-scrollbar-thumb {
+    border-radius: 1rem;
+    background-color: #004f7844;
+}
+
+.div_duracionUnidadBase-1{
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.div_duracionUnidadBase-2{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    background-color: #f7faff;
+}
+
+.span_duracionRese-1{
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1.2rem;
+    color: #1a365f;
+    padding-left: 1.2rem;
+    border-top: 1px solid #2a4a7a33;
+    border-bottom: 1px solid #2a4a7a33;
+}
+
+.div_duracionInputsBase-1{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.div_inFechaIniBase-1{
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: .4rem;
+    overflow: hidden;
+    padding-top: 1rem;
+}
+
+.div_duracionTipoSemana{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.div_btnsTipoSemana-1{
+    width: 100%;
+    height: 2.8rem;
+    border-top: 1px solid #1a365f44;
+    border-bottom: 1px solid #1a365f44;;
+    display: flex;
+    align-items: center;
+    margin-top: .6rem;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.btn_tipoSema{
+    width: max-content;
+    height: 2rem;
+    border-radius: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1a365faa;
+    background-color: #1a365f22;
+    border: 1px solid #1a365faa;
+    cursor: pointer;
+    transition: .3s;
+    padding: 0 1rem;
+}
+
+.btn_tipoSema:hover{
+    background-color: #1a365faa;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+.btn_tipoSema-select{
+    width: max-content;
+    height: 2rem;
+    border-radius: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffffff;
+    padding: 0 1rem;
+    background-color: #1a365faa;
+    border: 1px solid #ffffff;
+    cursor: default;
+}
+
+.div_baseSemanaElegir-1{
+    background-color: #1a365f44;
+    height: 4.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn_semanaAtras-1{
+    width: max-content;
+    height: max-content;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: .4rem 1rem;
+    border-radius: 1rem;
+    border: 1px solid #1a365f;
+    color: #1a365f;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.btn_semanaAtras-1:hover{
+    background-color: #1b5c7f;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+.btn_semanaAtras-2{
+    width: max-content;
+    height: max-content;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: .4rem 1rem;
+    border-radius: 1rem;
+    border: 1px solid #636e80;
+    color: #40454c;
+    cursor: default;
+}
+
+.div_reseTipoAC-1{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div_baseAC-1{
+    width: 90%;
+    height: 9rem;
+    border-radius: 1rem;
+    border: 3px solid #3c87af;
+    background-color: #2a70cb44;
+    margin-top: .6rem;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.div_baseSvg-1{
+    width: 24%;
+    border-right: 1px solid #3c87af;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: .6rem;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.div_baseSvg-1 .svg_whatsappAC{
+    width: 4.6rem;
+    height: max-content;
+}
+
+.div_baseSvg-1 span{
+    width: 100%;
+    font-size: 1rem;
+    text-align: center;
+    background-color: #1a365f66;
+    color: #ffffff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: .2rem;
+}
+
+.div_baseInfo-1{
+    width: 66%;
+    height: 8rem;
+    padding: .8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.div_baseInfo-1 span{
+    font-size: 1.1rem;
+    color: #1a365f;
+    height: max-content;
+}
+
+.div_baseInfo-1 span b{
+    font-size: 1.1rem;
+    color: #1a365f;
+}
+
+.span_semanaFechas-1{
+    width: max-content;
+    height: max-content;
+    margin: 0 1rem;
+    display: flex;
+    font-size: 1.2rem;
+    align-items: center;
+    color: #1a365f;
+    padding: .6rem;
+    background-color: #ffffff;
+    border-radius: 1rem;
+}
+
+.span_semanaFechas-1 b{
+    font-size: 1.2rem;
+    color: #1a365f;
+    margin: 0 .4rem;
+}
+
+.btn_semanaAdelante-1{
+    width: max-content;
+    height: max-content;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: .4rem 1rem;
+    border-radius: 1rem;
+    border: 1px solid #1a365f;
+    color: #1a365f;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.btn_semanaAdelante-1:hover{
+    background-color: #1b5c7f;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+.span_fechaIniRese-1{
+    width: 100%;
+    height: 1.6rem;
+    padding-left: 1rem;
+    color: #1a365f88;
+    font-size: 1.2rem;
+}
+
+.in_fechaIniRese-1{
+    width: 36%;
+    height: 3rem;
+    padding-right: .4rem;
+    padding: 0rem 1rem;
+    margin-left: 1.2rem;
+    border-radius: 1rem;
+    font-size: 1.2rem;
+    color: #1a365f;
+    border: 1px solid #1a365f44;
+}
+
+.div_inHoraIniBase-1{
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: .4rem;
+    overflow: hidden;
+}
+
+.span_horaIniRese-1{
+    width: 100%;
+    height: 1.6rem;
+    padding-left: 1rem;
+    color: #1a365f88;
+    font-size: 1.2rem;
+}
+
+.in_horaIniRese-1{
+    width: 36%;
+    height: 3rem;
+    padding: 0rem 1rem;
+    padding-right: .4rem;
+    margin-left: 1.2rem;
+    border-radius: 1rem;
+    font-size: 1.2rem;
+    color: #1a365f;
+    border: 1px solid #1a365f44;
+}
+
+.div_inCantidadBase-1{
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: .4rem;
+    overflow: hidden;
+}
+
+.span_duraciRese-1{
+    width: 100%;
+    height: 1.6rem;
+    padding-left: 1rem;
+    color: #1a365f88;
+    font-size: 1.2rem;
+}
+
+.div_inCantiSegundaBase-1{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    align-items: center;
+}
+
+.in_cantidadRese-1{
+    width: 26%;
+    height: 3rem;
+    padding: 0rem 1rem;
+    margin-left: 1.2rem;
+    border-radius: 1rem;
+    font-size: 1.2rem;
+    color: #1a365f;
+    border: 1px solid #1a365f44;
+}
+
+.in_cantidadRese-1::-webkit-inner-spin-button,
+.in_cantidadRese-1::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.span_duracionCant-1{
+    width: max-content;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-left: 1rem;
+    color: #1a365f88;
+}
+
+.div_estadoHorarioBase-1{
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.div_estadoHorarioBase-2{
+    width: 100%;
+    height: max-content;
+    border-top: 1px solid #1a365f44;
+    border-bottom: 1px solid #1a365f44;
+}
+
+/* Colores de Fuente - Horario Disponibilidad */
+/* verde: #28a026 */
+/* rojo: #ef2626 */
+.span_estadoHorarioA-1{
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    height: 2rem;
+    color: #1a365f;
+    padding: .6rem 1.2rem;
+    background-color: #F7FAFF;
+}
+
+/* Colores de Fuente - Horario Disponibilidad */
+/* verde: #28a026 */
+/* rojo: #ef2626 */
+.span_estadoHorarioB-1{
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex;
+    color: #1a365f;
+    align-items: center;
+    height: 2rem;
+    padding: .6rem 1.2rem;
+    padding-top: 0;
+    background-color: #F7FAFF;
+}
+
+.div_basePrinUnidad-1{
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+}
+
+/* Altura */
+/* Input: 6.4rem */
+/* Unidad Selected: 8.4rem */
+.div_basePrinUnidad-2{
+    width: 100%;
+    height: 8.4rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.span_unidadRese-1{
+    width: 100%;
+    height: 2rem;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    color: #1a365f88;
+    font-size: 1.2rem;
+}
+
+/* Altura */
+/* Input: 4rem */
+/* Unidad Selected: 6rem */
+.div_segundaBaseUnidad-1{
+    width: 100%;
+    height: 6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.div_unidadSelectedBase-1{
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.div_unidadSelectedBase-2{
+    width: 90%;
+    height: 5.4rem;
+    display: flex;
+    overflow: hidden;
+    border-radius: 1rem;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    border: 1px solid #1a365f22;
+    margin-left: 1.2rem;
+    position: relative;
+}
+
+.div_unidadReseSele-1{
+    width: 98%;
+    height: 94%;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    border-radius: 1rem;
+    background-color: #dce8ef;
+}
+
+.div_unidadReseSele-1 .svg_xQuitarUnidSelect{
+    width: 1.2rem;
+    height: max-content;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 1rem;
+    position: absolute;
+    fill: #1a365f88;
+    z-index: 200;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.div_unidadReseSele-1 .svg_xQuitarUnidSelect:hover{
+    fill: #1a365f;
+}
+
+.div_imgUnidad-1{
+    width: 30%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1a365f44;
+}
+
+.div_imgUnidad-1 img{
+    width: 90%;
+    height: 90%;
+    border-radius: 1rem;
+}
+
+.div_datosUnidad-1{
+    width: 70%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.span_nomUnidad{
+    width: 100%;
+    padding-left: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1a365f;
+}
+
+.div_baseInLisUnidad-1{
+    width: 0;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+
+.div_baseInLisUnidad-2{
+    width: 90%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    margin-left: 1.2rem;
+}
+
+.in_mostrarLisUnidad-1{
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.in_mostrarLisUnidad-2{
+    width: 100%;
+    height: 3.4rem;
+    padding-left: 1rem;
+    background-color: #dddddd88;
+    cursor: pointer;
+    border: 1rem;
+    font-size: 1.2rem;
+    border: 1px solid #1a365f44;
+    border-radius: 1rem;
+}
+
+.in_mostrarLisUnidad-2::placeholder{
+    color: #1a365f88;
+}
+
+.div_listaUnidades-1{
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    z-index: -200;
+}
+
+.div_listaUnidades-2{
+    width: 100%;
+    height: max-content;
+    max-height: 16.8rem;
+    display: grid;
+    grid-auto-flow: row;
+    grid-auto-rows: max-content;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: absolute;
+    z-index: 500;
+    top: 100%;
+    left: 0;
+    box-shadow: .2rem .4rem .8rem #1a365f44;
+}
+
+.div_listaUnidades-2::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: .2rem;
+}
+
+.div_listaUnidades-2::-webkit-scrollbar-thumb {
+    border-radius: 1rem;
+    background-color: #004f7866;
+}
+
+.div_unidadLi-1{
+    width: 100%;
+    height: 5.6rem;
+    background-color: #f7faff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.div_unidadLi-1:hover{
+    background-color: #dde1e7;
+}
+
+.div_unidadLi-1:hover .div_baseUniDiv-1{
+    background-color: #1a56af66;
+}
+
+.div_unidadLi-1:hover 
+.div_baseUniDiv-1 
+.div_datosUnidadLi-1 
+.span_unidadLiNom-1{
+    color: #f7faff;
+}
+
+.div_baseUniDiv-1{
+    width: 90%;
+    height: 90%;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    background-color: #1a365f44;
+    padding: .6rem;
+    transition: .3s;
+}
+
+.div_imgUnidadLi-1{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.div_imgUnidadLi-1 img{
+    overflow: hidden;
+}
+
+.div_datosUnidadLi-1{
+    width: 70%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.span_unidadLiNom-1{
+    width: 100%;
+    padding-left: 1rem;
+    font-size: 1.2rem;
+    color: #2a4a7a;
+    transition: .3s;
+}
+
+/* NUMERO DE PERSONAS - BASE INPUT */
+.div_inNumPersoBase-1{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    background-color: #F7FAFF;
+}
+
+.separador3{
+    width: 100%;
+    border-top: 1px solid #1a365f33;
+    margin: .4rem 0;
+}
+
+.span_maxPersoNum{
+    font-size: 1.2rem;
+    color: #1a365f;
+    position: absolute;
+    left: 12rem;
+    top: 54%;
+}
+
+.span_maxPersoNum b{
+    font-size: 1.2rem;
+    color: #1a365f;
+}
+
+.span_numPersoRese-1{
+    width: 100%;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    color: #1a365f88;
+    font-size: 1.2rem;
+}
+
+.in_numPersoRese-1{
+    width: 26%;
+    height: 3rem;
+    padding: 0rem 1rem;
+    margin-left: 1.2rem;
+    border-radius: 1rem;
+    font-size: 1.2rem;
+    color: #1a365f;
+    border: 1px solid #1a365f44;
+}
+
+.in_numPersoRese-1::-webkit-inner-spin-button,
+.in_numPersoRese-1::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* TITULO RESERVA - BASE INPUT */
+.div_inBaseTituRese-1{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    background-color: #F7FAFF;
+}
+
+.span_tituloRese-1{
+    width: 100%;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    color: #1a365f88;
+    font-size: 1.2rem;
+}
+
+.in_tituloReserva-1{
+    width: 90%;
+    height: 3rem;
+    padding: 0rem 1rem;
+    margin-left: 1.2rem;
+    border-radius: 1rem;
+    font-size: 1.2rem;
+    color: #1a365f;
+    border: 1px solid #1a365f44;
+}
+
+.in_tituloReserva-1::placeholder{
+    color: #1a365f88;
+}
+
+/* ACTIVIDADES RESERVA - BASE INPUT */
+.div_inBaseActividad-1{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    background-color: #F7FAFF;
+    margin-bottom: 8rem;
+}
+
+.span_actividadRese-1{
+    width: 100%;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    color: #1a365f88;
+    font-size: 1.2rem;
+}
+
+.in_actividadesRese-1{
+    width: 90%;
+    height: 10rem;
+    resize: none;
+    padding: 1rem;
+    margin-left: 1.2rem;
+    border-radius: 1rem;
+    font-size: 1.2rem;
+    color: #1a365f;
+    border: 1px solid #1a365f44;
+}
+
+.in_actividadesRese-1::placeholder{
+    color: #1a365f88;
+}
+
+.div_limiteActiviBase-1{
+    width: 90%;
+    display: flex;
+    height: max-content;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/* rojo: #ef2626 */
+.span_limiteActividad-1{
+    height: 3rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1a365f;
+    display: flex;
+    align-items: center;
+}
+
+.span_limiteActividadB-1{
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1a365f;
+}
+
+/* BOTONES BASE */
+.div_baseBtnsPrin-1{
+    width: 100%;
+    height: 8rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #1a365f44;
+    padding: 1rem;
+    justify-content: center;
+}
+
+.div_cubiertaCuadro3-1{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 400;
+    left: 0;
+    background-color: #f7faffaa;
+}
+
+.span_paso3BtnsBase{
+    width: 100%;
+    font-size: 1.2rem;
+    color: #1a365f;
+    font-weight: 600;
+    left: -1rem;
+    top: 0;
+    cursor: default;
+}
+
+.span_camposCompleBase-1{
+    font-size: 1.2rem;
+    margin-top: .6rem;
+    color: #1a365f;
+    cursor: default;
+}
+
+.span_camposCompleNum-1{
+    font-size: 1.2rem;
+    color: #1a365f;
+    cursor: default;
+}
+
+.div_baseBtns-1{
+    width: max-content;
+    height: max-content;
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    overflow: hidden;
+}
+
+.btn_continuarReserva-1{
+    width: max-content;
+    height: max-content;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #122a0b88;
+    border-radius: 1rem;
+    background-color: #49564488;
+    padding: .8rem 1rem;
+    cursor: not-allowed;
+}
+
+.btn_continuarReserva-2{
+    width: max-content;
+    height: max-content;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffffff;
+    border-radius: 1rem;
+    background-color: #297311;
+    padding: .8rem 1rem;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.btn_continuarReserva-2:hover{
+    background-color: #3caa17;
+}
+
+/* Base Pre-Registro de reserva completado */
+.div_reseRegistradaBasePrin-2{
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    margin: 0;
+}
+
+.div_reseRegistradaBasePrin-1{
+    width: 70%;
+    height: 40rem;
+    border-radius: 1rem;
+    background-color: #3c87af66;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    overflow: hidden;
+    margin: 6rem 0;
+}
+
+.span_tituloPreRegisExitoso-1{
+    width: 100%;
+    height: 4rem;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #1a365f;
+    border-bottom: 1px solid #1a365f44;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.div_baseCodigoResePrin-1{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.span_codigoReseAviso-1{
+    width: 100%;
+    height: max-content;
+    font-size: 1.2rem;
+    text-align: center;
+    margin: 1rem 0;
+    margin-bottom: .6rem;
+    color: #1a365f;
+}
+
+.div_baseCodigoReseA-1{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: .6rem;
+}
+
+.div_baseCodigoRese-1{
+    width: 40%;
+    height: 6rem;
+    border-radius: 3rem;
+    border: 2px solid #1a365f66;
+    background-color: #ffffffaa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.span_codigoRese-1{
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #1a365f;
+}
+
+.div_baseInstru-1{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.p_instrucciones{
+    width: 80%;
+    height: max-content;
+    padding: 1rem;
+    border-radius: 1rem;
+    font-size: 1.1rem;
+    background-color: #bbd6ffaa;
+    border: 1px solid #1f58ad44;
+    color: #1a365f;
+}
+
+.p_instrucciones b{
+    font-size: 1.1rem;
+    color: #1a365f;
+}
+
+.div_canalesContacto-1{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.span_tituloCanalesC{
+    width: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #1a365f;
+    margin-top: 2rem;
+}
+
+.div_baseCanalesContac-1{
+    width: 60%;
+    height: 5.8rem;
+    margin-top: 1rem;
+    display: grid;
+    grid-auto-flow: row;
+    grid-auto-rows: max-content;
+    overflow-x: auto;
+    overflow-y: hidden;
+    column-gap: 1rem;
+}
+
+.div_baseCanalesContac-1::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: .6rem;
+}
+
+.div_baseCanalesContac{
+    height: 100%;
+    width: 5.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.div_baseCanalesContac svg{
+    width: 90%;
+    height: max-content;
+    transition: .3s;
+    transform-origin: center;
+}
+
+.div_baseCanalesContac:hover svg{
+    width: 92%;
+}
+
+.div_baseBtnsRF{
+    width: 100%;
+    height: 6rem;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 2rem;
+}
+
+.btn_volverAlInicio-1{
+    width: max-content;
+    height: max-content;
+    font-size: 1.2rem;
+    padding: 1rem;
+    color: #1a365f88;
+    font-weight: 600;
+    background-color: #ffffff44;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.btn_volverAlInicio-1:hover{
+    background-color: #ffffff88;
+    color: #1a365fdd;
+}
+/* Base Pre-Registro de reserva completado */

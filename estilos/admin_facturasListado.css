@@ -1,0 +1,191 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    color: #333;
+}
+
+#volverBtn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+#volverBtn:hover {
+    background-color: #0056b3;
+}
+
+/* Título principal */
+h1 {
+    text-align: center;
+    margin: 20px 0;
+    color: #2c3e50;
+    font-size: 2rem;
+}
+
+/* Contenedor de filtros */
+#filtros-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    width: 90%;
+    max-width: 1000px;
+}
+
+#filtros-container label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    color: #555;
+}
+
+#filtros-container input[type="date"],
+#filtros-container input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+#filtros-container input:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+#filtros-container button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#filtros-container button:hover {
+    background-color: #0056b3;
+}
+
+/* Lista de facturas */
+#listaFacturas {
+    list-style: none;
+    padding: 0;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 1000px;
+}
+
+#listaFacturas li {
+    background-color: #ffffff;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s;
+}
+
+#listaFacturas li:hover {
+    transform: scale(1.02);
+}
+
+#listaFacturas .factura-info {
+    display: flex;
+    flex-direction: column;
+}
+
+#listaFacturas .factura-info strong {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+#listaFacturas button {
+    padding: 8px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#listaFacturas button:hover {
+    background-color: #218838;
+}
+
+/* Modal de detalles de factura */
+#facturaModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    color: #2c3e50;
+    text-align: center;
+}
+
+#detallesFactura p {
+    margin: 10px 0;
+    font-size: 1rem;
+    color: #555;
+}
+
+.modal-content button {
+    padding: 10px 20px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: background-color 0.3s;
+}
+
+.modal-content button:hover {
+    background-color: #c82333;
+}

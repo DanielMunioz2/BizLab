@@ -1,0 +1,561 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+/* Reset básico */
+body, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+figure, figcaption, div, span, a, ul, ol, li, dl, dt, dd,
+table, th, td, thead, tbody, tfoot, tr,
+input, button, textarea, select, option, fieldset, legend, label,
+section, article, aside, footer, header, nav, main,
+audio, video, canvas, iframe, embed, object, param, picture, source, track,
+strong, em, b, i, u, small, big, abbr, q, cite, time, code, sub, sup,
+summary, details, mark, progress, meter {
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    text-decoration: none;
+    list-style: none;
+    font-size: 10px;
+    scroll-behavior: smooth;
+}
+
+/* Body */ 
+body{
+    margin: unset;
+    max-width: 100vw;
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+}
+
+/* Cambiar el ancho de la barra de desplazamiento */
+::-webkit-scrollbar {
+    width: .4rem;
+}
+
+/* Cambiar el color de la barra de desplazamiento */
+::-webkit-scrollbar-thumb {
+    background-color: #729edb;
+    border-radius: 1rem;
+}
+
+/* Quitar el fondo de la barra */
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Scroll suave */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Imágenes */
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Inputs y botones */
+input, button, textarea, select {
+    outline: none;
+}
+
+/* HEADER CLIENTE - INICIO */
+.headerCli{
+width: 100%;
+height: 9rem;
+background: linear-gradient(0deg, rgba(217,219,224,1) 0%, rgb(100, 113, 209) 100%);
+position: absolute;
+left: 0;
+top: 0;
+}
+
+.headerDiv1{
+width: 100%;
+height: 70%;
+display: flex;
+justify-content: flex-end;
+align-items: center;
+position: relative;
+background: linear-gradient(0deg, #0c79b4 0%, #086496 100%);;
+}
+
+/*// IMAGEN DE PERFIL - INICIO //*/
+.divLogo{
+width: max-content;
+height: 100%;
+display: flex;
+align-items: center;
+justify-content: flex-start;
+padding-left: 3rem;
+position: absolute;
+top: 0;
+left: 0;
+}
+
+.divLogo svg{
+width: 14rem;
+height: max-content;
+fill: #ffffff;
+}
+
+.divPerfilGene{
+width: max-content;
+height: 100%;
+padding: 0;
+margin: 0;
+padding-right: 3rem;
+display: flex;
+align-items: center;
+}
+
+.divPerfilGene .divPerfil{
+width: 5.4rem;
+height: 5.4rem;
+background-color: #ffffff88;
+padding: 0;
+margin: 0;
+display: flex;
+justify-content: center;
+position: relative;
+align-items: center;
+border-radius: 100%;
+cursor: pointer;
+transition: .3s;
+}
+
+.divPerfilGene .divPerfil:hover{
+background-color: #e4f2ffaa;
+}
+
+.divPerfilGene .divPerfil:hover .divImg{
+background-color: #e4f2ffaa;
+}
+
+.divPerfilGene .divPerfil:hover .divImg img{
+width: 106%;
+height: 106%;
+position: absolute;
+}
+
+.divPerfilGene .divPerfil .divImg{
+width: 5.4rem;
+height: 5.4rem;
+margin: 0;
+padding: 0;
+position: relative;
+border-radius: 100%;
+overflow: hidden;
+display: flex;
+overflow: hidden;
+align-items: center;
+justify-content: center;
+padding: .2rem;
+border: 2px solid #003e5f66;
+transition: .3s;
+}
+
+.divPerfil .divImg img{
+transition: .3s;
+border-radius: 50%;
+border: 4px solid #003e5f66;
+}
+/*// IMAGEN DE PERFIL - FIN //*/
+
+/*// CUADRO PERFIL - INICIO //*/
+.cuadroOPerfil1{
+height: 0rem;
+width: 0rem;
+box-shadow: none;
+overflow: hidden;
+position: absolute;
+transform-origin: top left;
+transition: 0.3s;
+z-index: 1000;
+}
+
+.cuadroOPerfil2{
+display: flex;
+position: absolute;
+z-index: 1000;
+width: 26rem;
+height: max-content;
+display: flex;
+flex-direction: column;
+border-radius: 1rem;
+top: 100%;
+right: 2rem;
+transition: 0.3s;
+overflow: hidden;
+background-color: #e9e8e8;
+transform-origin: top right;
+box-shadow: 0.2rem 0.4rem 0.4rem #33333355;
+}
+
+.cuadroOPerfil2 .div1{
+width: 100%;
+height: max-content;
+display: flex;
+flex-direction: column;
+border-bottom: 1px solid #002d5622;
+}
+
+.cuadroOPerfil2 .div1 div{
+width: 100%;
+height: max-content;
+display: flex;
+align-items: center;
+padding-top: 1.4rem;
+padding-left: 1.4rem;
+padding-bottom: 1.4rem;
+}
+
+.cuadroOPerfil2 .div1 div svg{
+width: 1rem;
+height: max-content;
+fill: #002d5699;
+}
+
+.cuadroOPerfil2 .div1 div span{
+font-size: 1rem;
+margin-left: 1rem;
+cursor: default;
+color: #002d56aa;
+}
+
+.cuadroOPerfil2 .div1 button{
+width: 100%;
+display: flex;
+justify-content: flex-start;
+align-items: center;
+padding: 1rem;
+padding-left: 1.4rem;
+font-size: 1.2rem;
+color: #002d56aa;
+cursor: pointer;
+transition: 0.2s;
+}
+
+.cuadroOPerfil2 .div1 button svg{
+width: 1.4rem;
+height: max-content;
+fill: #002d56aa;
+margin-right: 1rem;
+transition: 0.2s;
+}
+
+.cuadroOPerfil2 .div1 button:hover{
+background-color: #002d5633;
+color: #ffffff;  
+}
+
+.cuadroOPerfil2 .div1 button:hover svg{
+fill: #ffffff;
+}
+
+.cuadroOPerfil2 .div2{
+width: 100%;
+display: flex;
+height: max-content;
+}
+
+.cuadroOPerfil2 .div2 a{
+width: 100%;
+}
+
+.cuadroOPerfil2 .div2 button{
+font-size: 1.2rem;
+width: 100%;
+padding: 1.8rem;
+display: flex;
+justify-content: flex-start;
+color: #002d56aa;
+transition: 0.2s;
+cursor: pointer;
+}
+
+.cuadroOPerfil2 .div2 button svg{
+width: 2rem;
+height: max-content;
+fill: #002d56aa;
+margin-right: 1rem;
+transition: 0.2s;
+}
+
+.cuadroOPerfil2 .div2 button:hover{
+background-color: #002d5633;
+color: #ffffff;
+}
+
+.cuadroOPerfil2 .div2 button:hover svg{
+fill: #ffffff;
+}
+
+.cuadroOPerfil2 .div3{
+width: 100%;
+display: flex;
+height: max-content;
+}
+
+.cuadroOPerfil2 .div3 button{
+font-size: 1.2rem;
+width: 100%;
+padding: 1rem;
+padding-left: 1.4rem;
+display: flex;
+justify-content: flex-start;
+color: #002d56aa;
+transition: 0.2s;
+cursor: pointer;
+}
+
+.cuadroOPerfil2 .div3 button svg{
+width: 1.4rem;
+height: max-content;
+fill: #002d56aa;
+margin-right: 1rem;
+transition: 0.2s;
+}
+
+.cuadroOPerfil2 .div3 button:hover{
+background-color: #002d5633;
+color: #ffffff;
+}
+
+.cuadroOPerfil2 .div3 button:hover svg{
+fill: #ffffff;
+}
+/*// CUADRO PERFIL - FIN //*/
+
+.headerNav{
+background-color: #c4cee4;
+height: 30%;
+width: 100%;
+display: flex;
+align-items: center;
+border-bottom: .2rem solid #7A97CC;
+}
+
+.headerNav ul{
+width: 100%;
+height: 100%;
+display: flex;
+padding-left: 3rem;
+justify-content: flex-start;
+}
+
+.headerNav ul li{
+width: max-content;
+height: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-left: .2rem;
+}
+
+.headerNav ul li:first-child{
+margin-left: 0;
+}
+
+.headerNav ul li a{
+font-size: 1rem;
+font-weight: 600;
+color: #183a6d;
+cursor: pointer;
+transition: .3s;
+padding: .4rem 1rem;
+border-radius: 1rem;
+}
+
+.headerNav ul li a:hover{
+background-color: #004f7844;
+color: #ffffff;
+}
+
+.headerDiv1 .divBtnInicioRegis{
+width: max-content;
+height: 100%;
+display: flex;
+justify-content: flex-end;
+}
+
+.divBtnInicio{
+width: max-content;
+height: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-right: 1rem;
+}
+
+.btnIniSesion{
+cursor: pointer;
+width: max-content;
+height: max-content;
+font-size: 1rem;
+padding: .6rem 1rem;
+border-radius: 1rem;
+color: #ffffff;
+font-weight: 600;
+background-color: #2e97cf;
+transition: .3s; 
+}
+
+.btnIniSesion:hover{
+background-color: #67beed;
+}
+
+.divBtnRegis{
+width: max-content;
+height: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-right: 2rem;
+}
+
+.divBtnRegis .btnRegis{
+cursor: pointer;
+width: max-content;
+height: max-content;
+font-size: 1rem;
+font-weight: 600;
+padding: .6rem 1rem;
+border-radius: 1rem;
+color: #2e97cf;
+transition: .3s;
+}
+
+.divBtnRegis .btnRegis:hover{
+background-color: #ffffff;
+}
+/* HEADER CLIENTE - FIN */
+
+/* FOOTER */
+.footer {
+width: 100%;
+height: 20rem;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+align-items: center;
+overflow: hidden;
+position: absolute;
+background-color: #004f78;
+bottom: 0;
+}
+
+.div_redesSocialesContent {
+width: 100%;
+height: max-content;
+display: flex;
+justify-content: flex-end;
+padding: .6rem 2rem;
+margin-top: 4rem;
+background-color: #1a77a955;
+}
+
+.div_redesS-1{
+width: max-content;
+height: 100%;
+display: flex;
+align-items: center;
+}
+
+.svg-redesS{
+width: 2.4rem;
+height: max-content;
+fill: #ffffffcc;
+}
+
+.div_redesS-1 .barra{
+background-color: #ffffff66;
+width: 2px;
+height: 2.8rem;
+margin: 0 1rem;
+margin-right: 0;
+}
+
+.div_redesS-1 a{
+height: 100%;
+width: max-content;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.div_redesS-1 a svg{
+height: max-content;
+width: 2.8rem;
+fill: #ffffff;
+margin-left: 1rem;
+}
+
+.div_redesContac-1{
+width: max-content;
+height: 100%;
+display: flex;
+align-items: center;
+margin-left: 4rem;
+}
+
+.svg_redesContac-1{
+width: 2rem;
+height: max-content;
+fill: #ffffff88;
+}
+
+.div_redesContac-1 .barra{
+background-color: #ffffff66;
+width: 2px;
+height: 2.8rem;
+margin: 0 1rem;
+margin-right: 0;
+}
+
+.div_redesContac-1 a{
+height: 100%;
+width: max-content;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.div_redesContac-1 a svg{
+height: max-content;
+width: 2.8rem;
+fill: #ffffff;
+margin-left: 1rem;
+}
+
+.div_copyrightContent {
+width: 100%;
+height: max-content;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+font-weight: 400;
+color: #ffffffdd;
+font-size: 1.2rem;
+padding-bottom: 2rem;
+padding-top: 1rem;
+border-top: 1px solid #ffffff44;
+}
+
+.svg_logoBizSvg {
+width: 3.8rem;
+height: max-content;
+fill: #ffffffdd;
+margin: 1rem 0;
+}
+
+.span_copyright-1{
+width: 100%;
+text-align: center;
+font-size: 1.2rem;
+color: #ffffff;
+}
+/* FOOTER */
